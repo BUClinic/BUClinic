@@ -82,33 +82,15 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Profile</span>
+              <span class="nav-link">Dashboard</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span class="menu-title">My Profile</span>
+              <a class="nav-link" href="index.php">
+                <span class="menu-title">Dashboard</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
             <li class="nav-item nav-category"><span class="nav-link">FORMS</span></li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="icon-layers menu-icon"></i>
-              </a>
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/icons/simple-line-icons.html">
-                <span class="menu-title">Icons</span>
-                <i class="icon-globe menu-icon"></i>
-              </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Forms</span>
@@ -121,23 +103,26 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/dailyconsultation.php">DailyConsultation Form</a></li>
                 </ul>
               </div>
-            </li>  
-            <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartist.html">
-                <span class="menu-title">Charts</span>
-                <i class="icon-chart menu-icon"></i>
-              </a>
             </li>
+			
+			<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
+              <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Tables</span>
-                <i class="icon-grid menu-icon"></i>
+                <i class="icon-layers menu-icon"></i>
               </a>
+              <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medicine Inventory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/tables/studentrecord.php">Student Record</a></li>
+                </ul>
+              </div>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
+
+            <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">General Pages</span>
+                <span class="menu-title">My Profile</span>
                 <i class="icon-doc menu-icon"></i>
               </a>
               <div class="collapse" id="auth">
@@ -152,7 +137,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             </li>
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php" target="_blank"> <i class="icon-badge mx-2"></i> Sign Out</a>
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php"> <i class="icon-badge mx-2"></i> Sign Out</a>
               </span>
             </li>
           </ul>

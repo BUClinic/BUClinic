@@ -41,7 +41,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <a class="navbar-brand brand-logo" href="../../index.html">
             <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
         
       </nav>
@@ -137,7 +137,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             </li>
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="../../logout.php" target="_blank"> <i class="icon-badge mx-2"></i> Sign Out</a>
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="../../logout.php"> <i class="icon-badge mx-2"></i> Sign Out</a>
               </span>
             </li>
           </ul>

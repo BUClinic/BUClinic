@@ -16,7 +16,7 @@ if (TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// CloseCon($conn);
+CloseCon($conn);
 
 
 ?>

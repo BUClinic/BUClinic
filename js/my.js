@@ -2,7 +2,6 @@
 function getRequest(link){
 	const Http = new XMLHttpRequest();
 	Http.open("GET", "../../saverecords/sql.php?query=" + link);
-	window.open("../../saverecords/sql.php?query=" + link);
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
@@ -92,7 +91,6 @@ function saveConsult(){
 	query += "'"+document.getElementById("Complaints").value + "',";
 	query = "INSERT INTO `tbl_diagnosis`(`PatientID`, `Diagnosis`, `Treatment`, `Referral`, `ModifiedBy`, `CreatedBy`) VALUES (" + query + "1,1)"
 	getRequest(query);
-	alert(query);
 }
 
 $(document).ready(function() {
