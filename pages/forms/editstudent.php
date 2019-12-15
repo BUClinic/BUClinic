@@ -3,7 +3,16 @@ session_start();
 if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     include '../../db_connection.php';
 
+    echo "select * from tbl_patientinfo where PatientID='".$_GET['ID']."'";
     $conn = OpenCon();
+    $result = mysqli_query($conn, "select * from tbl_patientinfo where PatientID='".$_GET['ID']."'");
+    $r = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "select * from tbl_patientsparentinfo where Relation='Father' and PatientID='".$_GET['ID']."'");
+    $father = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "select * from tbl_patientsparentinfo where Relation='Mother' and PatientID='".$_GET['ID']."'");
+    $mother = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "select * from tbl_patientsparentinfo where Relation='Guardian' and PatientID='".$_GET['ID']."'");
+    $guardian = mysqli_fetch_assoc($result);
 //echo $_SESSION['buhs_user'];
     //$result = mysqli_query($conn,"select * from tbl_user WHERE Username = '".$_POST['username']."'");
     //$r=mysqli_fetch_assoc($result);
@@ -33,7 +42,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <link rel="stylesheet" href="../../css/style.css" ><!-- End layout styles -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
   </head>
-  <body onLoad=<?php echo 'fillUp("'.$_GET['patientID'].'")'; ?>>
+  <body onLoad=<?php echo 'fillUp("'.$_GET['PatientID'].'")'; ?>>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -156,7 +165,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </ol>
               </nav>
             </div>
-            <form method="POST" action="../../SaveRecords/savestudent.php">
+            <form method="POST" action="../../SaveRecords/savestudent.php?ID">
             <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card">
@@ -165,21 +174,21 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <!--<p class="card-description"> Personal info </p>-->
                         <div class="form-group row">
                           <div class="col-md-7 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" >
-                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name">
-                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name">
+                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" value=<?php echo '"'.$r['Fname'].'"';?> >
+                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name" value=<?php echo '"'.$r['Mname'].'"';?> >
+                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name" value=<?php echo '"'.$r['Lname'].'"';?> >
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'">
-                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age">
-                              <select class="form-control" name="S_Gender" id="Gender">
-                                    <option selected disabled>Sex</option>
+                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>>
+                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> >
+                              <select class="form-control" name="S_Gender" id="Gender" value=<?php echo '"'.$r['Sex'].'"';?> >
+                                    <option selected disabled >  </option>
                                     <option>Male</option>
                                     <option>Female</option>
                               </select>
                           </div> 
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number">
+                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> >
                               <select class="form-control mb-2" name="S_Status" id="Status">
                                     <option selected disabled>Civil Status</option>
                                     <option>Single</option>
@@ -187,10 +196,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                     <option>Widowed</option>
                                     <option>Divorced</option>
                               </select>
-                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion">
+                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?>>
                           </div>
                           <div class="col-md-4 col-sm-12 mb-2">
-                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #">
+                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?>>
                           </div>
                          
                           <div class="col-md-4 col-sm-12 mb-2">
@@ -267,19 +276,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Father's Information <i class="icon-user float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="FName" placeholder="First Name">
+                        <input type="text" class="form-control" id="F_Name" placeholder="First Name" value=<?php echo "'".$father['Fname']."'" ?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="MName" placeholder="Middle Name">
+                        <input type="text" class="form-control" id="M_Name" placeholder="Middle Name"value=<?php echo "'".$father['Mname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="LName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="L_Name" placeholder="Last Name"value= <?php echo "'".$father['Lname']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="Address" placeholder="Address">
+                        <input type="text" class="form-control" id="F_Address" placeholder="Address" value= <?php echo "'".$father['OfficeAddress']."'"?> >
+                      </div>
+                      <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="F_Occupation" placeholder="Occupation" value= <?php echo "'".$father['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="CNumber" placeholder="Contact Number">
+                        <input type="text" class="form-control" id="F_CNumber" placeholder="Contact Number"value= <?php echo "'".$father['ContactNumber']."'"?> >
                       </div>
                       </div>
                   </div>
@@ -291,19 +303,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Mother's Information <i class=" icon-user-female float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_FName" placeholder="First Name">
+                        <input type="text" class="form-control" id="F_FName" placeholder="First Name"  value= <?php echo "'".$mother['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_MName" placeholder="Middle Name">
+                        <input type="text" class="form-control" id="M_MName" placeholder="Middle Name"  value= <?php echo "'".$mother['Mname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_LName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="L_LName" placeholder="Last Name"  value= <?php echo "'".$mother['Lname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_Address" placeholder="Address">
+                        <input type="text" class="form-control" id="M_Address" placeholder="Address" value= <?php echo "'".$mother['OfficeAddress']."'"?>>
+                      </div>
+                      <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="M_Occupation" placeholder="Occupation" value= <?php echo "'".$mother['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="M_CNumber" placeholder="Contact Number">
+                        <input type="text" class="form-control" id="M_CNumber" placeholder="Contact Number"value= <?php echo "'".$mother['ContactNumber']."'"?>>
                       </div>
                       </div>
                   </div>
@@ -315,19 +330,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Guardian's Information <i class="icon-user-follow float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_FName" placeholder="First Name">
+                        <input type="text" class="form-control" id="G_FName" placeholder="First Name"  value= <?php echo "'".$guardian['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_MName" placeholder="Middle Name">
+                        <input type="text" class="form-control" id="G_MName" placeholder="Middle Name"value= <?php echo "'".$guardian['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_LName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="G_LName" placeholder="Last Name"value= <?php echo "'".$guardian['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_Address" placeholder="Address">
+                        <input type="text" class="form-control" id="G_Address" placeholder="Address"value= <?php echo "'".$guardian['Fname']."'"?>>
+                      </div>
+                      <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="G_Occupation" placeholder="Occupation" value= <?php echo "'".$guardian['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="G_CNumber" placeholder="Contact Number">
+                        <input type="text" class="form-control" id="G_CNumber" placeholder="Contact Number"value= <?php echo "'".$guardian['Fname']."'"?>>
                       </div>
                       </div>
                   </div>

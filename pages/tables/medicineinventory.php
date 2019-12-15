@@ -1,16 +1,29 @@
+<?php
+session_start();
+if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+    include '../../db_connection.php';
+
+    $conn = OpenCon();
+//echo $_SESSION['buhs_user'];
+    //$result = mysqli_query($conn,"select * from tbl_user WHERE Username = '".$_POST['username']."'");
+    //$r=mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>Bicol University Clinic</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -23,91 +36,17 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a class="navbar-brand brand-logo" href="../../index.html">
+          <a class="navbar-brand brand-logo" href="../../index.php">
             <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
           <ul class="navbar-nav navbar-nav-right ml-auto">
             <form class="search-form d-none d-md-block" action="#">
               <i class="icon-magnifier"></i>
               <input type="search" class="form-control" placeholder="Search Here" title="Search here">
             </form>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="icon-speech"></i>
-                <span class="count">7</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                <a class="dropdown-item py-3">
-                  <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                  <span class="badge badge-pill badge-primary float-right">View all</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
-              <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <div class="d-inline-flex mr-3">
-                  <i class="flag-icon flag-icon-us"></i>
-                </div>
-                <span class="profile-text font-weight-normal">English</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-us"></i> English </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-fr"></i> French </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-ae"></i> Arabic </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-ru"></i> Russian </a>
-              </div>
-            </li>
-            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
-                </div>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i> Messages</a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
-              </div>
-            </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
@@ -126,8 +65,8 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
-                  <p class="designation">Administrator</p>
+                  <p class="profile-name"><?php echo $_SESSION['Fname']. " ";echo  $_SESSION['Lname'];?></p>
+                  <p class="designation"><?php echo $_SESSION['position']?></p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
@@ -139,52 +78,30 @@
               <span class="nav-link">Dashboard</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
+              <a class="nav-link" href="../../index.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="icon-layers menu-icon"></i>
-              </a>
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
-                <span class="menu-title">Icons</span>
-                <i class="icon-globe menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                <span class="menu-title">Form Elements</span>
-                <i class="icon-book-open menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/charts/chartist.html">
-                <span class="menu-title">Charts</span>
-                <i class="icon-chart menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
-                <span class="menu-title">Tables</span>
-                <i class="icon-grid menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
+            <li class="nav-item nav-category"><span class="nav-link">Forms</span></li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+<span class="menu-title">Forms</span>
+<i class="icon-layers menu-icon"></i>
+</a>
+<div class="collapse" id="ui-basic">
+<ul class="nav flex-column sub-menu">
+<li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
+</ul>
+</div>
+</li>
+    
+            <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">General Pages</span>
+                <span class="menu-title">My Profile</span>
                 <i class="icon-doc menu-icon"></i>
               </a>
               <div class="collapse" id="auth">
@@ -193,19 +110,19 @@
                   <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
                   <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
                   <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../../logout.php"> Sign Out </a></li>
                 </ul>
               </div>
             </li>
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i class="icon-badge mx-2"></i> Upgrade to Pro</a>
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="../../logout.php"> <i class="icon-badge mx-2"></i> Sign Out</a>
               </span>
             </li>
           </ul>
         </nav>
         <!-- partial -->
-        <div class="main-panel">
+         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
               <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
@@ -312,7 +229,7 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BU Health Service</a>. All rights reserved.</span>
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
             </div>
           </footer>
@@ -327,108 +244,19 @@
     <script src="../../vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    <script src="../../vendors/select2/select2.min.js"></script>
+    <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="../../js/off-canvas.js"></script>
     <script src="../../js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    <script src="../../js/typeahead.js"></script>
+    <script src="../../js/select2.js"></script>
+    <script src="../../js/my.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>
 
-<!-- Modal -->
-<div class="modal fade" id="re-stockmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">Re-Stock Item <i class="icon-plus float-left"></i></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text" class="form-control" id="M_GName" placeholder="Generic Name" disabled>
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="number" class="form-control" id="M_Quantity" placeholder="Quantity">
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_EDate" placeholder="Expiration Date" onfocus="this.type='date'">
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_LSDate" placeholder="Last Stock Date" onfocus="this.type='date'" disabled>
-        </div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="save">Save changes</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">Edit Item <i class="icon-pencil float-left"></i></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text" class="form-control" id="M_GName" placeholder="Generic Name">
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="number" class="form-control" id="M_Quantity" placeholder="Quantity">
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_EDate" placeholder="Expiration Date" onfocus="this.type='date'">
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_LSDate" placeholder="Last Stock Date" onfocus="this.type='date'" disabled>
-        </div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="save">Save changes</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">Delete Item <i class="icon-trash float-left"></i></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text" class="form-control" id="M_GName" placeholder="Generic Name" disabled>
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="number" class="form-control" id="M_Quantity" placeholder="Quantity" disabled>
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_EDate" placeholder="Expiration Date" onfocus="this.type='date'" disabled>
-        </div>
-        <div class="col-md-12 col-sm-12 mb-2">
-            <input type="text"g class="form-control mb-2" id="M_LSDate" placeholder="Last Stock  Date" onfocus="this.type='date'" disabled>
-        </div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="save">Delete</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

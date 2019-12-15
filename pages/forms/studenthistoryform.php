@@ -343,31 +343,31 @@ $conn = OpenCon();
 <div class="form-group row">
 <div class="col-md-12 col-sm-12 mb-2">
 <div class="input-group mb-2">
-	<span class="input-group-text">Contact</span>
+	<span class="input-group-text">First Name</span>
 	<input type="text" class="form-control" id="G_FName" name="G_FName" readonly>
 </div>
 </div>
 <div class="col-md-12 col-sm-12 mb-2">
 <div class="input-group mb-2">
-	<span class="input-group-text">Contact</span>
+	<span class="input-group-text">Middle Name</span>
 	<input type="text" class="form-control" id="G_MName" name="G_MName" readonly>
 </div>
 </div>
 <div class="col-md-12 col-sm-12 mb-2">
 <div class="input-group mb-2">
-	<span class="input-group-text">Contact</span>
+	<span class="input-group-text">Last Name</span>
 	<input type="text" class="form-control" id="G_LName" name="G_LName" readonly>
 </div>
 </div>
 <div class="col-md-12 col-sm-12 mb-2">
 <div class="input-group mb-2">
-	<span class="input-group-text">Contact</span>
+	<span class="input-group-text">Address</span>
 	<input type="text" class="form-control" id="G_Address" name="G_Address" readonly>
 </div>
 </div>
 <div class="col-md-12 col-sm-12 mb-2">
 <div class="input-group mb-2">
-	<span class="input-group-text">Contact</span>
+	<span class="input-group-text">Occupation</span>
 	<input type="text" class="form-control" id="G_Occupation" name="G_Occupation" readonly>
 </div>
 </div>
@@ -386,467 +386,71 @@ $conn = OpenCon();
 <div class="card">
 <div class="card-body">
 <h4 class="card-title"> Family History <i class=" icon-people float-left"></i></h4>
-<p class="card-description"> Please indicate relationship if yes. </p>
 <div class="form-group row">
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Cancer </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="No"> No 
-</label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Cancer" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Hypertension </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Hypertension" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Stroke </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="Yes"> Yes 
-</label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Stroke" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Tuberculosis </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Tuberculosis" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Rheumatism </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Rheumatism" placeholder="Relationship">
-</div>  
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Eye Disorder </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="No"> No 
-</label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_EDisorder" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Diabetes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Diabetes" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Asthma </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Asthma" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Convulsion </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_Convulsion" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Skin Problems </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_SProblems" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Heart Disease </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_HDisease" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Kidney Problem </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_KProblem" placeholder="Relationship">
-</div> 
-<div class="col-md-2 col-sm-3 mb-2">
-<div class="form-check">
-<label class="form-check-label"> Mental Disorder </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_MDisorder" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3">
-<div class="form-check">
-<label class="form-check-label"> Bleeding Tendencies </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_BTendencies" placeholder="Relationship">
-</div>
-<div class="col-md-2 col-sm-3">
-<div class="form-check">
-<label class="form-check-label"> Gastrointestinal Disease </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check form-check-danger">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="Yes"> Yes </label>
-</div>
-</div>
-<div class="col-md-1 col-sm-2">
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="No"> No </label>
-</div>
-</div>
-<div class="col-md-2 col-sm-5">
-<input type="text" class="form-control" id="R_GDisease" placeholder="Relationship">
-</div>
+<table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="font-weight-bold">Illness</th>
+                          <th class="font-weight-bold">Answer</th>
+                          <th class="font-weight-bold">Relationship</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cancer</td>
+                          <td class="text-success">No</td>
+                          <td>N/A</td>
+                        </tr>
+                        <tr>
+                          <td>Diabetes</td>
+                          <td class="text-success">No</td>
+                          <td>N/A</td>
+                        </tr>
+                      </tbody>
+                    </table>
 </div>
 </div>
 </div>
 </div>
 <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
-<div class="card-body">
-<h4 class="card-title"> Personal History <i class=" icon-people float-left"></i></h4>
-<p class="card-description"> Please check if you had the following symptoms or illness.</p>
-<label>  PAST ILLNESS(Mga Naging Sakit)</label>
-<div class="form-group row">
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Primary Complex </label>
+<div class="card-body row">
+<h4 class="card-title col-md-12"> Personal History <i class=" icon-people float-left"></i></h4>
+<div class="form-group col-md-6">
+	<label>  PAST ILLNESS(Mga Naging Sakit)</label>
+	<table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="font-weight-bold">Illness</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Laziness</td>
+                        </tr>
+                        <tr>
+                          <td>Sleepy</td>
+                        </tr>
+                      </tbody>
+    </table>
 </div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Kidney Disease </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Pneumonia </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Ear Problems </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Mental Disorder </label>
-</div>  
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Asthma </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Skin Problem </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Dengue </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Mumps </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Typhoid Fever </label>
-</div>  
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Rheumatic Fever </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Diabetes </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Measles </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Thyroid Disorder </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Hepatitis </label>
-</div>  
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Chicken Pox </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Eye Disorder </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Poliomy Elitis </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Heart Disease </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Anemia/Leukemia </label>
-</div>  
-</div>   
-</div>
+<div class="form-group col-md-6">
 <label>  PRESENT ILLNESS (Mga Sintomas na Nararamdaman)</label>
-<div class="form-group row">
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Chest Pain </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Indigestion </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Swollen Feet </label>
-</div> 
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Headaches </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Sore Throat (Frequent) </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Dizziness </label>
-</div>
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Nausea/Vomiting </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Difficult Breathing </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Weight Loss </label>
-</div>
-</div>
-<div class="col-md-3 col-sm-3">
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Insomia </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Joint Pains </label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input" id=""> Frequent Urination </label>
-</div> 
+<table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="font-weight-bold">Illness</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Laziness</td>
+                        </tr>
+                        <tr>
+                          <td>Sleepy</td>
+                        </tr>
+                      </tbody>
+                    </table>
 </div>   
 </div>
 </div>

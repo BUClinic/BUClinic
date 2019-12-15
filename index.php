@@ -181,7 +181,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 "<td><td>". "<div class='btn-group'>
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
                 <div class='dropdown-menu'>
-               <a href='pages/forms/editstudent.php?patientID=".$rows[$ctr]['PatientID']."'><button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100' data-toggle='modal' data-target='#re-stockmodal'>Edit<i class='icon-pencil float-left'></i></button></a><br>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100' data-toggle='modal' data-target='#re-stockmodal'>Edit<i class='icon-pencil float-left'></i></button><br>
                                 <button type='button' class='btn btn-warning w-100' data-toggle='modal' data-target='#editmodal'>Chech-Up<i class='icon-pencil float-left'></i></button><br>
                                 <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>>
                 </div>
@@ -201,6 +201,23 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         </table>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+ function editStudentInfo(element){
+   alert(element);
+  window.location.href = "pages/forms/editstudent.php?ID="+element;
+  const Http = new XMLHttpRequest();
+	Http.open("GET", "saverecords/sql.php?query=select * from tbl_patientinfo where PatientID='" + element + "'");
+	Http.send();
+	Http.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			console.log(Http.responseText);
+			$result = JSON.parse(Http.responseText.substring(1,Http.responseText.length-1));
+      alert($result.Fname);
+      document.getEelementById("S_Fname").value = $result.Fname;
+		}
+	}
+	// alert(result.PatientID);
+}
+
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();

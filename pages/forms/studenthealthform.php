@@ -4,6 +4,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 include '../../db_connection.php';
 
 $conn = OpenCon();
+// $result = mysqli_query("select * from tbl_patientinfo where PatientID=".$_GET['edit']);
+// $r = mysqli_fetch_assoc($result);
 //echo $_SESSION['buhs_user'];
 //$result = mysqli_query($conn,"select * from tbl_user WHERE Username = '".$_POST['username']."'");
 //$r=mysqli_fetch_assoc($result);
@@ -333,7 +335,9 @@ $conn = OpenCon();
                                         <div class="form-group row">
                                             <div class="col-md-2 col-sm-3 mb-2">
                                                 <div class="form-check">
-                                                    <label class="form-check-label" name="illnesscancer"> Cancer \n
+                                                    <label class="form-check-label" >Cancer</label>
+                                                    <input class="form-check-label" type="text" name="illnesscancer"   id="illnesscancer" value = "Cancer" hidden>
+                                        
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -354,8 +358,9 @@ $conn = OpenCon();
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessHypertension"> Hypertension 
+                                                        <label class="form-check-label" > Hypertension 
                                                         </label>
+                                                        <input class="form-check-label" type = "text" name="illnessHypertension" id="illnessHypertension" value ="Hypertension" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -373,13 +378,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Hypertension" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Hypertension" name="R_Hypertension" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessstroke"> Stroke 
+                                                        <label class="form-check-label" > Stroke 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" type="text" name="illnessstroke" id="illnessstroke" value="Stroke"hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -397,13 +403,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Stroke" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Stroke" name="R_Stroke" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnesstuberculosis"> Tuberculosis 
+                                                        <label class="form-check-label"  > Tuberculosis 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" type="text" name="illnesstuberculosis" id="illnesstuberculosis" value="Tuberculosis" hidden> 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -421,13 +428,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Tuberculosis" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Tuberculosis" name="R_Tuberculosis" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessrheumatism"> Rheumatism 
+                                                        <label class="form-check-label"  > Rheumatism 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessrheumatism" id="illnessrheumatism" type="text" value="Rheumatism" hidden> 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -445,13 +453,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Rheumatism" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Rheumatism" name="R_Rheumatism" placeholder="Relationship">
                                                 </div>  
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label"  name="illnesseyeD"> Eye Disorder 
+                                                        <label class="form-check-label"   > Eye Disorder 
                                                             
                                                         </label>
+                                                        <input class="form-check-label"  name="illnesseyeD" id="illnesseyeD" type="text" value="Eye Disorder" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -469,13 +478,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_EDisorder" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_EDisorder" name="R_EDisorder" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessdiabetes"> Diabetes 
+                                                        <label class="form-check-label" > Diabetes 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessdiabetes" id="illnessdiabetes" type="text" value="Diabetes" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -493,13 +503,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Diabetes" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Diabetes" name="R_Diabetes" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label" name="illnessasthma"> Asthma 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessasthma" type="text" value="Asthma" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -517,13 +528,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Asthma" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Asthma" name="R_Asthma" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessconvulsion"> Convulsion 
+                                                        <label class="form-check-label"  > Convulsion 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessconvulsion" id="illnessconvulsion" type="text" value="Convulsion" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -541,13 +553,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Convulsion" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Convulsion" name="R_Convulsion" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessskin"> Skin Problems 
+                                                        <label class="form-check-label" > Skin Problems 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessskin" id="illnessskin" type="text" value="Skin Problems" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -565,13 +578,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_SProblems" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_SProblems" name="R_SProblems" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessHdisease"> Heart Disease 
+                                                        <label class="form-check-label"  > Heart Disease 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessHdisease" id="illnessHdisease" type="text" value="Heart Disease" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -589,13 +603,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_HDisease" placeholder="Relationship">
+                                                    <input type="text" class="form-control" name="R_HDisease" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnesskidney"> Kidney Problem 
+                                                        <label class="form-check-label" name="illnesskidney" id="illnesskidney"> Kidney Problem 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnesskidney" id="illnesskidney" type="text" value="Kidney Problems" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -613,13 +628,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_KProblem" placeholder="Relationship">
+                                                    <input type="text" class="form-control" name="R_KProblems" placeholder="Relationship">
                                                 </div> 
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessmental"> Mental Disorder 
+                                                        <label class="form-check-label" name="illnessmental" id="illnessmental"> Mental Disorder 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessmental" id="illnessmental" type = "text" value = "Mental Disorder" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -637,13 +653,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_MDisorder" placeholder="Relationship">
+                                                    <input type="text" class="form-control" name="R_MDisorder" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessBleding">  Bleeding Tendencies 
+                                                        <label class="form-check-label"  >  Bleeding Tendencies 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessBleding" id="illnessBleding" type="text" value="Bleeding Tendencies" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -661,13 +678,14 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_BTendencies" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_BTendencies" name="R_BTendencies" placeholder="Relationship">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3">
                                                     <div class="form-check">
-                                                        <label class="form-check-label" name="illnessgastro"> Gastrointestinal Disease 
+                                                        <label class="form-check-label" > Gastrointestinal Disease 
                                                             
                                                         </label>
+                                                        <input class="form-check-label" name="illnessgastro" id="illnessgastro" type="text" value=" Gastrointestinal Disease " hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
@@ -703,108 +721,108 @@ $conn = OpenCon();
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Primary Complex 
+                                                            <input type="checkbox" class="form-check-input" id="c_primaryComplex" name="c_primaryComplex" value="Primary Complex"> Primary Complex 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Kidney Disease 
+                                                            <input type="checkbox" class="form-check-input" id="c_kidneyDisease" name="c_kidneyDisease" value="Kidney Disease" > Kidney Disease 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Pneumonia 
+                                                            <input type="checkbox" class="form-check-input" id="c_pneumonia" name="c_pneumonia" value="Pneumonia"> Pneumonia 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Ear Problems
+                                                            <input type="checkbox" class="form-check-input" id="c_earProblems" name="c_earProblems" value="Ear Problems"> Ear Problems
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Mental Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_mentalDisorder" name="c_mentalDisorder" value="Mental Disorder"> Mental Disorder 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Asthma 
+                                                            <input type="checkbox" class="form-check-input" id="c_asthma" name="c_asthma" value="Asthma"> Asthma 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Skin Problem 
+                                                            <input type="checkbox" class="form-check-input" id="c_skinProblem" name="c_skinProblem" value="Skin Problem"> Skin Problem 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Dengue 
+                                                            <input type="checkbox" class="form-check-input" id="c_dengue" name="c_dengue" value="Dengue"> Dengue 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Mumps 
+                                                            <input type="checkbox" class="form-check-input" id="c_mumps" name="c_mumps" value="Mumps"> Mumps 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Typhoid Fever 
+                                                            <input type="checkbox" class="form-check-input" id="c_typhoidFever" name="c_typhoidFever" value="Typhoid Fever"> Typhoid Fever 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Rheumatic Fever 
+                                                            <input type="checkbox" class="form-check-input" id="c_rheumaticFever" name="c_rheumaticFever" value="Rheumatic Fever"> Rheumatic Fever 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Diabetes 
+                                                            <input type="checkbox" class="form-check-input" id="c_diabetes" name="c_diabetes" value="Diabetes"> Diabetes 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Measles 
+                                                            <input type="checkbox" class="form-check-input" id="c_measles" name="c_measles" value="Measles"> Measles 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Thyroid Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_thyroidDisorder" name="c_thyroidDisorder" value="Thyroid Disorder"> Thyroid Disorder 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Hepatitis 
+                                                            <input type="checkbox" class="form-check-input" id="c_hepatitis" name="c_hepatitis" value="Hepatitis"> Hepatitis 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Chicken Pox 
+                                                            <input type="checkbox" class="form-check-input" id="c_chickenPox" name="c_chickenPox" value="Chicken Pox"> Chicken Pox 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Eye Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_eyeDisorder" name="c_eyeDisorder" value="Eye Disorder"> Eye Disorder 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Poliomy Elitis 
+                                                            <input type="checkbox" class="form-check-input" id="c_poliomyElitis" name="c_poliomyElitis" value="Poliomy Elitis"> Poliomy Elitis 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Heart Disease 
+                                                            <input type="checkbox" class="form-check-input" id="c_heartDisease" name="c_heartDisease" value="Heart Disease"> Heart Disease 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Anemia/Leukemia 
+                                                            <input type="checkbox" class="form-check-input" id="c_anemia" name="c_anemia" value="Anemia/Leukemia"> Anemia/Leukemia 
                                                         </label>
                                                     </div>  
                                                 </div>   
@@ -816,68 +834,68 @@ $conn = OpenCon();
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Chest Pain 
+                                                            <input type="checkbox" class="form-check-input" id="c_chestPain" name="c_chestPain" value="Chest Pain"> Chest Pain 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Indigestion 
+                                                            <input type="checkbox" class="form-check-input" id="c_indigestion" name="c_indigestion" value="Indigestion"> Indigestion 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Swollen Feet 
+                                                            <input type="checkbox" class="form-check-input" id="c_swollenFeet" name="c_swollenFeet" value="Swollen Feet"> Swollen Feet 
                                                         </label>
                                                     </div> 
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Headaches 
+                                                            <input type="checkbox" class="form-check-input" id="c_headaches" name="c_headaches" value="Headaches"> Headaches 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Sore Throat (Frequent) 
+                                                            <input type="checkbox" class="form-check-input" id="c_soreThroat" name="c_soreThroat" value="Sore Throat"> Sore Throat (Frequent) 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Dizziness 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-3">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Nausea/Vomiting 
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Difficult Breathing 
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Weight Loss 
+                                                            <input type="checkbox" class="form-check-input" id="c_dizziness" name="c_dizziness" value="Dizziness"> Dizziness 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Insomia 
+                                                            <input type="checkbox" class="form-check-input" id="c_nausea" name="c_nausea" value="Nausea/Vomiting"> Nausea/Vomiting 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Joint Pains 
+                                                            <input type="checkbox" class="form-check-input" id="c_difficultBreathing" name="c_difficultBreathing" value="Difficult Breathing"> Difficult Breathing 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Frequent Urination 
+                                                            <input type="checkbox" class="form-check-input" id="c_weightLoss" name="c_weightLoss" value="Weight Loss"> Weight Loss 
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_insomia" name="c_insomia" value="Insomia"> Insomia 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_jointPains" name="c_jointPains" value="Joint Pains"> Joint Pains 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_frequentUrination" name="c_frequentUrination" value="Frequent Urination"> Frequent Urination 
                                                         </label>
                                                     </div> 
                                                 </div>   
