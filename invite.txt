@@ -1,0 +1,3 @@
+https://prod.liveshare.vsengsaas.visualstudio.com/join?0B2BE5386F93872ED2C7598F34C2A55A703E
+hello 
+"SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patieninfo WHERE 1"

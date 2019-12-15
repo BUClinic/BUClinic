@@ -3,10 +3,8 @@ include '../db_connection.php';
 
 $conn = OpenCon();
 
-$sql = $_GET['q'];
-echo $sql;
 if (TRUE) {
-    $result = mysqli_query($conn,$sql);
+    $result = mysqli_query($conn,$_GET['query']);
     $rows = array();
 //    echo $result;
     while($r = mysqli_fetch_assoc($result)){
@@ -18,7 +16,7 @@ if (TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-CloseCon($conn);
+// CloseCon($conn);
 
 
 ?>

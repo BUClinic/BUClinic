@@ -15,6 +15,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bicol University Clinic</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
@@ -45,7 +46,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome <?php echo $_SESSION["Fname"]." ".$_SESSION["Lname"]; ?></h5>
           <ul class="navbar-nav navbar-nav-right ml-auto">
-           
+    <!--      <input type="text" id="myInput"  placeholder="Search for any Data..."> -->
+          <form class="search-form d-none d-md-block" action="#">
+              <i class="icon-magnifier"></i>
+              <input type="search" id="myInput"  class="form-control" placeholder="Search Here" title="Search here">
+            </form>
    
    
           </ul>
@@ -152,8 +157,74 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             </li>
           </ul>
         </nav>
+       
         
+        <table class="table table-hover" >
           
+          <tr>
+     
+            <th>ID<th>
+            <th>Patient ID<th>
+            <th>First Name<th>
+            <th>Middle Name<th>
+            <th>Last Name<th>
+            <th>Age<th>
+            <th>Course<th>
+            <th>Year Level<th>
+            <th>College Unit<th>
+            <th>Contact Number<th>
+            <th>Sex<th>
+            <th>OPTION<th>
+        
+
+            
+            </tr>
+            <tbody id="myTable">
+        <?php 
+            $sql = "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patientinfo";
+            $result = mysqli_query($conn,$sql);
+            $rows = array();
+            $ctr = 0;
+            while($r = mysqli_fetch_assoc($result)){
+              $rows[] = $r;
+        
+             // echo json_encode($rows);
+            
+                echo "<tr><td>".$rows[$ctr]['ID']."<td><td>".$rows[$ctr]['PatientID']."<td><td>".$rows[$ctr]["Lname"]."<td><td>".$rows[$ctr]["Fname"].
+                "<td><td>".$rows[$ctr]["Mname"]."<td><td>".$rows[$ctr]["Age"]."<td><td>".$rows[$ctr]["Course"]."<td><td>".$rows[$ctr]["YearLevel"].
+                "<td><td>".$rows[$ctr]["CollegeUnit"]."<td><td>".$rows[$ctr]["ContactNum"]."<td><td>".$rows[$ctr]["Sex"]."<td><td>".
+                "<td><td>". "<div class='btn-group'>
+                <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
+                <div class='dropdown-menu'>
+               <a href='pages/forms/editstudent.php?patientID=".$rows[$ctr]['PatientID']."'><button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100' data-toggle='modal' data-target='#re-stockmodal'>Edit<i class='icon-pencil float-left'></i></button></a><br>
+                                <button type='button' class='btn btn-warning w-100' data-toggle='modal' data-target='#editmodal'>Chech-Up<i class='icon-pencil float-left'></i></button><br>
+                                <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>>
+                </div>
+                </div>"."<td><td>"
+                ."<td></tr>";  
+              
+               
+              $ctr++;
+              }
+              
+             
+           
+          
+              
+        ?>
+       </tody>
+        </table>  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
           
         <!-- main-panel ends -->
       </div>

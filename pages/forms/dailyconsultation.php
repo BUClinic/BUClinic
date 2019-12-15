@@ -177,9 +177,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   <input type="text" class="form-control" id="DC_LName" placeholder="Last Name"  disabled>
                               </div>
                               <div class="col-md-5 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="DC_ID" placeholder="Student ID #" onkeypress="searchID()">
-                                  <input type="password" class="form-control mb-2" id="DC_Password" placeholder="College/Department"  disabled>
-                                  <input type="password" class="form-control mb-2" id="DC_RPassword" placeholder="Course"  disabled>
+                                  <input type="text" class="form-control mb-2" id="DC_ID" placeholder="Student ID #" onkeyup="searchID()">
+                                  <input type="text" class="form-control mb-2" id="DC_College" placeholder="College/Department"  disabled>
+                                  <input type="text" class="form-control mb-2" id="DC_Course" placeholder="Course"  disabled>
                               </div>
                             </div>
                       </div>
@@ -192,16 +192,19 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <!--<p class="card-description"> Personal info </p>-->
                             <div class="form-group row">
                               <div class="col-md-4 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="S_BDate" placeholder="Date" onfocus="this.type='date'" disabled>
-                                  <input type="text" class="form-control mb-2" id="E_MName" placeholder="Complaints">
-                                  <input type="text" class="form-control" id="E_LName" placeholder="Diagnosis">
+                                  <input type="text" class="form-control mb-2" id="Date" placeholder="Date" onfocus="this.type='date'" disabled>
+                                  <textarea name="comments" id="Complaints" placeholder="Complaints"style="font-family:sans-serif;font-size:1.2em;">
+                                       
+                                                </textarea>
+                                  <input type="text" class="form-control mb-2" id="Complaints" placeholder="Complaints">
+                                  <input type="text" class="form-control" id="Diagnosis" placeholder="Diagnosis">
                               </div>
                               <div class="col-md-8 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="E_Uname" placeholder="Treatment / Medication/s">
-                                  <input type="text" class="form-control mb-2" id="E_Uname" placeholder="Referral/Remarks">
+                                  <input type="text" class="form-control mb-2" id="Treatment" placeholder="Treatment / Medication/s">
+                                  <input type="text" class="form-control mb-2" id="Remarks" placeholder="Referral/Remarks">
                               </div> 
                               <div class="col-md-12 col-sm-12 float-right">
-                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="submit" onClick="saveConsult()">Submit</button>
                                 <button class="btn btn-dark" id="cancel">Cancel</button>
                               </div>
                             </div>
