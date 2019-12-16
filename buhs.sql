@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2019 at 04:47 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Dec 16, 2019 at 10:24 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44154,13 +44154,19 @@ CREATE TABLE `tbl_diagnosis` (
   `ID` int(30) NOT NULL,
   `PatientID` varchar(20) NOT NULL,
   `Diagnosis` varchar(100) NOT NULL,
+  `Complaints` varchar(100) NOT NULL,
   `Treatment` varchar(100) NOT NULL,
   `Referral` varchar(50) NOT NULL,
-  `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ModifiedBy` int(10) NOT NULL,
-  `CreatedBy` int(10) NOT NULL
+  `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_diagnosis`
+--
+
+INSERT INTO `tbl_diagnosis` (`ID`, `PatientID`, `Diagnosis`, `Complaints`, `Treatment`, `Referral`, `CreatedDate`, `CreatedBy`) VALUES
+(26, '12345', 'diagnosis', 'complaints', 'treatment', 'ref', '2019-12-16 20:23:19', 'davie balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44171,18 +44177,22 @@ CREATE TABLE `tbl_diagnosis` (
 CREATE TABLE `tbl_examinations` (
   `ID` int(30) NOT NULL,
   `PatientID` varchar(20) NOT NULL,
-  `Date` date NOT NULL,
   `Temp` varchar(20) NOT NULL,
   `BP` varchar(10) NOT NULL,
   `Weight` varchar(10) NOT NULL,
   `Height` varchar(10) NOT NULL,
   `History` varchar(100) NOT NULL,
   `PhysiciansDirection` varchar(100) NOT NULL,
-  `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `CreatedDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ModifiedBy` int(10) NOT NULL,
-  `CreatedBy` int(10) NOT NULL
+  `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_examinations`
+--
+
+INSERT INTO `tbl_examinations` (`ID`, `PatientID`, `Temp`, `BP`, `Weight`, `Height`, `History`, `PhysiciansDirection`, `CreatedDate`, `CreatedBy`) VALUES
+(1, '12345', '32C', '32', '54', '54', 'historyt of you', 'go left', '2019-12-16 20:22:37', 'davie balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44202,6 +44212,147 @@ CREATE TABLE `tbl_familyhistoryanswer` (
   `CreatedBy` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_familyhistoryanswer`
+--
+
+INSERT INTO `tbl_familyhistoryanswer` (`ID`, `PatientID`, `Illness`, `Status`, `Relation`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(772, '2018-cs-90082', 'Cancer', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(773, '2018-cs-90082', 'Hypertension', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(774, '2018-cs-90082', 'Stroke', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(775, '2018-cs-90082', 'Tuberculosis', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(776, '2018-cs-90082', 'Rheumatism', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(777, '2018-cs-90082', 'EDisorder', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(778, '2018-cs-90082', 'Diabetes', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(779, '2018-cs-90082', 'Asthma', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(780, '2018-cs-90082', 'Convulsion', 'Yes', 'sergio', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(781, '2018-cs-90082', 'SProblems', 'Yes', 'tokyo', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(782, '2018-cs-90082', 'HDisease', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(783, '2018-cs-90082', 'KProblem', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(784, '2018-cs-90082', 'MDisorder', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(785, '2018-cs-90082', 'BTendencies', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(786, '2018-cs-90082', 'GDisease', 'No', '', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(787, '1234', 'optionCancer', 'Yes', 'd', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(788, '1234', 'optionHypertension', 'Yes', 'c', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(789, '1234', 'optionStroke', 'Yes', '', '2019-12-16 18:45:17', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(790, '1234', 'optionTuberculosis', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(791, '1234', 'optionRheumatism', 'Yes', '', '2019-12-16 18:45:17', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(792, '1234', 'optionEDisorder', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(793, '1234', 'optionDiabetes', 'Yes', '', '2019-12-16 18:45:17', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(794, '1234', 'optionAsthma', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(795, '1234', 'optionConvulsion', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(796, '1234', 'optionSProblems', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(797, '1234', 'optionHDisease', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(798, '1234', 'optionKProblem', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(799, '1234', 'optionMDisorder', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(800, '1234', 'optionBTendencies', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(801, '1234', 'optionGDisease', 'No', '', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(802, '12345', 'Cancer', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(803, '12345', 'Hypertension', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(804, '12345', 'Stroke', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(805, '12345', 'Tuberculosis', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(806, '12345', 'Rheumatism', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(807, '12345', 'EDisorder', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(808, '12345', 'Diabetes', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(809, '12345', 'Asthma', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(810, '12345', 'Convulsion', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(811, '12345', 'SProblems', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(812, '12345', 'HDisease', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(813, '12345', 'KProblem', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(814, '12345', 'MDisorder', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(815, '12345', 'BTendencies', 'No', '', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(816, '12345', 'GDisease', 'Yes', 'yes', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(817, '', 'Cancer', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(818, '', 'Hypertension', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(819, '', 'Stroke', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(820, '', 'Tuberculosis', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(821, '', 'Rheumatism', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(822, '', 'EDisorder', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(823, '', 'Diabetes', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(824, '', 'Asthma', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(825, '', 'Convulsion', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(826, '', 'SProblems', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(827, '', 'HDisease', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(828, '', 'KProblem', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(829, '', 'MDisorder', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(830, '', 'BTendencies', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(831, '', 'GDisease', 'No', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(832, '', 'Cancer', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(833, '', 'Hypertension', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(834, '', 'Stroke', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(835, '', 'Tuberculosis', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(836, '', 'Rheumatism', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(837, '', 'EDisorder', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(838, '', 'Diabetes', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(839, '', 'Asthma', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(840, '', 'Convulsion', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(841, '', 'SProblems', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(842, '', 'HDisease', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(843, '', 'KProblem', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(844, '', 'MDisorder', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(845, '', 'BTendencies', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(846, '', 'GDisease', 'No', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(847, '', 'Cancer', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(848, '', 'Hypertension', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(849, '', 'Stroke', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(850, '', 'Tuberculosis', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(851, '', 'Rheumatism', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(852, '', 'EDisorder', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(853, '', 'Diabetes', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(854, '', 'Asthma', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(855, '', 'Convulsion', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(856, '', 'SProblems', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(857, '', 'HDisease', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(858, '', 'KProblem', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(859, '', 'MDisorder', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(860, '', 'BTendencies', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(861, '', 'GDisease', 'No', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(862, '', 'Cancer', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(863, '', 'Hypertension', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(864, '', 'Stroke', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(865, '', 'Tuberculosis', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(866, '', 'Rheumatism', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(867, '', 'EDisorder', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(868, '', 'Diabetes', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(869, '', 'Asthma', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(870, '', 'Convulsion', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(871, '', 'SProblems', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(872, '', 'HDisease', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(873, '', 'KProblem', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(874, '', 'MDisorder', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(875, '', 'BTendencies', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(876, '', 'GDisease', 'No', '', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(877, '', 'Cancer', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(878, '', 'Hypertension', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(879, '', 'Stroke', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(880, '', 'Tuberculosis', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(881, '', 'Rheumatism', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(882, '', 'EDisorder', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(883, '', 'Diabetes', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(884, '', 'Asthma', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(885, '', 'Convulsion', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(886, '', 'SProblems', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(887, '', 'HDisease', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(888, '', 'KProblem', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(889, '', 'MDisorder', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(890, '', 'BTendencies', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(891, '', 'GDisease', 'No', '', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(892, '246', 'Cancer', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(893, '246', 'Hypertension', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(894, '246', 'Stroke', 'Yes', 'q', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(895, '246', 'Tuberculosis', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(896, '246', 'Rheumatism', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(897, '246', 'EDisorder', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(898, '246', 'Diabetes', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(899, '246', 'Asthma', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(900, '246', 'Convulsion', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(901, '246', 'SProblems', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(902, '246', 'HDisease', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(903, '246', 'KProblem', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(904, '246', 'MDisorder', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(905, '246', 'BTendencies', 'No', '', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(906, '246', 'GDisease', 'Yes', 'q', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
+
 -- --------------------------------------------------------
 
 --
@@ -44214,10 +44365,22 @@ CREATE TABLE `tbl_hospitalizationhistory` (
   `Answer` varchar(5) NOT NULL,
   `Details` varchar(100) NOT NULL,
   `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `CreatedDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ModifiedBy` int(10) NOT NULL,
-  `CreatedBy` int(10) NOT NULL
+  `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ModifiedBy` varchar(45) NOT NULL,
+  `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_hospitalizationhistory`
+--
+
+INSERT INTO `tbl_hospitalizationhistory` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(4, '1234', 'Yes', 'yes', '2019-12-16 18:35:31', '0000-00-00 00:00:00', '0', '0'),
+(5, '12345', 'Yes', 'yes', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 'davie balmadrid', 'davie balmadrid'),
+(6, '', 'Yes', '', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(7, '', 'Yes', '', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(8, '', 'Yes', '', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(9, '246', 'Yes', 'asd', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
 
 -- --------------------------------------------------------
 
@@ -44229,12 +44392,88 @@ CREATE TABLE `tbl_immunizationhistory` (
   `ID` int(30) NOT NULL,
   `PatientID` varchar(20) NOT NULL,
   `Answer` varchar(20) NOT NULL,
-  `Others` varchar(20) NOT NULL,
+  `Status` varchar(45) NOT NULL,
   `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `CreatedDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ModifiedBy` int(10) NOT NULL,
-  `CreatedBy` int(10) NOT NULL
+  `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ModifiedBy` varchar(45) NOT NULL,
+  `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_immunizationhistory`
+--
+
+INSERT INTO `tbl_immunizationhistory` (`ID`, `PatientID`, `Answer`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(125, '12345', '~hihellohi', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(126, '12345', 'I_CPox', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(127, '12345', 'I_AHepa', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(128, '12345', 'I_BHepa', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(129, '12345', 'I_Mumps', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(130, '12345', 'I_Measles', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(131, '12345', 'I_Typhoid', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(132, '12345', 'I_GMeasle', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(133, '12345', 'I_Polio', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(134, '12345', 'I_DPT', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(135, '', 'I_BCG', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(136, '', 'I_CPox', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(137, '', 'I_AHepa', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(138, '', 'I_BHepa', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(139, '', 'I_Mumps', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(140, '', 'I_Measles', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(141, '', 'I_Typhoid', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(142, '', 'I_GMeasle', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(143, '', 'I_Polio', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(144, '', 'I_DPT', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(145, '', 'I_BCG', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(146, '', 'I_CPox', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(147, '', 'I_AHepa', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(148, '', 'I_BHepa', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(149, '', 'I_Mumps', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(150, '', 'I_Measles', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(151, '', 'I_Typhoid', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(152, '', 'I_GMeasle', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(153, '', 'I_Polio', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(154, '', 'I_DPT', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(155, '', 'I_BCG', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(156, '', 'I_CPox', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(157, '', 'I_AHepa', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(158, '', 'I_BHepa', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(159, '', 'I_Mumps', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(160, '', 'I_Measles', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(161, '', 'I_Typhoid', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(162, '', 'I_GMeasle', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(163, '', 'I_Polio', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(164, '', 'I_DPT', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(165, '', 'I_BCG', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(166, '', 'I_CPox', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(167, '', 'I_AHepa', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(168, '', 'I_BHepa', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(169, '', 'I_Mumps', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(170, '', 'I_Measles', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(171, '', 'I_Typhoid', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(172, '', 'I_GMeasle', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(173, '', 'I_Polio', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(174, '', 'I_DPT', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(175, '', 'I_BCG', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(176, '', 'I_CPox', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(177, '', 'I_AHepa', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(178, '', 'I_BHepa', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(179, '', 'I_Mumps', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(180, '', 'I_Measles', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(181, '', 'I_Typhoid', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(182, '', 'I_GMeasle', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(183, '', 'I_Polio', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(184, '', 'I_DPT', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(185, '246', 'I_BCG', 'true', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(186, '246', 'I_CPox', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(187, '246', 'I_AHepa', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(188, '246', 'I_BHepa', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(189, '246', 'I_Mumps', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(190, '246', 'I_Measles', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(191, '246', 'I_Typhoid', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(192, '246', 'I_GMeasle', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(193, '246', 'I_Polio', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(194, '246', 'I_DPT', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
 
 -- --------------------------------------------------------
 
@@ -44263,6 +44502,7 @@ CREATE TABLE `tbl_patientinfo` (
   `ContactNum` varchar(15) NOT NULL,
   `CivilStatus` varchar(10) NOT NULL,
   `Sex` varchar(6) NOT NULL,
+  `Status` smallint(6) NOT NULL,
   `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `ModifiedBy` varchar(30) NOT NULL,
@@ -44273,8 +44513,15 @@ CREATE TABLE `tbl_patientinfo` (
 -- Dumping data for table `tbl_patientinfo`
 --
 
-INSERT INTO `tbl_patientinfo` (`ID`, `PatientID`, `Lname`, `Fname`, `Mname`, `Age`, `religion`, `Address`, `Region`, `Province`, `MuniCity`, `Brgy`, `Street`, `Birthdate`, `Course`, `YearLevel`, `CollegeUnit`, `ContactNum`, `CivilStatus`, `Sex`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
-(2162, '2018-CS-100290', 'abasola', 'marcial', 'celeste', 32, 'atis', 'REGION III (CENTRAL LUZON),NUEVA ECIJA, CABANATUAN CITY, Bakod Bayan, xvcbcd', 'REGION III (CENTRAL LUZON)', 'NUEVA ECIJA', 'CABANATUAN CITY', 'Bakod Bayan', 'xvcbcd', '2019-12-19', 'Bachelor of Science in Electrical Engineering', '1st Year', 'College of Engineering', '90999999999', 'Married', 'Male', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid');
+INSERT INTO `tbl_patientinfo` (`ID`, `PatientID`, `Lname`, `Fname`, `Mname`, `Age`, `religion`, `Address`, `Region`, `Province`, `MuniCity`, `Brgy`, `Street`, `Birthdate`, `Course`, `YearLevel`, `CollegeUnit`, `ContactNum`, `CivilStatus`, `Sex`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(2162, '2018-CS-100290', 'abasola', 'marcial', 'celeste', 32, 'atis', 'REGION III (CENTRAL LUZON),NUEVA ECIJA, CABANATUAN CITY, Bakod Bayan, xvcbcd', 'REGION III (CENTRAL LUZON)', 'NUEVA ECIJA', 'CABANATUAN CITY', 'Bakod Bayan', 'xvcbcd', '2019-12-19', 'Bachelor of Science in Electrical Engineering', '1st Year', 'College of Engineering', '90999999999', 'Married', 'Male', 1, '2019-12-16 21:20:10', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
+(2166, '2018-CS-100309', 'Perez', 'Melvin', 'Benosa', 20, 'Catholic', 'REGION V (BICOL REGION),CAMARINES SUR, NAGA CITY, Cararayan, 6', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'NAGA CITY', 'Cararayan', '6', '1999-07-19', 'BS Computer Science', '2nd Year', 'College of Science', '09097350166', 'Single', 'Male', 1, '2019-12-16 21:20:05', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(2167, '2018-CS-200190', 'Abasola', 'Hope Elizabeth', 'Soberano', 20, 'catholic', 'REGION V (BICOL REGION),CAMARINES SUR, SIRUMA, Vito, Sta. Cruz Street', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'SIRUMA', 'Vito', 'Sta. Cruz Street', '2019-12-03', 'Bachelor of Science in Ladderized Nursing', '', 'College of Nursing', '099999999', 'Married', 'Female', 1, '2019-12-16 21:20:00', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(2172, '2018-CS-100341', 'sdfgsd', 'sdfgds', 'erged', 342, 'catholic', 'REGION II (CAGAYAN VALLEY),ISABELA, BENITO SOLIVEN, Dagupan, r', 'REGION II (CAGAYAN VALLEY)', 'ISABELA', 'BENITO SOLIVEN', 'Dagupan', 'r', '2019-12-12', 'MS in Agriculture', '', 'College of Agriculture and Forestry', '09503610262', 'Widowed', 'Male', 1, '2019-12-16 21:19:54', '2019-12-16 18:27:21', 'davie balmadrid', 'davie balmadrid'),
+(2174, '1234', 'qwe', 'qwe', 'qwe', 23, 'cat', 'REGION I (ILOCOS REGION),ILOCOS NORTE, BACARRA, Buyon, 123', 'REGION I (ILOCOS REGION)', 'ILOCOS NORTE', 'BACARRA', 'Buyon', '123', '2019-12-12', 'Bachelor of Science in Ladderized Nursing', '2nd Year', 'College of Nursing', '099999999', 'Married', 'Male', 1, '2019-12-16 21:19:49', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(2175, '12345', 'q', 'q', 'q', 56, 'cath', 'REGION II (CAGAYAN VALLEY),CAGAYAN, ALCALA, Afusing Daga, 123', 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'ALCALA', 'Afusing Daga', '123', '2019-12-10', 'Bachelor of Science in Ladderized Nursing', '1st Year', 'College of Nursing', '12345678900', 'Married', 'Male', 1, '2019-12-16 21:19:39', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(2176, '', '', '', '', 0, '', ',, , , ', '', '', '', '', '', '1970-01-01', '', '5th Year', '', '', '', '', 0, '2019-12-16 21:19:44', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(2181, '246', 'q', 'q', 'q', 12, 'cath', 'REGION II (CAGAYAN VALLEY),BATANES, ITBAYAT, Santa Lucia (Kauhauhasan), 234', 'REGION II (CAGAYAN VALLEY)', 'BATANES', 'ITBAYAT', 'Santa Lucia (Kauhauhasan)', '234', '2019-12-02', 'Bachelor of Science in Ladderized Nursing', '1st Year', 'College of Nursing', '12345678900', 'Single', 'Male', 1, '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
 
 -- --------------------------------------------------------
 
@@ -44304,7 +44551,46 @@ CREATE TABLE `tbl_patientsparentinfo` (
 
 INSERT INTO `tbl_patientsparentinfo` (`ID`, `PatientID`, `Fname`, `Mname`, `Lname`, `Occupation`, `OfficeAddress`, `ContactNumber`, `Relation`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
 (302, '2018-CS-100290', 'Virgilio', 'Borja', 'Abiada', 'Teacher', 'Canaman', '09074622021', 'Father', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 0, 0),
-(303, '2018-CS-100290', '', '', '', '', '', '', 'Mother', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 0, 0);
+(303, '2018-CS-100290', '', '', '', '', '', '', 'Mother', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 0, 0),
+(304, '2018-cs-900234', '', '', '', '', '', '', 'Father', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 0, 0),
+(305, '2018-cs-900234', '', '', '', '', '', '', 'Mother', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 0, 0),
+(306, '2018-cs-900234', '', '', '', '', '', '', 'Mother', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 0, 0),
+(307, '2018-CS-100341', 'Joel', 'Dacara', 'Salvadora', 'Welde, Mechanic', 'Sto. Niño, Iriga City', '09503610262', 'Father', '2019-12-16 17:48:43', '2019-12-16 17:48:43', 0, 0),
+(308, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 17:48:43', '2019-12-16 17:48:43', 0, 0),
+(309, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 17:48:43', '2019-12-16 17:48:43', 0, 0),
+(310, '2018-CS-100341', 'Joel', 'Dacara', 'Salvadora', 'Welde, Mechanic', 'Sto. Niño, Iriga City', '09503610262', 'Father', '2019-12-16 18:00:44', '2019-12-16 18:00:44', 0, 0),
+(311, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:00:44', '2019-12-16 18:00:44', 0, 0),
+(312, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:00:44', '2019-12-16 18:00:44', 0, 0),
+(313, '2018-CS-100309', 'Raymundo', 'Punzalan', 'Perez', 'Retired', 'Cararayan, Naga City', '12312980', 'Father', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 0, 0),
+(314, '2018-CS-100309', '', '', '', '', '', '', 'Mother', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 0, 0),
+(315, '2018-CS-100309', '', '', '', '', '', '', 'Mother', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 0, 0),
+(316, '2018-CS-200190', '', '', '', '', '', '', 'Father', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 0, 0),
+(317, '2018-CS-200190', '', '', '', '', '', '', 'Mother', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 0, 0),
+(318, '2018-CS-200190', '', '', '', '', '', '', 'Mother', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 0, 0),
+(319, '2018-CS-100341', 'Joel', 'Dacara', 'Salvadora', 'Welde, Mechanic', 'Sto. Niño, Iriga City', '09503610262', 'Father', '2019-12-16 18:38:49', '2019-12-16 18:16:31', 0, 0),
+(320, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:16:31', '2019-12-16 18:16:31', 0, 0),
+(321, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:16:31', '2019-12-16 18:16:31', 0, 0),
+(322, '2018-CS-100341', 'Joel', 'Dacara', 'Salvadora', 'Welde, Mechanic', 'Sto. Niño, Iriga City', '09503610262', 'Father', '2019-12-16 18:21:38', '2019-12-16 18:21:38', 0, 0),
+(323, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:21:38', '2019-12-16 18:21:38', 0, 0),
+(324, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:21:38', '2019-12-16 18:21:38', 0, 0),
+(325, '2018-CS-100341', 'Joel', 'Dacara', 'Salvadora', 'Welde, Mechanic', 'Sto. Niño, Iriga City', '09503610262', 'Father', '2019-12-16 18:27:21', '2019-12-16 18:27:21', 0, 0),
+(326, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:27:21', '2019-12-16 18:27:21', 0, 0),
+(327, '2018-CS-100341', '', '', '', '', '', '', 'Mother', '2019-12-16 18:27:21', '2019-12-16 18:27:21', 0, 0),
+(328, '2018-cs-90082', 'q', 'q', 'q', 'q', 'q', 'q', 'Father', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 0, 0),
+(329, '2018-cs-90082', '', '', '', '', '', '', 'Mother', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 0, 0),
+(330, '2018-cs-90082', '', '', '', '', '', '', 'Mother', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 0, 0),
+(331, '1234', 'd', 'd', 'd', 'd', 'd', 'd', 'Father', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 0, 0),
+(332, '1234', '', '', '', '', '', '', 'Mother', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 0, 0),
+(333, '1234', '', '', '', '', '', '', 'Mother', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 0, 0),
+(334, '12345', 'qQq', 'q', 'q', 'q', 'q', 'q', 'Father', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 0, 0),
+(335, '12345', '', '', '', '', '', '', 'Mother', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 0, 0),
+(336, '12345', '', '', '', '', '', '', 'Mother', '2019-12-16 19:27:24', '2019-12-16 19:27:24', 0, 0),
+(337, '', '', '', '', '', '', '', 'Father', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 0, 0),
+(338, '', '', '', '', '', '', '', 'Mother', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 0, 0),
+(339, '', '', '', '', '', '', '', 'Mother', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 0, 0),
+(340, '246', 'q', 'q', 'q', 'q', 'q', 'q', 'Father', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 0, 0),
+(341, '246', '', '', '', '', '', '', 'Mother', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 0, 0),
+(342, '246', '', '', '', '', '', '', 'Mother', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44328,38 +44614,487 @@ CREATE TABLE `tbl_personalhistory` (
 --
 
 INSERT INTO `tbl_personalhistory` (`ID`, `PatientID`, `Illness`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
-(108, '2018-CS-100290', 'c_primaryComplex', 'false', '2019-12-16 15:39:04', '2019-12-16 15:39:04', 'davie balmadrid', 'davie balmadrid'),
-(109, '2018-CS-100290', 'c_kidneyDisease', 'true', '2019-12-16 15:39:04', '2019-12-16 15:39:04', 'davie balmadrid', 'davie balmadrid'),
-(110, '2018-CS-100290', 'c_pneumonia', 'false', '2019-12-16 15:39:04', '2019-12-16 15:39:04', 'davie balmadrid', 'davie balmadrid'),
-(111, '2018-CS-100290', 'c_earProblems', 'false', '2019-12-16 15:39:04', '2019-12-16 15:39:04', 'davie balmadrid', 'davie balmadrid'),
-(112, '2018-CS-100290', 'c_mentalDisorder', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(113, '2018-CS-100290', 'c_asthma', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(114, '2018-CS-100290', 'c_skinProblem', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(115, '2018-CS-100290', 'c_dengue', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(116, '2018-CS-100290', 'c_mumps', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(117, '2018-CS-100290', 'c_typhoidFever', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(118, '2018-CS-100290', 'c_rheumaticFever', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(119, '2018-CS-100290', 'c_diabetes', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(120, '2018-CS-100290', 'c_measles', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(121, '2018-CS-100290', 'c_thyroidDisorder', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(122, '2018-CS-100290', 'c_hepatitis', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(123, '2018-CS-100290', 'c_chickenPox', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(124, '2018-CS-100290', 'c_eyeDisorder', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(125, '2018-CS-100290', 'c_poliomyElitis', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(126, '2018-CS-100290', 'c_heartDisease', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(127, '2018-CS-100290', 'c_anemia', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(128, '2018-CS-100290', 'c_chestPain', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(129, '2018-CS-100290', 'c_indigestion', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(130, '2018-CS-100290', 'c_swollenFeet', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(131, '2018-CS-100290', 'c_headaches', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(132, '2018-CS-100290', 'c_soreThroat', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(133, '2018-CS-100290', 'c_dizziness', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(134, '2018-CS-100290', 'c_nausea', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(135, '2018-CS-100290', 'c_difficultBreathing', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(136, '2018-CS-100290', 'c_weightLoss', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(137, '2018-CS-100290', 'c_insomia', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(138, '2018-CS-100290', 'c_jointPains', 'false', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid'),
-(139, '2018-CS-100290', 'c_frequentUrination', 'true', '2019-12-16 15:39:05', '2019-12-16 15:39:05', 'davie balmadrid', 'davie balmadrid');
+(108, '2018-CS-100290', 'c_primaryComplex', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:04', '', 'davie balmadrid'),
+(109, '2018-CS-100290', 'c_kidneyDisease', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:04', '', 'davie balmadrid'),
+(110, '2018-CS-100290', 'c_pneumonia', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:04', '', 'davie balmadrid'),
+(111, '2018-CS-100290', 'c_earProblems', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:04', '', 'davie balmadrid'),
+(112, '2018-CS-100290', 'c_mentalDisorder', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(113, '2018-CS-100290', 'c_asthma', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(114, '2018-CS-100290', 'c_skinProblem', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(115, '2018-CS-100290', 'c_dengue', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(116, '2018-CS-100290', 'c_mumps', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(117, '2018-CS-100290', 'c_typhoidFever', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(118, '2018-CS-100290', 'c_rheumaticFever', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(119, '2018-CS-100290', 'c_diabetes', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(120, '2018-CS-100290', 'c_measles', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(121, '2018-CS-100290', 'c_thyroidDisorder', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(122, '2018-CS-100290', 'c_hepatitis', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(123, '2018-CS-100290', 'c_chickenPox', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(124, '2018-CS-100290', 'c_eyeDisorder', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(125, '2018-CS-100290', 'c_poliomyElitis', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(126, '2018-CS-100290', 'c_heartDisease', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(127, '2018-CS-100290', 'c_anemia', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(128, '2018-CS-100290', 'c_chestPain', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(129, '2018-CS-100290', 'c_indigestion', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(130, '2018-CS-100290', 'c_swollenFeet', 'false', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(131, '2018-CS-100290', 'c_headaches', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(132, '2018-CS-100290', 'c_soreThroat', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(133, '2018-CS-100290', 'c_dizziness', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(134, '2018-CS-100290', 'c_nausea', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(135, '2018-CS-100290', 'c_difficultBreathing', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(136, '2018-CS-100290', 'c_weightLoss', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(137, '2018-CS-100290', 'c_insomia', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(138, '2018-CS-100290', 'c_jointPains', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(139, '2018-CS-100290', 'c_frequentUrination', 'true', '2019-12-16 19:35:28', '2019-12-16 15:39:05', '', 'davie balmadrid'),
+(140, '2018-cs-900234', 'c_primaryComplex', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(141, '2018-cs-900234', 'c_kidneyDisease', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(142, '2018-cs-900234', 'c_pneumonia', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(143, '2018-cs-900234', 'c_earProblems', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(144, '2018-cs-900234', 'c_mentalDisorder', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(145, '2018-cs-900234', 'c_asthma', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(146, '2018-cs-900234', 'c_skinProblem', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(147, '2018-cs-900234', 'c_dengue', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(148, '2018-cs-900234', 'c_mumps', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(149, '2018-cs-900234', 'c_typhoidFever', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(150, '2018-cs-900234', 'c_rheumaticFever', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(151, '2018-cs-900234', 'c_diabetes', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(152, '2018-cs-900234', 'c_measles', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(153, '2018-cs-900234', 'c_thyroidDisorder', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(154, '2018-cs-900234', 'c_hepatitis', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(155, '2018-cs-900234', 'c_chickenPox', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(156, '2018-cs-900234', 'c_eyeDisorder', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(157, '2018-cs-900234', 'c_poliomyElitis', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(158, '2018-cs-900234', 'c_heartDisease', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(159, '2018-cs-900234', 'c_anemia', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(160, '2018-cs-900234', 'c_chestPain', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(161, '2018-cs-900234', 'c_indigestion', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(162, '2018-cs-900234', 'c_swollenFeet', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(163, '2018-cs-900234', 'c_headaches', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(164, '2018-cs-900234', 'c_soreThroat', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(165, '2018-cs-900234', 'c_dizziness', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(166, '2018-cs-900234', 'c_nausea', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(167, '2018-cs-900234', 'c_difficultBreathing', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(168, '2018-cs-900234', 'c_weightLoss', 'false', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(169, '2018-cs-900234', 'c_insomia', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(170, '2018-cs-900234', 'c_jointPains', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(171, '2018-cs-900234', 'c_frequentUrination', 'true', '2019-12-16 17:47:34', '2019-12-16 17:47:34', 'davie balmadrid', 'davie balmadrid'),
+(236, '2018-CS-100309', 'c_primaryComplex', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(237, '2018-CS-100309', 'c_kidneyDisease', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(238, '2018-CS-100309', 'c_pneumonia', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(239, '2018-CS-100309', 'c_earProblems', 'true', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(240, '2018-CS-100309', 'c_mentalDisorder', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(241, '2018-CS-100309', 'c_asthma', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(242, '2018-CS-100309', 'c_skinProblem', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(243, '2018-CS-100309', 'c_dengue', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(244, '2018-CS-100309', 'c_mumps', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(245, '2018-CS-100309', 'c_typhoidFever', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(246, '2018-CS-100309', 'c_rheumaticFever', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(247, '2018-CS-100309', 'c_diabetes', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(248, '2018-CS-100309', 'c_measles', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(249, '2018-CS-100309', 'c_thyroidDisorder', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(250, '2018-CS-100309', 'c_hepatitis', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(251, '2018-CS-100309', 'c_chickenPox', 'true', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(252, '2018-CS-100309', 'c_eyeDisorder', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(253, '2018-CS-100309', 'c_poliomyElitis', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(254, '2018-CS-100309', 'c_heartDisease', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(255, '2018-CS-100309', 'c_anemia', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(256, '2018-CS-100309', 'c_chestPain', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(257, '2018-CS-100309', 'c_indigestion', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(258, '2018-CS-100309', 'c_swollenFeet', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(259, '2018-CS-100309', 'c_headaches', 'true', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(260, '2018-CS-100309', 'c_soreThroat', 'true', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(261, '2018-CS-100309', 'c_dizziness', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(262, '2018-CS-100309', 'c_nausea', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(263, '2018-CS-100309', 'c_difficultBreathing', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(264, '2018-CS-100309', 'c_weightLoss', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(265, '2018-CS-100309', 'c_insomia', 'true', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(266, '2018-CS-100309', 'c_jointPains', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(267, '2018-CS-100309', 'c_frequentUrination', 'false', '2019-12-16 18:02:01', '2019-12-16 18:02:01', 'davie balmadrid', 'davie balmadrid'),
+(268, '2018-CS-200190', 'c_primaryComplex', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(269, '2018-CS-200190', 'c_kidneyDisease', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(270, '2018-CS-200190', 'c_pneumonia', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(271, '2018-CS-200190', 'c_earProblems', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(272, '2018-CS-200190', 'c_mentalDisorder', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(273, '2018-CS-200190', 'c_asthma', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(274, '2018-CS-200190', 'c_skinProblem', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(275, '2018-CS-200190', 'c_dengue', 'true', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(276, '2018-CS-200190', 'c_mumps', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(277, '2018-CS-200190', 'c_typhoidFever', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(278, '2018-CS-200190', 'c_rheumaticFever', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(279, '2018-CS-200190', 'c_diabetes', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(280, '2018-CS-200190', 'c_measles', 'true', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(281, '2018-CS-200190', 'c_thyroidDisorder', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(282, '2018-CS-200190', 'c_hepatitis', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(283, '2018-CS-200190', 'c_chickenPox', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(284, '2018-CS-200190', 'c_eyeDisorder', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(285, '2018-CS-200190', 'c_poliomyElitis', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(286, '2018-CS-200190', 'c_heartDisease', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(287, '2018-CS-200190', 'c_anemia', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(288, '2018-CS-200190', 'c_chestPain', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(289, '2018-CS-200190', 'c_indigestion', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(290, '2018-CS-200190', 'c_swollenFeet', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(291, '2018-CS-200190', 'c_headaches', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(292, '2018-CS-200190', 'c_soreThroat', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(293, '2018-CS-200190', 'c_dizziness', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(294, '2018-CS-200190', 'c_nausea', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(295, '2018-CS-200190', 'c_difficultBreathing', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(296, '2018-CS-200190', 'c_weightLoss', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(297, '2018-CS-200190', 'c_insomia', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(298, '2018-CS-200190', 'c_jointPains', 'false', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(299, '2018-CS-200190', 'c_frequentUrination', 'true', '2019-12-16 18:04:09', '2019-12-16 18:04:09', 'davie balmadrid', 'davie balmadrid'),
+(300, '2018-CS-200190', 'c_primaryComplex', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(301, '2018-CS-200190', 'c_kidneyDisease', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(302, '2018-CS-200190', 'c_pneumonia', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(303, '2018-CS-200190', 'c_earProblems', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(304, '2018-CS-200190', 'c_mentalDisorder', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(305, '2018-CS-200190', 'c_asthma', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(306, '2018-CS-200190', 'c_skinProblem', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(307, '2018-CS-200190', 'c_dengue', 'true', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(308, '2018-CS-200190', 'c_mumps', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(309, '2018-CS-200190', 'c_typhoidFever', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(310, '2018-CS-200190', 'c_rheumaticFever', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(311, '2018-CS-200190', 'c_diabetes', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(312, '2018-CS-200190', 'c_measles', 'true', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(313, '2018-CS-200190', 'c_thyroidDisorder', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(314, '2018-CS-200190', 'c_hepatitis', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(315, '2018-CS-200190', 'c_chickenPox', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(316, '2018-CS-200190', 'c_eyeDisorder', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(317, '2018-CS-200190', 'c_poliomyElitis', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(318, '2018-CS-200190', 'c_heartDisease', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(319, '2018-CS-200190', 'c_anemia', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(320, '2018-CS-200190', 'c_chestPain', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(321, '2018-CS-200190', 'c_indigestion', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(322, '2018-CS-200190', 'c_swollenFeet', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(323, '2018-CS-200190', 'c_headaches', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(324, '2018-CS-200190', 'c_soreThroat', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(325, '2018-CS-200190', 'c_dizziness', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(326, '2018-CS-200190', 'c_nausea', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(327, '2018-CS-200190', 'c_difficultBreathing', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(328, '2018-CS-200190', 'c_weightLoss', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(329, '2018-CS-200190', 'c_insomia', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(330, '2018-CS-200190', 'c_jointPains', 'false', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(331, '2018-CS-200190', 'c_frequentUrination', 'true', '2019-12-16 18:14:14', '2019-12-16 18:14:14', 'davie balmadrid', 'davie balmadrid'),
+(332, '2018-CS-200190', 'c_primaryComplex', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(333, '2018-CS-200190', 'c_kidneyDisease', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(334, '2018-CS-200190', 'c_pneumonia', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(335, '2018-CS-200190', 'c_earProblems', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(336, '2018-CS-200190', 'c_mentalDisorder', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(337, '2018-CS-200190', 'c_asthma', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(338, '2018-CS-200190', 'c_skinProblem', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(339, '2018-CS-200190', 'c_dengue', 'true', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(340, '2018-CS-200190', 'c_mumps', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(341, '2018-CS-200190', 'c_typhoidFever', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(342, '2018-CS-200190', 'c_rheumaticFever', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(343, '2018-CS-200190', 'c_diabetes', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(344, '2018-CS-200190', 'c_measles', 'true', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(345, '2018-CS-200190', 'c_thyroidDisorder', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(346, '2018-CS-200190', 'c_hepatitis', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(347, '2018-CS-200190', 'c_chickenPox', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(348, '2018-CS-200190', 'c_eyeDisorder', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(349, '2018-CS-200190', 'c_poliomyElitis', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(350, '2018-CS-200190', 'c_heartDisease', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(351, '2018-CS-200190', 'c_anemia', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(352, '2018-CS-200190', 'c_chestPain', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(353, '2018-CS-200190', 'c_indigestion', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(354, '2018-CS-200190', 'c_swollenFeet', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(355, '2018-CS-200190', 'c_headaches', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(356, '2018-CS-200190', 'c_soreThroat', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(357, '2018-CS-200190', 'c_dizziness', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(358, '2018-CS-200190', 'c_nausea', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(359, '2018-CS-200190', 'c_difficultBreathing', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(360, '2018-CS-200190', 'c_weightLoss', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(361, '2018-CS-200190', 'c_insomia', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(362, '2018-CS-200190', 'c_jointPains', 'false', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(363, '2018-CS-200190', 'c_frequentUrination', 'true', '2019-12-16 18:14:49', '2019-12-16 18:14:49', 'davie balmadrid', 'davie balmadrid'),
+(460, '2018-cs-90082', 'c_primaryComplex', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(461, '2018-cs-90082', 'c_kidneyDisease', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(462, '2018-cs-90082', 'c_pneumonia', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(463, '2018-cs-90082', 'c_earProblems', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(464, '2018-cs-90082', 'c_mentalDisorder', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(465, '2018-cs-90082', 'c_asthma', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(466, '2018-cs-90082', 'c_skinProblem', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(467, '2018-cs-90082', 'c_dengue', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(468, '2018-cs-90082', 'c_mumps', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(469, '2018-cs-90082', 'c_typhoidFever', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(470, '2018-cs-90082', 'c_rheumaticFever', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(471, '2018-cs-90082', 'c_diabetes', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(472, '2018-cs-90082', 'c_measles', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(473, '2018-cs-90082', 'c_thyroidDisorder', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(474, '2018-cs-90082', 'c_hepatitis', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(475, '2018-cs-90082', 'c_chickenPox', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(476, '2018-cs-90082', 'c_eyeDisorder', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(477, '2018-cs-90082', 'c_poliomyElitis', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(478, '2018-cs-90082', 'c_heartDisease', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(479, '2018-cs-90082', 'c_anemia', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(480, '2018-cs-90082', 'c_chestPain', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(481, '2018-cs-90082', 'c_indigestion', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(482, '2018-cs-90082', 'c_swollenFeet', 'true', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(483, '2018-cs-90082', 'c_headaches', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(484, '2018-cs-90082', 'c_soreThroat', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(485, '2018-cs-90082', 'c_dizziness', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(486, '2018-cs-90082', 'c_nausea', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(487, '2018-cs-90082', 'c_difficultBreathing', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(488, '2018-cs-90082', 'c_weightLoss', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(489, '2018-cs-90082', 'c_insomia', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(490, '2018-cs-90082', 'c_jointPains', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(491, '2018-cs-90082', 'c_frequentUrination', 'false', '2019-12-16 18:31:25', '2019-12-16 18:31:25', 'davie balmadrid', 'davie balmadrid'),
+(492, '1234', 'c_primaryComplex', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(493, '1234', 'c_kidneyDisease', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(494, '1234', 'c_pneumonia', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(495, '1234', 'c_earProblems', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(496, '1234', 'c_mentalDisorder', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(497, '1234', 'c_asthma', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(498, '1234', 'c_skinProblem', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(499, '1234', 'c_dengue', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(500, '1234', 'c_mumps', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(501, '1234', 'c_typhoidFever', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(502, '1234', 'c_rheumaticFever', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(503, '1234', 'c_diabetes', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(504, '1234', 'c_measles', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(505, '1234', 'c_thyroidDisorder', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(506, '1234', 'c_hepatitis', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(507, '1234', 'c_chickenPox', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(508, '1234', 'c_eyeDisorder', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(509, '1234', 'c_poliomyElitis', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(510, '1234', 'c_heartDisease', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(511, '1234', 'c_anemia', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(512, '1234', 'c_chestPain', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(513, '1234', 'c_indigestion', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(514, '1234', 'c_swollenFeet', 'true', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(515, '1234', 'c_headaches', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(516, '1234', 'c_soreThroat', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(517, '1234', 'c_dizziness', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(518, '1234', 'c_nausea', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(519, '1234', 'c_difficultBreathing', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(520, '1234', 'c_weightLoss', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(521, '1234', 'c_insomia', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(522, '1234', 'c_jointPains', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(523, '1234', 'c_frequentUrination', 'false', '2019-12-16 18:35:31', '2019-12-16 18:35:31', 'davie balmadrid', 'davie balmadrid'),
+(524, '12345', 'c_primaryComplex', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(525, '12345', 'c_kidneyDisease', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(526, '12345', 'c_pneumonia', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(527, '12345', 'c_earProblems', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(528, '12345', 'c_mentalDisorder', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(529, '12345', 'c_asthma', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(530, '12345', 'c_skinProblem', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(531, '12345', 'c_dengue', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(532, '12345', 'c_mumps', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(533, '12345', 'c_typhoidFever', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(534, '12345', 'c_rheumaticFever', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(535, '12345', 'c_diabetes', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(536, '12345', 'c_measles', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(537, '12345', 'c_thyroidDisorder', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(538, '12345', 'c_hepatitis', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(539, '12345', 'c_chickenPox', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(540, '12345', 'c_eyeDisorder', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(541, '12345', 'c_poliomyElitis', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(542, '12345', 'c_heartDisease', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(543, '12345', 'c_anemia', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(544, '12345', 'c_chestPain', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(545, '12345', 'c_indigestion', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(546, '12345', 'c_swollenFeet', 'true', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(547, '12345', 'c_headaches', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(548, '12345', 'c_soreThroat', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(549, '12345', 'c_dizziness', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(550, '12345', 'c_nausea', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(551, '12345', 'c_difficultBreathing', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(552, '12345', 'c_weightLoss', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(553, '12345', 'c_insomia', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(554, '12345', 'c_jointPains', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(555, '12345', 'c_frequentUrination', 'false', '2019-12-16 20:29:23', '2019-12-16 19:27:24', 'asda asd', 'davie balmadrid'),
+(556, '', 'c_primaryComplex', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(557, '', 'c_kidneyDisease', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(558, '', 'c_pneumonia', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(559, '', 'c_earProblems', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(560, '', 'c_mentalDisorder', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(561, '', 'c_asthma', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(562, '', 'c_skinProblem', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(563, '', 'c_dengue', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(564, '', 'c_mumps', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(565, '', 'c_typhoidFever', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(566, '', 'c_rheumaticFever', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(567, '', 'c_diabetes', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(568, '', 'c_measles', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(569, '', 'c_thyroidDisorder', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(570, '', 'c_hepatitis', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(571, '', 'c_chickenPox', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(572, '', 'c_eyeDisorder', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(573, '', 'c_poliomyElitis', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(574, '', 'c_heartDisease', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(575, '', 'c_anemia', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(576, '', 'c_chestPain', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(577, '', 'c_indigestion', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(578, '', 'c_swollenFeet', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(579, '', 'c_headaches', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(580, '', 'c_soreThroat', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(581, '', 'c_dizziness', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(582, '', 'c_nausea', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(583, '', 'c_difficultBreathing', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(584, '', 'c_weightLoss', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(585, '', 'c_insomia', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(586, '', 'c_jointPains', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(587, '', 'c_frequentUrination', 'false', '2019-12-16 20:41:17', '2019-12-16 20:41:17', 'asda asd', 'asda asd'),
+(588, '', 'c_primaryComplex', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(589, '', 'c_kidneyDisease', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(590, '', 'c_pneumonia', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(591, '', 'c_earProblems', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(592, '', 'c_mentalDisorder', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(593, '', 'c_asthma', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(594, '', 'c_skinProblem', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(595, '', 'c_dengue', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(596, '', 'c_mumps', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(597, '', 'c_typhoidFever', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(598, '', 'c_rheumaticFever', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(599, '', 'c_diabetes', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(600, '', 'c_measles', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(601, '', 'c_thyroidDisorder', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(602, '', 'c_hepatitis', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(603, '', 'c_chickenPox', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(604, '', 'c_eyeDisorder', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(605, '', 'c_poliomyElitis', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(606, '', 'c_heartDisease', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(607, '', 'c_anemia', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(608, '', 'c_chestPain', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(609, '', 'c_indigestion', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(610, '', 'c_swollenFeet', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(611, '', 'c_headaches', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(612, '', 'c_soreThroat', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(613, '', 'c_dizziness', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(614, '', 'c_nausea', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(615, '', 'c_difficultBreathing', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(616, '', 'c_weightLoss', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(617, '', 'c_insomia', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(618, '', 'c_jointPains', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(619, '', 'c_frequentUrination', 'false', '2019-12-16 20:42:57', '2019-12-16 20:42:57', 'asda asd', 'asda asd'),
+(620, '', 'c_primaryComplex', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(621, '', 'c_kidneyDisease', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(622, '', 'c_pneumonia', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(623, '', 'c_earProblems', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(624, '', 'c_mentalDisorder', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(625, '', 'c_asthma', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(626, '', 'c_skinProblem', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(627, '', 'c_dengue', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(628, '', 'c_mumps', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(629, '', 'c_typhoidFever', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(630, '', 'c_rheumaticFever', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(631, '', 'c_diabetes', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(632, '', 'c_measles', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(633, '', 'c_thyroidDisorder', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(634, '', 'c_hepatitis', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(635, '', 'c_chickenPox', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(636, '', 'c_eyeDisorder', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(637, '', 'c_poliomyElitis', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(638, '', 'c_heartDisease', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(639, '', 'c_anemia', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(640, '', 'c_chestPain', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(641, '', 'c_indigestion', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(642, '', 'c_swollenFeet', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(643, '', 'c_headaches', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(644, '', 'c_soreThroat', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(645, '', 'c_dizziness', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(646, '', 'c_nausea', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(647, '', 'c_difficultBreathing', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(648, '', 'c_weightLoss', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(649, '', 'c_insomia', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(650, '', 'c_jointPains', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(651, '', 'c_frequentUrination', 'false', '2019-12-16 20:49:21', '2019-12-16 20:49:21', 'asda asd', 'asda asd'),
+(652, '', 'c_primaryComplex', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(653, '', 'c_kidneyDisease', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(654, '', 'c_pneumonia', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(655, '', 'c_earProblems', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(656, '', 'c_mentalDisorder', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(657, '', 'c_asthma', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(658, '', 'c_skinProblem', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(659, '', 'c_dengue', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(660, '', 'c_mumps', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(661, '', 'c_typhoidFever', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(662, '', 'c_rheumaticFever', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(663, '', 'c_diabetes', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(664, '', 'c_measles', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(665, '', 'c_thyroidDisorder', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(666, '', 'c_hepatitis', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(667, '', 'c_chickenPox', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(668, '', 'c_eyeDisorder', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(669, '', 'c_poliomyElitis', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(670, '', 'c_heartDisease', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(671, '', 'c_anemia', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(672, '', 'c_chestPain', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(673, '', 'c_indigestion', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(674, '', 'c_swollenFeet', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(675, '', 'c_headaches', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(676, '', 'c_soreThroat', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(677, '', 'c_dizziness', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(678, '', 'c_nausea', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(679, '', 'c_difficultBreathing', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(680, '', 'c_weightLoss', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd');
+INSERT INTO `tbl_personalhistory` (`ID`, `PatientID`, `Illness`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(681, '', 'c_insomia', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(682, '', 'c_jointPains', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(683, '', 'c_frequentUrination', 'false', '2019-12-16 20:54:52', '2019-12-16 20:54:52', 'asda asd', 'asda asd'),
+(684, '', 'c_primaryComplex', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(685, '', 'c_kidneyDisease', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(686, '', 'c_pneumonia', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(687, '', 'c_earProblems', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(688, '', 'c_mentalDisorder', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(689, '', 'c_asthma', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(690, '', 'c_skinProblem', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(691, '', 'c_dengue', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(692, '', 'c_mumps', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(693, '', 'c_typhoidFever', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(694, '', 'c_rheumaticFever', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(695, '', 'c_diabetes', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(696, '', 'c_measles', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(697, '', 'c_thyroidDisorder', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(698, '', 'c_hepatitis', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(699, '', 'c_chickenPox', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(700, '', 'c_eyeDisorder', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(701, '', 'c_poliomyElitis', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(702, '', 'c_heartDisease', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(703, '', 'c_anemia', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(704, '', 'c_chestPain', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(705, '', 'c_indigestion', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(706, '', 'c_swollenFeet', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(707, '', 'c_headaches', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(708, '', 'c_soreThroat', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(709, '', 'c_dizziness', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(710, '', 'c_nausea', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(711, '', 'c_difficultBreathing', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(712, '', 'c_weightLoss', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(713, '', 'c_insomia', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(714, '', 'c_jointPains', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(715, '', 'c_frequentUrination', 'false', '2019-12-16 20:56:17', '2019-12-16 20:56:17', 'asda asd', 'asda asd'),
+(716, '246', 'c_primaryComplex', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(717, '246', 'c_kidneyDisease', 'true', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(718, '246', 'c_pneumonia', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(719, '246', 'c_earProblems', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(720, '246', 'c_mentalDisorder', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(721, '246', 'c_asthma', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(722, '246', 'c_skinProblem', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(723, '246', 'c_dengue', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(724, '246', 'c_mumps', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(725, '246', 'c_typhoidFever', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(726, '246', 'c_rheumaticFever', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(727, '246', 'c_diabetes', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(728, '246', 'c_measles', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(729, '246', 'c_thyroidDisorder', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(730, '246', 'c_hepatitis', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(731, '246', 'c_chickenPox', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(732, '246', 'c_eyeDisorder', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(733, '246', 'c_poliomyElitis', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(734, '246', 'c_heartDisease', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(735, '246', 'c_anemia', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(736, '246', 'c_chestPain', 'true', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(737, '246', 'c_indigestion', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(738, '246', 'c_swollenFeet', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(739, '246', 'c_headaches', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(740, '246', 'c_soreThroat', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(741, '246', 'c_dizziness', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(742, '246', 'c_nausea', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(743, '246', 'c_difficultBreathing', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(744, '246', 'c_weightLoss', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(745, '246', 'c_insomia', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(746, '246', 'c_jointPains', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
+(747, '246', 'c_frequentUrination', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
 
 -- --------------------------------------------------------
 
@@ -44390,6 +45125,15 @@ CREATE TABLE `tbl_qallergies` (
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_qallergies`
+--
+
+INSERT INTO `tbl_qallergies` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(2, '1234', 'Yes', 'yes', '2019-12-16 18:35:31', '0000-00-00 00:00:00', 0, 0),
+(3, '12345', 'Yes', 'yes', '2019-12-16 19:27:24', '0000-00-00 00:00:00', 0, 0),
+(4, '', 'Yes', '', '2019-12-16 20:54:52', '0000-00-00 00:00:00', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -44406,6 +45150,13 @@ CREATE TABLE `tbl_qtakingmedicine` (
   `ModifiedBy` int(10) NOT NULL,
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_qtakingmedicine`
+--
+
+INSERT INTO `tbl_qtakingmedicine` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(6, '', 'Yes', '', '2019-12-16 20:56:17', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44639,49 +45390,49 @@ ALTER TABLE `tbl_college`
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_examinations`
 --
 ALTER TABLE `tbl_examinations`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_familyhistoryanswer`
 --
 ALTER TABLE `tbl_familyhistoryanswer`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=741;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=907;
 
 --
 -- AUTO_INCREMENT for table `tbl_hospitalizationhistory`
 --
 ALTER TABLE `tbl_hospitalizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_immunizationhistory`
 --
 ALTER TABLE `tbl_immunizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientinfo`
 --
 ALTER TABLE `tbl_patientinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2163;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2182;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientsparentinfo`
 --
 ALTER TABLE `tbl_patientsparentinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 
 --
 -- AUTO_INCREMENT for table `tbl_personalhistory`
 --
 ALTER TABLE `tbl_personalhistory`
-  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=748;
 
 --
 -- AUTO_INCREMENT for table `tbl_presentsymptoms`
@@ -44693,13 +45444,13 @@ ALTER TABLE `tbl_presentsymptoms`
 -- AUTO_INCREMENT for table `tbl_qallergies`
 --
 ALTER TABLE `tbl_qallergies`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_qtakingmedicine`
 --
 ALTER TABLE `tbl_qtakingmedicine`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

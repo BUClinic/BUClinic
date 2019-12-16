@@ -159,7 +159,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <h4 class="card-title col-md-10">Student Record</h4>
                       <div class="input-group col-md-2">
                         <div class="input-group-prepend">
-                        <span class="input-group-text">$</span>
+                        <i class="icon-magnifier float-left"><span class="input-group-text" ></span></i>
                         </div>
                         <form class="search-form d-none d-md-block" action="#">
                             <input type="search" id="myInput"  class="form-control" placeholder="Search Patient Record" title="Search Patient Record here">

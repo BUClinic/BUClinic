@@ -74,15 +74,13 @@ if(isset($_POST['submit'])){
 		 }
 		 //editin to hospitalization history table
 		if($_POST['Question1']==='Yes'){
-			$sqlImmu = 'UPDATE  tbl_hospitalizationhistory (PatientID, Answer, Details,Modifiedby,CreatedBy)
-			VALUES (\''.$PatientID.'\', \''.$_POST['Question1'].'\',\''.$_POST['txt_Question1'].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			$sqlImmu = "UPDATE  tbl_hospitalizationhistory SET Answer ='".$_POST['Question1']."' ,Details ='".$_POST['txt_Question1']."',Modifiedby ='".$Modifiedby."' ,where PatientID =)";
 			$conn->query($sqlImmu);
 		}
 
 		//editin to qtaking medicne table
 		if($_POST['Question2']==='Yes'){
-			$sqlmed = 'INSERT INTO tbl_qtakingmedicine (PatientID, Answer, Details,Modifiedby,CreatedBy)
-			VALUES (\''.$PatientID.'\', \''.$_POST['Question2'].'\',\''.$_POST['txt_Question2'].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			$sqlImed = "UPDATE  tbl_hospitalizationhistory SET Answer ='".$_POST['Question1']."' ,Details ='".$_POST['txt_Question1']."',Modifiedby ='".$Modifiedby."' ,where PatientID =)";
 			$conn->query($sqlmed);
 		}
 
