@@ -1001,19 +1001,19 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1Yes" value="Yes" onclick="setYes('Question1')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2 ">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1No" value="No" checked="true" onclick="setNo('Question1')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details" onclick="setYes('\'Question1\'')">
+                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details" onclick="setYes('Question1')">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <p>Are you taking medicine regularly?</p>
@@ -1021,19 +1021,19 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2Yes" value="Yes" onclick="setYes('Question2')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2No" value="No" checked="true" onclick="setNo('Question2')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s">
+                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s"  onclick="setYes('Question2')">
                                                     </div> 
                                                     <div class="col-md-5">
                                                         <p>Are you allergic to any food or medicine? (ex. Penicilin, Aspirin, shrimp, chicken, etc.</p>
@@ -1041,19 +1041,19 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3Yes" value="Yes" onclick="setYes('Question3')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3No" value="No" checked="true" onclick="setNo('Question3')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify">
+                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify"  onclick="setYes('Question3')">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1223,7 +1223,12 @@ $conn = OpenCon();
                 
             }
             function setYes(ID_name){
-                document.getElementById(ID_name).cheked= 'true';
+                document.getElementById(ID_name+"Yes").checked= 'true';
+                document.getElementById("txt_"+ID_name).required=true;
+            }
+            function setNo(ID_name){
+                document.getElementById(ID_name+"No").checked= 'true';
+                document.getElementById("txt_"+ID_name).required=false;
             }
             </script>
         <!-- container-scroller -->

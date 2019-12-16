@@ -45,15 +45,16 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome <?php echo $_SESSION["Fname"]." ".$_SESSION["Lname"]; ?></h5>
-          <ul class="navbar-nav navbar-nav-right ml-auto">
-    <!--      <input type="text" id="myInput"  placeholder="Search for any Data..."> -->
+          <!-- <ul class="navbar-nav navbar-nav-right ml-auto">
+         <input type="text" id="myInput"  placeholder="Search for any Data..."> 
+
           <form class="search-form d-none d-md-block" action="#">
               <i class="icon-magnifier"></i>
               <input type="search" id="myInput"  class="form-control" placeholder="Search Here" title="Search here">
             </form>
    
    
-          </ul>
+          </ul> -->
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
           </button>
@@ -147,14 +148,25 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <div class="content-wrapper">
             <div class="page-header">
               <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
+            
             </div>
+            
             <div class="row">
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Student Record</h4>
+                    <div class="col-md-12 col-sm-12 row">
+                      <h4 class="card-title col-md-10">Student Record</h4>
+                      <div class="input-group col-md-2">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                        </div>
+                        <form class="search-form d-none d-md-block" action="#">
+                            <input type="search" id="myInput"  class="form-control" placeholder="Search Patient Record" title="Search Patient Record here">
+                        </form>
+                      </div>
+                    </div><br>
                     <table class="table table-hover">
-                   
                       <thead>
                         <tr>
                           <th class="font-weight-bold">Student Id</th>
@@ -166,15 +178,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <tbody id="myTable">
                     
                       <?php 
-            $sql = "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patientinfo";
+            $sql = "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex, Status from tbl_patientinfo";
             $result = mysqli_query($conn,$sql);
             $rows = array();
             $ctr = 0;
             while($r = mysqli_fetch_assoc($result)){
               $rows[] = $r;
-        
-             // echo json_encode($rows);
-         
+              echo "<script>console.log('".$rows[$ctr]['Status']."')</script>";
+              if($rows[$ctr]['Status']=='1') {
                 echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
                 " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"].
                 "</td><td>". "<div class='btn-group'>
@@ -189,7 +200,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 ."<td></tr>";  
               
                
+              }
               $ctr++;
+        
+             // echo json_encode($rows);
+         
+               
               }
        
               
@@ -206,6 +222,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <div class="content-wrapper">
             <div class="page-header">
               <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
+              <ul class="navbar-nav navbar-nav-right ml-auto">    
+                  <form class="search-form d-none d-md-block" action="#">
+                    <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records">
+                 </form>
+              </ul>
             </div>
             <div class="row">
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
@@ -220,9 +241,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <th class="font-weight-bold">Name</th>
                           <th class="font-weight-bold">Course</th>
                           <th class="font-weight-bold">Contacts</th>
+                          <th class="font-weight-bold">Diagnosis</th>
+                          <th class="font-weight-bold">Treatment</th>
+                          <th class="font-weight-bold">Referral</th>
                         </tr>
                       </thead>
-                      <tbody id="myTable">
+                      <tbody id="myTable1">
                     
                       <?php 
             $sql = "SELECT tbl_patientinfo.ID, tbl_patientinfo.PatientID, tbl_patientinfo.Lname, tbl_patientinfo.Fname, tbl_patientinfo.Mname, tbl_patientinfo.Course, tbl_patientinfo.ContactNum, tbl_diagnosis.Diagnosis, tbl_diagnosis.Treatment, tbl_diagnosis.Referral  from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID";
@@ -232,11 +256,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 
             while($r = mysqli_fetch_assoc($result)){
               $rows[] = $r;
-        
+              
              // echo json_encode($rows);
          
                 echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
-                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".$rows[$ctr]["Diagnosis"]."</td><td>". "<div class='btn-group'>
+                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".$rows[$ctr]["Diagnosis"]."</td><td>".$rows[$ctr]["Treatment"]."</td><td>".$rows[$ctr]["Referral"]."</td><td>"."</td><td>". "<div class='btn-group'>
            
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
                 <div class='dropdown-menu'>
@@ -306,9 +330,9 @@ $(document).ready(function(){
 }
 
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
+  $("#myInput1").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
+    $("#myTable1 tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

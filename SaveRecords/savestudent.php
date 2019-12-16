@@ -72,11 +72,32 @@ if(isset($_POST['submit'])){
 		 	$sqlImmu = "UPDATE  tbl_immunizationhistory SET Answer = '~".$_POST['txt_IHistory']."', ModifiedBy='".$Modifiedby."'  where ID = (select ID from tbl_immunizationhistory where Answer like '~%' AND PatientID = '".$PatientID."')";
 			 $conn->query($sqlImmu);
 		 }
+		 //editin to hospitalization history table
+		if($_POST['Question1']==='Yes'){
+			$sqlImmu = 'UPDATE  tbl_hospitalizationhistory (PatientID, Answer, Details,Modifiedby,CreatedBy)
+			VALUES (\''.$PatientID.'\', \''.$_POST['Question1'].'\',\''.$_POST['txt_Question1'].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			$conn->query($sqlImmu);
+		}
+
+		//editin to qtaking medicne table
+		if($_POST['Question2']==='Yes'){
+			$sqlmed = 'INSERT INTO tbl_qtakingmedicine (PatientID, Answer, Details,Modifiedby,CreatedBy)
+			VALUES (\''.$PatientID.'\', \''.$_POST['Question2'].'\',\''.$_POST['txt_Question2'].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			$conn->query($sqlmed);
+		}
+
+		//editin to qallergy table
+		if($_POST['Question3']==='Yes'){
+			$sqlallergy = 'INSERT INTO tbl_qallergies (PatientID, Answer, Details,Modifiedby,CreatedBy)
+			VALUES (\''.$PatientID.'\', \''.$_POST['Question3'].'\',\''.$_POST['txt_Question3'].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			$conn->query($sqlallergy);
+		}
+
 		
 
 	}else{
 		echo "<script>alert('New record created successfully')</script>";
-		$sql = 'INSERT INTO tbl_patientinfo (PatientID, Lname, Fname, Mname, Address,Region,Province,MuniCity,Brgy,Street, Age,Religion, Birthdate, Course, YearLevel, CollegeUnit, ContactNum, CivilStatus,Sex,ModifiedDate,CreatedDate,Modifiedby,CreatedBy) VALUES (\''.$PatientID.'\', \''.$Lname.'\', \''.$Fname.'\', \''.$Mname.'\', \''.$Address.'\', \''.$region.'\', \''.$province.'\', \''.$municity.'\', \''.$brgy.'\', \''.$street.'\', \''.$Age.'\', \''.$Religion.'\', \''.$Birthdate.'\', \''.$Course.'\', \''.$YearLevel.'\',  \''.$CollegeUnit.'\', \''.$ContactNum.'\', \''.$CivilStatus.'\', \''.$Sex.'\',null,null,\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+		$sql = 'INSERT INTO tbl_patientinfo (PatientID, Lname, Fname, Mname, Address,Region,Province,MuniCity,Brgy,Street, Age,Religion, Birthdate, Course, YearLevel, CollegeUnit, ContactNum, CivilStatus,Sex,Status,ModifiedDate,CreatedDate,Modifiedby,CreatedBy) VALUES (\''.$PatientID.'\', \''.$Lname.'\', \''.$Fname.'\', \''.$Mname.'\', \''.$Address.'\', \''.$region.'\', \''.$province.'\', \''.$municity.'\', \''.$brgy.'\', \''.$street.'\', \''.$Age.'\', \''.$Religion.'\', \''.$Birthdate.'\', \''.$Course.'\', \''.$YearLevel.'\',  \''.$CollegeUnit.'\', \''.$ContactNum.'\', \''.$CivilStatus.'\', \''.$Sex.'\',1,null,null,\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlFather = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["F_FName"].'\',\''.$_POST["F_MName"].'\',\''.$_POST["F_LName"].'\',\''.$_POST["F_Occupation"].'\',\''.$_POST["F_Address"].'\',\''.$_POST["F_CNumber"].'\', \'Father\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlMother = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["M_FName"].'\',\''.$_POST["M_MName"].'\',\''.$_POST["M_LName"].'\',\''.$_POST["M_Occupation"].'\',\''.$_POST["M_Address"].'\',\''.$_POST["M_CNumber"].'\', \'Mother\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlGuardian = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["G_FName"].'\',\''.$_POST["G_MName"].'\',\''.$_POST["G_LName"].'\',\''.$_POST["G_Occupation"].'\',\''.$_POST["G_Address"].'\',\''.$_POST["G_CNumber"].'\', \'Guardian\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
