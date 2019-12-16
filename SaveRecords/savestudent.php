@@ -44,46 +44,51 @@ if(isset($_POST['submit'])){
 		$sqlFather = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['F_FName'].'\',`Mname`=\''.$_POST['F_MName'].'\',`Lname`=\''.$_POST['F_LName'].'\',`Occupation`=\''.$_POST['F_Occupation'].'\',`OfficeAddress`=\''.$_POST['F_Address'].'\',`ContactNumber`=\''.$_POST['F_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Father\' and PatientID=\''.$PatientID.'\'';
 		$sqlMother = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['M_FName'].'\',`Mname`=\''.$_POST['M_MName'].'\',`Lname`=\''.$_POST['M_LName'].'\',`Occupation`=\''.$_POST['M_Occupation'].'\',`OfficeAddress`=\''.$_POST['M_Address'].'\',`ContactNumber`=\''.$_POST['M_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Mother\' and PatientID=\''.$PatientID.'\'';
 		$sqlGuardian = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['G_FName'].'\',`Mname`=\''.$_POST['G_MName'].'\',`Lname`=\''.$_POST['G_LName'].'\',`Occupation`=\''.$_POST['G_Occupation'].'\',`OfficeAddress`=\''.$_POST['G_Address'].'\',`ContactNumber`=\''.$_POST['G_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Guardian\' and PatientID=\''.$PatientID.'\'';
-		echo $sqlMother;
+		
+		for($i=0;$i<sizeof($Illness);$i++){
+			if($_POST['option'.$Illness[i]]==='Yes'){
+				$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'true\' where PatientID=\''.$PatientID.'\' and Illness=\''.$Illness[i].'\'';
+			}else{
+				$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'false\' where PatientID=\''.$PatientID.'\' and Illness=\''.$Illness[i].'\'';
+			}
+		}
+
+		for($i=0;$i<sizeof($PersonalHistory);$i++){
+			if(isset($_POST[$PersonalHistory[$i]])){
+				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='true' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+			}else{
+				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='false' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+			}
+			$conn->query($sqlPersonalHistory);
+		}
+
 	}else{
 		echo "<script>alert('New record created successfully')</script>";
 		$sql = 'INSERT INTO tbl_patientinfo (PatientID, Lname, Fname, Mname, Address,Region,Province,MuniCity,Brgy,Street, Age,Religion, Birthdate, Course, YearLevel, CollegeUnit, ContactNum, CivilStatus,Sex,ModifiedDate,CreatedDate,Modifiedby,CreatedBy) VALUES (\''.$PatientID.'\', \''.$Lname.'\', \''.$Fname.'\', \''.$Mname.'\', \''.$Address.'\', \''.$region.'\', \''.$province.'\', \''.$municity.'\', \''.$brgy.'\', \''.$street.'\', \''.$Age.'\', \''.$Religion.'\', \''.$Birthdate.'\', \''.$Course.'\', \''.$YearLevel.'\',  \''.$CollegeUnit.'\', \''.$ContactNum.'\', \''.$CivilStatus.'\', \''.$Sex.'\',null,null,\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlFather = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["F_FName"].'\',\''.$_POST["F_MName"].'\',\''.$_POST["F_LName"].'\',\''.$_POST["F_Occupation"].'\',\''.$_POST["F_Address"].'\',\''.$_POST["F_CNumber"].'\', \'Father\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlMother = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["M_FName"].'\',\''.$_POST["M_MName"].'\',\''.$_POST["M_LName"].'\',\''.$_POST["M_Occupation"].'\',\''.$_POST["M_Address"].'\',\''.$_POST["M_CNumber"].'\', \'Mother\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		$sqlGuardian = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["G_FName"].'\',\''.$_POST["G_MName"].'\',\''.$_POST["G_LName"].'\',\''.$_POST["G_Occupation"].'\',\''.$_POST["G_Address"].'\',\''.$_POST["G_CNumber"].'\', \'Guardian\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
-		echo $sqlMother;
 
 		for($i=0;$i<sizeof($Illness);$i++){
-			$sqlIllness = 'INSERT INTO tbl_familyhistoryanswer (PatientID, Illness, Status, Relation,ModifiedDate,CreatedDate,Modifiedby,CreatedBy)
-			VALUES (\''.$PatientID.'\', \''.$_POST[$Illness[$i]].'\', \''.$_POST[$Status[$i]].'\', \''.$_POST[$Relation[$i]].'\',null,null,\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			if($_POST['option'.$Illness[i]]==='Yes'){
+				$sqlIllness = 'INSERT INTO tbl_familyhistoryanswer (PatientID, Illness, Status, Relation,Modifiedby)
+					VALUES (\''.$PatientID.'\', \''.$_POST[$Illness[$i]].'\', \'Yes\', \''.$_POST[$Relation[$i]].'\','.$Modifiedby.'\')';
+			}else{
+				$sqlIllness = 'INSERT INTO tbl_familyhistoryanswer (PatientID, Illness, Status, Relation,Modifiedby)
+					VALUES (\''.$PatientID.'\', \''.$_POST[$Illness[$i]].'\', \'False\', \''.$_POST[$Relation[$i]].'\','.$Modifiedby.'\')';
+			}
 			$conn->query($sqlIllness);
-			// if(isset($_POST[$Illness[$i]])){
-			// 	if($_POST[$Illness[$i]]==='Yes'){
-			// 		$answer += '1';
-			// 	}
-			// }else{
-			// 	$answer += '0';
-			// }
 		}
-		$Ill="";
+
 		for($i=0;$i<sizeof($PersonalHistory);$i++){
 			if(isset($_POST[$PersonalHistory[$i]])){
-				$sqlPersonalHistory = 'INSERT INTO tbl_personalhistory (PatientID, Illness,Modifiedby,CreatedBy)
-					VALUES (\''.$PatientID.'\', \''.$_POST[$PersonalHistory[$i]].'\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
-				echo $sqlPersonalHistory;
-				$conn->query($sqlPersonalHistory);
+				$sqlPersonalHistory = 'INSERT INTO tbl_personalhistory (PatientID, Illness, Status,Modifiedby,CreatedBy)
+					VALUES (\''.$PatientID.'\', \''.$PersonalHistory[$i].'\',\'true\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+			}else{
+				$sqlPersonalHistory = 'INSERT INTO tbl_personalhistory (PatientID, Illness, Status,Modifiedby,CreatedBy)
+					VALUES (\''.$PatientID.'\', \''.$PersonalHistory[$i].'\',\'false\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 			}
-			//loading family illnes history
-			//$ans;
-			// while($r = mysqli_fetch_assoc($result);){
-			// 	if($r['Status']==='Yes'){
-			// 		echo '<script>documentGetElementById(\'option'.$_POST[$Illness[$i]].'Yes\').checked = true';
-			// 		echo '<script>documentGetElementById(\'R_'.$_POST[$Illness[$i]].'\').value = \''.$relationship.'\'</script>'
-					
-			// 	}else{
-			// 		echo '<script>documentGetElementById(\'option'.$_POST[$Illness[$i]].'No\').checked = true';
-			// 	}
-			// }
+			$conn->query($sqlPersonalHistory);
 		}
 		
 	}

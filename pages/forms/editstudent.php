@@ -1374,5 +1374,10 @@ while($r = mysqli_fetch_assoc($result)){
   }
 $i++;
 }
+
+$result = $conn->query("select * from tbl_personalhistory where PatientID='".$_GET['ID']."'");
+while($r = mysqli_fetch_assoc($result)){
+  echo "<script>document.getElementById('".$r['Illness']."').checked = true</script>";
+}
 ?>
 
