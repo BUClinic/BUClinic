@@ -29,21 +29,21 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../css/style.css" <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/logo.png" />
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a class="navbar-brand brand-logo" href="../../index.php">
-            <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
+          <a  href="../../index.php">
+            <img src="../../images/ddh.png" alt="logo" width="200" height="50" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <ul class="navbar-nav navbar-nav-right ml-auto">
-            <form class="search-form d-none d-md-block" action="#">
+            <form class="search-form d-none d-md-block" action="#" method="POST">
               <i class="icon-magnifier"></i>
               <input type="search" class="form-control" placeholder="Search Here" title="Search here">
             </form>
@@ -61,7 +61,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../../images/faces/noface.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -97,6 +97,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 </ul>
 </div>
 </li>
+
+			
+<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Tables</span>
+                <i class="icon-layers menu-icon"></i>
+              </a>
+              <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+				  <li class="nav-item"> <a class="nav-link" href="../tables/medicineinventory.php">Medicine Inventory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../tables/studentrecord.php">Student Record</a></li>
+                </ul>
+              </div>
+            </li>
+
     
             <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
             <li class="nav-item">
@@ -134,7 +150,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </ol>
               </nav>
             </div>
-              <form>
+              <form method="POST" action="../../saverecords/saveconsult.php">
                 <div class="row">
                   <div class="col-12 grid-margin">
                     <div class="card">
@@ -159,43 +175,83 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <div class="col-12 grid-margin">
                     <div class="card">
                       <div class="card-body">
-                          <h4 class="card-title">Consultation <i class="icon-briefcase float-left"></i></h4>
+                          <h4 class="card-title">Examinations<i class=" icon-magnifier float-left"></i></h4>
                           <!--<p class="card-description"> Personal info </p>-->
                             <div class="form-group row">
-                              <div class="col-md-4 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="Date" placeholder="Date" onfocus="this.type='date'" disabled>
-                                  <div class="col-md-8 col-sm-12 mb-2">
-                                  <label for="form10">Complaints</label>
+                                  <div class="col-md-3 col-sm-12 mb-2">
+                                    <input type="text" class="form-control" id="P_Temperature" name="P_Temperature" placeholder="Temperature" Required>
+                                  </div>
+
+                                  <div class="col-md-3 col-sm-12 mb-2">
+                                    <input type="text" class="form-control" id="P_BPressure" name="P_BPressure" placeholder="Blood Pressure" Required>
+                                  </div>
+
+                                  <div class="col-md-3 col-sm-12 mb-2">
+                                    <input type="text" class="form-control" id="P_Height" name="P_Height" placeholder="Height" Required>
+                                  </div>
+
+                                  <div class="col-md-3 col-sm-12 mb-2">
+                                    <input type="text" class="form-control"  name="P_Weight"  id="P_Weight" placeholder="Weight">
+                                  </div>
+
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                    <label for="form10">History and Physical Examination</label>
                                         <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="Complaints" class="md-textarea form-control" rows="5"></textarea>
-                                    </div>
-                                  
-                                    <div class="col-md-8 col-sm-12 mb-2">
-                                  <label for="form10">Diagnosis</label>
-                                        <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="Diagnosis" class="md-textarea form-control" rows="5"></textarea>
+                                        <textarea id="PExaP_PExaminationmination" name="P_PExamination" class="md-textarea form-control" rows="5"></textarea>
                                     </div>
 
-                                    <div class="col-md-8 col-sm-12 mb-2">
-                                  <label for="form10">Treatment / Medication/s</label>
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                    <label for="form10">Physicians Direction's</label>
                                         <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="Treatment" class="md-textarea form-control" rows="5"></textarea>
-                                    </div>
-
-                                    <div class="col-md-8 col-sm-12 mb-2">
-                                  <label for="form10">Referral/Remarks</label>
-                                        <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="form10" class="md-textarea form-control" rows="5"></textarea>
+                                        <textarea id="P_PDirection" name="P_PDirection" class="md-textarea form-control" rows="5"></textarea>
                                     </div>
                                   <!-- <input type="text" class="form-control mb-2" id="Complaints" placeholder="Complaints">
                                   <input type="text" class="form-control" id="Diagnosis" placeholder="Diagnosis"> -->
-                              </div>
+                              <!-- <div class="col-md-8 col-sm-12 mb-2">
+                                  <input type="text" class="form-control mb-2" id="Treatment" placeholder="Treatment / Medication/s">
+                                  <input type="text" class="form-control mb-2" id="Remarks" placeholder="Referral/Remarks">
+                              </div>  -->
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 grid-margin">
+                    <div class="card">
+                      <div class="card-body">
+                          <h4 class="card-title">Consultation <i class=" icon-note float-left"></i></h4>
+                          <!--<p class="card-description"> Personal info </p>-->
+                            <div class="form-group row">
+                                  <div class="col-md-6 col-sm-12 mb-2">
+                                  <label for="form10">Complaints</label>
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <textarea id="Complaints" name="Complaints" class="md-textarea form-control" rows="5"></textarea>
+                                    </div>
+                                  
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                  <label for="form10">Diagnosis</label>
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <textarea id="Diagnosis" name="Diagnosis" class="md-textarea form-control" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                  <label for="form10">Treatment / Medication/s</label>
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <textarea id="Treatment" name="Treatment" class="md-textarea form-control" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                  <label for="form10">Referral/Remarks</label>
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <textarea id="form10" name="form10" class="md-textarea form-control" rows="5"></textarea>
+                                    </div>
+                                  <!-- <input type="text" class="form-control mb-2" id="Complaints" placeholder="Complaints">
+                                  <input type="text" class="form-control" id="Diagnosis" placeholder="Diagnosis"> -->
                               <!-- <div class="col-md-8 col-sm-12 mb-2">
                                   <input type="text" class="form-control mb-2" id="Treatment" placeholder="Treatment / Medication/s">
                                   <input type="text" class="form-control mb-2" id="Remarks" placeholder="Referral/Remarks">
                               </div>  -->
                               <div class="col-md-12 col-sm-12 float-right">
-                                <button type="submit" class="btn btn-primary" id="submit" onClick="saveConsult()">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                                 <button class="btn btn-dark" id="cancel">Cancel</button>
                               </div>
                             </div>

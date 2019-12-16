@@ -29,7 +29,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../css/style.css" <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/logo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -37,7 +37,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="../../index.php">
-            <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
+            <img src="../../images/ddh.png" alt="logo" class="logo-dark" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
@@ -61,7 +61,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../../images/faces/noface.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -91,13 +91,28 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 </a>
 <div class="collapse" id="ui-basic">
 <ul class="nav flex-column sub-menu">
-<li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
-<li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
-<li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="../forms/studenthealthform.php">Student Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="../forms/employeeform.php">Employee Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="../forms/dailyconsultation.php">Daily Consultant Form</a></li>
 </ul>
 </div>
 </li>
     
+<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Tables</span>
+                <i class="icon-layers menu-icon"></i>
+              </a>
+              <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+				  <li class="nav-item"> <a class="nav-link" href="medicineinventory.php">Medicine Inventory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="studentrecord.php">Student Record</a></li>
+                </ul>
+              </div>
+            </li>
+
+
             <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -156,8 +171,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <td><div class="btn-group">
                               <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
                               <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Chech-Up<i class="icon-pencil float-left"></i></button><br>
+                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">View<i class="icon-eye float-left"></i></button><br>
+                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
                                 <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
                               </div>
                             </div></td>
@@ -170,7 +185,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <td><div class="btn-group">
                               <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
                               <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
+                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">View<i class="icon-eye float-left"></i></button><br>
                                 <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
                                 <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
                               </div>

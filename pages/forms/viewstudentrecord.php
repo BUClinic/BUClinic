@@ -163,14 +163,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <!--<p class="card-description"> Personal info </p>-->
                         <div class="form-group row">
                           <div class="col-md-7 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" value=<?php echo '"'.$r['Fname'].'"';?> >
-                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name" value=<?php echo '"'.$r['Mname'].'"';?> >
-                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name" value=<?php echo '"'.$r['Lname'].'"';?> >
+                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" value=<?php echo '"'.$r['Fname'].'"';?> readonly>
+                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name" value=<?php echo '"'.$r['Mname'].'"';?> readonly>
+                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name" value=<?php echo '"'.$r['Lname'].'"';?> readonly>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>>
-                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> >
-                              <select class="form-control" name="S_Gender" id="Gender"  >
+                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?> readonly>
+                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> readonly>
+                              <select class="form-control" name="S_Gender" id="Gender" readonly>
                                     <option selected disabled >  </option>
                                     <?php
                                     if($r['Sex']=="Male"){
@@ -188,8 +188,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div> 
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> >
-                              <select class="form-control mb-2" name="S_Status" id="Status" >
+                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> readonly>
+                              <select class="form-control mb-2" name="S_Status" id="Status" readonly>
                                     <option selected disabled>Civil Status</option>
                                     <?php
                                       if($r['CivilStatus'] == 'Single'){
@@ -218,14 +218,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                       }
                                     ?>
                               </select>
-                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?>>
+                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?> readonly>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?> readonly >
+                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?> readonly>
                           </div>
                          
                           <div class="col-md-3 col-sm-12 mb-2">
-                            <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)">
+                            <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)" readonly>
                                 
                                 <option selected disabled>College/Department</option>
                                 <?php 
@@ -253,7 +253,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                         
                           
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <select class="form-control" name="S_Course" id="S_Course">
+                              <select class="form-control" name="S_Course" id="S_Course" readonly>
                                     <option selected disabled>Course</option>\
                                     <?php
                                       $sql = "select * from tbl_college";
@@ -281,7 +281,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   </select>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel">
+                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel" readonly>
                                                     <option selected disabled>Year Level</option>
                                                     <?php
                                                     
@@ -331,7 +331,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           
 
                           <div class="col-md-2 col-sm-12 mb-2" >
-                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()">
+                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()" readonly>
                                 <option selected disabled>Region</option>
                                 <?php 
                                   $sql = "select * from refregion";
@@ -352,7 +352,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()">
+                              <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()" readonly>
                               <option selected disabled>Province</option>
                               <?php 
                                   $sql = "select * from refprovince";
@@ -383,7 +383,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                          <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()">
+                          <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()" readonly>
                               <option selected disabled>City/Municipality</option>
                               <?php 
                                   $sql = "select * from refcitymun";
@@ -416,7 +416,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12  mb-2">
-                          <select  class="form-control" name="S_Baranggay" id="S_Baranggay">
+                          <select  class="form-control" name="S_Baranggay" id="S_Baranggay" readonly>
                               <option selected disabled>Baranggay</option>
                               <?php 
                                   $sql = "select * from refbrgy";
@@ -448,7 +448,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-4 col-sm-12">
-                              <input type="text" class="form-control" name="S_Street" placeholder="Street #" id="Street"value=<?php echo '"'.$r['Street'].'"'?> >
+                              <input type="text" class="form-control" name="S_Street" placeholder="Street #" id="Street"value=<?php echo '"'.$r['Street'].'"'?> readonly>
                           </div>
                         </div>
                   </div>
@@ -461,22 +461,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Father's Information <i class="icon-user float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="F_FName" id="F_Name" placeholder="First Name" value=<?php echo "'".$father['Fname']."'" ?>>
+                        <input type="text" class="form-control" name="F_FName" id="F_Name" placeholder="First Name" value=<?php echo "'".$father['Fname']."'" ?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="F_MName" id="F_MName" placeholder="Middle Name"value=<?php echo "'".$father['Mname']."'"?>>
+                        <input type="text" class="form-control" name="F_MName" id="F_MName" placeholder="Middle Name"value=<?php echo "'".$father['Mname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="F_LName" id="L_Name" placeholder="Last Name"value= <?php echo "'".$father['Lname']."'"?> >
+                        <input type="text" class="form-control" name="F_LName" id="L_Name" placeholder="Last Name"value= <?php echo "'".$father['Lname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="F_Address" id="F_Address" placeholder="Address" value= <?php echo "'".$father['OfficeAddress']."'"?> >
+                        <input type="text" class="form-control" name="F_Address" id="F_Address" placeholder="Address" value= <?php echo "'".$father['OfficeAddress']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="F_Occupation" id="F_Occupation" placeholder="Occupation" value= <?php echo "'".$father['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="F_Occupation" id="F_Occupation" placeholder="Occupation" value= <?php echo "'".$father['Occupation']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" name="F_CNumber" id="F_CNumber" placeholder="Contact Number"value= <?php echo "'".$father['ContactNumber']."'"?> >
+                        <input type="text" class="form-control" name="F_CNumber" id="F_CNumber" placeholder="Contact Number"value= <?php echo "'".$father['ContactNumber']."'"?> readonly>
                       </div>
                       </div>
                   </div>
@@ -488,22 +488,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Mother's Information <i class=" icon-user-female float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="M_FName" id="F_FName" placeholder="First Name"  value= <?php echo "'".$mother['Fname']."'"?>>
+                        <input type="text" class="form-control" name="M_FName" id="F_FName" placeholder="First Name"  value= <?php echo "'".$mother['Fname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="M_MName" id="M_MName" placeholder="Middle Name"  value= <?php echo "'".$mother['Mname']."'"?>>
+                        <input type="text" class="form-control" name="M_MName" id="M_MName" placeholder="Middle Name"  value= <?php echo "'".$mother['Mname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="M_LName" id="L_LName" placeholder="Last Name"  value= <?php echo "'".$mother['Lname']."'"?>>
+                        <input type="text" class="form-control" name="M_LName" id="L_LName" placeholder="Last Name"  value= <?php echo "'".$mother['Lname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="M_Address" id="M_Address" placeholder="Address" value= <?php echo "'".$mother['OfficeAddress']."'"?>>
+                        <input type="text" class="form-control" name="M_Address" id="M_Address" placeholder="Address" value= <?php echo "'".$mother['OfficeAddress']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="M_Occupation" id="M_Occupation" placeholder="Occupation" value= <?php echo "'".$mother['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="M_Occupation" id="M_Occupation" placeholder="Occupation" value= <?php echo "'".$mother['Occupation']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" name="M_CNumber" id="M_CNumber" placeholder="Contact Number"value= <?php echo "'".$mother['ContactNumber']."'"?>>
+                        <input type="text" class="form-control" name="M_CNumber" id="M_CNumber" placeholder="Contact Number"value= <?php echo "'".$mother['ContactNumber']."'"?> readonly>
                       </div>
                       </div>
                   </div>
@@ -515,22 +515,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Guardian's Information <i class="icon-user-follow float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="G_FName" id="G_FName" placeholder="First Name"  value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_FName" id="G_FName" placeholder="First Name"  value= <?php echo "'".$guardian['Fname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="G_MName" id="G_MName" placeholder="Middle Name"value= <?php echo "'".$guardian['Mname']."'"?>>
+                        <input type="text" class="form-control" name="G_MName" id="G_MName" placeholder="Middle Name"value= <?php echo "'".$guardian['Mname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="G_LName" id="G_LName" placeholder="Last Name"value= <?php echo "'".$guardian['Lname']."'"?>>
+                        <input type="text" class="form-control" name="G_LName" id="G_LName" placeholder="Last Name"value= <?php echo "'".$guardian['Lname']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="G_Address" id="G_Address" placeholder="Address"value= <?php echo "'".$guardian['OfficeAddress']."'"?>>
+                        <input type="text" class="form-control" name="G_Address" id="G_Address" placeholder="Address"value= <?php echo "'".$guardian['OfficeAddress']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" name="G_Occupation" id="G_Occupation" placeholder="Occupation" value= <?php echo "'".$guardian['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="G_Occupation" id="G_Occupation" placeholder="Occupation" value= <?php echo "'".$guardian['Occupation']."'"?> readonly>
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" name="G_CNumber" id="G_CNumber" placeholder="Contact Number"value= <?php echo "'".$guardian['ContactNumber']."'"?>>
+                        <input type="text" class="form-control" name="G_CNumber" id="G_CNumber" placeholder="Contact Number"value= <?php echo "'".$guardian['ContactNumber']."'"?> readonly>
                       </div>
                       </div>
                   </div>
@@ -551,7 +551,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
@@ -561,7 +561,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Cancer" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Cancer" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -581,7 +581,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Hypertension" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Hypertension" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -601,7 +601,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Stroke" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Stroke" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -621,7 +621,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Tuberculosis" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Tuberculosis" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -641,7 +641,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Rheumatism" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Rheumatism" placeholder="Relationship" readonly>
                           </div>  
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -661,7 +661,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_EDisorder" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_EDisorder" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -681,7 +681,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Diabetes" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Diabetes" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -701,7 +701,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Asthma" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Asthma" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -721,7 +721,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Convulsion" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_Convulsion" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -741,7 +741,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_SProblems" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_SProblems" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -761,7 +761,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_HDisease" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_HDisease" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -781,7 +781,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_KProblem" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_KProblem" placeholder="Relationship" readonly>
                           </div> 
                           <div class="col-md-2 col-sm-3 mb-2">
                               <div class="form-check">
@@ -801,7 +801,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_MDisorder" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_MDisorder" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3">
                               <div class="form-check">
@@ -821,7 +821,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_BTendencies" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_BTendencies" placeholder="Relationship" readonly>
                           </div>
                           <div class="col-md-2 col-sm-3">
                               <div class="form-check">
@@ -842,7 +842,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_GDisease" placeholder="Relationship">
+                              <input type="text" class="form-control" id="R_GDisease" placeholder="Relationship" readonly>
                           </div>
                         </div>
                   </div>
@@ -1133,7 +1133,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details">
+                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details" readonly>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <p>Are you taking medicine regularly?</p>
@@ -1153,7 +1153,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s">
+                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s" readonly>
                                                     </div> 
                                                     <div class="col-md-5">
                                                         <p>Are you allergic to any food or medicine? (ex. Penicilin, Aspirin, shrimp, chicken, etc.</p>
@@ -1173,17 +1173,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify">
+                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify" readonly>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
-                  <div class="float-right card-body">
-                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                    <button class="btn btn-dark" id="cancel">Cancel</button>
-                  </div>
+                                </div>
                   
             </div>
             </form>
@@ -1232,104 +1228,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 }
             }
             
-            function getRegion(){
-                $('#S_Province')
-                .find('option')
-                .remove()
-                ;
-                $('#S_City')
-                .find('option')
-                .remove()
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove()
-                ;   
-                var result;
-                var list = document.getElementById("S_Region");
-                var optionVal = list.options[list.selectedIndex].id;
-                const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from refProvince where regCode = '" + optionVal + "'");
-                Http.send();
-                Http.onreadystatechange = function(){
-                    if(this.readyState==4 && this.status==200){
-                        result = JSON.parse(Http.responseText);
-                        var i=0;
-                        for(i=0;i<result.length;i++){
-                            $('#S_Province')
-                            .find('option')
-                            .end()
-                            .append('<option  id = '+result[i].provCode+'>'+result[i].provDesc+'</option>')
-                            ;
-                        }
-                    }
-                    
-                }
                 
                 
             }
-            
-            function getProvince(){
-                $('#S_City')
-                .find('option')
-                .remove();
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
-                var result;
-                var list = document.getElementById("S_Province");
-                var optionVal = list.options[list.selectedIndex].id;
-                const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from refcitymun where provcode = '" + optionVal + "'");
-                Http.send();
-                Http.onreadystatechange = function(){
-                    if(this.readyState==4 && this.status==200){
-                        result = JSON.parse(Http.responseText);
-                        var i=0;
-                        for(i=0;i<result.length;i++){
-                            $('#S_City')
-                            .find('option')
-                            .end()
-                            .append('<option id = '+result[i].citymunCode+'>'+result[i].citymunDesc+'</option>')
-                            ;
-                        }
-                    }
-                    
-                }
-                
-                
-            } 
-            
-            function getCity(){
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
-                var result;
-                var list = document.getElementById("S_City");
-                var optionVal = list.options[list.selectedIndex].id;
-                const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from refbrgy where citymuncode = '" + optionVal + "'");
-                Http.send();
-                Http.onreadystatechange = function(){
-                    if(this.readyState==4 && this.status==200){
-                        result = JSON.parse(Http.responseText);
-                        var i=0;
-                        for(i=0;i<result.length;i++){
-                            $('#S_Baranggay')
-                            .find('option')
-                            .end()
-                            .append('<option id = '+result[i].brgyCode+'>'+result[i].brgyDesc+'</option>')
-                            ;
-                        }
-                    }
-                    
-                }
-                
-                
-            }
+    function view(){
+        alert("ViewOnly");
+    }
             
     </script>
     <!-- container-scroller -->
@@ -1416,4 +1320,3 @@ else
   echo "<script>document.getElementById('Question3No').checked = 'false'</script>";
 
 ?>
-

@@ -30,17 +30,17 @@ $conn = OpenCon();
 <!-- endinject -->
 <!-- Layout styles -->
 <link rel="stylesheet" href="../../css/style.css" ><!-- End layout styles -->
-<link rel="shortcut icon" href="../../images/favicon.png" />
+<link rel="shortcut icon" href="../../images/logo.png" />
 </head>
 <body>
 <div class="container-scroller">
 <!-- partial:../../partials/_navbar.html -->
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 <div class="navbar-brand-wrapper d-flex align-items-center">
-<a class="navbar-brand brand-logo" href="../../index.html">
-<img src="../../images/logo.svg" alt="logo" class="logo-dark" />
+<a class="navbar-brand brand-logo" href="../../index.php">
+<img src="../../images/ddh.png" alt="logo" class="logo-dark" />
 </a>
-<a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+<a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
 </div>
 
 </nav>
@@ -88,6 +88,21 @@ $conn = OpenCon();
 </ul>
 </div>
 </li>
+
+          			
+<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Tables</span>
+                <i class="icon-layers menu-icon"></i>
+              </a>
+              <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+				  <li class="nav-item"> <a class="nav-link" href="../tables/medicineinventory.php">Medicine Inventory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../tables/studentrecord.php">Student Record</a></li>
+                </ul>
+              </div>
+
 <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
 <li class="nav-item">
 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">

@@ -1,7 +1,7 @@
 
 function getRequest(link){
 	const Http = new XMLHttpRequest();
-	Http.open("GET", "../../saverecords/sql.php?query=" + link);
+	Http.open("POST", "../../saverecords/sql.php?query=" + link);
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
@@ -17,13 +17,10 @@ function getRequest(link){
  
 
 function searchID(){
-	var today = new Date();
-	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-	document.getElementById("Date").value = date;
 	var result;
 	const Http = new XMLHttpRequest();
 	let url = 	"../../saverecords/sql.php?query=select * from tbl_patientinfo where PatientID = '" + document.getElementById("DC_ID").value + "'";
-	Http.open("GET", url);
+	Http.open("POST", url);
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
@@ -59,7 +56,7 @@ function fillUp(ID){
 	var result;
 	const Http = new XMLHttpRequest();
 	let url = 	"../../saverecords/sql.php?query=select * from tbl_patientinfo where PatientID = '" + ID + "'";
-	Http.open("GET", url);
+	Http.open("POST", url);
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
@@ -93,9 +90,22 @@ function saveConsult(){
 	query += "'"+document.getElementById("DC_ID").value + "',";
 	query += "'"+document.getElementById("Diagnosis").value + "',";
 	query += "'"+document.getElementById("Treatment").value + "',";
-	query += "'"+document.getElementById("Complaints").value + "',";
+	query += "'"+document.getElementById("form10").value + "',";
 	query = "INSERT INTO `tbl_diagnosis`(`PatientID`, `Diagnosis`, `Treatment`, `Referral`, `ModifiedBy`, `CreatedBy`) VALUES (" + query + "1,1)"
 	getRequest(query);
+	query="";
+	query += "'"+document.getElementById("DC_ID").value + "',";
+	query += "'"+document.getElementById("P_Temperature").value + "',";
+	query += "'"+document.getElementById("P_BPressure").value + "',";
+	query += "'"+document.getElementById("P_Weight").value + "',";
+	query += "'"+document.getElementById("P_Height").value + "',";
+	query += "'"+document.getElementById("P_PExamination").value + "',";
+	query += "'"+document.getElementById("P_PDirection").value + "',";
+	query = "INSERT INTO `tbl_examinations`(`PatientID`, `Temp`, `BP`, `Weight`, `Height`, `History`, `PhysiciansDirection`, `ModifiedBy`, `CreatedBy`) VALUES (" + query + "1,1)"
+	getRequest(query);
+	alert(query);
+
+
 }
 
 $(document).ready(function() {

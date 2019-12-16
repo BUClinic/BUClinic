@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css" <!-- End layout styles -->
-    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="shortcut icon" href="images/logo.png" />
 </head>
 
 <body>
@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../../images/logo.svg">
+                                <img src="../../images/ddh.png">
                             </div>
                             <h4>Bicol University Clinic</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>

@@ -33,15 +33,15 @@ $conn = OpenCon();
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../css/style.css" ><!-- End layout styles -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/logo.png" />
 </head>
 <body>
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo" href="../../index.php">
-                    <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
+                <a  href="../../index.php">
+                    <img src="../../images/ddh.png" alt="logo" width="200" height="50"  />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
             </div>
@@ -55,7 +55,7 @@ $conn = OpenCon();
                     <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="profile-image">
-                                <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                                <img class="img-xs rounded-circle" src="../../images/faces/noface.jpg" alt="profile image">
                                 <div class="dot-indicator bg-success"></div>
                             </div>
                             <div class="text-wrapper">
@@ -91,6 +91,22 @@ $conn = OpenCon();
                             </ul>
                         </div>
                     </li>
+
+                              			
+			<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Tables</span>
+                <i class="icon-layers menu-icon"></i>
+              </a>
+              <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+				  <li class="nav-item"> <a class="nav-link" href="../tables/medicineinventory.php">Medicine Inventory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../tables/studentrecord.php">Student Record</a></li>
+                </ul>
+              </div>
+
+
                     <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -343,14 +359,14 @@ $conn = OpenCon();
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
-                                                        <label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="Yes"> Yes 
+                                                        <label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="Yes" > Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -374,7 +390,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -399,7 +415,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -424,7 +440,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -449,7 +465,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -467,14 +483,14 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="Yes" >  Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -499,7 +515,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -524,7 +540,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -549,7 +565,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -574,7 +590,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -599,7 +615,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -624,7 +640,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -649,7 +665,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -674,7 +690,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -699,7 +715,7 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="No"> No 
+                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="No" checked="true"> No 
                                                         </label>
                                                     </div>
                                                 </div>
@@ -912,63 +928,63 @@ $conn = OpenCon();
                                                 <div class="col-md-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> BCG 
+                                                            <input type="checkbox" class="form-check-input" id="I_BCG" name="I_BCG"> BCG 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Chicken Pox 
+                                                            <input type="checkbox" class="form-check-input" id="I_CPox" name="I_CPox"> Chicken Pox 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Hepatitis A 
+                                                            <input type="checkbox" class="form-check-input" id="I_AHepa" name="I_AHepa"> Hepatitis A 
                                                         </label>
                                                     </div> 
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Hepatitis B 
+                                                            <input type="checkbox" class="form-check-input" id="I_BHepa" name="I_BHepa"> Hepatitis B 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Mumps 
+                                                            <input type="checkbox" class="form-check-input" id="I_Mumps" name="I_Mumps"> Mumps 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Measles 
+                                                            <input type="checkbox" class="form-check-input" id="I_Measles" name="I_Measles"> Measles 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Typhoid 
+                                                            <input type="checkbox" class="form-check-input" id="I_Typhoid" name="I_Typhoid" > Typhoid 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> German Measle 
+                                                            <input type="checkbox" class="form-check-input" id="I_GMeasle" name="I_GMeasle"> German Measle 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> Polio Vaccine I, II, III, Booster Doses 
+                                                            <input type="checkbox" class="form-check-input" id="I_Polio" name="I_Polio"> Polio Vaccine I, II, III, Booster Doses 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id=""> DPT I, II, III, Booster Doses 
+                                                            <input type="checkbox" class="form-check-input" id="I_DPT" name="I_DPT"> DPT I, II, III, Booster Doses 
                                                         </label>
                                                     </div> 
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" id="txt_IHistory" placeholder="Other">
+                                                    <input type="text" class="form-control" id="txt_IHistory" name="txt_IHistory"  placeholder="Other">
                                                 </div>
                                             </div>
                                         </div>
@@ -992,12 +1008,12 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2 ">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1" value="No"> No 
+                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1" value="No" checked="true"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question1" placeholder="If yes, please give details">
+                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <p>Are you taking medicine regularly?</p>
@@ -1012,12 +1028,12 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2" value="No"> No 
+                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2" value="No" checked="true"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question2" placeholder="If yes, name of drug/s">
+                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s">
                                                     </div> 
                                                     <div class="col-md-5">
                                                         <p>Are you allergic to any food or medicine? (ex. Penicilin, Aspirin, shrimp, chicken, etc.</p>
@@ -1032,12 +1048,12 @@ $conn = OpenCon();
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3" value="No"> No 
+                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3" value="No" checked="true"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input type="text" class="form-control" id="txt_Question3" placeholder="If yes, specify">
+                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify">
                                                     </div>
                                                 </div>
                                             </div>

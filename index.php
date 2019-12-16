@@ -31,17 +31,17 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <!-- Layout styles -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./images/favicon.png" />
+    <link rel="shortcut icon" href="./images/logo.png" />
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="images/logo.svg" alt="logo" class="logo-dark" />
+          <a  href="index.php">
+            <img src="images/ddh.png" alt="logo" width="200" height="50" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome <?php echo $_SESSION["Fname"]." ".$_SESSION["Lname"]; ?></h5>
@@ -68,7 +68,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="images/faces/noface.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -146,7 +146,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
+              <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Tables</a></li>
@@ -158,8 +158,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Medicine Inventory</h4>
+                    <h4 class="card-title">Student Record</h4>
                     <table class="table table-hover">
+                   
                       <thead>
                         <tr>
                           <th class="font-weight-bold">Student Id</th>
@@ -168,65 +169,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <th class="font-weight-bold">Contacts</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>2018-CS-100310</td>
-                          <td>Alavera, Roland L.</td>
-                          <td>Bachelor of Science in Computer Science</td>
-                          <td>09304360903</td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">View<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
-                        <tr>
-                          <td>2018-CS-100320</td>
-                          <td>Dela Cruz, Juanito K.</td>
-                          <td>Bachelor of Science in Education Major in Mathematics</td>
-                          <td>09399210210</td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-        <table class="table table-hover" >
-          
-          <tr>
-     
-            <th>ID<th>
-            <th>Patient ID<th>
-            <th>First Name<th>
-            <th>Middle Name<th>
-            <th>Last Name<th>
-            <th>Age<th>
-            <th>Course<th>
-            <th>Year Level<th>
-            <th>College Unit<th>
-            <th>Contact Number<th>
-            <th>Sex<th>
-            <th>OPTION<th>
-        
-
-            
-            </tr>
-            <tbody id="myTable">
-        <?php 
+                      <tbody id="myTable">
+                    
+                      <?php 
             $sql = "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patientinfo";
             $result = mysqli_query($conn,$sql);
             $rows = array();
@@ -235,16 +180,16 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               $rows[] = $r;
         
              // echo json_encode($rows);
-            
-                echo "<tr><td>".$rows[$ctr]['ID']."<td><td>".$rows[$ctr]['PatientID']."<td><td>".$rows[$ctr]["Lname"]."<td><td>".$rows[$ctr]["Fname"].
-                "<td><td>".$rows[$ctr]["Mname"]."<td><td>".$rows[$ctr]["Age"]."<td><td>".$rows[$ctr]["Course"]."<td><td>".$rows[$ctr]["YearLevel"].
-                "<td><td>".$rows[$ctr]["CollegeUnit"]."<td><td>".$rows[$ctr]["ContactNum"]."<td><td>".$rows[$ctr]["Sex"]."<td><td>".
-                "<td><td>". "<div class='btn-group'>
+         
+                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
+                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"].
+                "</td><td>". "<div class='btn-group'>
+           
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
                 <div class='dropdown-menu'>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100' data-toggle='modal' data-target='#re-stockmodal'>Edit<i class='icon-pencil float-left'></i></button><br>
-                                <button type='button' class='btn btn-warning w-100' data-toggle='modal' data-target='#editmodal'>Chech-Up<i class='icon-pencil float-left'></i></button><br>
-                                <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
+               <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>
                 </div>
                 </div>"."<td><td>"
                 ."<td></tr>";  
@@ -252,18 +197,21 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                
               $ctr++;
               }
-              
-             
-           
-          
+       
               
         ?>
-       </tody>
-        </table>  
+        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
  function editStudentInfo(element){
-   alert(element);
   window.location.href = "pages/forms/editstudent.php?ID="+element;
   const Http = new XMLHttpRequest();
 	Http.open("GET", "saverecords/sql.php?query=select * from tbl_patientinfo where PatientID='" + element + "'");
@@ -272,7 +220,32 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 		if(this.readyState==4 && this.status==200){
 			console.log(Http.responseText);
 			$result = JSON.parse(Http.responseText.substring(1,Http.responseText.length-1));
-      alert($result.Fname);
+      document.getEelementById("S_Fname").value = $result.Fname;
+		}
+	}
+	// alert(result.PatientID);
+}
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+<script>
+ function viewstudentinfo(element){
+  window.location.href = "pages/forms/viewstudentrecord.php?ID="+element;
+  const Http = new XMLHttpRequest();
+	Http.open("GET", "saverecords/sql.php?query=select * from tbl_patientinfo where PatientID='" + element + "'");
+	Http.send();
+	Http.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			console.log(Http.responseText);
+			$result = JSON.parse(Http.responseText.substring(1,Http.responseText.length-1));
       document.getEelementById("S_Fname").value = $result.Fname;
 		}
 	}
