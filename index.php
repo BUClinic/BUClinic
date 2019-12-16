@@ -147,12 +147,6 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <div class="content-wrapper">
             <div class="page-header">
               <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
-              </nav>
             </div>
             <div class="row">
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
@@ -208,6 +202,65 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </div>
             </div>
           </div>
+
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Student Record</h4>
+                    <table class="table table-hover">
+                   
+                      <thead>
+                        <tr>
+                          <th class="font-weight-bold">Student Id</th>
+                          <th class="font-weight-bold">Name</th>
+                          <th class="font-weight-bold">Course</th>
+                          <th class="font-weight-bold">Contacts</th>
+                        </tr>
+                      </thead>
+                      <tbody id="myTable">
+                    
+                      <?php 
+            $sql = "SELECT tbl_patientinfo.ID, tbl_patientinfo.PatientID, tbl_patientinfo.Lname, tbl_patientinfo.Fname, tbl_patientinfo.Mname, tbl_patientinfo.Course, tbl_patientinfo.ContactNum, tbl_diagnosis.Diagnosis, tbl_diagnosis.Treatment, tbl_diagnosis.Referral  from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID";
+            $result = mysqli_query($conn,$sql);
+            $rows = array();
+            $ctr = 0;
+
+            while($r = mysqli_fetch_assoc($result)){
+              $rows[] = $r;
+        
+             // echo json_encode($rows);
+         
+                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
+                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".$rows[$ctr]["Diagnosis"]."</td><td>". "<div class='btn-group'>
+           
+                <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
+                <div class='dropdown-menu'>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
+               <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>
+                </div>
+                </div>"."<td><td>"
+                ."<td></tr>";  
+              
+               
+              $ctr++;
+              }
+       
+              
+        ?>
+        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>

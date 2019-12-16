@@ -1013,7 +1013,7 @@ $conn = OpenCon();
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details">
+                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details" onclick="setYes('\'Question1\'')">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <p>Are you taking medicine regularly?</p>
@@ -1221,6 +1221,9 @@ $conn = OpenCon();
                 }
                 
                 
+            }
+            function setYes(ID_name){
+                document.getElementById(ID_name).cheked= 'true';
             }
             </script>
         <!-- container-scroller -->

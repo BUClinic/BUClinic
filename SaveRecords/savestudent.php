@@ -7,7 +7,6 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 
 
 if(isset($_POST['submit'])){
-
 	$conn = OpenCon();
 	$i=0;
 	$PatientID = $_POST['S_Id'];
@@ -52,9 +51,9 @@ if(isset($_POST['submit'])){
 
 		for($i=0;$i<sizeof($PersonalHistory);$i++){
 			if(isset($_POST[$PersonalHistory[$i]])){
-				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='true' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='true', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
 			}else{
-				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='false' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+				$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='false', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
 			}
 			$conn->query($sqlPersonalHistory);
 		}
@@ -62,15 +61,15 @@ if(isset($_POST['submit'])){
 		//updating to immunization table
 		for($i=0;$i<sizeof($Immunization);$i++){
 			if(isset($_POST["I_".$Immunization[$i]])){//testing if the id of the checkbox is set 
-				$sqlImmu = "UPDATE  tbl_immunizationhistory SET Status = 'true' where PatientID='".$PatientID."' and Answer='I_".$Immunization[$i]."'";
+				$sqlImmu = "UPDATE  tbl_immunizationhistory SET Status = 'true', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Answer='I_".$Immunization[$i]."'";
 			}
 			else{//if not then..
-				$sqlImmu = "UPDATE  tbl_immunizationhistory SET Status = 'false' where PatientID='".$PatientID."' and Answer='I_".$Immunization[$i]."'";
+				$sqlImmu = "UPDATE  tbl_immunizationhistory SET Status = 'false', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Answer='I_".$Immunization[$i]."'";
 			}
 			$conn->query($sqlImmu);
 		}
 		 if($_POST['txt_IHistory']!=null){//checking if the 'others' text box is null or not
-		 	$sqlImmu = "UPDATE  tbl_immunizationhistory SET Answer = '~".$_POST['txt_IHistory']."' where ID = (select ID from tbl_immunizationhistory where Answer like '~%' AND PatientID = '".$PatientID."')";
+		 	$sqlImmu = "UPDATE  tbl_immunizationhistory SET Answer = '~".$_POST['txt_IHistory']."', ModifiedBy='".$Modifiedby."'  where ID = (select ID from tbl_immunizationhistory where Answer like '~%' AND PatientID = '".$PatientID."')";
 			 $conn->query($sqlImmu);
 		 }
 		

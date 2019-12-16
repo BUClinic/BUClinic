@@ -164,9 +164,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   <input type="text" class="form-control" id="DC_LName" placeholder="Last Name"  disabled>
                               </div>
                               <div class="col-md-5 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="DC_ID" placeholder="Student ID #" onkeyup="searchID()">
-                                  <input type="text" class="form-control mb-2" id="DC_College" placeholder="College/Department"  disabled>
-                                  <input type="text" class="form-control mb-2" id="DC_Course" placeholder="Course"  disabled>
+                                  <input type="text" class="form-control mb-2" id="DC_ID" name="S_Id" placeholder="Student ID #" onkeyup="searchID()">
+                                  <input type="text" class="form-control mb-2" id="DC_College"  placeholder="College/Department"  disabled>
+                                  <input type="text" class="form-control mb-2" id="DC_Course"  placeholder="Course"  disabled>
                               </div>
                             </div>
                       </div>
@@ -242,7 +242,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                     <div class="col-md-6 col-sm-12 mb-2">
                                   <label for="form10">Referral/Remarks</label>
                                         <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="form10" name="form10" class="md-textarea form-control" rows="5"></textarea>
+                                        <textarea id="Referrals" name="Referrals" class="md-textarea form-control" rows="5"></textarea>
                                     </div>
                                   <!-- <input type="text" class="form-control mb-2" id="Complaints" placeholder="Complaints">
                                   <input type="text" class="form-control" id="Diagnosis" placeholder="Diagnosis"> -->

@@ -328,10 +328,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                 </select>
                           </div>
 
-                          
-
                           <div class="col-md-2 col-sm-12 mb-2" >
-                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()" readonly>
+                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()">
                                 <option selected disabled>Region</option>
                                 <?php 
                                   $sql = "select * from refregion";
@@ -557,7 +555,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -1232,6 +1230,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 
             }
     function view(){
+        console.log("asd");
         alert("ViewOnly");
     }
             
