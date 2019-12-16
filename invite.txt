@@ -1,4 +1,4 @@
-https://prod.liveshare.vsengsaas.visualstudio.com/join?0B2BE5386F93872ED2C7598F34C2A55A703E
+https://prod.liveshare.vsengsaas.visualstudio.com/join?E647E614D00CF27781CCE4644FB7C3560FCE
 hello 
 "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patieninfo WHERE 1"
 INSERT INTO `tbl_diagnosis`(`ID`, `PatientID`, `Diagnosis`, `Treatment`, `Referral`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])

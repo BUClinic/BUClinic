@@ -23,6 +23,7 @@ $conn = OpenCon();
     <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+     <!--get college combo box-->
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
@@ -39,10 +40,10 @@ $conn = OpenCon();
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo" href="../../index.html">
+                <a class="navbar-brand brand-logo" href="../../index.php">
                     <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
             </div>
             
         </nav>
@@ -165,7 +166,7 @@ $conn = OpenCon();
                                             </div>
                                             
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_Dpartment" id="S_Dpartment" onchange="getCollege(this)">
+                                                <select class="form-control" name="S_Department" id="S_Department" onchange="getCollege(this)">
                                                     
                                                     <option selected disabled>College/Department</option>
                                                     <?php 
@@ -187,7 +188,7 @@ $conn = OpenCon();
                                             
                                             
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_Courses" id="S_Course">
+                                                <select class="form-control" name="S_Course" id="S_Course">
                                                     <option selected disabled>Course</option>
                                                 </select>
                                             </div>
@@ -238,7 +239,7 @@ $conn = OpenCon();
                                                 </select>
                                             </div>
                                             <div class="col-md-4 col-sm-12">
-                                                <input type="text" class="form-control" name="S_SNumber" placeholder="Street #">
+                                                <input type="text" class="form-control" name="S_Street" placeholder="Street #">
                                             </div>
                                         </div>
                                     </div>
@@ -290,7 +291,7 @@ $conn = OpenCon();
                                                     <input type="text" class="form-control" id="M_Address" name="M_Address" placeholder="Address">
                                                 </div>
                                                 <div class="col-md-12 col-sm-12 mb-2">
-                                                    <input type="text" class="form-control" id="M_Occupation" name="M_Occupation" placeholder="Address">
+                                                    <input type="text" class="form-control" id="M_Occupation" name="M_Occupation" placeholder="Occupation">
                                                 </div>
                                                 <div class="col-md-12 col-sm-12">
                                                     <input type="text" class="form-control" id="M_CNumber" name="M_CNumber" placeholder="Contact Number">
@@ -317,7 +318,7 @@ $conn = OpenCon();
                                                     <input type="text" class="form-control" id="G_Address" name="G_Address" placeholder="Address">
                                                 </div>
                                                 <div class="col-md-12 col-sm-12 mb-2">
-                                                    <input type="text" class="form-control" id="G_Occupation" name="G_Occupation" placeholder="Address">
+                                                    <input type="text" class="form-control" id="G_Occupation" name="G_Occupation" placeholder="Occupation">
                                                 </div>
                                                 <div class="col-md-12 col-sm-12">
                                                     <input type="text" class="form-control" id="G_CNumber" name="G_CNumber" placeholder="Contact Number">
@@ -703,7 +704,7 @@ $conn = OpenCon();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_GDisease" placeholder="Relationship">
+                                                    <input type="text" class="form-control" name="R_GDisease"  id="R_GDisease" placeholder="Relationship">
                                                 </div>
                                             </div>
                                         </div>
@@ -1064,16 +1065,16 @@ $conn = OpenCon();
             </div>
             <!-- page-body-wrapper ends -->
         </div>
-        <!--get college combo box-->
-        <script >
-            function getCollege(selectObject){
+       <script>
+
+        function getCollege(selectObject){
                 $('#S_Course')
                 .find('option')
                 .remove()
                 ;
                 var college = selectObject.value; 
                 var result;
-                var list = document.getElementById("S_Dpartment");
+                var list = document.getElementById("S_Department");
                 var optionVal = list.options[list.selectedIndex].text;
                 const Http = new XMLHttpRequest();
                 Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_college where colleges = '" + optionVal + "'");
@@ -1095,18 +1096,6 @@ $conn = OpenCon();
             }
             
             function getRegion(){
-                $('#S_Province')
-                .find('option')
-                .remove()
-                ;
-                $('#S_City')
-                .find('option')
-                .remove()
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove()
-                ;   
                 var result;
                 var list = document.getElementById("S_Region");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1117,6 +1106,24 @@ $conn = OpenCon();
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_Province')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>Province</option>')
+                        ;
+                        $('#S_City')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>City/Municipality</option>')
+                        ;
+                        $('#S_Baranggay')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>Baranggay</option>')
+                        ;  
                         for(i=0;i<result.length;i++){
                             $('#S_Province')
                             .find('option')
@@ -1132,14 +1139,7 @@ $conn = OpenCon();
             }
             
             function getProvince(){
-                $('#S_City')
-                .find('option')
-                .remove();
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
+                  
                 var result;
                 var list = document.getElementById("S_Province");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1150,6 +1150,18 @@ $conn = OpenCon();
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_City')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>City/Municipality</option>')
+                        ;
+                        $('#S_Baranggay')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>Baranggay</option>')
+                        ; 
                         for(i=0;i<result.length;i++){
                             $('#S_City')
                             .find('option')
@@ -1165,10 +1177,6 @@ $conn = OpenCon();
             } 
             
             function getCity(){
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
                 var result;
                 var list = document.getElementById("S_City");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1179,6 +1187,12 @@ $conn = OpenCon();
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_Baranggay')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option selected disabled>Baranggay</option>')
+                        ;  
                         for(i=0;i<result.length;i++){
                             $('#S_Baranggay')
                             .find('option')
@@ -1192,9 +1206,7 @@ $conn = OpenCon();
                 
                 
             }
-            
-            
-        </script>
+            </script>
         <!-- container-scroller -->
         <!-- plugins:js -->
         <script src="../../vendors/js/vendor.bundle.base.js"></script>

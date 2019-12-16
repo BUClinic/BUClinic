@@ -13,6 +13,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     $mother = mysqli_fetch_assoc($result);
     $result = mysqli_query($conn, "select * from tbl_patientsparentinfo where Relation='Guardian' and PatientID='".$_GET['ID']."'");
     $guardian = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn,"select * from tbl_familyhistoryanswer where PatientID = '".$_GET['ID']."'");
+  
 //echo $_SESSION['buhs_user'];
     //$result = mysqli_query($conn,"select * from tbl_user WHERE Username = '".$_POST['username']."'");
     //$r=mysqli_fetch_assoc($result);
@@ -42,12 +44,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <link rel="stylesheet" href="../../css/style.css" ><!-- End layout styles -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
   </head>
-  <body onLoad=<?php echo 'fillUp("'.$_GET['PatientID'].'")'; ?>>
+  <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a class="navbar-brand brand-logo" href="../../index.html">
+          <a class="navbar-brand brand-logo" href="../../index.php">
             <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
@@ -79,7 +81,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <span class="nav-link">Dashboard</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
+              <a class="nav-link" href="../../index.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
@@ -165,7 +167,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </ol>
               </nav>
             </div>
-            <form method="POST" action="../../SaveRecords/savestudent.php?ID">
+            <form method="POST" action="../../SaveRecords/savestudent.php?edit=1">
             <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card">
@@ -181,89 +183,285 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-3 col-sm-12 mb-2">
                               <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>>
                               <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> >
-                              <select class="form-control" name="S_Gender" id="Gender" value=<?php echo '"'.$r['Sex'].'"';?> >
+                              <select class="form-control" name="S_Gender" id="Gender"  >
                                     <option selected disabled >  </option>
+                                    <?php
+                                    if($r['Sex']=="Male"){
+                                      echo "<option selected>Male</option>
+                                      <option>Female</option>";
+                                    }
+                                    else{
+                                      echo "<option >Male</option>
+                                      <option selected>Female</option>";
+                                    }
+                                     
+                                     ?>
                                     <option>Male</option>
                                     <option>Female</option>
                               </select>
                           </div> 
                           <div class="col-md-2 col-sm-12 mb-2">
                               <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> >
-                              <select class="form-control mb-2" name="S_Status" id="Status">
+                              <select class="form-control mb-2" name="S_Status" id="Status" >
                                     <option selected disabled>Civil Status</option>
-                                    <option>Single</option>
-                                    <option>Married</option>
-                                    <option>Widowed</option>
-                                    <option>Divorced</option>
+                                    <?php
+                                      if($r['CivilStatus'] == 'Single'){
+                                        echo "<option selected>Single</option>";
+                                        echo "<option >Married</option>";
+                                        echo "<option >Widowed</option>";
+                                        echo "<option >Divorced</option>";
+                                      }
+                                      if($r['CivilStatus'] == 'Married'){
+                                        echo "<option >Single</option>";
+                                        echo "<option selected>Married</option>";
+                                        echo "<option >Widowed</option>";
+                                        echo "<option >Divorced</option>";
+                                      }
+                                      if($r['CivilStatus'] == 'Widowed'){
+                                        echo "<option >Single</option>";
+                                        echo "<option >Married</option>";
+                                        echo "<option selected>Widowed</option>";
+                                        echo "<option >Divorced</option>";
+                                      }
+                                      if($r['CivilStatus'] == 'Divorced'){
+                                        echo "<option >Single</option>";
+                                        echo "<option >Married</option>";
+                                        echo "<option >Widowed</option>";
+                                        echo "<option selected>Divorced</option>";
+                                      }
+                                    ?>
                               </select>
                               <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?>>
                           </div>
-                          <div class="col-md-4 col-sm-12 mb-2">
-                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?>>
+                          <div class="col-md-3 col-sm-12 mb-2">
+                              <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?> readonly >
                           </div>
                          
-                          <div class="col-md-4 col-sm-12 mb-2">
-                             <select class="form-control" name="S_Dpartment" id="Dpartment" onchange="getCollege(this)">
-                                    <option selected disabled>College/Department</option>
-                                    <option>College of Science</option>
-                                    <option>Institute of Physical Education Sports and Recreation</option>
-                                    <option>College of Engineering</option>
-                                    <option>College of Arts and Letters</option>
-                                    <option>College of Nursing</option>
-                                    <option>College of Law</option>
-                                    <option>College of Medicine</option>
-                                    <option>Institute of Architecture</option>
-                                    <option>College of Industrial Technology</option>
-                                    <option>College of Education</option>
-                                    <option>College of Business Economics and Management</option>
-                                    <option>College of Social Sciences and Philosophy</option>
-                                    <option>College of Agriculture and Forestry</option>
-                                  </select> 
-                          </div>
+                          <div class="col-md-3 col-sm-12 mb-2">
+                            <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)">
+                                
+                                <option selected disabled>College/Department</option>
+                                <?php 
+                                $sql = "select * from tbl_college";
+                                $res = mysqli_query($conn,$sql);
+                                $x=0;
+                                while($list = mysqli_fetch_assoc($res)){
+                                    $col[$x] = $list['colleges'];
+                                    $x++;
+                                }
+                                
+                                for($i=0;$i<=$x;$i++){
+                                  $selected="";
+                                  if(($col[$i]!=$col[$i-1])&&$col[$i]!=null){
+                                  if($r['CollegeUnit']==$col[$i]){
+                                          $selected="selected";  
+                                      }
+                                      echo "<option ".$selected.">".$col[$i]."</option>";
+                                    }
+                                    
+                                }
+                                ?>
+                            </select> 
+                        </div>
                         
                           
-                          <div class="col-md-4 col-sm-12 mb-2">
-                              <select class="form-control" name="S_Course" id="Course">
-                                    <option selected disabled>Course</option>
+                          <div class="col-md-3 col-sm-12 mb-2">
+                              <select class="form-control" name="S_Course" id="S_Course">
+                                    <option selected disabled>Course</option>\
+                                    <?php
+                                      $sql = "select * from tbl_college";
+                                      $res = mysqli_query($conn,$sql);
+                                      $x=0;
+                                      while($list = mysqli_fetch_assoc($res)){
+                                          $col[$x] = $list['colleges'];
+                                          $cor[$x] = $list['courses'] ;
+                                          $x++;
+                                      }
+                                     
+                                      for($i=0;$i<=$x;$i++){
+                                        $selected="";
+                                        if($r['CollegeUnit']==$col[$i]){
+                                          if($r['Course']==$cor[$i]){
+                                            $selected="selected";
+                                          }
+                                        echo "<option ".$selected.">".$cor[$i]."</option>";
+                                        }
+                                                  
+                                      
+                                      }
+                                    ?>
                                  
                                   </select>
+                          </div>
+                          <div class="col-md-3 col-sm-12 mb-2">
+                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel">
+                                                    <option selected disabled>Year Level</option>
+                                                    <?php
+                                                    
+                                                      if($r['YearLevel']=="1st Year"){
+                                                        echo "<option selected >1st Year</option>
+                                                        <option >2nd Year</option>
+                                                        <option >3rd Yeer</option>
+                                                        <option  >4th Year</option>
+                                                        <option >5th Year</option>";
+                                                        
+                                                      }
+                                                      if($r['YearLevel']=="2nd Year"){
+                                                        echo "<option >1st Year</option>
+                                                        <option selected>2nd Year</option>
+                                                        <option >3rd Yeer</option>
+                                                        <option  >4th Year</option>
+                                                        <option >5th Year</option>";
+                                                      }
+                                                      if($r['YearLevel']=="3rd Year"){
+                                                        echo "<option  >1st Year</option>
+                                                        <option >2nd Year</option>
+                                                        <option selected>3rd Yeer</option>
+                                                        <option  >4th Year</option>
+                                                        <option >5th Year</option>";
+                                                      }
+                                                      if($r['YearLevel']=="4th Year"){
+                                                        echo "<option  >1st Year</option>
+                                                        <option >2nd Year</option>
+                                                        <option >3rd Yeer</option>
+                                                        <option selected>4th Year</option>
+                                                        <option >5th Year</option>";
+                                                        
+                                                      }
+                                                      if($r['YearLevel']=="5th Year"){
+                                                        echo "<option  >1st Year</option>
+                                                        <option >2nd Year</option>
+                                                        <option >3rd Yeer</option>
+                                                        <option  >4th Year</option>
+                                                        <option selected>5th Year</option>";
+                                                        
+                                                      }
+                                                    ?>
+                                                    
+                                                </select>
                           </div>
 
                           
 
                           <div class="col-md-2 col-sm-12 mb-2" >
-                              <select  class="form-control" name="S_Region" id="Region" onchange="getRegion(this)">
+                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()">
                                 <option selected disabled>Region</option>
                                 <?php 
                                   $sql = "select * from refregion";
                                   $res = mysqli_query($conn,$sql);
                                   $x=0;
+                                 
                                   while($list = mysqli_fetch_assoc($res)){
+                                    $selected="";
                                     $reg[$x] = $list['regDesc'];
-                                    $code[$x] = $list['regCode'];
-                                    echo "<option value=".$code[$x].">".$reg[$x]."</option>";
+                                    $code[$x] = $list['regCode'];                     
+                                    if($reg[$x]==$r['Region']){
+                                      $selected="selected";
+                                    }
+                                    echo "<option id=".$code[$x]." ".$selected.">".$reg[$x]."</option>";
                                     $x++;
                                   }
                                 ?>
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <select  class="form-control" name="S_Province" id="Province">
+                              <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()">
                               <option selected disabled>Province</option>
+                              <?php 
+                                  $sql = "select * from refprovince";
+                                  $res = mysqli_query($conn,$sql);
+                                  $x=0;
+                                  $prcode=0;
+                                  while($list = mysqli_fetch_assoc($res)){
+                                    $prov[$x] = $list['provDesc'];
+                                    $pcode[$x] = $list['provCode'];
+                                    $rcode[$x] =  $list['regCode'];
+                                    if($prov[$x]==$r['Province']){
+                                      $prcode =$rcode[$x];
+                   
+                                    }
+                                    $x++;
+                                  }
+                                  for($i=0;$i<=$x;$i++){
+                                    $selected="";
+                                    if( $prcode == $rcode[$i]){
+                                      if($prov[$i]==$r['Province'])
+                                        $selected="selected";
+                                      echo "<option id=".$pcode[$i]." ".$selected.">".$prov[$i]."</option>";
+                                    }
+                                   
+                                  }
+        
+                                ?>
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                          <select  class="form-control" name="S_City" id="City">
+                          <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()">
                               <option selected disabled>City/Municipality</option>
+                              <?php 
+                                  $sql = "select * from refcitymun";
+                                  $res = mysqli_query($conn,$sql);
+                                  $x=0;
+                                  $pccode=0;
+                                  while($list = mysqli_fetch_assoc($res)){
+                                    $city[$x] = $list['citymunDesc'];
+                                    $ccode[$x] = $list['citymunCode'];
+                                    $pcode[$x] =  $list['provCode'];
+                                    if($city[$x]==$r['MuniCity']){
+                                      $pccode =$pcode[$x];
+
+                                    }
+                                    $x++;
+                                  }
+                                  for($i=0;$i<=$x;$i++){
+                                    $selected="";
+                                  
+                                    if( $pccode == $pcode[$i]){
+
+                                      if($city[$i]==$r['MuniCity'])
+                                        $selected="selected";
+                                      echo "<option id=".$ccode[$i]." ".$selected.">".$city[$i]."</option>";
+                                    }
+                                   
+                                  }
+        
+                                ?>
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12  mb-2">
-                          <select  class="form-control" name="S_Baranggay" id="Baranggay">
+                          <select  class="form-control" name="S_Baranggay" id="S_Baranggay">
                               <option selected disabled>Baranggay</option>
+                              <?php 
+                                  $sql = "select * from refbrgy";
+                                  $res = mysqli_query($conn,$sql);
+                                  $x=0;
+                                  $cbcode=0;
+                                  while($list = mysqli_fetch_assoc($res)){
+                                    $brgy[$x] = $list['brgyDesc'];
+                                    $bcode[$x] = $list['brgyCode'];
+                                    $bbcode[$x] =  $list['citymunCode'];
+                                    if($brgy[$x]==$r['Brgy']){
+                                      $cbcode =$bbcode[$x];
+
+                                    }
+                                    $x++;
+                                  }
+                                  for($i=0;$i<=$x;$i++){
+                                    $selected="";
+                                    if( $cbcode == $bbcode[$i]){
+                                      if($brgy[$i]==$r['Brgy'])
+                                        $selected="selected";
+                                      echo "<option id=".$bcode[$i]." ".$selected.">".$brgy[$i]."</option>";
+                                    }
+                                   
+                                  }
+        
+                                ?>
+                            
                               </select>
                           </div>
                           <div class="col-md-4 col-sm-12">
-                              <input type="text" class="form-control" name="S_SNumber" placeholder="Street #" id="Street">
+                              <input type="text" class="form-control" name="S_Street" placeholder="Street #" id="Street"value=<?php echo '"'.$r['Street'].'"'?> >
                           </div>
                         </div>
                   </div>
@@ -276,22 +474,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Father's Information <i class="icon-user float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="F_Name" placeholder="First Name" value=<?php echo "'".$father['Fname']."'" ?>>
+                        <input type="text" class="form-control" name="F_FName" id="F_Name" placeholder="First Name" value=<?php echo "'".$father['Fname']."'" ?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_Name" placeholder="Middle Name"value=<?php echo "'".$father['Mname']."'"?>>
+                        <input type="text" class="form-control" name="F_MName" id="F_MName" placeholder="Middle Name"value=<?php echo "'".$father['Mname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="L_Name" placeholder="Last Name"value= <?php echo "'".$father['Lname']."'"?> >
+                        <input type="text" class="form-control" name="F_LName" id="L_Name" placeholder="Last Name"value= <?php echo "'".$father['Lname']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="F_Address" placeholder="Address" value= <?php echo "'".$father['OfficeAddress']."'"?> >
+                        <input type="text" class="form-control" name="F_Address" id="F_Address" placeholder="Address" value= <?php echo "'".$father['OfficeAddress']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="F_Occupation" placeholder="Occupation" value= <?php echo "'".$father['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="F_Occupation" id="F_Occupation" placeholder="Occupation" value= <?php echo "'".$father['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="F_CNumber" placeholder="Contact Number"value= <?php echo "'".$father['ContactNumber']."'"?> >
+                        <input type="text" class="form-control" name="F_CNumber" id="F_CNumber" placeholder="Contact Number"value= <?php echo "'".$father['ContactNumber']."'"?> >
                       </div>
                       </div>
                   </div>
@@ -303,22 +501,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Mother's Information <i class=" icon-user-female float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="F_FName" placeholder="First Name"  value= <?php echo "'".$mother['Fname']."'"?>>
+                        <input type="text" class="form-control" name="M_FName" id="F_FName" placeholder="First Name"  value= <?php echo "'".$mother['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_MName" placeholder="Middle Name"  value= <?php echo "'".$mother['Mname']."'"?>>
+                        <input type="text" class="form-control" name="M_MName" id="M_MName" placeholder="Middle Name"  value= <?php echo "'".$mother['Mname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="L_LName" placeholder="Last Name"  value= <?php echo "'".$mother['Lname']."'"?>>
+                        <input type="text" class="form-control" name="M_LName" id="L_LName" placeholder="Last Name"  value= <?php echo "'".$mother['Lname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_Address" placeholder="Address" value= <?php echo "'".$mother['OfficeAddress']."'"?>>
+                        <input type="text" class="form-control" name="M_Address" id="M_Address" placeholder="Address" value= <?php echo "'".$mother['OfficeAddress']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="M_Occupation" placeholder="Occupation" value= <?php echo "'".$mother['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="M_Occupation" id="M_Occupation" placeholder="Occupation" value= <?php echo "'".$mother['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="M_CNumber" placeholder="Contact Number"value= <?php echo "'".$mother['ContactNumber']."'"?>>
+                        <input type="text" class="form-control" name="M_CNumber" id="M_CNumber" placeholder="Contact Number"value= <?php echo "'".$mother['ContactNumber']."'"?>>
                       </div>
                       </div>
                   </div>
@@ -330,22 +528,22 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <h4 class="card-title">Guardian's Information <i class="icon-user-follow float-left"></i></h4>
                       <div class="form-group row">
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_FName" placeholder="First Name"  value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_FName" id="G_FName" placeholder="First Name"  value= <?php echo "'".$guardian['Fname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_MName" placeholder="Middle Name"value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_MName" id="G_MName" placeholder="Middle Name"value= <?php echo "'".$guardian['Mname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_LName" placeholder="Last Name"value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_LName" id="G_LName" placeholder="Last Name"value= <?php echo "'".$guardian['Lname']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_Address" placeholder="Address"value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_Address" id="G_Address" placeholder="Address"value= <?php echo "'".$guardian['OfficeAddress']."'"?>>
                       </div>
                       <div class="col-md-12 col-sm-12 mb-2">
-                        <input type="text" class="form-control" id="G_Occupation" placeholder="Occupation" value= <?php echo "'".$guardian['Occupation']."'"?> >
+                        <input type="text" class="form-control" name="G_Occupation" id="G_Occupation" placeholder="Occupation" value= <?php echo "'".$guardian['Occupation']."'"?> >
                       </div>
                       <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="G_CNumber" placeholder="Contact Number"value= <?php echo "'".$guardian['Fname']."'"?>>
+                        <input type="text" class="form-control" name="G_CNumber" id="G_CNumber" placeholder="Contact Number"value= <?php echo "'".$guardian['ContactNumber']."'"?>>
                       </div>
                       </div>
                   </div>
@@ -366,13 +564,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -386,13 +584,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -406,13 +604,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -426,13 +624,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -446,13 +644,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -466,13 +664,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -486,13 +684,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -506,13 +704,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -526,13 +724,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -546,13 +744,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -566,13 +764,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -586,13 +784,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -606,13 +804,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -626,13 +824,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -646,13 +844,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No"> No </label>
                                   
                             </div>
                           </div>
@@ -671,208 +869,252 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                         <label>  PAST ILLNESS(Mga Naging Sakit)</label>
                         <div class="form-group row">
                           <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Primary Complex </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Kidney Disease </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Pneumonia </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Ear Problems </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Mental Disorder </label>
-                            </div>  
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Asthma </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Skin Problem </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Dengue </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Mumps </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Typhoid Fever </label>
-                            </div>  
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Rheumatic Fever </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Diabetes </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Measles </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Thyroid Disorder </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Hepatitis </label>
-                            </div>  
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Chicken Pox </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Eye Disorder </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Poliomy Elitis </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Heart Disease </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Anemia/Leukemia </label>
-                            </div>  
-                         </div>   
-                      </div>
-                      <label>  PRESENT ILLNESS (Mga Sintomas na Nararamdaman)</label>
-                        <div class="form-group row">
-                          <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Chest Pain </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Indigestion </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Swollen Feet </label>
-                            </div> 
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Headaches </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Sore Throat (Frequent) </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Dizziness </label>
-                            </div>
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Nausea/Vomiting </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Difficult Breathing </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Weight Loss </label>
-                            </div>
-                         </div>
-                         <div class="col-md-3 col-sm-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Insomia </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Joint Pains </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Frequent Urination </label>
-                            </div> 
-                         </div>   
-                      </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"> Immunization History <i class=" icon-chemistry float-left"></i></h4>
-                        <div class="form-group row">
-                          <div class="col-md-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> BCG </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Chicken Pox </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Hepatitis A </label>
-                            </div> 
-                         </div>
-                         <div class="col-md-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Hepatitis B </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Mumps </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Measles </label>
-                            </div>
-                         </div>
-                         <div class="col-md-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Typhoid </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> German Measle </label>
-                            </div>  
-                         </div>
-                         <div class="col-md-3">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> Polio Vaccine I, II, III, Booster Doses </label>
-                            </div>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" id=""> DPT I, II, III, Booster Doses </label>
-                            </div> 
+                          <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_primaryComplex" name="c_primaryComplex" value="Primary Complex"> Primary Complex 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_kidneyDisease" name="c_kidneyDisease" value="Kidney Disease" > Kidney Disease 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_pneumonia" name="c_pneumonia" value="Pneumonia"> Pneumonia 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_earProblems" name="c_earProblems" value="Ear Problems"> Ear Problems
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_mentalDisorder" name="c_mentalDisorder" value="Mental Disorder"> Mental Disorder 
+                                                        </label>
+                                                    </div>  
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_asthma" name="c_asthma" value="Asthma"> Asthma 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_skinProblem" name="c_skinProblem" value="Skin Problem"> Skin Problem 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_dengue" name="c_dengue" value="Dengue"> Dengue 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_mumps" name="c_mumps" value="Mumps"> Mumps 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_typhoidFever" name="c_typhoidFever" value="Typhoid Fever"> Typhoid Fever 
+                                                        </label>
+                                                    </div>  
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_rheumaticFever" name="c_rheumaticFever" value="Rheumatic Fever"> Rheumatic Fever 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_diabetes" name="c_diabetes" value="Diabetes"> Diabetes 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_measles" name="c_measles" value="Measles"> Measles 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_thyroidDisorder" name="c_thyroidDisorder" value="Thyroid Disorder"> Thyroid Disorder 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_hepatitis" name="c_hepatitis" value="Hepatitis"> Hepatitis 
+                                                        </label>
+                                                    </div>  
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_chickenPox" name="c_chickenPox" value="Chicken Pox"> Chicken Pox 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_eyeDisorder" name="c_eyeDisorder" value="Eye Disorder"> Eye Disorder 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_poliomyElitis" name="c_poliomyElitis" value="Poliomy Elitis"> Poliomy Elitis 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_heartDisease" name="c_heartDisease" value="Heart Disease"> Heart Disease 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_anemia" name="c_anemia" value="Anemia/Leukemia"> Anemia/Leukemia 
+                                                        </label>
+                                                    </div>  
+                                                </div>   
+                                            </div>
+                                            <label>  PRESENT ILLNESS (Mga Sintomas na Nararamdaman)
+                                                
+                                            </label>
+                                            <div class="form-group row">
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_chestPain" name="c_chestPain" value="Chest Pain"> Chest Pain 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_indigestion" name="c_indigestion" value="Indigestion"> Indigestion 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_swollenFeet" name="c_swollenFeet" value="Swollen Feet"> Swollen Feet 
+                                                        </label>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_headaches" name="c_headaches" value="Headaches"> Headaches 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_soreThroat" name="c_soreThroat" value="Sore Throat"> Sore Throat (Frequent) 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_dizziness" name="c_dizziness" value="Dizziness"> Dizziness 
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_nausea" name="c_nausea" value="Nausea/Vomiting"> Nausea/Vomiting 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_difficultBreathing" name="c_difficultBreathing" value="Difficult Breathing"> Difficult Breathing 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_weightLoss" name="c_weightLoss" value="Weight Loss"> Weight Loss 
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_insomia" name="c_insomia" value="Insomia"> Insomia 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_jointPains" name="c_jointPains" value="Joint Pains"> Joint Pains 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="c_frequentUrination" name="c_frequentUrination" value="Frequent Urination"> Frequent Urination 
+                                                        </label>
+                                                    </div> 
+                                                </div>   
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title"> Immunization History <i class=" icon-chemistry float-left"></i></h4>
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> BCG 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Chicken Pox 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Hepatitis A 
+                                                        </label>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Hepatitis B 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Mumps 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Measles 
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Typhoid 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> German Measle 
+                                                        </label>
+                                                    </div>  
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> Polio Vaccine I, II, III, Booster Doses 
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id=""> DPT I, II, III, Booster Doses 
+                                                        </label>
+                                                    </div>
                          </div>
                             
                             <div class="col-md-5">
@@ -970,171 +1212,133 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     </div>
     <!--get college combo box-->
     <script>
-      function getCollege(selectObject) {
-        var college = selectObject.value;  
-        if(college == "College of Science"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option value="cs" >BS Computer Science</option>')
-              .append('<option value="cs">BS Information Technology</option>')
-              .append('<option value="cs">BS Biology</option>')
-              .append('<option value="cs">BS Meteorology</option>')
-              .append('<option value="cs">BS Chemistry</option>')
-          ;
-        }
-        else if(college == "College of Nursing"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option value="cn">Bachelor of Science in Ladderized Nursing</option>')
-          ;
-        }
-        else if(college == "College of Engineering"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option value="ceng">Bachelor of Science in Chemical Engineering (BSChE)</option>')
-              .append('<option value="ceng">Bachelor of Science in Civil Engineering (BSCE)</option>')
-              .append('<option value="ceng">Bachelor of Science in Electrical Engineering (BSEE)</option>')
-              .append('<option value="ceng">Bachelor of Science in Geodetic Engineering (BSGE)</option>')
-              .append('<option value="ceng">Bachelor of Science in Mechanical Engineering (BSME)</option>')
-              .append('<option value="ceng">Bachelor of Science in Mining Engineering (BSEM)</option>')
-          ;
-        }
-        else if(college == "College of Arts and Letters"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>Bachelor of Arts in English</option>')
-              .append('<option>Bachelor of Arts in Speech and Theater Arts</option>')
-              .append('<option>Bachelor of Arts in Journalism</option>')
-              .append('<option>Bachelor of Arts in Communication</option>')
-              .append('<option>Bachelor of Arts in Broadcasting</option>')
-          ;
-        }
-        else if(college == "College of Law"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>Juris Doctor</option>')
-              
-          ;
-        }
-        else if(college == "College of Education"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>Bachelor in Elementary Education</option>')
-              .append('<option> Bachelor in Secondary Education Major</option>')
-          ;
-        }
-        else if(college == "College of Industrial Technology"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>BACHELOR OF SCIENCE IN CIVIL TECHNOLOGY</option>')
-              .append('<option>BACHELOR OF SCIENCE IN ELECTRICAL TECHNOLOGY</option>')
-              .append('<option>BACHELOR OF SCIENCE IN ELECTRONICS TECHNOLOGY</option>')
-              .append('<option>BACHELOR OF SCIENCE IN FOOD TECHNOLOGY</option>')
-              .append('<option>BACHELOR OF SCIENCE IN INDUSTRIAL EDUCATION</option>')
-              .append('<option>BACHELOR OF SCIENCE IN MECHANICAL TECHNOLOGY</option>')
-          ;
-        }
-        else if(college == "College of Business Economics and Management"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>Bachelor of Science in Economics</option>')
-              .append('<option>BS in Accountancy </option>')
-              .append('<option>BS in Entrepreneurship</option>')
-              .append('<option>BSBA major in Management</option>')
-              .append('<option>BSBA major in Finacial Management</option>')
-              .append('<option>BSBA Major in Human Resource Development Management</option>')
-              .append('<option>BSBA major in Microfinance</option>')
-              .append('<option>BSBA major in Operations Management</option>')
-              .append('<option>BSBA major in Marketing Management </option>')
-          ;
-        }
-        else if(college == "College of Social Sciences and Philosophy"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>AB PEACE AND SECURITY STUDIES</option>')
-              .append('<option>AB PHILOSOPHY</option>')
-              .append('<option>AB POLITICAL SCIENCE</option>')
-              .append('<option>BS SOCIAL WORK</option>')
-              .append('<option>AB SOCIOLOGY</option>')
-          ;
-        }
-        else if(college == "College of Agriculture and Forestry"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option>MS in Agriculture</option>')
-              .append('<option>Major in Animal Science</option>')
-              .append('<option>Major in Agronomy</option>')
-              .append('<option>Major in Agricultural Extension</option>')
-              .append('<option>Master in Rural Development</option>')
-              .append('<option>MS in Agriculture</option>')
-              .append('<option>Major in Crop Science</option>')
-              .append('<option>Major in Animal Science</option>')
-              .append('<option>Major in Agricultural Extension</option>')
-              .append('<option>MS in Agribusiness</option>')
-              .append('<option>MS in Forestry</option>')
-              .append('<option>MS in Agricultural Engineering</option>')
-              .append('<option>Bachelor in Agricultural Technology</option>')
-          ;
-        }
-        else if(college == "Institute of Physical Education Sports and Recreation"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option >Bachelor of Physical Education</option>')
-              .append('<option > Bachelor of Physical Education Major in Sports and Wellness Management</option>')
-          ;
-        }
-        else if(college == "College of Medicine"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option >Doctor of Medicine - Master of Public Administration</option>')
-              .append('<option >Major in Health Emergencies adn Disaster Management</option>')
-          ;
-        }
-        else if(college == "Institute of Architecture"){
-          $('#S_Course')
-              .find('option')
-              .remove()
-              .end()
-              .append('<option> BS in Architecture</option>')
-          ;
-        }
-          
-        
-      }
-
-      function getRegion(selectObject){
-        var getRegions = document.getElementById("S_Region");
-        var getRegCode = getRegions.options[getRegions.selectedIndex].value;
-        alert(getRegCode);
-      }
-
-      
-
-
+      function getCollege(selectObject){
+                $('#S_Course')
+                .find('option')
+                .remove()
+                ;
+                var college = selectObject.value; 
+                var result;
+                var list = document.getElementById("S_Dpartment");
+                var optionVal = list.options[list.selectedIndex].text;
+                const Http = new XMLHttpRequest();
+                Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_college where colleges = '" + optionVal + "'");
+                Http.send();
+                Http.onreadystatechange = function(){
+                    if(this.readyState==4 && this.status==200){
+                        result = JSON.parse(Http.responseText);
+                        var i=0;
+                        for(i=0;i<result.length;i++){
+                            $('#S_Course')
+                            .find('option')
+                            .end()
+                            .append('<option>'+result[i].courses+'</option>')
+                            ;
+                        }
+                    }
+                    
+                }
+            }
+            
+            function getRegion(){
+                $('#S_Province')
+                .find('option')
+                .remove()
+                ;
+                $('#S_City')
+                .find('option')
+                .remove()
+                ;
+                $('#S_Baranggay')
+                .find('option')
+                .remove()
+                ;   
+                var result;
+                var list = document.getElementById("S_Region");
+                var optionVal = list.options[list.selectedIndex].id;
+                const Http = new XMLHttpRequest();
+                Http.open("GET", "../../saverecords/sql.php?query=select * from refProvince where regCode = '" + optionVal + "'");
+                Http.send();
+                Http.onreadystatechange = function(){
+                    if(this.readyState==4 && this.status==200){
+                        result = JSON.parse(Http.responseText);
+                        var i=0;
+                        for(i=0;i<result.length;i++){
+                            $('#S_Province')
+                            .find('option')
+                            .end()
+                            .append('<option  id = '+result[i].provCode+'>'+result[i].provDesc+'</option>')
+                            ;
+                        }
+                    }
+                    
+                }
+                
+                
+            }
+            
+            function getProvince(){
+                $('#S_City')
+                .find('option')
+                .remove();
+                ;
+                $('#S_Baranggay')
+                .find('option')
+                .remove();
+                ;   
+                var result;
+                var list = document.getElementById("S_Province");
+                var optionVal = list.options[list.selectedIndex].id;
+                const Http = new XMLHttpRequest();
+                Http.open("GET", "../../saverecords/sql.php?query=select * from refcitymun where provcode = '" + optionVal + "'");
+                Http.send();
+                Http.onreadystatechange = function(){
+                    if(this.readyState==4 && this.status==200){
+                        result = JSON.parse(Http.responseText);
+                        var i=0;
+                        for(i=0;i<result.length;i++){
+                            $('#S_City')
+                            .find('option')
+                            .end()
+                            .append('<option id = '+result[i].citymunCode+'>'+result[i].citymunDesc+'</option>')
+                            ;
+                        }
+                    }
+                    
+                }
+                
+                
+            } 
+            
+            function getCity(){
+                $('#S_Baranggay')
+                .find('option')
+                .remove();
+                ;   
+                var result;
+                var list = document.getElementById("S_City");
+                var optionVal = list.options[list.selectedIndex].id;
+                const Http = new XMLHttpRequest();
+                Http.open("GET", "../../saverecords/sql.php?query=select * from refbrgy where citymuncode = '" + optionVal + "'");
+                Http.send();
+                Http.onreadystatechange = function(){
+                    if(this.readyState==4 && this.status==200){
+                        result = JSON.parse(Http.responseText);
+                        var i=0;
+                        for(i=0;i<result.length;i++){
+                            $('#S_Baranggay')
+                            .find('option')
+                            .end()
+                            .append('<option id = '+result[i].brgyCode+'>'+result[i].brgyDesc+'</option>')
+                            ;
+                        }
+                    }
+                    
+                }
+                
+                
+            }
+            
     </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -1156,4 +1360,19 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
   </body>
 </html>
 
+
+<?php
+$i=0;
+$Illness = array('Cancer','Hypertension','Stroke','Tuberculosis','Rheumatism','EDisorder','Diabetes','Asthma','Convulsion','SProblems','HDisease','KProblem','MDisorder','BTendencies','GDisease');
+while($r = mysqli_fetch_assoc($result)){
+  echo '<script>console.log(\''.$r['Status'].'\')</script>';
+  if($r['Status']==='Yes'){
+    echo '<script>document.getElementById(\'option'.$Illness[$i].'Yes\').checked = true</script>';
+    echo '<script>document.getElementById(\'R_'.$Illness[$i].'\').value = \''.$r['Relation'].'\'</script>';
+  }else{
+    echo '<script>document.getElementById(\'option'.$Illness[$i].'No\').checked = true</script>';
+  }
+$i++;
+}
+?>
 
