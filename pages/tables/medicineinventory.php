@@ -45,7 +45,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <ul class="navbar-nav navbar-nav-right ml-auto">
             <form class="search-form d-none d-md-block" action="#">
               <i class="icon-magnifier"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+              <input type="search" id="myInput"  class="form-control" placeholder="Search Patient Record" title="Search Patient Record here">
             </form>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -143,8 +143,49 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                  <input class='btn btn-primary w-100' type="button" data-toggle="modal" data-target="#Medicine" name="AddMed" style="width: 100%" value="Add Medicine">
+                  <div class="modal fade" id="Medicine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <form method="POST" action="../../SaveRecords/savemed.php">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                         </div>
+                       <div class="modal-body">
+                      <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
+                        <div class="form-group row">
+                           
+                            <div class="col-md-12 col-sm-12 mb-2">
+                                <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name">
+                            </div>
+                            <div class="col-md-12 col-sm-12 mb-2">
+                            <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category">
+                            </div>
+                            <div class="col-md-12 col-sm-12 mb-2">
+                                <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock">
+                            </div>
+                             <div class="col-md-12 col-sm-12 mb-2">
+                                <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure">
+                            </div>
+                            <div class="col-md-12 col-sm-12 mb-2">
+                              <div class="row">
+                                 <label class="form-control col-md-5" >Expiration Date: </label>          
+                                <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'">
+                              </div>
+                             </div>
+                        </div>
+                                   
+                       </div>
+                        <div class="modal-footer">
+                             <button type="submit"  class="btn btn-primary w-100" name="AddMed">Add</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </ol>
               </nav>
             </div>
@@ -156,83 +197,87 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th class="font-weight-bold">Generic Name</th>
-                          <th class="font-weight-bold">Quantity</th>
+                          <th class="font-weight-bold">Category</th>
+                          <th class="font-weight-bold">Medicine Name</th>
+                          <th class="font-weight-bold">Stock</th>
+                          <th class="font-weight-bold">Unit Measure</th>
                           <th class="font-weight-bold">Expiration Date</th>
-                          <th class="font-weight-bold">Last Stock Date</th>
+                          <th class="font-weight-bold">Options</th>
+
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>Photoshop</td>
-                          <td class="text-danger"> 28.76% <i class="icon-arrow-down-circle"></i></td>
-                          <td><label class="badge badge-danger">Pending</label></td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
+                    <tbody id="myTable1">
+                    
+                      <?php 
+                        $sql = "SELECT * from tbl_medicine";
+                        $result = mysqli_query($conn,$sql);
+                        $rows = array();
+                        $ctr = 0;
+                        while($r = mysqli_fetch_assoc($result)){
+                          $rows[] = $r;
+                            echo "<tr>
+
+                                <td>".$rows[$ctr]["Category"]."</td>
+                                <td>".$rows[$ctr]["MedicineName"]."</td>
+                                <td>".$rows[$ctr]["Stock"]."</td>
+                                <td>".$rows[$ctr]["UnitMeasure"]."</td>
+                                <td>".$rows[$ctr]["ExpDate"]."</td>
+                                <td><div class='btn-group'>
+                                  
+                                  <button id='MedId' value='".$rows[$ctr]['ID']. " type='button' data-toggle='modal' data-target='#editMedicine".$ctr."' class='btn btn-primary w-100'> Edit <i class='icon-pencil float-left'></i></button><br>
+                                </div></td>
+                                </tr>";
+                                ?>
+                                <!--modal of deit medicine-->
+                                <div class="modal fade"  id=<?php echo "\"editMedicine".$ctr."\"";?> role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <form method="POST" action="../../SaveRecords/savemed.php">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                          <input type="hidden" class="form-control" id="M_IDe" name="M_IDe"
+                                              value=<?php echo $rows[$ctr]["ID"];?> >
+                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
+                                              value=<?php echo $rows[$ctr]["MedicineName"];?> >
+
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   value=<?php echo $rows[$ctr]["Category"];?>>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" value=<?php echo $rows[$ctr]["Stock"];?>>
+                                        </div>
+                                         <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" value=<?php echo $rows[$ctr]["UnitMeasure"];?>>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                          <div class="row">
+                                             <label class="form-control col-md-5" >Expiration Date: </label>          
+                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" value=<?php echo $rows[$ctr]["ExpDate"];?>>
+                                          </div>
+                                         </div>
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                         <button type="submit"  class="btn btn-primary w-100" name="EditMed">Save</button>
+                                    </div>
+                                    </form>
+                                  </div>
+                                </div>
                               </div>
-                            </div></td>
-                        </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>Flash</td>
-                          <td class="text-danger"> 21.06% <i class="icon-arrow-down-circle"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>Premier</td>
-                          <td class="text-danger"> 35.00% <i class="icon-arrow-down-circle"></i></td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>1<br>2</td>
-                          <td class="text-success"> 82.00%<br>82.00% <i class="icon-arrow-up-circle"></i></td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td class="text-success"> 98.05% <i class="icon-arrow-up-circle"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                          <td><div class="btn-group">
-                              <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown"><i class="icon-menu"></i></button>
-                              <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#re-stockmodal">Re-Stock<i class="icon-plus float-left"></i></button><br>
-                                <button type="button" class="btn btn-warning w-100" data-toggle="modal" data-target="#editmodal">Edit<i class="icon-pencil float-left"></i></button><br>
-                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deletemodal">Delete<i class="icon-trash float-left"></i></button>
-                              </div>
-                            </div></td>
-                        </tr>
+                          <?php  
+                          $ctr++;
+                          }          
+                    ?>
                       </tbody>
                     </table>
                   </div>
@@ -254,6 +299,20 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       </div>
       <!-- page-body-wrapper ends -->
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        
+        $("#myTable1 tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="../../vendors/js/vendor.bundle.base.js"></script>
@@ -272,6 +331,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <script src="../../js/my.js"></script>
     <!-- End custom js for this page -->
   </body>
+
 </html>
 
 

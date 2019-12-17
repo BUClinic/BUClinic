@@ -102,6 +102,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/studenthealthform.php">Student Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/employeeform.php">Employee Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/dailyconsultation.php">DailyConsultation Form</a></li>
+                   <li class="nav-item"> <a class="nav-link" href="pages/forms/medinventoryform.php">Medicine Inventory Form</a></li>
+
                 </ul>
               </div>
             </li>
