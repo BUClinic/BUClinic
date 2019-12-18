@@ -37,7 +37,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="../../index.php">
-            <img src="../../images/ddh.png" alt="logo" class="logo-dark" />
+            <img src="../../images/ddh.png" alt="logo" class="logo-dark" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
@@ -75,11 +75,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Dashboard</span>
+              <span class="nav-link">Records</span>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
@@ -94,6 +94,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 <li class="nav-item"> <a class="nav-link" href="../forms/studenthealthform.php">Student Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="../forms/employeeform.php">Employee Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="../forms/dailyconsultation.php">Daily Consultant Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="../forms/medicationform.php">Medicine Inventory Form</a></li>
 </ul>
 </div>
 </li>

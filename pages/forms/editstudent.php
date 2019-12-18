@@ -78,11 +78,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Dashboard</span>
+              <span class="nav-link">Records</span>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
@@ -96,9 +96,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
               <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/forms/studenthealthform.php">Student Form</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/forms/employeeform.php">Employee Form</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/forms/dailyconsultation.php">DailyConsultation Form</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">DailyConsultation Form</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medicine Inventory Form</a></li>
                 </ul>
               </div>
             </li>
@@ -539,315 +540,386 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </div>
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"> Family History <i class=" icon-people float-left"></i></h4>
-                    <p class="card-description"> Please indicate relationship if yes. </p>
+                    <div class="card-body">
+                        <h4 class="card-title"> Family History <i class=" icon-people float-left"></i></h4>
+                        <p class="card-description"> Please indicate relationship if yes. </p>
                         <div class="form-group row">
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Cancer </label>
+                            <div class="col-md-2 col-sm-3 mb-2">
+                                <div class="form-check">
+                                    <label class="form-check-label" >Cancer</label>
+                                    <input class="form-check-label" type="text" name="illnesscancer"   id="illnesscancer" value = "Cancer" hidden>
+                        
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Cancer" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Hypertension </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes" onclick="setIllnessYes('Cancer')"> Yes 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Hypertension" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Stroke </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No" checked="true" onclick="setIllness('Cancer')"> No 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Stroke" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Tuberculosis </label>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Cancer" name="R_Cancer" placeholder="Relationship" onclick="setIllnessYes('Cancer')" >
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Tuberculosis" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Rheumatism </label>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" > Hypertension 
+                                        </label>
+                                        <input class="form-check-label" type = "text" name="illnessHypertension" id="illnessHypertension" value ="Hypertension" hidden>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Rheumatism" placeholder="Relationship">
-                          </div>  
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Eye Disorder </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes" onclick="setIllnessYes('Hypertension')"> Yes 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_EDisorder" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Diabetes </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No" checked="true" onclick="setIllnesNo('Hypertension')"> No 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Diabetes" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Asthma </label>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Hypertension" name="R_Hypertension" placeholder="Relationship" onclick="setIllnessYes('Hypertension')">
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Asthma" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Convulsion </label>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" > Stroke 
+                                            
+                                        </label>
+                                        <input class="form-check-label" type="text" name="illnessstroke" id="illnessstroke" value="Stroke"hidden>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_Convulsion" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Skin Problems </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes" onclick="setIllnessYes('Stroke')"> Yes 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_SProblems" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Heart Disease </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No" checked="true" onclick="setIllnessNo('Stroke')"> No 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_HDisease" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Kidney Problem </label>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Stroke" name="R_Stroke" placeholder="Relationship" onclick="setIllnessYes('Stroke')">
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_KProblem" placeholder="Relationship">
-                          </div> 
-                          <div class="col-md-2 col-sm-3 mb-2">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Mental Disorder </label>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label"  > Tuberculosis 
+                                            
+                                        </label>
+                                        <input class="form-check-label" type="text" name="illnesstuberculosis" id="illnesstuberculosis" value="Tuberculosis" hidden> 
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_MDisorder" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Bleeding Tendencies </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes" onclick="setIllnessYes('Tuberculosis')"> Yes 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes"> Yes </label>
-                            </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No"> No </label>
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_BTendencies" placeholder="Relationship">
-                          </div>
-                          <div class="col-md-2 col-sm-3">
-                              <div class="form-check">
-                                  <label class="form-check-label"> Gastrointestinal Disease </label>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No" checked="true" onclick="setIllnessNo('Tuberculosis')"> No 
+                                        </label>
+                                    </div>
                                 </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                            <div class="form-check form-check-danger">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes"> Yes </label>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Tuberculosis" name="R_Tuberculosis" placeholder="Relationship" onclick="setIllnessYes('Tuberculosis')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label"  > Rheumatism 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessrheumatism" id="illnessrheumatism" type="text" value="Rheumatism" hidden> 
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes" onclick="setIllnessYes('Rheumatism')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No" checked="true" onclick="setIllnessNo('Rheumatism')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Rheumatism" name="R_Rheumatism" placeholder="Relationship" onclick="setIllnessYes('Rheumatism')">
+                                </div>  
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label"   > Eye Disorder 
+                                            
+                                        </label>
+                                        <input class="form-check-label"  name="illnesseyeD" id="illnesseyeD" type="text" value="Eye Disorder" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes" onclick="setIllnessYes('EDisorder')">  Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No" checked="true" onclick="setIllnessNo('EDisorder')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_EDisorder" name="R_EDisorder" placeholder="Relationship" onclick="setIllnessYes('EDisorder')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" > Diabetes 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessdiabetes" id="illnessdiabetes" type="text" value="Diabetes" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes" onclick="setIllnessYes('Diabetes')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No" checked="true" onclick="setIllnessNo('Diabetes')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Diabetes" name="R_Diabetes" placeholder="Relationship" onclick="setIllnessYes('Diabetes')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" name="illnessasthma"> Asthma 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessasthma" type="text" value="Asthma" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes" onclick="setIllnessYes('Asthma')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No" checked="true" onclick="setIllnessNo('Asthma')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Asthma" name="R_Asthma" placeholder="Relationship" onclick="setIllnessYes('Asthma')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label"  > Convulsion 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessconvulsion" id="illnessconvulsion" type="text" value="Convulsion" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes" onclick="setIllnessYes('Convulsion')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No" checked="true" onclick="setIllnessNo('Convulsion')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_Convulsion" name="R_Convulsion" placeholder="Relationship" onclick="setIllnessYes('Convulsion')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" > Skin Problems 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessskin" id="illnessskin" type="text" value="Skin Problems" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes" onclick="setIllnessYes('SProblems')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No" checked="true" onclick="setIllnessNo('SProblems')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_SProblems" name="R_SProblems" placeholder="Relationship" onclick="setIllnessYes('SProblems')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label"  > Heart Disease 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessHdisease" id="illnessHdisease" type="text" value="Heart Disease" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes" onclick="setIllnessYes('HDisease')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No" checked="true" onclick="setIllnessNo('HDisease')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_HDisease" name="R_HDisease" placeholder="Relationship" onclick="setIllnessYes('HDisease')">
+                                </div>
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" name="illnesskidney" id="illnesskidney"> Kidney Problem 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnesskidney" id="illnesskidney" type="text" value="Kidney Problems" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes" onclick="setIllnessYes('KProblem')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No" checked="true" onclick="setIllnessNo('KProblem')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_KProblem" name="R_KProblems" placeholder="Relationship" onclick="setIllnessYes('KProblem')">
+                                </div> 
+                                <div class="col-md-2 col-sm-3 mb-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label" name="illnessmental" id="illnessmental"> Mental Disorder 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessmental" id="illnessmental" type = "text" value = "Mental Disorder" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes" onclick="setIllnessYes('MDisorder')"> Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No" checked="true" onclick="setIllnessNo('MDisorder')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_MDisorder" name="R_MDisorder" placeholder="Relationship" onclick="setIllnessYes('MDisorder')">
+                                </div>
+                                <div class="col-md-2 col-sm-3">
+                                    <div class="form-check">
+                                        <label class="form-check-label"  >  Bleeding Tendencies 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessBleding" id="illnessBleding" type="text" value="Bleeding Tendencies" hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes" onclick="setIllnessYes('BTendencies')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No" checked="true" onclick="setIllnessNo('BTendencies')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" id="R_BTendencies" name="R_BTendencies" placeholder="Relationship" onclick="setIllnessYes('BTendencies')">
+                                </div>
+                                <div class="col-md-2 col-sm-3">
+                                    <div class="form-check">
+                                        <label class="form-check-label" > Gastrointestinal Disease 
+                                            
+                                        </label>
+                                        <input class="form-check-label" name="illnessgastro" id="illnessgastro" type="text" value=" Gastrointestinal Disease " hidden>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check form-check-danger">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes" onclick="setIllnessYes('GDisease')"> Yes 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No" checked="true" onclick="setIllnessNo('GDisease')"> No 
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-5">
+                                    <input type="text" class="form-control" name="R_GDisease"  id="R_GDisease" placeholder="Relationship" onclick="setIllnessYes('GDisease')">
+                                </div>
                             </div>
-                          </div>
-                          <div class="col-md-1 col-sm-2">
-                              <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No"> No </label>
-                                  
-                            </div>
-                          </div>
-                          <div class="col-md-2 col-sm-5">
-                              <input type="text" class="form-control" id="R_GDisease" placeholder="Relationship">
-                          </div>
                         </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -1121,19 +1193,19 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1Yes" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1Yes" value="Yes" onclick="setYes('Question1')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2 ">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1No" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question1" id="Question1No" value="No" checked="true" onclick="setNo('Question1')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details">
+                                                        <input type="text" class="form-control" id="txt_Question1" name="txt_Question1" placeholder="If yes, please give details" onclick="setYes('Question1')">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <p>Are you taking medicine regularly?</p>
@@ -1141,19 +1213,19 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2Yes" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2Yes" value="Yes" onclick="setYes('Question2')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2No" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question2" id="Question2No" value="No" checked="true" onclick="setNo('Question2')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s">
+                                                        <input type="text" class="form-control" id="txt_Question2" name="txt_Question2" placeholder="If yes, name of drug/s"  onclick="setYes('Question2')">
                                                     </div> 
                                                     <div class="col-md-5">
                                                         <p>Are you allergic to any food or medicine? (ex. Penicilin, Aspirin, shrimp, chicken, etc.</p>
@@ -1161,25 +1233,25 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3Yes" value="Yes"> Yes 
+                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3Yes" value="Yes" onclick="setYes('Question3')"> Yes 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-sm-2">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3No" value="No" checked="true"> No 
+                                                                <input type="radio" class="form-check-input" name="Question3" id="Question3No" value="No" checked="true" onclick="setNo('Question3')"> No 
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify">
+                                                        <input type="text" class="form-control" id="txt_Question3"  name="txt_Question3" placeholder="If yes, specify"  onclick="setYes('Question3')">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
+                                </div>   
                   <div class="float-right card-body">
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     <button class="btn btn-dark" id="cancel">Cancel</button>
@@ -1329,6 +1401,28 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 }
                 
                 
+            }
+
+            function setYes(ID_name){
+                document.getElementById(ID_name+"Yes").checked= 'true';
+                document.getElementById("txt_"+ID_name).required=true;
+                document.getElementById("txt_"+ID_name).readOnly=false;
+            }
+            function setNo(ID_name){
+                document.getElementById(ID_name+"No").checked= 'true';
+                document.getElementById("txt_"+ID_name).required=false;
+                document.getElementById("txt_"+ID_name).readOnly=true;
+            }
+
+            function setIllnessYes(ID_name){
+                document.getElementById("option"+ID_name+"Yes").checked= 'true';
+                document.getElementById("R_"+ID_name).required=true;
+                document.getElementById("R_"+ID_name).readOnly=false;
+            }
+            function setIllnessNo(ID_name){
+                document.getElementById("option"+ID_name+"No").checked= 'true';
+                document.getElementById("R_"+ID_name).required=false;
+                document.getElementById("R_"+ID_name).readOnly=true;
             }
             
     </script>

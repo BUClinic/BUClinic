@@ -59,8 +59,8 @@ $conn = OpenCon();
                                 <div class="dot-indicator bg-success"></div>
                             </div>
                             <div class="text-wrapper">
-                                <p class="profile-name"><?php echo $_SESSION['Fname']." ";echo $_SESSION['Lname'];?></p>
-                                <p class="designation">Administrator</p>
+                                <p class="profile-name"><?php echo ucfirst($_SESSION['Fname'])." ";echo ucfirst($_SESSION['Lname']);?></p>
+                                <p class="designation"><?php echo ucfirst($_SESSION['position']);?></p>
                             </div>
                             <div class="icon-container">
                                 <i class="icon-bubbles"></i>
@@ -69,11 +69,11 @@ $conn = OpenCon();
                         </a>
                     </li>
                     <li class="nav-item nav-category">
-                        <span class="nav-link">Dashboard</span>
+                        <span class="nav-link">Records</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../index.php">
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Records</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
                     </li>

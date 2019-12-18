@@ -10,9 +10,9 @@ if(isset($_POST['submit'])){
 $conn = OpenCon();
 $i=0;
 $PatientID = $_POST['S_Id'];
-$Lname = $_POST['S_Lname'];
-$Fname = $_POST['S_Fname'];
-$Mname = $_POST['S_Mname'];
+$Lname = ucwords($_POST['S_Lname']);
+$Fname = ucwords($_POST['S_Fname']);
+$Mname = ucwords($_POST['S_Mname']);
 $region = $_POST['S_Region'];
 $province = $_POST['S_Province'];
 $municity = $_POST['S_City'];
@@ -28,8 +28,8 @@ $CollegeUnit = $_POST['S_Department'];
 $ContactNum = $_POST['S_Cnumber'];
 $CivilStatus = $_POST['S_Status'];
 $Sex = $_POST['S_Gender'];
-$Modifiedby =  $_SESSION['Fname']. " ". $_SESSION['Lname'];
-$CreatedBy = $_SESSION['Fname']. " ". $_SESSION['Lname'];//geting the name
+$Modifiedby =  ucwords($_SESSION['Fname']). " ". ucwords($_SESSION['Lname']);
+$CreatedBy = ucwords($_SESSION['Fname']). " ". ucwords($_SESSION['Lname']);//geting the name
 
 $Illness = array('Cancer','Hypertension','Stroke','Tuberculosis','Rheumatism','EDisorder','Diabetes','Asthma','Convulsion','SProblems','HDisease','KProblem','MDisorder','BTendencies','GDisease');
 $Status = array('optionCancer','optionHypertension','optionStroke','optionTuberculosis','optionRheumatism','optionEDisorder','optionDiabetes','optionAsthma','optionConvulsion','optionSProblems','optionHDisease','optionKProblem','optionMDisorder','optionBTendencies','optionGDisease');

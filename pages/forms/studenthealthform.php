@@ -60,7 +60,7 @@ $conn = OpenCon();
                             </div>
                             <div class="text-wrapper">
                                 <p class="profile-name"><?php echo $_SESSION['Fname']." ";echo $_SESSION['Lname'];?></p>
-                                <p class="designation">Administrator</p>
+                                <p class="designation"><?php echo $_SESSION['position'];?></p>
                             </div>
                             <div class="icon-container">
                                 <i class="icon-bubbles"></i>
@@ -69,11 +69,11 @@ $conn = OpenCon();
                         </a>
                     </li>
                     <li class="nav-item nav-category">
-                        <span class="nav-link">Dashboard</span>
+                        <span class="nav-link">Records</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../index.php">
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Records</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
                     </li>
@@ -88,6 +88,7 @@ $conn = OpenCon();
                                 <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medicine Inventory Form</a></li>
                             </ul>
                         </div>
                     </li>
@@ -140,6 +141,7 @@ $conn = OpenCon();
                                 <li class="breadcrumb-item"><a href="studenthealthform.php">Student Form</a></li>
                                 <li class="breadcrumb-item"><a href="employeeform.php">Employee Form</a></li>  
                                 <li class="breadcrumb-item"><a href="dailyconsultation.php">Daily Consultation Form</a></li>  
+                                <li class="breadcrumb-item"><a href="medicationform.php">Medication Form</a></li> 
                                 <li class="breadcrumb-item active" aria-current="page">Form elements</li>
                             </ol>
                         </nav>
@@ -359,19 +361,19 @@ $conn = OpenCon();
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
-                                                        <label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="Yes" > Yes 
+                                                        <label class="form-check-label"><input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes" onclick="setIllnessYes('Cancer')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionCancer" id="optionCancer" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerNo" value="No" checked="true" onclick="setIllness('Cancer')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Cancer" name="R_Cancer" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Cancer" name="R_Cancer" placeholder="Relationship" onclick="setIllnessYes('Cancer')" >
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -383,19 +385,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes" onclick="setIllnessYes('Hypertension')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertension" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No" checked="true" onclick="setIllnesNo('Hypertension')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Hypertension" name="R_Hypertension" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Hypertension" name="R_Hypertension" placeholder="Relationship" onclick="setIllnessYes('Hypertension')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -408,19 +410,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes" onclick="setIllnessYes('Stroke')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStroke" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No" checked="true" onclick="setIllnessNo('Stroke')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Stroke" name="R_Stroke" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Stroke" name="R_Stroke" placeholder="Relationship" onclick="setIllnessYes('Stroke')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -433,19 +435,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes" onclick="setIllnessYes('Tuberculosis')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosis" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No" checked="true" onclick="setIllnessNo('Tuberculosis')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Tuberculosis" name="R_Tuberculosis" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Tuberculosis" name="R_Tuberculosis" placeholder="Relationship" onclick="setIllnessYes('Tuberculosis')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -458,19 +460,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes" onclick="setIllnessYes('Rheumatism')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatism" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No" checked="true" onclick="setIllnessNo('Rheumatism')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Rheumatism" name="R_Rheumatism" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Rheumatism" name="R_Rheumatism" placeholder="Relationship" onclick="setIllnessYes('Rheumatism')">
                                                 </div>  
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -483,19 +485,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="Yes" >  Yes 
+                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes" onclick="setIllnessYes('EDisorder')">  Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorder" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No" checked="true" onclick="setIllnessNo('EDisorder')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_EDisorder" name="R_EDisorder" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_EDisorder" name="R_EDisorder" placeholder="Relationship" onclick="setIllnessYes('EDisorder')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -508,19 +510,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes" onclick="setIllnessYes('Diabetes')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetes" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No" checked="true" onclick="setIllnessNo('Diabetes')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Diabetes" name="R_Diabetes" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Diabetes" name="R_Diabetes" placeholder="Relationship" onclick="setIllnessYes('Diabetes')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -533,19 +535,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes" onclick="setIllnessYes('Asthma')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthma" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No" checked="true" onclick="setIllnessNo('Asthma')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Asthma" name="R_Asthma" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Asthma" name="R_Asthma" placeholder="Relationship" onclick="setIllnessYes('Asthma')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -558,19 +560,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes" onclick="setIllnessYes('Convulsion')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsion" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No" checked="true" onclick="setIllnessNo('Convulsion')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_Convulsion" name="R_Convulsion" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_Convulsion" name="R_Convulsion" placeholder="Relationship" onclick="setIllnessYes('Convulsion')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -583,19 +585,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes" onclick="setIllnessYes('SProblems')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblems" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No" checked="true" onclick="setIllnessNo('SProblems')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_SProblems" name="R_SProblems" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_SProblems" name="R_SProblems" placeholder="Relationship" onclick="setIllnessYes('SProblems')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -608,19 +610,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes" onclick="setIllnessYes('HDisease')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDisease" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No" checked="true" onclick="setIllnessNo('HDisease')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" name="R_HDisease" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_HDisease" name="R_HDisease" placeholder="Relationship" onclick="setIllnessYes('HDisease')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -633,19 +635,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes" onclick="setIllnessYes('KProblem')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblem" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No" checked="true" onclick="setIllnessNo('KProblem')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" name="R_KProblems" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_KProblem" name="R_KProblems" placeholder="Relationship" onclick="setIllnessYes('KProblem')">
                                                 </div> 
                                                 <div class="col-md-2 col-sm-3 mb-2">
                                                     <div class="form-check">
@@ -658,19 +660,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="Yes"> Yes
+                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes" onclick="setIllnessYes('MDisorder')"> Yes
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorder" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No" checked="true" onclick="setIllnessNo('MDisorder')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" name="R_MDisorder" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_MDisorder" name="R_MDisorder" placeholder="Relationship" onclick="setIllnessYes('MDisorder')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3">
                                                     <div class="form-check">
@@ -683,19 +685,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes" onclick="setIllnessYes('BTendencies')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendencies" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No" checked="true" onclick="setIllnessNo('BTendencies')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" id="R_BTendencies" name="R_BTendencies" placeholder="Relationship">
+                                                    <input type="text" class="form-control" id="R_BTendencies" name="R_BTendencies" placeholder="Relationship" onclick="setIllnessYes('BTendencies')">
                                                 </div>
                                                 <div class="col-md-2 col-sm-3">
                                                     <div class="form-check">
@@ -708,19 +710,19 @@ $conn = OpenCon();
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check form-check-danger">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="Yes"> Yes 
+                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes" onclick="setIllnessYes('GDisease')"> Yes 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDisease" value="No" checked="true"> No 
+                                                            <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No" checked="true" onclick="setIllnessNo('GDisease')"> No 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-5">
-                                                    <input type="text" class="form-control" name="R_GDisease"  id="R_GDisease" placeholder="Relationship">
+                                                    <input type="text" class="form-control" name="R_GDisease"  id="R_GDisease" placeholder="Relationship" onclick="setIllnessYes('GDisease')">
                                                 </div>
                                             </div>
                                         </div>
@@ -1225,10 +1227,23 @@ $conn = OpenCon();
             function setYes(ID_name){
                 document.getElementById(ID_name+"Yes").checked= 'true';
                 document.getElementById("txt_"+ID_name).required=true;
+                document.getElementById("txt_"+ID_name).readOnly=false;
             }
             function setNo(ID_name){
                 document.getElementById(ID_name+"No").checked= 'true';
                 document.getElementById("txt_"+ID_name).required=false;
+                document.getElementById("txt_"+ID_name).readOnly=true;
+            }
+
+            function setIllnessYes(ID_name){
+                document.getElementById("option"+ID_name+"Yes").checked= 'true';
+                document.getElementById("R_"+ID_name).required=true;
+                document.getElementById("R_"+ID_name).readOnly=false;
+            }
+            function setIllnessNo(ID_name){
+                document.getElementById("option"+ID_name+"No").checked= 'true';
+                document.getElementById("R_"+ID_name).required=false;
+                document.getElementById("R_"+ID_name).readOnly=true;
             }
             </script>
         <!-- container-scroller -->

@@ -103,11 +103,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Dashboard</span>
+              <span class="nav-link">Records</span>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
@@ -122,6 +122,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="medicationform.php">Medicine Inventory Form</a></li>
 </ul>
 </div>
 </li>
@@ -172,6 +173,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <li class="breadcrumb-item"><a href="studenthealthform.php">Student Form</a></li>
                   <li class="breadcrumb-item"><a href="employeeform.php">Employee Form</a></li>  
                   <li class="breadcrumb-item"><a href="dailyconsultation.php">Daily Consultation Form</a></li> 
+                  <li class="breadcrumb-item"><a href="medicationform.php">Medication Form</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Form elements</li>
                 </ol>
               </nav>

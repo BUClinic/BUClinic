@@ -39,12 +39,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a  href="index.php">
-            <img src="images/ddh.png" alt="logo" width="200" height="50" />
+            <img src="images/ddh.png" alt="logo" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome <?php echo $_SESSION["Fname"]." ".$_SESSION["Lname"]; ?></h5>
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome <?php echo ucwords($_SESSION["Fname"])." ".ucwords($_SESSION["Lname"]); ?></h5>
           <!-- <ul class="navbar-nav navbar-nav-right ml-auto">
          <input type="text" id="myInput"  placeholder="Search for any Data..."> 
 
@@ -73,8 +73,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $_SESSION['Fname']. " ";echo  $_SESSION['Lname'];?></p>
-                  <p class="designation"><?php echo $_SESSION['position'];?></p>
+                  <p class="profile-name"><?php echo ucwords($_SESSION['Fname']). " ";echo  ucwords($_SESSION['Lname']);?></p>
+                  <p class="designation"><?php echo ucwords($_SESSION['position']);?></p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
@@ -83,11 +83,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Dashboard</span>
+              <span class="nav-link">Records</span>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
@@ -102,7 +102,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/studenthealthform.php">Student Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/employeeform.php">Employee Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/dailyconsultation.php">DailyConsultation Form</a></li>
-                   <li class="nav-item"> <a class="nav-link" href="pages/forms/medinventoryform.php">Medicine Inventory Form</a></li>
+                   <li class="nav-item"> <a class="nav-link" href="pages/forms/medicationform.php">Medication Form</a></li>
 
                 </ul>
               </div>
@@ -116,7 +116,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medicine Inventory</a></li>
+				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medication Inventory</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/tables/studentrecord.php">Student Record</a></li>
                 </ul>
               </div>
@@ -161,10 +161,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <h4 class="card-title col-md-10">Student Record</h4>
                       <div class="input-group col-md-2">
                         <div class="input-group-prepend">
-                        <i class="icon-magnifier float-left"><span class="input-group-text" ></span></i>
                         </div>
+          
                         <form class="search-form d-none d-md-block" action="#">
-                            <input type="search" id="myInput"  class="form-control" placeholder="Search Patient Record" title="Search Patient Record here">
+                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Patient Record" title="Search Patient Record here">
                         </form>
                       </div>
                     </div><br>
@@ -188,8 +188,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               $rows[] = $r;
               echo "<script>console.log('".$rows[$ctr]['Status']."')</script>";
               if($rows[$ctr]['Status']=='1') {
-                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
-                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"].
+                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
+                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"].
                 "</td><td>". "<div class='btn-group'>
            
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
@@ -246,23 +246,25 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <th class="font-weight-bold">Diagnosis</th>
                           <th class="font-weight-bold">Treatment</th>
                           <th class="font-weight-bold">Referral</th>
+                          <th class="font-weight-bold">Height</th>
+                          <th class="font-weight-bold">Weight</th>
                         </tr>
                       </thead>
                       <tbody id="myTable1">
                     
                       <?php 
-            $sql = "SELECT tbl_patientinfo.ID, tbl_patientinfo.PatientID, tbl_patientinfo.Lname, tbl_patientinfo.Fname, tbl_patientinfo.Mname, tbl_patientinfo.Course, tbl_patientinfo.ContactNum, tbl_diagnosis.Diagnosis, tbl_diagnosis.Treatment, tbl_diagnosis.Referral  from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID";
+            $sql = "SELECT * from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID INNER JOIN tbl_examinations ON tbl_patientinfo.PatientID=tbl_examinations.PatientID";
             $result = mysqli_query($conn,$sql);
             $rows = array();
             $ctr = 0;
-
+            $temp="";
             while($r = mysqli_fetch_assoc($result)){
               $rows[] = $r;
-              
+            
              // echo json_encode($rows);
-         
-                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".$rows[$ctr]["Lname"].",".$rows[$ctr]["Fname"].
-                " ".substr($rows[$ctr]["Mname"],0,1).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".$rows[$ctr]["Diagnosis"]."</td><td>".$rows[$ctr]["Treatment"]."</td><td>".$rows[$ctr]["Referral"]."</td><td>"."</td><td>". "<div class='btn-group'>
+         if($rows[$ctr]['PatientID']!=$temp)
+                echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
+                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". "<div class='btn-group'>
            
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
                 <div class='dropdown-menu'>
@@ -273,7 +275,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>"."<td><td>"
                 ."<td></tr>";  
               
-               
+              $temp=$rows[$ctr]['PatientID'];
               $ctr++;
               }
        

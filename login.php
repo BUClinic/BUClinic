@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>Bicol University Clinic</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../../images/ddh.png">
+                                <img src="images/ddh.png" style="width:100%">
                             </div>
                             <h4>Bicol University Clinic</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
@@ -108,11 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                                         </div>
-                                        <a href="#" class="auth-link text-black">Forgot password?</a>
                                     </div>
-                                    
-                                    <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                                </div>
                             </form>
                         </div>
                     </div>
