@@ -159,38 +159,38 @@ $conn = OpenCon();
                                         <!--<p class="card-description"> Personal info </p>-->
                                         <div class="form-group row">
                                             <div class="col-md-7 col-sm-12 mb-2">
-                                                <input type="text" class="form-control mb-2"  name="S_Fname" placeholder="First Name">
-                                                <input type="text" class="form-control mb-2" name="S_Mname" placeholder="Middle Name">
-                                                <input type="text" class="form-control"  name="S_Lname" placeholder="Last Name">
+                                                <input type="text" class="form-control mb-2"  name="S_Fname" placeholder="First Name" required>
+                                                <input type="text" class="form-control mb-2" name="S_Mname" placeholder="Middle Name" required>
+                                                <input type="text" class="form-control"  name="S_Lname" placeholder="Last Name" required>
                                             </div>
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <input type="text" class="form-control mb-2" name="S_Bdate" placeholder="Birth Date" onfocus="this.type='date'">
-                                                <input type="number" class="form-control mb-2"  name="S_Age" placeholder="Age">
-                                                <select class="form-control" name="S_Gender">
-                                                    <option selected disabled>Sex</option>
+                                                <input type="text" class="form-control mb-2" name="S_Bdate" placeholder="Birth Date" onfocus="this.type='date'" required>
+                                                <input type="number" class="form-control mb-2"  name="S_Age" placeholder="Age" required>
+                                                <select class="form-control" name="S_Gender" required>
+                                                    <option selected disabled value="">Sex</option>
                                                     <option>Male</option>
                                                     <option>Female</option>
                                                 </select>
                                             </div> 
                                             <div class="col-md-2 col-sm-12 mb-2">
-                                                <input type="text" class="form-control mb-2" name="S_Cnumber" placeholder="Contact Number">
-                                                <select class="form-control mb-2" name="S_Status">
-                                                    <option selected disabled>Civil Status</option>
+                                                <input type="text" class="form-control mb-2" name="S_Cnumber" placeholder="Contact Number" required>
+                                                <select class="form-control mb-2" name="S_Status" required="required">
+                                                    <option selected disabled value="">Civil Status</option>
                                                     <option>Single</option>
                                                     <option>Married</option>
                                                     <option>Widowed</option>
                                                     <option>Divorced</option>
                                                 </select>
-                                                <input type="text" class="form-control"  name="S_Religion" placeholder="Religion">
+                                                <input type="text" class="form-control"  name="S_Religion" placeholder="Religion" required>
                                             </div>
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <input type="text" class="form-control" id ="S_Id" name="S_Id" placeholder="Student ID #">
+                                                <input type="text" class="form-control" id ="S_Id" name="S_Id" placeholder="Student ID #" required>
                                             </div>
                                             
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_Department" id="S_Department" onchange="getCollege(this)">
+                                                <select  class="form-control" name="S_Department" id="S_Department" onchange="getCollege(this)" required aria-required="true">
                                                     
-                                                    <option selected disabled>College/Department</option>
+                                                    <option selected disabled value="">College/Department</option>
                                                     <?php 
                                                     $sql = "select * from tbl_college";
                                                     $res = mysqli_query($conn,$sql);
@@ -210,26 +210,26 @@ $conn = OpenCon();
                                             
                                             
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_Course" id="S_Course">
-                                                    <option selected disabled>Course</option>
+                                                <select required class="form-control" name="S_Course" id="S_Course" >
+                                                    <option selected disabled value="">Course</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel">
-                                                    <option selected disabled>Year Level</option>
-                                                    <option selected >1st Year</option>
-                                                    <option selected >2nd Year</option>
-                                                    <option selected >3rd Yeer</option>
-                                                    <option selected >4th Year</option>
-                                                    <option selected >5th Year</option>
+                                                <select required class="form-control" name="S_YearLevel" id="S_YearLevel" >
+                                                    <option selected disabled value="">Year Level</option>
+                                                    <option >1st Year</option>
+                                                    <option >2nd Year</option>
+                                                    <option >3rd Yeer</option>
+                                                    <option >4th Year</option>
+                                                    <option >5th Year</option>
                                                 </select>
                                             </div>
                                             
                                             
                                             
                                             <div class="col-md-2 col-sm-12 mb-2" >
-                                                <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()">
-                                                    <option selected disabled>Region</option>
+                                                <select required aria-required="true" class="form-control" name="S_Region" id="S_Region" onchange="getRegion()" >
+                                                    <option selected disabled value="">Region</option>
                                                     <?php 
                                                     $sql = "select * from refregion";
                                                     $res = mysqli_query($conn,$sql);
@@ -246,22 +246,22 @@ $conn = OpenCon();
                                             
                                             
                                             <div class="col-md-2 col-sm-12 mb-2">
-                                                <select  class="form-control" name="S_Province" id="S_Province" onchange="getProvince()">
-                                                    <option selected disabled>Province</option>
+                                                <select required aria-required="true" class="form-control" name="S_Province" id="S_Province" onchange="getProvince()" >
+                                                    <option selected disabled value="">Province</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-sm-12 mb-2">
-                                                <select  class="form-control" name="S_City" id="S_City" onchange="getCity()">
-                                                    <option selected disabled>City/Municipality</option>
+                                                <select required aria-required="true" class="form-control" name="S_City" id="S_City" onchange="getCity()" >
+                                                    <option selected disabled value="">City/Municipality</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-sm-12  mb-2">
-                                                <select  class="form-control" name="S_Baranggay" id="S_Baranggay">
-                                                    <option selected disabled>Baranggay</option>
+                                                <select  required aria-required="true" class="form-control" name="S_Baranggay" id="S_Baranggay" >
+                                                    <option selected disabled value="">Baranggay</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4 col-sm-12">
-                                                <input type="text" class="form-control" name="S_Street" placeholder="Street #">
+                                                <input type="text" class="form-control" name="S_Street" placeholder="Street #" required aria-required="true">
                                             </div>
                                         </div>
                                     </div>
@@ -1067,7 +1067,8 @@ $conn = OpenCon();
                                     </div>
                                 </div>    
                                 <div class="float-right card-body">
-                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                <input type="submit" class="btn btn-primary" name="submit">
+                                    <!--<button type="submit" class="btn btn-primary" name="submit">Submit</button>-->
                                     <button class="btn btn-dark" id="cancel">Cancel</button>
                                 </div>
                             </div>
@@ -1093,6 +1094,7 @@ $conn = OpenCon();
                 $('#S_Course')
                 .find('option')
                 .remove()
+                .append('<option>'+result[i].courses+'</option>')
                 ;
                 var college = selectObject.value; 
                 var result;

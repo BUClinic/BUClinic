@@ -169,7 +169,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                         </form>
                       </div>
                     </div><br>
-                    <table class="table table-hover">
+                    <table id="tblPatientInfo" class="table table-hover">
                       <thead>
                         <tr>
                           <th class="font-weight-bold">Student Id</th>
@@ -235,10 +235,20 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 <div class="card">
                   <div class="card-body">
                   <div class ="row">
-                  <div class="col-md-6 col-sm-12 " style="float:left">
+                  <div class="col-md-5 col-sm-12 " style="float:left">
                     <h4 class="card-title">Student Record</h4>
                   </div>
-                  <div class="col-md-6 col-sm-12"  style="float:right">
+                  <div class="dataTables_length col-md-1">
+                    <label>Show
+                      <select name="data_length" id="data_length" aria-control="example">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="col-md-5 col-sm-12"  style="float:right">
                     <form class="search-form d-none d-md-block" action="#">
                       <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records" style="width:35%;float:right">
                   </form>
@@ -246,7 +256,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                    
                   </div>
 
-                    <table class="table table-hover">
+                    <table id="tblConsultation" class="table table-hover">
                    
                       <thead>
                         <tr>
@@ -277,8 +287,70 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
                 " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". 
            
-                "<button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button>"."<td><td>"
-                ."<td></tr>";  
+                "<button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100' data-toggle='modal' data-target='#viewConsult".$ctr."'>View<i class='icon-eye float-left' ></i></button>"."<td><td>"
+                ."<td></tr>";
+                ?>
+                <!--modal of view consult-->
+                      <div class="modal fade "  id=<?php echo "\"viewConsult".$ctr."\"";?> role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content col-md-6" style="position: absolute; left: 50%; top: 50%; margin-left: -300px;margin-top: -100px;">
+                            <form method="POST" action="../../SaveRecords/savemed.php">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Consultation Information</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                </div>
+                              <div class="modal-body">
+                                  <h4 class="card-title"><?php echo $rows[$ctr]['Fname']; ?>'s Information <i class="icon-user float-left"></i></h4>
+                                <div class="form-group row">
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                    <input type="text" class="form-control"  value=<?php echo "'Course: ".$rows[$ctr]['Course']."'";?> readonly>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                           <label>Diagnosis</label>
+                                           <textarea   class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Diagnosis"];?></textarea>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                           <label>Treatment</label>
+                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Treatment"];?></textarea>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                           <label>Referral</label>
+                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Referral"];?></textarea>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                            <input type="text" class="form-control"  value=<?php echo "'Blood Pressure: ".$rows[$ctr]['BP']."'";?> readonly>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                            <input type="text" class="form-control"  value=<?php echo "'Temperature: ".$rows[$ctr]['Temp']."'";?> readonly>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                            <input type="text" class="form-control"  value=<?php echo "'Height: ".$rows[$ctr]['Height']."'";?> readonly>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-2">
+                                            <input type="text" class="form-control"  value=<?php echo "'Weight: ".$rows[$ctr]['Weight']."'";?> readonly>
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                           <label>History and Physical Examination</label>
+                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["History"];?></textarea>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                           <label>Physicians Direction's</label>
+                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["PhysiciansDirection"];?></textarea>
+                                    </div>
+                                </div>
+                                               
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button"  class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                <?php  
               
              
               $ctr++;
@@ -364,6 +436,14 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready(function() {
+    $('#tblConsultation').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#tblPatientInfo').DataTable();
+} );
 </script>
           
         <!-- main-panel ends -->
@@ -387,6 +467,10 @@ $(document).ready(function(){
     <!-- Custom js for this page -->
     <script src="./js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <!-- for pagination -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
   </body>
 </html>
 

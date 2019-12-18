@@ -146,7 +146,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           </ul>
         </nav>
         <!-- partial -->
-        <div class="main-panel">
+        <div class="main-panel" onclick="view()">
           <div class="content-wrapper">
             <div class="page-header">
               <h2> STUDENT HEALTH RECORD <i class="icon-note float-left"></i> </h2>
@@ -555,7 +555,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes" onclick="view()"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionCancer" id="optionCancerYes" value="Yes" onclick="viewAlert()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
@@ -575,13 +575,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionHypertension" id="optionHypertensionNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -595,13 +595,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionStroke" id="optionStrokeNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -615,13 +615,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionTuberculosis" id="optionTuberculosisNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -635,13 +635,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionRheumatism" id="optionRheumatismNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -655,13 +655,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionEDisorder" id="optionEDisorderNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -675,13 +675,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionDiabetes" id="optionDiabetesNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -695,13 +695,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionAsthma" id="optionAsthmaNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -715,13 +715,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionConvulsion" id="optionConvulsionNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -735,13 +735,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionSProblems" id="optionSProblemsNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -755,13 +755,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionHDisease" id="optionHDiseaseNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -775,13 +775,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionKProblem" id="optionKProblemNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -795,13 +795,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionMDisorder" id="optionMDisorderNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -815,13 +815,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionBTendencies" id="optionBTendenciesNo" value="No" onclick="view()"> No </label>
                             </div>
                           </div>
                           <div class="col-md-2 col-sm-5">
@@ -835,13 +835,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-1 col-sm-2">
                             <div class="form-check form-check-danger">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes"> Yes </label>
+                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseYes" value="Yes" onclick="view()"> Yes </label>
                             </div>
                           </div>
                           <div class="col-md-1 col-sm-2">
                               <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No"> No </label>
+                                <input type="radio" class="form-check-input" name="optionGDisease" id="optionGDiseaseNo" value="No" onclick="view()"> No </label>
                                   
                             </div>
                           </div>
@@ -862,108 +862,108 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-3 col-sm-3">
                           <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_primaryComplex" name="c_primaryComplex" value="Primary Complex"> Primary Complex 
+                                                            <input type="checkbox" class="form-check-input" id="c_primaryComplex" name="c_primaryComplex" value="Primary Complex" onclick="view()"> Primary Complex 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_kidneyDisease" name="c_kidneyDisease" value="Kidney Disease" > Kidney Disease 
+                                                            <input type="checkbox" class="form-check-input" id="c_kidneyDisease" name="c_kidneyDisease" value="Kidney Disease" onclick="view()"> Kidney Disease 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_pneumonia" name="c_pneumonia" value="Pneumonia"> Pneumonia 
+                                                            <input type="checkbox" class="form-check-input" id="c_pneumonia" name="c_pneumonia" value="Pneumonia" onclick="view()"> Pneumonia 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_earProblems" name="c_earProblems" value="Ear Problems"> Ear Problems
+                                                            <input type="checkbox" class="form-check-input" id="c_earProblems" name="c_earProblems" value="Ear Problems" onclick="view()"> Ear Problems
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_mentalDisorder" name="c_mentalDisorder" value="Mental Disorder"> Mental Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_mentalDisorder" name="c_mentalDisorder" value="Mental Disorder" onclick="view()"> Mental Disorder 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_asthma" name="c_asthma" value="Asthma"> Asthma 
+                                                            <input type="checkbox" class="form-check-input" id="c_asthma" name="c_asthma" value="Asthma" onclick="view()"> Asthma 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_skinProblem" name="c_skinProblem" value="Skin Problem"> Skin Problem 
+                                                            <input type="checkbox" class="form-check-input" id="c_skinProblem" name="c_skinProblem" value="Skin Problem" onclick="view()"> Skin Problem 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_dengue" name="c_dengue" value="Dengue"> Dengue 
+                                                            <input type="checkbox" class="form-check-input" id="c_dengue" name="c_dengue" value="Dengue" onclick="view()"> Dengue 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_mumps" name="c_mumps" value="Mumps"> Mumps 
+                                                            <input type="checkbox" class="form-check-input" id="c_mumps" name="c_mumps" value="Mumps" onclick="view()"> Mumps 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_typhoidFever" name="c_typhoidFever" value="Typhoid Fever"> Typhoid Fever 
+                                                            <input type="checkbox" class="form-check-input" id="c_typhoidFever" name="c_typhoidFever" value="Typhoid Fever" onclick="view()"> Typhoid Fever 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_rheumaticFever" name="c_rheumaticFever" value="Rheumatic Fever"> Rheumatic Fever 
+                                                            <input type="checkbox" class="form-check-input" id="c_rheumaticFever" name="c_rheumaticFever" value="Rheumatic Fever" onclick="view()"> Rheumatic Fever 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_diabetes" name="c_diabetes" value="Diabetes"> Diabetes 
+                                                            <input type="checkbox" class="form-check-input" id="c_diabetes" name="c_diabetes" value="Diabetes" onclick="view()"> Diabetes 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_measles" name="c_measles" value="Measles"> Measles 
+                                                            <input type="checkbox" class="form-check-input" id="c_measles" name="c_measles" value="Measles" onclick="view()"> Measles 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_thyroidDisorder" name="c_thyroidDisorder" value="Thyroid Disorder"> Thyroid Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_thyroidDisorder" name="c_thyroidDisorder" value="Thyroid Disorder" onclick="view()"> Thyroid Disorder 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_hepatitis" name="c_hepatitis" value="Hepatitis"> Hepatitis 
+                                                            <input type="checkbox" class="form-check-input" id="c_hepatitis" name="c_hepatitis" value="Hepatitis" onclick="view()"> Hepatitis 
                                                         </label>
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_chickenPox" name="c_chickenPox" value="Chicken Pox"> Chicken Pox 
+                                                            <input type="checkbox" class="form-check-input" id="c_chickenPox" name="c_chickenPox" value="Chicken Pox" onclick="view()"> Chicken Pox 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_eyeDisorder" name="c_eyeDisorder" value="Eye Disorder"> Eye Disorder 
+                                                            <input type="checkbox" class="form-check-input" id="c_eyeDisorder" name="c_eyeDisorder" value="Eye Disorder" onclick="view()"> Eye Disorder 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_poliomyElitis" name="c_poliomyElitis" value="Poliomy Elitis"> Poliomy Elitis 
+                                                            <input type="checkbox" class="form-check-input" id="c_poliomyElitis" name="c_poliomyElitis" value="Poliomy Elitis" onclick="view()"> Poliomy Elitis 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_heartDisease" name="c_heartDisease" value="Heart Disease"> Heart Disease 
+                                                            <input type="checkbox" class="form-check-input" id="c_heartDisease" name="c_heartDisease" value="Heart Disease" onclick="view()"> Heart Disease 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_anemia" name="c_anemia" value="Anemia/Leukemia"> Anemia/Leukemia 
+                                                            <input type="checkbox" class="form-check-input" id="c_anemia" name="c_anemia" value="Anemia/Leukemia" onclick="view()"> Anemia/Leukemia 
                                                         </label>
                                                     </div>  
                                                 </div>   
@@ -975,41 +975,41 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_chestPain" name="c_chestPain" value="Chest Pain"> Chest Pain 
+                                                            <input type="checkbox" class="form-check-input" id="c_chestPain" name="c_chestPain" value="Chest Pain" onclick="view()"> Chest Pain 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_indigestion" name="c_indigestion" value="Indigestion"> Indigestion 
+                                                            <input type="checkbox" class="form-check-input" id="c_indigestion" name="c_indigestion" value="Indigestion" onclick="view()"> Indigestion 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_swollenFeet" name="c_swollenFeet" value="Swollen Feet"> Swollen Feet 
+                                                            <input type="checkbox" class="form-check-input" id="c_swollenFeet" name="c_swollenFeet" value="Swollen Feet" onclick="view()"> Swollen Feet 
                                                         </label>
                                                     </div> 
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_headaches" name="c_headaches" value="Headaches"> Headaches 
+                                                            <input type="checkbox" class="form-check-input" id="c_headaches" name="c_headaches" value="Headaches" onclick="view()"> Headaches 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_soreThroat" name="c_soreThroat" value="Sore Throat"> Sore Throat (Frequent) 
+                                                            <input type="checkbox" class="form-check-input" id="c_soreThroat" name="c_soreThroat" value="Sore Throat" onclick="view()"> Sore Throat (Frequent) 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_dizziness" name="c_dizziness" value="Dizziness"> Dizziness 
+                                                            <input type="checkbox" class="form-check-input" id="c_dizziness" name="c_dizziness" value="Dizziness" onclick="view()"> Dizziness 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-sm-3">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" id="c_nausea" name="c_nausea" value="Nausea/Vomiting"> Nausea/Vomiting 
+                                                            <input type="checkbox" class="form-check-input" id="c_nausea" name="c_nausea" value="Nausea/Vomiting" onclick="view()"> Nausea/Vomiting 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
@@ -1234,10 +1234,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             
                 
                 
-            }
+            
     function view(){
-        console.log("asd");
-        alert("ViewOnly");
+        alert("View only, changes will not be saved!");
     }
             
     </script>

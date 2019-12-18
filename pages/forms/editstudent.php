@@ -169,14 +169,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <!--<p class="card-description"> Personal info </p>-->
                         <div class="form-group row">
                           <div class="col-md-7 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" value=<?php echo '"'.$r['Fname'].'"';?> >
-                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name" value=<?php echo '"'.$r['Mname'].'"';?> >
-                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name" value=<?php echo '"'.$r['Lname'].'"';?> >
+                              <input type="text" class="form-control mb-2"  name="S_Fname" id="Fname" placeholder="First Name" value=<?php echo '"'.$r['Fname'].'"';?> required>
+                              <input type="text" class="form-control mb-2" name="S_Mname" id="Mname" placeholder="Middle Name" value=<?php echo '"'.$r['Mname'].'"';?> required>
+                              <input type="text" class="form-control"  name="S_Lname" id="Lname" placeholder="Last Name" value=<?php echo '"'.$r['Lname'].'"';?> required>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>>
-                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> >
-                              <select class="form-control" name="S_Gender" id="Gender"  >
+                              <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>required>
+                              <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> required>
+                              <select class="form-control" name="S_Gender" id="Gender" required >
                                     <option selected disabled >Sex</option>
                                     <?php
                                     if($r['Sex']=="Male"){
@@ -196,8 +196,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div> 
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> >
-                              <select class="form-control mb-2" name="S_Status" id="Status" >
+                              <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> required>
+                              <select class="form-control mb-2" name="S_Status" id="Status" required>
                                     <option selected disabled>Civil Status</option>
                                     <?php
                                       if($r['CivilStatus'] == 'Single'){
@@ -232,14 +232,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                       }
                                     ?>
                               </select>
-                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?>>
+                              <input type="text" class="form-control"  name="S_Religion" id="Religion" placeholder="Religion" value=<?php echo '"'.$r['religion'].'"';?>required>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
                               <input type="text" class="form-control" name="S_Id" id="Id"placeholder="Student ID #"value=<?php echo '"'.$r['PatientID'].'"';?> readonly >
                           </div>
                          
                           <div class="col-md-3 col-sm-12 mb-2">
-                            <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)">
+                            <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)" required>
                                 
                                 <option selected disabled>College/Department</option>
                                 <?php 
@@ -267,7 +267,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                         
                           
                           <div class="col-md-3 col-sm-12 mb-2">
-                              <select class="form-control" name="S_Course" id="S_Course">
+                              <select class="form-control" name="S_Course" id="S_Course" required>
                                     <option selected disabled>Course</option>\
                                     <?php
                                       $sql = "select * from tbl_college";
@@ -295,7 +295,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   </select>
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
-                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel">
+                                                <select class="form-control" name="S_YearLevel" id="S_YearLevel" required>
                                                     <option selected disabled>Year Level</option>
                                                     <?php
                                                     
@@ -345,7 +345,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           
 
                           <div class="col-md-2 col-sm-12 mb-2" >
-                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()">
+                              <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()" required>
                                 <option selected disabled>Region</option>
                                 <?php 
                                   $sql = "select * from refregion";
@@ -366,7 +366,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                              <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()">
+                              <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()" required>
                               <option selected disabled>Province</option>
                               <?php 
                                   $sql = "select * from refprovince";
@@ -397,7 +397,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
-                          <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()">
+                          <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()" required>
                               <option selected disabled>City/Municipality</option>
                               <?php 
                                   $sql = "select * from refcitymun";
@@ -430,7 +430,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-2 col-sm-12  mb-2">
-                          <select  class="form-control" name="S_Baranggay" id="S_Baranggay">
+                          <select  class="form-control" name="S_Baranggay" id="S_Baranggay" required>
                               <option selected disabled>Baranggay</option>
                               <?php 
                                   $sql = "select * from refbrgy";
@@ -462,7 +462,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               </select>
                           </div>
                           <div class="col-md-4 col-sm-12">
-                              <input type="text" class="form-control" name="S_Street" placeholder="Street #" id="Street"value=<?php echo '"'.$r['Street'].'"'?> >
+                              <input type="text" class="form-control" name="S_Street" placeholder="Street #" id="Street"value=<?php echo '"'.$r['Street'].'"'?> required>
                           </div>
                         </div>
                   </div>

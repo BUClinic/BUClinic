@@ -161,7 +161,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   <input type="text" class="form-control" id="DC_LName" placeholder="Last Name"  disabled>
                               </div>
                               <div class="col-md-5 col-sm-12 mb-2">
-                                  <input type="text" class="form-control mb-2" id="DC_ID" name="S_Id" placeholder="Student ID #" onkeyup="searchID()">
+                                  <input type="text" class="form-control mb-2" id="DC_ID" name="S_Id" placeholder="Student ID #" onkeyup="searchID()" required>
                                   <input type="text" class="form-control mb-2" id="DC_College"  placeholder="College/Department"  disabled>
                                   <input type="text" class="form-control mb-2" id="DC_Course"  placeholder="Course"  disabled>
                               </div>
@@ -188,7 +188,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                   </div>
 
                                   <div class="col-md-3 col-sm-12 mb-2">
-                                    <input type="text" class="form-control"  name="P_Weight"  id="P_Weight" placeholder="Weight">
+                                    <input type="text" class="form-control"  name="P_Weight"  id="P_Weight" placeholder="Weight" required>
                                   </div>
 
                                     <div class="col-md-6 col-sm-12 mb-2">

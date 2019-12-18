@@ -159,7 +159,7 @@ $conn = OpenCon();
                                             <h4 class="card-title">Medication Form <i class="icon-user float-left"></i></h4>
                                             <div class="form-group row">
                                                 <div class="col-md-12 col-sm-12 mb-2">
-                                                    <input type="text" class="form-control" id="S_Id" name="S_Id" placeholder="Student ID " onkeyup="searchID()">
+                                                    <input type="text" class="form-control" id="S_Id" name="S_Id" placeholder="Student ID " onkeyup="searchID()" required>
                                                 </div>
                                                 <div class="col-md-12 col-sm-12 mb-2">
                                                     <input type="text" class="form-control" id="S_Name" name="S_Name" placeholder="Student name" readonly>
@@ -167,8 +167,8 @@ $conn = OpenCon();
                                                 <div class="form-group row col-md-12 col-sm-12 mb-2">
                                                 <div class=" form-group row col-md-12 col-sm-12 mb-2">
                                                 <div class="col-md-3 col-sm-12 mb-2">
-                                                        <select class="form-control" name="med_cat" id="med_cat" onchange="setMed()">
-                                                            <option selected disabled>Medicine Category</option>
+                                                        <select class="form-control" name="med_cat" id="med_cat" onchange="setMed()"  required>
+                                                            <option selected disabled  value="">Medicine Category</option>
                                                             <?php 
                                                             $sql = "select * from tbl_medicine";
                                                             $res = mysqli_query($conn,$sql);
@@ -176,24 +176,24 @@ $conn = OpenCon();
                                                             while($list = mysqli_fetch_assoc($res)){
                                                                 $col[$x] = $list['Category'];
                                                                 if(($col[$x]!=$col[$x-1])&&$col[$x]!=null)
-                                                                  echo "<option >".$col[$x]."</option>";  
+                                                                  echo "<option  '>".$col[$x]."</option>";  
                                                                 $x++;                   
                                                             }
                                                             ?>
                                                         </select> 
                                                     </div>
                                                     <div class="col-md-3 col-sm-12 mb-2">
-                                                        <select class="form-control" name="M_Name" id="M_Name" onchange="setMes()">
-                                                            <option selected disabled>Medicine Name</option>
+                                                        <select class="form-control" name="M_Name" id="M_Name" onchange="setMes()" required>
+                                                            <option selected disabled value="">Medicine Name</option>
                                                         </select> 
                                                     </div>
                                                     <div class="col-md-2 col-sm-12 mb-2">
-                                                        <select class="form-control" name="M_Measure" id="M_Measure">
-                                                            <option selected disabled>Unit Measure</option>
+                                                        <select class="form-control" name="M_Measure" id="M_Measure" required>
+                                                            <option selected  disabled value="">Unit Measure</option>
                                                         </select> 
                                                     </div>
                                                     <div class="col-md-2 col-sm-12 mb-2">
-                                                        <input type="number" class="form-control mb-2" id="quantity" name="quantity" placeholder="Quantity">
+                                                        <input type="number" class="form-control mb-2" id="quantity" name="quantity" placeholder="Quantity" required>
                                                         <input type="text" class="form-control mb-2" id="qty" name="qty" placeholder="meds" value=" " hidden>
                                                         <input type="text" class="form-control mb-2" id="mid" name="mid" placeholder="meds"  value=" "hidden>
                                                         <input type="text" class="form-control mb-2" id="med" name="med" placeholder="meds"  value=" "hidden>
@@ -254,13 +254,13 @@ $conn = OpenCon();
                           .find('option')
                           .remove()
                           .end()
-                          .append('<option selected disabled>Medicine Name</option>')
+                          .append('<option selected disabled value="">Medicine Name</option>')
                         ;
                         $('#M_Measure')
                           .find('option')
                           .remove()
                           .end()
-                          .append('<option selected disabled>Unit Measure</option>')
+                          .append('<option selected disabled value="">Unit Measure</option>')
                         ;
                         for(i=0;i<result.length;i++){
                           if(result[i].MedicineName!=temp){
@@ -297,7 +297,7 @@ $conn = OpenCon();
                           .find('option')
                           .remove()
                           .end()
-                          .append('<option selected disabled>Unit Measure</option>')
+                          .append('<option selected disabled value="">Unit Measure</option>')
                         ;
                         for(i=0;i<result.length;i++){
                             $('#M_Measure')
