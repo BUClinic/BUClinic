@@ -37,7 +37,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="../../index.php">
-            <img src="../../images/ddh.png" alt="logo" class="logo-dark" width="100%"/>
+            <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>

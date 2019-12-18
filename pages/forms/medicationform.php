@@ -59,7 +59,7 @@ $conn = OpenCon();
                                 <div class="dot-indicator bg-success"></div>
                             </div>
                             <div class="text-wrapper">
-                                <p class="profile-name"><?php echo ucfirst($_SESSION['Fname'])." ";echo ucfirst($_SESSION['Lname']);?></p>
+                                <p class="profile-name" id="user"><?php echo ucfirst($_SESSION['Fname'])." ";echo ucfirst($_SESSION['Lname']);?></p>
                                 <p class="designation"><?php echo ucfirst($_SESSION['position']);?></p>
                             </div>
                             <div class="icon-container">
@@ -161,7 +161,7 @@ $conn = OpenCon();
                                                     <input type="text" class="form-control" id="S_Name" name="S_Name" placeholder="Student name" readonly>
                                                 </div>
                                                 <div class="form-group row">
-                                                        <div class="row">
+                                                <div class=" form-group row">
                                                 <div class="col-md-3 col-sm-12 mb-2">
                                                         <select class="form-control" name="med_cat" id="med_cat" onchange="setMed()">
                                                             <option selected disabled>Medicine Category</option>
@@ -224,6 +224,10 @@ $conn = OpenCon();
                                                 </table>
                                 </div>
                             </div>
+                        <div class="float-right card-body">
+                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                    <button class="btn btn-dark" id="cancel">Cancel</button>
+                        </div>
                         </div>
                     </form>
 
@@ -326,7 +330,7 @@ $conn = OpenCon();
       function addTo(){
 
         var user =document.getElementById('user').innerText;
-        var id = document.getElementById('DC_ID').value;
+        var id = document.getElementById('S_Id').value;
         var med = document.getElementById('M_Name').options[document.getElementById('M_Name').selectedIndex].text;
         var qty = document.getElementById('quantity').value;
         var tempstock;

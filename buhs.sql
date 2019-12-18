@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2019 at 10:24 PM
+-- Generation Time: Dec 18, 2019 at 04:22 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -44166,7 +44166,9 @@ CREATE TABLE `tbl_diagnosis` (
 --
 
 INSERT INTO `tbl_diagnosis` (`ID`, `PatientID`, `Diagnosis`, `Complaints`, `Treatment`, `Referral`, `CreatedDate`, `CreatedBy`) VALUES
-(26, '12345', 'diagnosis', 'complaints', 'treatment', 'ref', '2019-12-16 20:23:19', 'davie balmadrid');
+(26, '12345', 'diagnosisiauehgrifushadjkghskfhjgjksfh', 'complaints', 'treatment', 'ref', '2019-12-16 20:23:19', 'davie balmadrid'),
+(27, '1234', '1', '1', '1', '1', '2019-12-18 14:17:48', 'Davie Balmadrid'),
+(28, '1234', '1', '1', '1', '1', '2019-12-18 14:18:31', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44192,7 +44194,13 @@ CREATE TABLE `tbl_examinations` (
 --
 
 INSERT INTO `tbl_examinations` (`ID`, `PatientID`, `Temp`, `BP`, `Weight`, `Height`, `History`, `PhysiciansDirection`, `CreatedDate`, `CreatedBy`) VALUES
-(1, '12345', '32C', '32', '54', '54', 'historyt of you', 'go left', '2019-12-16 20:22:37', 'davie balmadrid');
+(1, '12345', '32C', '32', '54', '54', 'historyt of you', 'go left', '2019-12-16 20:22:37', 'davie balmadrid'),
+(5, '1234', '1', '1', '1', '1', '1', '1', '2019-12-18 14:17:48', 'Davie Balmadrid'),
+(6, '1234', '1', '1', '1', '1', '1', '1', '2019-12-18 14:18:31', 'Davie Balmadrid'),
+(16, '1234', '12312321', '12312321', '12312321', '12312321', '12312321', '12312321', '2019-12-18 14:44:09', 'Davie Balmadrid'),
+(17, '1234', '12312321', '12312321', '12312321', '12312321', '12312321', '12312321', '2019-12-18 14:44:23', 'Davie Balmadrid'),
+(18, '1234', 'wer', 'wer', 'wer', 'wer', 'wer', 'wer', '2019-12-18 14:46:15', 'Davie Balmadrid'),
+(19, '1234', '123', '123', '123', '123', '1213', '123', '2019-12-18 14:46:33', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44474,6 +44482,51 @@ INSERT INTO `tbl_immunizationhistory` (`ID`, `PatientID`, `Answer`, `Status`, `M
 (192, '246', 'I_GMeasle', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
 (193, '246', 'I_Polio', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd'),
 (194, '246', 'I_DPT', 'false', '2019-12-16 21:14:25', '2019-12-16 21:14:25', 'asda asd', 'asda asd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_medication`
+--
+
+CREATE TABLE `tbl_medication` (
+  `ID` int(11) NOT NULL,
+  `MedicineID` varchar(45) NOT NULL,
+  `PatientID` varchar(45) NOT NULL,
+  `MedicineName` varchar(45) NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `CreadtedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CreatedBy` varchar(45) NOT NULL,
+  `ModifiedBy` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_medicine`
+--
+
+CREATE TABLE `tbl_medicine` (
+  `ID` int(11) NOT NULL,
+  `Category` varchar(45) NOT NULL,
+  `MedicineName` varchar(45) NOT NULL,
+  `Stock` int(11) NOT NULL,
+  `ExpDate` date NOT NULL,
+  `UnitMeasure` varchar(45) NOT NULL,
+  `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CreatedBy` varchar(45) NOT NULL,
+  `ModifiedBy` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_medicine`
+--
+
+INSERT INTO `tbl_medicine` (`ID`, `Category`, `MedicineName`, `Stock`, `ExpDate`, `UnitMeasure`, `CreatedDate`, `ModifiedDate`, `CreatedBy`, `ModifiedBy`) VALUES
+(1, 'paracetamol', 'neozep', 100, '2019-12-05', '100mg', '2019-12-18 13:36:51', '2019-12-18 13:36:51', 'davie balmadrid', 'davie balmadrid'),
+(2, 'paracetamol', 'neozep', 100, '2019-12-06', '300mg', '2019-12-18 13:38:00', '2019-12-18 13:54:56', 'davie balmadrid', 'davie balmadrid');
 
 -- --------------------------------------------------------
 
@@ -45280,6 +45333,18 @@ ALTER TABLE `tbl_immunizationhistory`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tbl_medication`
+--
+ALTER TABLE `tbl_medication`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_medicine`
+--
+ALTER TABLE `tbl_medicine`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_patientinfo`
 --
 ALTER TABLE `tbl_patientinfo`
@@ -45390,13 +45455,13 @@ ALTER TABLE `tbl_college`
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_examinations`
 --
 ALTER TABLE `tbl_examinations`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_familyhistoryanswer`
@@ -45415,6 +45480,18 @@ ALTER TABLE `tbl_hospitalizationhistory`
 --
 ALTER TABLE `tbl_immunizationhistory`
   MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
+
+--
+-- AUTO_INCREMENT for table `tbl_medication`
+--
+ALTER TABLE `tbl_medication`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tbl_medicine`
+--
+ALTER TABLE `tbl_medicine`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientinfo`
