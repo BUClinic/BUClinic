@@ -48,13 +48,17 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a class="navbar-brand brand-logo" href="../../index.php">
-            <img src="../../images/ddh.png" alt="logo" class="logo-dark" />
+      <div class="navbar-brand-wrapper d-flex align-items-center">
+          <a  href="../../index.php">
+            <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/ddh.png" alt="logo" /></a>
         </div>
-        
+        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
       </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
@@ -62,14 +66,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
+              <a href="../../index.php" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../../images/faces/noface.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $_SESSION['Fname']." ";echo $_SESSION['Lname'];?></p>
-                  <p class="designation">Administrator</p>
+                  <p class="profile-name"><?php echo ucwords($_SESSION['Fname'])." "; echo ucwords($_SESSION['Lname']);?></p>
+                  <p class="designation"><?php echo ucwords($_SESSION['position']);?></p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
@@ -99,7 +103,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">DailyConsultation Form</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medicine Inventory Form</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medication Form</a></li>
                 </ul>
               </div>
             </li>

@@ -37,17 +37,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a  href="../../index.php">
-            <img src="../../images/ddh.png" alt="logo" width="200" height="50" />
+            <img src="../../images/ddh.png" alt="logo" width="100%" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-          <ul class="navbar-nav navbar-nav-right ml-auto">
-            <form class="search-form d-none d-md-block" action="#" method="POST">
-              <i class="icon-magnifier"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
           </button>
@@ -65,8 +59,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name" ><label type="text" id="user" ><?php echo "".$_SESSION['Fname'] ." ". $_SESSION['Lname'].""; ?></label></p>
-                  <p class="designation"><?php echo $_SESSION['position']?></p>
+                  <p class="profile-name" ><label type="text" id="user" ><?php echo "".ucwords($_SESSION['Fname'])." ".ucwords($_SESSION['Lname']).""; ?></label></p>
+                  <p class="designation"><?php echo ucwords($_SESSION['position'])?></p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>

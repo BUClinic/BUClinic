@@ -38,11 +38,15 @@ $conn = OpenCon();
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 <div class="navbar-brand-wrapper d-flex align-items-center">
 <a class="navbar-brand brand-logo" href="../../index.php">
-<img src="../../images/ddh.png" alt="logo" class="logo-dark" />
+<img src="../../images/ddh.png" alt="logo" class="logo-dark" width="100%"/>
 </a>
 <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
 </div>
-
+<div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
 </nav>
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
@@ -50,7 +54,7 @@ $conn = OpenCon();
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
 <ul class="nav">
 <li class="nav-item nav-profile">
-<a href="#" class="nav-link">
+<a href="../../index.php" class="nav-link">
 <div class="profile-image">
 <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
 <div class="dot-indicator bg-success"></div>
@@ -85,7 +89,7 @@ $conn = OpenCon();
 <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
-<li class="nav-item"> <a class="nav-link" href="medicationform.php">Medicine Inventory Form</a></li>
+<li class="nav-item"> <a class="nav-link" href="medicationform.php">Medication Form</a></li>
 </ul>
 </div>
 </li>

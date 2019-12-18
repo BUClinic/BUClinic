@@ -61,9 +61,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         </div>
       </nav>
       <!-- partial -->
+     
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="sidebar sidebar-offcanvas float-left" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-profile">
                 
@@ -116,7 +117,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medication Inventory</a></li>
+				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medicine Inventory</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/tables/studentrecord.php">Student Record</a></li>
                 </ul>
               </div>
@@ -146,7 +147,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           </ul>
         </nav>
        
-        <div class="main-panel">
+        <div class="main-panel" >
           <div class="content-wrapper">
             <div class="page-header">
               <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
@@ -253,16 +254,16 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <tbody id="myTable1">
                     
                       <?php 
-            $sql = "SELECT * from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID INNER JOIN tbl_examinations ON tbl_patientinfo.PatientID=tbl_examinations.PatientID";
-            $result = mysqli_query($conn,$sql);
+           // $sql = "SELECT * from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID INNER JOIN tbl_examinations ON tbl_patientinfo.PatientID=tbl_examinations.PatientID WHERE 1";
+           
+           $result = mysqli_query($conn,$sql);
             $rows = array();
             $ctr = 0;
-            $temp="";
             while($r = mysqli_fetch_assoc($result)){
               $rows[] = $r;
             
              // echo json_encode($rows);
-         if($rows[$ctr]['PatientID']!=$temp)
+        
                 echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
                 " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". "<div class='btn-group'>
            
@@ -275,7 +276,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>"."<td><td>"
                 ."<td></tr>";  
               
-              $temp=$rows[$ctr]['PatientID'];
+             
               $ctr++;
               }
        
@@ -288,8 +289,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>
               </div>
             </div>
-
-
+            </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
  function editStudentInfo(element){
