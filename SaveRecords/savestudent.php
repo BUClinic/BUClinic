@@ -46,9 +46,12 @@ if(isset($_GET['edit'])){
 	$sqlGuardian = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['G_FName'].'\',`Mname`=\''.$_POST['G_MName'].'\',`Lname`=\''.$_POST['G_LName'].'\',`Occupation`=\''.$_POST['G_Occupation'].'\',`OfficeAddress`=\''.$_POST['G_Address'].'\',`ContactNumber`=\''.$_POST['G_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Guardian\' and PatientID=\''.$PatientID.'\'';
 	echo $sql;
 	for($i=0;$i<sizeof($Illness);$i++){
-			$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\''.$_POST['option'.$Illness[$i]].'\' where PatientID=\''.$PatientID.'\' and Illness=\'option'.$Illness[$i].'\'';
-			echo $sqlIllness."<br>";
-			if(!$conn->query($sqlIllness) === TRUE) echo "<script>console.log('Error for inserting family history')</script>"; //if condition for debug purposes
+		if(isset($_POST['option'.$Illness[$i].'Yes'])){
+			$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'Yes\', Relation=\''.$_POST['R_'.$Illness[$i]].'\' where PatientID=\''.$PatientID.'\' and Illness=\'option'.$Illness[$i].'\'';
+		}else{
+			$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'Yes\', Relation=\'\' where PatientID=\''.$PatientID.'\' and Illness=\'option'.$Illness[$i].'\'';
+		}
+		if(!$conn->query($sqlIllness) === TRUE) echo "<script>console.log('Error for inserting family history')</script>"; //if condition for debug purposes
 	}
 
 	for($i=0;$i<sizeof($PersonalHistory);$i++){

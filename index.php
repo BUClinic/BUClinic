@@ -224,18 +224,28 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 
           <div class="content-wrapper">
             <div class="page-header">
+     
               <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
               <ul class="navbar-nav navbar-nav-right ml-auto">    
-                  <form class="search-form d-none d-md-block" action="#">
-                    <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records">
-                 </form>
               </ul>
             </div>
+
             <div class="row">
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                  <div class ="row">
+                  <div class="col-md-6 col-sm-12 " style="float:left">
                     <h4 class="card-title">Student Record</h4>
+                  </div>
+                  <div class="col-md-6 col-sm-12"  style="float:right">
+                    <form class="search-form d-none d-md-block" action="#">
+                      <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records" style="width:35%;float:right">
+                  </form>
+                  </div>
+                   
+                  </div>
+
                     <table class="table table-hover">
                    
                       <thead>
@@ -254,7 +264,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                       <tbody id="myTable1">
                     
                       <?php 
-           // $sql = "SELECT * from tbl_patientinfo INNER JOIN tbl_diagnosis ON tbl_patientinfo.PatientID=tbl_diagnosis.PatientID INNER JOIN tbl_examinations ON tbl_patientinfo.PatientID=tbl_examinations.PatientID WHERE 1";
+            $sql = "select * from tbl_examinations INNER JOIN tbl_diagnosis ON tbl_diagnosis.CreatedDate=tbl_examinations.CreatedDate INNER JOIN tbl_patientinfo ON tbl_examinations.PatientID=tbl_patientinfo.PatientID";
            
            $result = mysqli_query($conn,$sql);
             $rows = array();
@@ -265,15 +275,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
              // echo json_encode($rows);
         
                 echo "<tr><td>".$rows[$ctr]['PatientID']."</td><td>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
-                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". "<div class='btn-group'>
+                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td><td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". 
            
-                <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
-                <div class='dropdown-menu'>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
-               <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>
-                </div>
-                </div>"."<td><td>"
+                "<button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button>"."<td><td>"
                 ."<td></tr>";  
               
              
@@ -282,9 +286,28 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
        
               
         ?>
-        
+   
                       </tbody>
                     </table>
+                    <nav aria-label="Page navigation example float right" style="float:right;">
+  <ul class="pagination float-right">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+  </nav>
                   </div>
                 </div>
               </div>
