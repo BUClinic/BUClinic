@@ -219,7 +219,8 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                 <td>".$rows[$ctr]["ExpDate"]."</td>
                                 <td><div class='btn-group'>
                                   
-                                  <button id='MedId' value='".$rows[$ctr]['ID']. " type='button' data-toggle='modal' data-target='#editMedicine".$ctr."' class='btn btn-primary w-100'> Edit <i class='icon-pencil float-left'></i></button><br>
+                                  <button value='".$rows[$ctr]['ID']. " type='button' data-toggle='modal' data-target='#editMedicine".$ctr."' class='btn btn-primary w-100'> Edit <i class='icon-pencil float-left'></i></button><br>
+                                  <button  value='".$rows[$ctr]['ID']. " type='button' data-toggle='modal' data-target='#deleteMedicine".$ctr."' class='btn btn-danger w-100'> Delete <i class='icon-pencil float-left'></i></button>
                                 </div></td>
                                 </tr>";
                                 ?>

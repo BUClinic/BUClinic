@@ -251,13 +251,13 @@ $conn = OpenCon();
                 var list = document.getElementById("med_cat");
                 var optionVal = list.options[list.selectedIndex].text;
                 const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where Category = '" + optionVal + "'");
+                Http.open("GET", "../../saverecords/sql.php?query=select distinct MedicineName from tbl_medicine where Category = '" + optionVal + "'");
                 Http.send();
                 Http.onreadystatechange = function(){
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
-                        var temp="";
+             
                         $('#M_Name')
                           .find('option')
                           .remove()
@@ -271,14 +271,13 @@ $conn = OpenCon();
                           .append('<option selected disabled value="">Unit Measure</option>')
                         ;
                         for(i=0;i<result.length;i++){
-                          if(result[i].MedicineName!=temp){
+
                             $('#M_Name')
                             .find('option')
                             .end()
                             .append('<option>'+result[i].MedicineName+'</option>')
                             ;
-                          }
-                          temp=result[i].MedicineName;
+
                         }
                     }
                     
@@ -289,13 +288,13 @@ $conn = OpenCon();
         function setMes(){
              
                 document.getElementById("quantity").value="";
-                
+                 
                 var catID = document.getElementById("med_cat");
                 var list = document.getElementById("M_Name");
                 var optionVal = list.options[list.selectedIndex].text;
                 var catVal = catID.options[catID.selectedIndex].text;
                 const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where Category = '"+catVal+"' and MedicineName = '"+optionVal +"' ");
+                Http.open("GET", "../../saverecords/sql.php?query=select distinct UnitMeasure from tbl_medicine where Category = '"+catVal+"' and MedicineName = '"+optionVal +"' ");
                 Http.send();
                 Http.onreadystatechange = function(){
                     if(this.readyState==4 && this.status==200){
@@ -308,12 +307,14 @@ $conn = OpenCon();
                           .append('<option selected disabled value="">Unit Measure</option>')
                         ;
                         for(i=0;i<result.length;i++){
-                            $('#M_Measure')
-                            .find('option')
-                            .end()
-                            .append('<option >'+result[i].UnitMeasure+'</option>')
-                            ;
+                            
+                                $('#M_Measure')
+                                .find('option')
+                                .end()
+                                .append('<option >'+result[i].UnitMeasure+'</option>')
+                                ;
                         }
+                       
                     }
                     
                 }
@@ -327,8 +328,7 @@ $conn = OpenCon();
              var catVal = catID.options[catID.selectedIndex].text;
              var M_measures = M_measure.options[M_measure.selectedIndex].text;
              const Http = new XMLHttpRequest();
-             Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where Category = '"+catID+"' and MedicineName = '"+list+"' and UnitMeasure = '"+M_Measure+"' ");
-             console.log("select * from tbl_medicine where Category = '"+JSON.stringify(catID)+"' and MedicineName = '"+JSON.stringify(list)+"' and UnitMeasure = '"+JSON.stringifyM_Measure+"' ");
+             Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where Category = '"+catVal+"' and MedicineName = '"+optionVal+"' and UnitMeasure = '"+M_measures+"' ");
              Http.send();
              Http.onreadystatechange = function(){
                  if(this.readyState==4 && this.status==200){
@@ -469,8 +469,7 @@ $conn = OpenCon();
                    $qty = explode (",",$tempqty);
                    $md = explode (",",$tempmd);
                    $med = explode (",",$tempmed);
-                   for($i=0;$i<sizeof($qty)-1;$i++){
-                       echo "UPDATE tbl_medicine SET Stock=(select Stock from tbl_medicine where ID = '".$md[$i]."')-'".$qty[$i]."' where ID= '".$md[$i]."'";      
+                   for($i=0;$i<sizeof($qty)-1;$i++){    
                        $sql ="UPDATE tbl_medicine SET Stock=(select Stock from tbl_medicine where ID = '".$md[$i]."')-'".$qty[$i]."' where ID= '".$md[$i]."'"; 
                        $conn->query($sql);
                        $result = mysqli_query($conn,"select * from tbl_medication where MedicineID='".$md[$i]."' "); 

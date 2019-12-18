@@ -150,7 +150,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
         <div class="main-panel" >
           <div class="content-wrapper">
             <div class="page-header">
-              <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
+              
             
             </div>
             
@@ -159,14 +159,18 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 <div class="card">
                   <div class="card-body">
                     <div class="col-md-12 col-sm-12 row">
-                      <h4 class="card-title col-md-10">Student Record</h4>
+                      <div class="col-md-10 col-sm-12">
+                        <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
+                      </div>
+                      <div class="col-md-2 col-sm-12">
+                        <form class="search-form d-none d-md-block" action="#">
+                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Patient Record" title="Search Patient Record here">
+                        </form>
+                      </div>
                       <div class="input-group col-md-2">
                         <div class="input-group-prepend">
                         </div>
           
-                        <form class="search-form d-none d-md-block" action="#">
-                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Patient Record" title="Search Patient Record here">
-                        </form>
                       </div>
                     </div><br>
                     <table id="tblPatientInfo" class="table table-hover">
@@ -225,7 +229,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           <div class="content-wrapper">
             <div class="page-header">
      
-              <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
+              
               <ul class="navbar-nav navbar-nav-right ml-auto">    
               </ul>
             </div>
@@ -235,20 +239,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 <div class="card">
                   <div class="card-body">
                   <div class ="row">
-                  <div class="col-md-5 col-sm-12 " style="float:left">
-                    <h4 class="card-title">Student Record</h4>
+                  <div class="col-md-6 col-sm-12 " style="float:left">
+                  <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
                   </div>
-                  <div class="dataTables_length col-md-1">
-                    <label>Show
-                      <select name="data_length" id="data_length" aria-control="example">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                      </select>
-                    </label>
-                  </div>
-                  <div class="col-md-5 col-sm-12"  style="float:right">
+                  <div class="col-md-6 col-sm-12"  style="float:right">
                     <form class="search-form d-none d-md-block" action="#">
                       <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records" style="width:35%;float:right">
                   </form>
@@ -361,25 +355,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
    
                       </tbody>
                     </table>
-                    <nav aria-label="Page navigation example float right" style="float:right;">
-  <ul class="pagination float-right">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-  </nav>
+
                   </div>
                 </div>
               </div>
@@ -467,10 +443,6 @@ $(document).ready(function() {
     <!-- Custom js for this page -->
     <script src="./js/dashboard.js"></script>
     <!-- End custom js for this page -->
-    <!-- for pagination -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
   </body>
 </html>
 

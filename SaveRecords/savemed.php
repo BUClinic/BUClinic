@@ -6,7 +6,14 @@ include '../db_connection.php';
 
 if(isset($_POST['AddMed'])){
 	$conn = OpenCon();
-	$sqlmed = "INSERT INTO tbl_medicine (Category, MedicineName, Stock, ExpDate,UnitMeasure, CreatedBy, ModifiedBy) VALUES('".$_POST['M_Category']."','".$_POST['M_Name']."','".$_POST['M_Stock']."','".$_POST['M_ExpDate']."','".$_POST['M_UnitMeasure']."', '".$_SESSION['Fname']." ".$_SESSION['Lname']."','".$_SESSION['Fname']." ".$_SESSION['Lname']."')";
+	$result = mysqli_query($conn,"select * from tbl_medicine where Category='".$_POST['M_Category']."' and MedicineName =  '".$_POST['M_Name']."' and UnitMeasure  = '".$_POST['M_UnitMeasure']."'"); 
+	$r=mysqli_fetch_assoc($result);
+	$expdate = explode (" ",$r['ExpDate']); 
+
+	if($expdate[0] == $_POST['M_ExpDate'])
+		$sqlmed = "Update tbl_medicine SET Stock = (select Stock from tbl_medicine  where Category='".$_POST['M_Category']."' and MedicineName =  '".$_POST['M_Name']."' and UnitMeasure  = '".$_POST['M_UnitMeasure']."' and ExpDate = '".$_POST['M_ExpDate']."')+ '".$_POST['M_Stock']."'  where Category='".$_POST['M_Category']."' and MedicineName =  '".$_POST['M_Name']."' and UnitMeasure  = '".$_POST['M_UnitMeasure']."' ";
+	else
+		$sqlmed = "INSERT INTO tbl_medicine (Category, MedicineName, Stock, ExpDate,UnitMeasure, CreatedBy, ModifiedBy) VALUES('".$_POST['M_Category']."','".$_POST['M_Name']."','".$_POST['M_Stock']."','".$_POST['M_ExpDate']."','".$_POST['M_UnitMeasure']."', '".$_SESSION['Fname']." ".$_SESSION['Lname']."','".$_SESSION['Fname']." ".$_SESSION['Lname']."')";
 	// echo $sqlmed;
 	$conn->query($sqlmed);
 }
