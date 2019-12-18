@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+  $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+  header("location: login.php");
+}
     include '../../db_connection.php';
 
     //echo "select * from tbl_patientinfo where PatientID='".$_GET['ID']."'";

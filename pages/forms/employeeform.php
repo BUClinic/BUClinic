@@ -28,7 +28,10 @@ CloseCon($conn);
     
 }
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+  
+  header("location: login.php");
+}
     $conn = OpenCon();
 
 ?>

@@ -1,6 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+    $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+    header("location: ../../login.php");
+
+}
 include '../../db_connection.php';
 
 $conn = OpenCon();
@@ -192,17 +196,13 @@ $conn = OpenCon();
                                                     
                                                     <option selected disabled value="">College/Department</option>
                                                     <?php 
-                                                    $sql = "select * from tbl_college";
+                                                    $sql = "select distinct colleges from tbl_college";
                                                     $res = mysqli_query($conn,$sql);
                                                     $x=0;
                                                     while($list = mysqli_fetch_assoc($res)){
                                                         $col[$x] = $list['colleges'];
+                                                        echo "<option >".$col[$x]."</option>";
                                                         $x++;
-                                                    }
-                                                    for($i=0;$i<=$x;$i++){
-                                                        if(($col[$i]!=$col[$i-1])&&$col[$i]!=null){
-                                                            echo "<option >".$col[$i]."</option>";
-                                                        }
                                                     }
                                                     ?>
                                                 </select> 
@@ -1091,22 +1091,23 @@ $conn = OpenCon();
        <script>
 
         function getCollege(selectObject){
-                $('#S_Course')
-                .find('option')
-                .remove()
-                .append('<option>'+result[i].courses+'</option>')
-                ;
-                var college = selectObject.value; 
-                var result;
-                var list = document.getElementById("S_Department");
-                var optionVal = list.options[list.selectedIndex].text;
-                const Http = new XMLHttpRequest();
-                Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_college where colleges = '" + optionVal + "'");
-                Http.send();
-                Http.onreadystatechange = function(){
-                    if(this.readyState==4 && this.status==200){
-                        result = JSON.parse(Http.responseText);
-                        var i=0;
+            var college = selectObject.value; 
+            var result;
+            var list = document.getElementById("S_Department");
+            var optionVal = list.options[list.selectedIndex].text;
+            const Http = new XMLHttpRequest();
+            Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_college where colleges = '" + optionVal + "'");
+            Http.send();
+            Http.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200){
+                    result = JSON.parse(Http.responseText);
+                    var i=0;
+                    $('#S_Course')
+                    .find('option')
+                    .remove()
+                    .end()
+                    .append('<option selected disabled value="">Course</option>')
+                    ;
                         for(i=0;i<result.length;i++){
                             $('#S_Course')
                             .find('option')
@@ -1134,19 +1135,19 @@ $conn = OpenCon();
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>Province</option>')
+                            .append('<option selected disabled  value="">Province</option>')
                         ;
                         $('#S_City')
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>City/Municipality</option>')
+                            .append('<option selected disabled  value="">City/Municipality</option>')
                         ;
                         $('#S_Baranggay')
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>Baranggay</option>')
+                            .append('<option selected disabled  value="">Baranggay</option>')
                         ;  
                         for(i=0;i<result.length;i++){
                             $('#S_Province')
@@ -1178,13 +1179,13 @@ $conn = OpenCon();
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>City/Municipality</option>')
+                            .append('<option selected disabled  value="">City/Municipality</option>')
                         ;
                         $('#S_Baranggay')
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>Baranggay</option>')
+                            .append('<option selected disabled  value="">Baranggay</option>')
                         ; 
                         for(i=0;i<result.length;i++){
                             $('#S_City')
@@ -1215,7 +1216,7 @@ $conn = OpenCon();
                             .find('option')
                             .remove()
                             .end()
-                            .append('<option selected disabled>Baranggay</option>')
+                            .append('<option selected disabled  value="">Baranggay</option>')
                         ;  
                         for(i=0;i<result.length;i++){
                             $('#S_Baranggay')

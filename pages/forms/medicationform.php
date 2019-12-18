@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+    $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+    header("location: ../..login.php");
+}
 include '../../db_connection.php';
 
 $conn = OpenCon();
@@ -166,7 +169,7 @@ $conn = OpenCon();
                                                 </div>
                                                 <div class="form-group row col-md-12 col-sm-12 mb-2">
                                                 <div class=" form-group row col-md-12 col-sm-12 mb-2">
-                                                <div class="col-md-3 col-sm-12 mb-2">
+                                                <div class="col-md-6 col-sm-12 mb-2">
                                                         <select class="form-control" name="med_cat" id="med_cat" onchange="setMed()"  required>
                                                             <option selected disabled  value="">Medicine Category</option>
                                                             <?php 
@@ -182,24 +185,29 @@ $conn = OpenCon();
                                                             ?>
                                                         </select> 
                                                     </div>
-                                                    <div class="col-md-3 col-sm-12 mb-2">
+                                                    <div class="col-md-6 col-sm-12 mb-2">
                                                         <select class="form-control" name="M_Name" id="M_Name" onchange="setMes()" required>
                                                             <option selected disabled value="">Medicine Name</option>
                                                         </select> 
                                                     </div>
-                                                    <div class="col-md-2 col-sm-12 mb-2">
-                                                        <select class="form-control" name="M_Measure" id="M_Measure" required>
+                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                        <select class="form-control" name="M_Measure" id="M_Measure" onchange="setExp()" required>
                                                             <option selected  disabled value="">Unit Measure</option>
                                                         </select> 
                                                     </div>
-                                                    <div class="col-md-2 col-sm-12 mb-2">
+                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                        <select class="form-control" name="M_ExpDate" id="M_ExpDate" required>
+                                                            <option selected  disabled value="">Expiration Date</option>
+                                                        </select> 
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 mb-2">
                                                         <input type="number" class="form-control mb-2" id="quantity" name="quantity" placeholder="Quantity" required>
                                                         <input type="text" class="form-control mb-2" id="qty" name="qty" placeholder="meds" value=" " hidden>
                                                         <input type="text" class="form-control mb-2" id="mid" name="mid" placeholder="meds"  value=" "hidden>
                                                         <input type="text" class="form-control mb-2" id="med" name="med" placeholder="meds"  value=" "hidden>
                                                     </div>
                                                     
-                                                    <div class="col-md-2 col-sm-12 mb-2">
+                                                    <div class="col-md-6 col-sm-12 mb-2">
                                                     <input type="button" class="form-control btn-primary mb-2" id="add" name="add" value="Add" onclick="addTo()">
                                                     </div>
                                                 </div>
@@ -303,7 +311,7 @@ $conn = OpenCon();
                             $('#M_Measure')
                             .find('option')
                             .end()
-                            .append('<option id='+result[i].ID+'>'+result[i].UnitMeasure+'</option>')
+                            .append('<option >'+result[i].UnitMeasure+'</option>')
                             ;
                         }
                     }
@@ -311,7 +319,38 @@ $conn = OpenCon();
                 }
             }
 
-
+    function setExp(){ 
+             var M_measure = document.getElementById("M_Measure");
+             var catID = document.getElementById("med_cat");
+             var list = document.getElementById("M_Name");
+             var optionVal = list.options[list.selectedIndex].text;
+             var catVal = catID.options[catID.selectedIndex].text;
+             var M_measures = M_measure.options[M_measure.selectedIndex].text;
+             const Http = new XMLHttpRequest();
+             Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where Category = '"+catID+"' and MedicineName = '"+list+"' and UnitMeasure = '"+M_Measure+"' ");
+             console.log("select * from tbl_medicine where Category = '"+JSON.stringify(catID)+"' and MedicineName = '"+JSON.stringify(list)+"' and UnitMeasure = '"+JSON.stringifyM_Measure+"' ");
+             Http.send();
+             Http.onreadystatechange = function(){
+                 if(this.readyState==4 && this.status==200){
+                     result = JSON.parse(Http.responseText);   
+                     var i=0;
+                     $('#M_ExpDate')
+                       .find('option')
+                       .remove()
+                       .end()
+                       .append('<option selected disabled value="">Expiration Date</option>')
+                     ;
+                     for(i=0;i<result.length;i++){
+                         $('#M_ExpDate')
+                         .find('option')
+                         .end()
+                         .append('<option id='+result[i].ID+'>'+result[i].ExpDate+'</option>')
+                         ;
+                     }
+                 }
+                 
+             }
+         }
        function setMeds(){
             var tbl = document.getElementById('tblmed');
             for (var i=1;i<tbl.rows.length;i++){
@@ -353,7 +392,7 @@ $conn = OpenCon();
         
         var tr,td,idm,name,qty;
         var flag= false;
-        idm= document.getElementById("M_Measure").options[document.getElementById("M_Measure").selectedIndex].id;
+        idm= document.getElementById("M_ExpDate").options[document.getElementById("M_ExpDate").selectedIndex].id;
         qty = document.getElementById("quantity").value;
         const Http = new XMLHttpRequest();
         Http.open("GET", "../../saverecords/sql.php?query=select * from tbl_medicine where ID = '"+idm+"' ");

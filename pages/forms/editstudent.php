@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+    $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+    header("location: login.php");
+?
     include '../../db_connection.php';
 
     //echo "select * from tbl_patientinfo where PatientID='".$_GET['ID']."'";
@@ -177,7 +180,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                               <input type="text" class="form-control mb-2" name="S_Bdate" id="Birthdate" placeholder="Birth Date" onfocus="this.type='date'" value= <?php echo '"'.$r['Birthdate'].'"';?>required>
                               <input type="number" class="form-control mb-2"  name="S_Age" id="Age" placeholder="Age" value=<?php echo '"'.$r['Age'].'"';?> required>
                               <select class="form-control" name="S_Gender" id="Gender" required >
-                                    <option selected disabled >Sex</option>
+                                    <option selected disabled value="">Sex</option>
                                     <?php
                                     if($r['Sex']=="Male"){
                                       echo "<option selected>Male</option>
@@ -198,7 +201,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-2 col-sm-12 mb-2">
                               <input type="text" class="form-control mb-2" name="S_Cnumber" id="Cnumber" placeholder="Contact Number"value=<?php echo '"'.$r['ContactNum'].'"';?> required>
                               <select class="form-control mb-2" name="S_Status" id="Status" required>
-                                    <option selected disabled>Civil Status</option>
+                                    <option selected disabled value="">Civil Status</option>
                                     <?php
                                       if($r['CivilStatus'] == 'Single'){
                                         echo "<option selected>Single</option>";
@@ -241,25 +244,15 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="col-md-3 col-sm-12 mb-2">
                             <select class="form-control" name="S_Department" id="S_Dpartment" onchange="getCollege(this)" required>
                                 
-                                <option selected disabled>College/Department</option>
+                                <option selected disabled value="">College/Department</option>
                                 <?php 
-                                $sql = "select * from tbl_college";
+                                $sql = "select distinct colleges from tbl_college";
                                 $res = mysqli_query($conn,$sql);
                                 $x=0;
                                 while($list = mysqli_fetch_assoc($res)){
                                     $col[$x] = $list['colleges'];
+                                    echo "<option >".$col[$x]."</option>";
                                     $x++;
-                                }
-                                
-                                for($i=0;$i<=$x;$i++){
-                                  $selected="";
-                                  if(($col[$i]!=$col[$i-1])&&$col[$i]!=null){
-                                  if($r['CollegeUnit']==$col[$i]){
-                                          $selected="selected";  
-                                      }
-                                      echo "<option ".$selected.">".$col[$i]."</option>";
-                                    }
-                                    
                                 }
                                 ?>
                             </select> 
@@ -268,7 +261,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           
                           <div class="col-md-3 col-sm-12 mb-2">
                               <select class="form-control" name="S_Course" id="S_Course" required>
-                                    <option selected disabled>Course</option>\
+                                    <option selected disabled value="">Course</option>\
                                     <?php
                                       $sql = "select * from tbl_college";
                                       $res = mysqli_query($conn,$sql);
@@ -296,7 +289,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           </div>
                           <div class="col-md-3 col-sm-12 mb-2">
                                                 <select class="form-control" name="S_YearLevel" id="S_YearLevel" required>
-                                                    <option selected disabled>Year Level</option>
+                                                    <option selected disabled value="">Year Level</option>
                                                     <?php
                                                     
                                                       if($r['YearLevel']=="1st Year"){
@@ -346,7 +339,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 
                           <div class="col-md-2 col-sm-12 mb-2" >
                               <select  class="form-control" name="S_Region" id="S_Region" onchange="getRegion()" required>
-                                <option selected disabled>Region</option>
+                                <option selected disabled value="">Region</option>
                                 <?php 
                                   $sql = "select * from refregion";
                                   $res = mysqli_query($conn,$sql);
@@ -367,7 +360,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
                               <select  class="form-control" name="S_Province" id="S_Province"  onchange="getProvince()" required>
-                              <option selected disabled>Province</option>
+                              <option selected disabled value="">Province</option>
                               <?php 
                                   $sql = "select * from refprovince";
                                   $res = mysqli_query($conn,$sql);
@@ -398,7 +391,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           </div>
                           <div class="col-md-2 col-sm-12 mb-2">
                           <select  class="form-control" name="S_City" id="S_City"  onchange="getCity()" required>
-                              <option selected disabled>City/Municipality</option>
+                              <option selected disabled value="">City/Municipality</option>
                               <?php 
                                   $sql = "select * from refcitymun";
                                   $res = mysqli_query($conn,$sql);
@@ -431,7 +424,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           </div>
                           <div class="col-md-2 col-sm-12  mb-2">
                           <select  class="form-control" name="S_Baranggay" id="S_Baranggay" required>
-                              <option selected disabled>Baranggay</option>
+                              <option selected disabled value="">Baranggay</option>
                               <?php 
                                   $sql = "select * from refbrgy";
                                   $res = mysqli_query($conn,$sql);
@@ -1318,18 +1311,6 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             }
             
             function getRegion(){
-                $('#S_Province')
-                .find('option')
-                .remove()
-                ;
-                $('#S_City')
-                .find('option')
-                .remove()
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove()
-                ;   
                 var result;
                 var list = document.getElementById("S_Region");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1340,6 +1321,24 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_Province')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Province</option>')
+                        ;
+                        $('#S_City')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Municipality/City</option>')
+                        ;
+                        $('#S_Baranggay')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Baranggay</option>')
+                        ;   
                         for(i=0;i<result.length;i++){
                             $('#S_Province')
                             .find('option')
@@ -1355,14 +1354,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             }
             
             function getProvince(){
-                $('#S_City')
-                .find('option')
-                .remove();
-                ;
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
+           
                 var result;
                 var list = document.getElementById("S_Province");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1373,6 +1365,18 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_City')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Municipality/City</option>')
+                        ;
+                        $('#S_Baranggay')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Baranggay</option>')
+                        ; 
                         for(i=0;i<result.length;i++){
                             $('#S_City')
                             .find('option')
@@ -1388,10 +1392,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
             } 
             
             function getCity(){
-                $('#S_Baranggay')
-                .find('option')
-                .remove();
-                ;   
+                
                 var result;
                 var list = document.getElementById("S_City");
                 var optionVal = list.options[list.selectedIndex].id;
@@ -1402,6 +1403,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                     if(this.readyState==4 && this.status==200){
                         result = JSON.parse(Http.responseText);
                         var i=0;
+                        $('#S_Baranggay')
+                        .find('option')
+                        .remove()
+                        .end()
+                        .append('<option selected disabled  value="">Baranggay</option>')
+                        ; 
                         for(i=0;i<result.length;i++){
                             $('#S_Baranggay')
                             .find('option')
