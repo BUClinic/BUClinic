@@ -139,10 +139,10 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
          <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
+              <h2> Medication Records <i class="icon-social-dropbox float-left"></i></h2>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <input class='btn btn-primary w-100' type="button" data-toggle="modal" data-target="#Medicine" name="AddMed" style="width: 100%" value="Add Medicine">
+                  
                   <div class="modal fade" id="Medicine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2019 at 08:11 PM
+-- Generation Time: Dec 19, 2019 at 01:05 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -44170,7 +44170,16 @@ INSERT INTO `tbl_diagnosis` (`ID`, `PatientID`, `Diagnosis`, `Complaints`, `Trea
 (2, '2018-CS-100309', 'asdf', 'sadf', '', 'asdf', '2019-12-18 18:40:56', 'Davie Balmadrid'),
 (3, '2018-CS-100341', 'asd', 'asd', '', 'asd', '2019-12-18 18:57:12', 'Davie Balmadrid'),
 (4, '2018-CS-100341', 'sadf', 'asdf', '', 'sadf', '2019-12-18 18:57:28', 'Davie Balmadrid'),
-(5, '2018-CS-100309', '123', '123', '', '213', '2019-12-18 18:57:41', 'Davie Balmadrid');
+(5, '2018-CS-100309', '123', '123', '', '213', '2019-12-18 18:57:41', 'Davie Balmadrid'),
+(6, '2018-CS-100309', 'qwe', 'qwe', '', 'qwe', '2019-12-18 19:53:01', 'Davie Balmadrid'),
+(7, '2018-CS-100309', 'qwe', 'zxc', '', 'ghjgf', '2019-12-18 19:53:32', 'Davie Balmadrid'),
+(8, '2018-CS-100310', 'DFGHGH', 'SAFADF', '', 'SDFHSDGFH', '2019-12-18 19:54:06', 'Davie Balmadrid'),
+(9, '2018-CS-100309', 'zfhzbvxb', 'qweadt', '', 'asdfadg', '2019-12-18 19:54:47', 'Davie Balmadrid'),
+(10, '2018-CS-100309', 'safhfsh', 'sadgfh', '', 'sdgsafh', '2019-12-18 19:55:18', 'Davie Balmadrid'),
+(11, '2018-CS-100309', 'dfhgsdfh', 'safhsdfhsdf', '', 'sdfhsdfgh', '2019-12-18 19:55:38', 'Davie Balmadrid'),
+(12, '2018-CS-100309', 'asfdhygsfh', 'asrfhyrsdh', '', 'asdyasrhysfh', '2019-12-18 19:56:00', 'Davie Balmadrid'),
+(13, '2018-CS-100309', 'dsfhsdghs', 'asdfgsadhg', '', 'dfshsdgjhd', '2019-12-18 19:56:18', 'Davie Balmadrid'),
+(14, '2018-CS-100309', 'sdfgsfhg', 'asdfsadg', '', 'sdfsadg', '2019-12-18 19:56:58', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44200,7 +44209,16 @@ INSERT INTO `tbl_examinations` (`ID`, `PatientID`, `Temp`, `BP`, `Weight`, `Heig
 (2, '2018-CS-100309', '69', '69', '690', '690', 'asdf', 'asdf', '2019-12-18 18:40:56', 'Davie Balmadrid'),
 (3, '2018-CS-100341', '69', '69', '69', '69', 'asd', 'asd', '2019-12-18 18:57:12', 'Davie Balmadrid'),
 (4, '2018-CS-100341', '213', '123', '123', '123', 'asdf', 'asdf', '2019-12-18 18:57:28', 'Davie Balmadrid'),
-(5, '2018-CS-100309', '123', '123', '123', '123', '123', '123', '2019-12-18 18:57:41', 'Davie Balmadrid');
+(5, '2018-CS-100309', '123', '123', '123', '123', '123', '123', '2019-12-18 18:57:41', 'Davie Balmadrid'),
+(6, '2018-CS-100309', '39', '100/100', '60', '160', 'qwe', 'qwe', '2019-12-18 19:53:01', 'Davie Balmadrid'),
+(7, '2018-CS-100309', '37', '100/100', '56', '161', 'qwe', 'asd', '2019-12-18 19:53:32', 'Davie Balmadrid'),
+(8, '2018-CS-100310', '38', '100/100', '55', '162', 'xfhjfdhgj', 'sdfgszfg', '2019-12-18 19:54:06', 'Davie Balmadrid'),
+(9, '2018-CS-100309', '40', '100/120', '56', '163', 'xzfvhb', 'dsfhj', '2019-12-18 19:54:47', 'Davie Balmadrid'),
+(10, '2018-CS-100309', '54', '100/120', '60', '161', 'aqweadf', 'zxfhfzxh', '2019-12-18 19:55:18', 'Davie Balmadrid'),
+(11, '2018-CS-100309', '37', '100/120', '56', '163', 'dfshzgj', 'dzfhxfh', '2019-12-18 19:55:38', 'Davie Balmadrid'),
+(12, '2018-CS-100309', '40', '80/100', '60', '163', 'qsrshgsdfh', 'zscgsfyhsrfyh', '2019-12-18 19:56:00', 'Davie Balmadrid'),
+(13, '2018-CS-100309', '36', '80/100', '55', '162', 'qwrasdgsfzh', 'zxfhsdghjtj', '2019-12-18 19:56:18', 'Davie Balmadrid'),
+(14, '2018-CS-100309', '38', '100/100', '60', '161', 'wedtgsfrygafhg', 'safhdfghjdgshdfh', '2019-12-18 19:56:58', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44274,7 +44292,97 @@ INSERT INTO `tbl_familyhistoryanswer` (`ID`, `PatientID`, `Illness`, `Status`, `
 (1095, '2018-CS-100309', 'KProblem', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
 (1096, '2018-CS-100309', 'MDisorder', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
 (1097, '2018-CS-100309', 'BTendencies', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1098, '2018-CS-100309', 'GDisease', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid');
+(1098, '2018-CS-100309', 'GDisease', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1099, '2018-CS-100310', 'Cancer', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1100, '2018-CS-100310', 'Hypertension', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1101, '2018-CS-100310', 'Stroke', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1102, '2018-CS-100310', 'Tuberculosis', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1103, '2018-CS-100310', 'Rheumatism', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1104, '2018-CS-100310', 'EDisorder', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1105, '2018-CS-100310', 'Diabetes', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1106, '2018-CS-100310', 'Asthma', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1107, '2018-CS-100310', 'Convulsion', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1108, '2018-CS-100310', 'SProblems', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1109, '2018-CS-100310', 'HDisease', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1110, '2018-CS-100310', 'KProblem', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1111, '2018-CS-100310', 'MDisorder', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1112, '2018-CS-100310', 'BTendencies', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1113, '2018-CS-100310', 'GDisease', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1114, '2018-CS-100310', 'Cancer', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1115, '2018-CS-100310', 'Hypertension', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1116, '2018-CS-100310', 'Stroke', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1117, '2018-CS-100310', 'Tuberculosis', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1118, '2018-CS-100310', 'Rheumatism', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1119, '2018-CS-100310', 'EDisorder', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1120, '2018-CS-100310', 'Diabetes', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1121, '2018-CS-100310', 'Asthma', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1122, '2018-CS-100310', 'Convulsion', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1123, '2018-CS-100310', 'SProblems', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1124, '2018-CS-100310', 'HDisease', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1125, '2018-CS-100310', 'KProblem', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1126, '2018-CS-100310', 'MDisorder', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1127, '2018-CS-100310', 'BTendencies', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1128, '2018-CS-100310', 'GDisease', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1129, '2018-CS-100310', 'Cancer', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1130, '2018-CS-100310', 'Hypertension', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1131, '2018-CS-100310', 'Stroke', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1132, '2018-CS-100310', 'Tuberculosis', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1133, '2018-CS-100310', 'Rheumatism', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1134, '2018-CS-100310', 'EDisorder', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1135, '2018-CS-100310', 'Diabetes', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1136, '2018-CS-100310', 'Asthma', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1137, '2018-CS-100310', 'Convulsion', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1138, '2018-CS-100310', 'SProblems', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1139, '2018-CS-100310', 'HDisease', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1140, '2018-CS-100310', 'KProblem', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1141, '2018-CS-100310', 'MDisorder', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1142, '2018-CS-100310', 'BTendencies', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1143, '2018-CS-100310', 'GDisease', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1144, '2018-CS-100310', 'Cancer', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1145, '2018-CS-100310', 'Hypertension', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1146, '2018-CS-100310', 'Stroke', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1147, '2018-CS-100310', 'Tuberculosis', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1148, '2018-CS-100310', 'Rheumatism', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1149, '2018-CS-100310', 'EDisorder', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1150, '2018-CS-100310', 'Diabetes', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1151, '2018-CS-100310', 'Asthma', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1152, '2018-CS-100310', 'Convulsion', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1153, '2018-CS-100310', 'SProblems', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1154, '2018-CS-100310', 'HDisease', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1155, '2018-CS-100310', 'KProblem', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1156, '2018-CS-100310', 'MDisorder', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1157, '2018-CS-100310', 'BTendencies', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1158, '2018-CS-100310', 'GDisease', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1159, '2018-CS-100310', 'Cancer', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1160, '2018-CS-100310', 'Hypertension', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1161, '2018-CS-100310', 'Stroke', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1162, '2018-CS-100310', 'Tuberculosis', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1163, '2018-CS-100310', 'Rheumatism', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1164, '2018-CS-100310', 'EDisorder', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1165, '2018-CS-100310', 'Diabetes', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1166, '2018-CS-100310', 'Asthma', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1167, '2018-CS-100310', 'Convulsion', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1168, '2018-CS-100310', 'SProblems', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1169, '2018-CS-100310', 'HDisease', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1170, '2018-CS-100310', 'KProblem', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1171, '2018-CS-100310', 'MDisorder', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1172, '2018-CS-100310', 'BTendencies', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1173, '2018-CS-100310', 'GDisease', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1174, '2018-CS-100312', 'Cancer', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1175, '2018-CS-100312', 'Hypertension', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1176, '2018-CS-100312', 'Stroke', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1177, '2018-CS-100312', 'Tuberculosis', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1178, '2018-CS-100312', 'Rheumatism', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1179, '2018-CS-100312', 'EDisorder', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1180, '2018-CS-100312', 'Diabetes', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1181, '2018-CS-100312', 'Asthma', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1182, '2018-CS-100312', 'Convulsion', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1183, '2018-CS-100312', 'SProblems', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1184, '2018-CS-100312', 'HDisease', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1185, '2018-CS-100312', 'KProblem', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1186, '2018-CS-100312', 'MDisorder', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1187, '2018-CS-100312', 'BTendencies', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1188, '2018-CS-100312', 'GDisease', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44301,7 +44409,13 @@ INSERT INTO `tbl_hospitalizationhistory` (`ID`, `PatientID`, `Answer`, `Details`
 (12, '2018-CS-100341', 'No', '', '2019-12-18 19:10:59', '2019-12-18 16:26:45', 'Davie Balmadrid', 'Davie Balmadrid'),
 (13, '2018-CS-1003413422', 'No', '', '2019-12-18 17:16:28', '2019-12-18 17:16:28', 'Davie Balmadrid', 'Davie Balmadrid'),
 (14, '1234', 'No', '', '2019-12-18 18:15:22', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
-(15, '2018-CS-100309', 'No', '', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid');
+(15, '2018-CS-100309', 'No', '', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(16, '2018-CS-100310', 'No', '', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(17, '2018-CS-100310', 'No', '', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(18, '2018-CS-100310', 'No', '', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(19, '2018-CS-100310', 'No', '', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(20, '2018-CS-100310', 'No', '', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(21, '2018-CS-100312', 'No', '', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44356,16 +44470,76 @@ INSERT INTO `tbl_immunizationhistory` (`ID`, `PatientID`, `Answer`, `Status`, `M
 (245, '1234', 'I_GMeasle', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
 (246, '1234', 'I_Polio', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
 (247, '1234', 'I_DPT', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
-(248, '2018-CS-100309', 'I_BCG', 'true', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(249, '2018-CS-100309', 'I_CPox', 'true', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(250, '2018-CS-100309', 'I_AHepa', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(251, '2018-CS-100309', 'I_BHepa', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(252, '2018-CS-100309', 'I_Mumps', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(253, '2018-CS-100309', 'I_Measles', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(254, '2018-CS-100309', 'I_Typhoid', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(255, '2018-CS-100309', 'I_GMeasle', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(256, '2018-CS-100309', 'I_Polio', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(257, '2018-CS-100309', 'I_DPT', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid');
+(248, '2018-CS-100309', 'I_BCG', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(249, '2018-CS-100309', 'I_CPox', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(250, '2018-CS-100309', 'I_AHepa', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(251, '2018-CS-100309', 'I_BHepa', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(252, '2018-CS-100309', 'I_Mumps', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(253, '2018-CS-100309', 'I_Measles', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(254, '2018-CS-100309', 'I_Typhoid', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(255, '2018-CS-100309', 'I_GMeasle', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(256, '2018-CS-100309', 'I_Polio', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(257, '2018-CS-100309', 'I_DPT', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(258, '2018-CS-100310', 'I_BCG', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(259, '2018-CS-100310', 'I_CPox', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(260, '2018-CS-100310', 'I_AHepa', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(261, '2018-CS-100310', 'I_BHepa', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(262, '2018-CS-100310', 'I_Mumps', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(263, '2018-CS-100310', 'I_Measles', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(264, '2018-CS-100310', 'I_Typhoid', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(265, '2018-CS-100310', 'I_GMeasle', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(266, '2018-CS-100310', 'I_Polio', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(267, '2018-CS-100310', 'I_DPT', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(268, '2018-CS-100310', 'I_BCG', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(269, '2018-CS-100310', 'I_CPox', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(270, '2018-CS-100310', 'I_AHepa', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(271, '2018-CS-100310', 'I_BHepa', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(272, '2018-CS-100310', 'I_Mumps', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(273, '2018-CS-100310', 'I_Measles', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(274, '2018-CS-100310', 'I_Typhoid', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(275, '2018-CS-100310', 'I_GMeasle', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(276, '2018-CS-100310', 'I_Polio', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(277, '2018-CS-100310', 'I_DPT', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(278, '2018-CS-100310', 'I_BCG', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(279, '2018-CS-100310', 'I_CPox', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(280, '2018-CS-100310', 'I_AHepa', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(281, '2018-CS-100310', 'I_BHepa', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(282, '2018-CS-100310', 'I_Mumps', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(283, '2018-CS-100310', 'I_Measles', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(284, '2018-CS-100310', 'I_Typhoid', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(285, '2018-CS-100310', 'I_GMeasle', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(286, '2018-CS-100310', 'I_Polio', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(287, '2018-CS-100310', 'I_DPT', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(288, '2018-CS-100310', 'I_BCG', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(289, '2018-CS-100310', 'I_CPox', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(290, '2018-CS-100310', 'I_AHepa', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(291, '2018-CS-100310', 'I_BHepa', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(292, '2018-CS-100310', 'I_Mumps', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(293, '2018-CS-100310', 'I_Measles', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(294, '2018-CS-100310', 'I_Typhoid', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(295, '2018-CS-100310', 'I_GMeasle', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(296, '2018-CS-100310', 'I_Polio', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(297, '2018-CS-100310', 'I_DPT', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(298, '2018-CS-100310', 'I_BCG', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(299, '2018-CS-100310', 'I_CPox', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(300, '2018-CS-100310', 'I_AHepa', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(301, '2018-CS-100310', 'I_BHepa', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(302, '2018-CS-100310', 'I_Mumps', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(303, '2018-CS-100310', 'I_Measles', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(304, '2018-CS-100310', 'I_Typhoid', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(305, '2018-CS-100310', 'I_GMeasle', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(306, '2018-CS-100310', 'I_Polio', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(307, '2018-CS-100310', 'I_DPT', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(308, '2018-CS-100312', 'I_BCG', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(309, '2018-CS-100312', 'I_CPox', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(310, '2018-CS-100312', 'I_AHepa', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(311, '2018-CS-100312', 'I_BHepa', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(312, '2018-CS-100312', 'I_Mumps', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(313, '2018-CS-100312', 'I_Measles', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(314, '2018-CS-100312', 'I_Typhoid', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(315, '2018-CS-100312', 'I_GMeasle', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(316, '2018-CS-100312', 'I_Polio', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(317, '2018-CS-100312', 'I_DPT', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44390,8 +44564,9 @@ CREATE TABLE `tbl_medication` (
 --
 
 INSERT INTO `tbl_medication` (`ID`, `MedicineID`, `PatientID`, `MedicineName`, `Quantity`, `CreatedDate`, `ModifiedDate`, `CreatedBy`, `ModifiedBy`) VALUES
-(16, ' 1', '2018-CS-100341', ' neozep', 15, '2019-12-18 16:53:01', '2019-12-18 18:01:32', 'davie balmadrid', 'davie balmadrid'),
-(28, ' 2', '2018-CS-100341', ' neozep', 10, '2019-12-18 17:42:18', '2019-12-18 17:46:18', 'davie balmadrid', 'davie balmadrid');
+(28, ' 2', '2018-CS-100341', ' neozep', 10, '2019-12-18 17:42:18', '2019-12-18 17:46:18', 'davie balmadrid', 'davie balmadrid'),
+(29, ' 6', '2018-CS-100341', ' biogesic', 120, '2019-12-18 23:17:57', '2019-12-18 23:17:57', 'davie balmadrid', 'davie balmadrid'),
+(30, ' 8', '2018-CS-100341', ' biogesic', 76, '2019-12-18 23:23:34', '2019-12-18 23:23:34', 'davie balmadrid', 'davie balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44406,6 +44581,7 @@ CREATE TABLE `tbl_medicine` (
   `Stock` int(11) NOT NULL,
   `ExpDate` date NOT NULL,
   `UnitMeasure` varchar(45) NOT NULL,
+  `Status` int(11) NOT NULL,
   `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `CreatedBy` varchar(45) NOT NULL,
@@ -44416,9 +44592,11 @@ CREATE TABLE `tbl_medicine` (
 -- Dumping data for table `tbl_medicine`
 --
 
-INSERT INTO `tbl_medicine` (`ID`, `Category`, `MedicineName`, `Stock`, `ExpDate`, `UnitMeasure`, `CreatedDate`, `ModifiedDate`, `CreatedBy`, `ModifiedBy`) VALUES
-(1, 'paracetamol', 'neozep', 28, '2019-12-05', '100mg', '2019-12-18 13:36:51', '2019-12-18 18:05:19', 'davie balmadrid', 'davie balmadrid'),
-(2, 'paracetamol', 'neozep', 59, '2019-12-06', '300mg', '2019-12-18 13:38:00', '2019-12-18 17:44:58', 'davie balmadrid', 'davie balmadrid');
+INSERT INTO `tbl_medicine` (`ID`, `Category`, `MedicineName`, `Stock`, `ExpDate`, `UnitMeasure`, `Status`, `CreatedDate`, `ModifiedDate`, `CreatedBy`, `ModifiedBy`) VALUES
+(2, 'paracetamol', 'neozep', 59, '2019-12-06', '300mg', 1, '2019-12-18 13:38:00', '2019-12-18 23:48:46', 'davie balmadrid', 'davie balmadrid'),
+(5, 'bulong', 'biogesic', 100, '2020-03-10', '100mg', 0, '2019-12-18 21:30:59', '2019-12-19 00:04:24', 'davie balmadrid', 'davie balmadrid'),
+(6, 'bulong', 'biogesic', 880, '2019-12-11', '200mg', 1, '2019-12-18 21:31:36', '2019-12-18 23:48:54', 'davie balmadrid', 'davie balmadrid'),
+(8, 'bulong', 'biogesic', 624, '2019-12-06', '200mg', 1, '2019-12-18 23:17:14', '2019-12-18 23:48:57', 'davie balmadrid', 'davie balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44459,10 +44637,10 @@ CREATE TABLE `tbl_patientinfo` (
 --
 
 INSERT INTO `tbl_patientinfo` (`ID`, `PatientID`, `Lname`, `Fname`, `Mname`, `Age`, `religion`, `Address`, `Region`, `Province`, `MuniCity`, `Brgy`, `Street`, `Birthdate`, `Course`, `YearLevel`, `CollegeUnit`, `ContactNum`, `CivilStatus`, `Sex`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
-(2184, '2018-CS-100341', 'Salvadora', 'Christian', 'Rosales', 21, 'Catholic', 'REGION V (BICOL REGION),CAMARINES SUR, IRIGA CITY, Santo Niño, T. Villanueva', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'IRIGA CITY', 'Santo Niño', 'T. Villanueva', '2019-12-13', 'BS Computer Science', '2nd Year', 'College of Science', '09503610262', 'Single', 'Male', 1, '2019-12-18 16:28:50', '2019-12-18 16:26:45', 'Davie Balmadrid', 'Davie Balmadrid'),
-(2189, '2018-CS-1003413422', 'Salvadora', 'Christian', 'Asdad', 0, '', 'REGION IV-B (MIMAROPA),PALAWAN, BALABAC, Catagupan, T. Villanueva', 'REGION IV-B (MIMAROPA)', 'PALAWAN', 'BALABAC', 'Catagupan', 'T. Villanueva', '1970-01-01', '', '5th Year', '', '', '', '', 1, '2019-12-18 17:16:28', '2019-12-18 17:16:28', 'Davie Balmadrid', 'Davie Balmadrid'),
-(2190, '1234', 'Salvadora', 'Christians', 'updating', 0, '', 'REGION IV-B (MIMAROPA),ROMBLON, BANTON, Lagang, T. Villanueva', 'REGION IV-B (MIMAROPA)', 'ROMBLON', 'BANTON', 'Lagang', 'T. Villanueva', '1970-01-01', 'Bachelor of Science in Ladderized Nursing', '2nd Year', 'College of Nursing', '', 'Married', 'Male', 1, '2019-12-18 18:02:14', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
-(2191, '2018-CS-100309', 'Perez', 'Melvin', 'Benosa', 20, 'Catholic', 'REGION V (BICOL REGION),CAMARINES SUR, NAGA CITY, Cararayan, 7', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'NAGA CITY', 'Cararayan', '7', '1999-07-19', 'BS Computer Science', '2nd Year', 'College of Science', '09097350166', 'Single', 'Male', 1, '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid');
+(2184, '2018-CS-100341', 'Salvadora', 'Christian', 'Rosales', 21, 'Catholic', 'REGION V (BICOL REGION),CAMARINES SUR, IRIGA CITY, Santo Niño, T. Villanueva', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'IRIGA CITY', 'Santo Niño', 'T. Villanueva', '2019-12-13', 'BS Computer Science', '2nd Year', 'College of Science', '09503610262', 'Single', 'Male', 1, '2019-12-18 23:33:07', '2019-12-18 16:26:45', 'Davie Balmadrid', 'Davie Balmadrid'),
+(2189, '2018-CS-1003413422', 'Salvadora', 'Christian', 'Asdad', 0, '', 'REGION IV-B (MIMAROPA),PALAWAN, BALABAC, Catagupan, T. Villanueva', 'REGION IV-B (MIMAROPA)', 'PALAWAN', 'BALABAC', 'Catagupan', 'T. Villanueva', '1970-01-01', '', '5th Year', '', '', '', '', 1, '2019-12-18 23:33:02', '2019-12-18 17:16:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(2190, '1234', 'Salvadora', 'Christians', 'updating', 0, '', 'REGION IV-B (MIMAROPA),ROMBLON, BANTON, Lagang, T. Villanueva', 'REGION IV-B (MIMAROPA)', 'ROMBLON', 'BANTON', 'Lagang', 'T. Villanueva', '1970-01-01', 'Bachelor of Science in Ladderized Nursing', '2nd Year', 'College of Nursing', '', 'Married', 'Male', 1, '2019-12-18 23:32:56', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
+(2191, '2018-CS-100309', 'Perez', 'Melvin', 'Benosa', 20, 'Catholic', 'REGION V (BICOL REGION),CAMARINES SUR, NAGA CITY, Cararayan, 7', 'REGION V (BICOL REGION)', 'CAMARINES SUR', 'NAGA CITY', 'Cararayan', '7', '1999-07-19', 'Bachelor of Science in Civil Engineering', '2nd Year', 'College of Engineering', '09097350166', 'Single', 'Male', 1, '2019-12-18 23:32:39', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44621,38 +44799,230 @@ INSERT INTO `tbl_personalhistory` (`ID`, `PatientID`, `Illness`, `Status`, `Modi
 (1033, '1234', 'c_insomia', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
 (1034, '1234', 'c_jointPains', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
 (1035, '1234', 'c_frequentUrination', 'false', '2019-12-18 17:24:35', '2019-12-18 17:24:35', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1036, '2018-CS-100309', 'c_primaryComplex', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1037, '2018-CS-100309', 'c_kidneyDisease', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1038, '2018-CS-100309', 'c_pneumonia', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1039, '2018-CS-100309', 'c_earProblems', 'true', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1040, '2018-CS-100309', 'c_mentalDisorder', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1041, '2018-CS-100309', 'c_asthma', 'true', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1042, '2018-CS-100309', 'c_skinProblem', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1043, '2018-CS-100309', 'c_dengue', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1044, '2018-CS-100309', 'c_mumps', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1045, '2018-CS-100309', 'c_typhoidFever', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1046, '2018-CS-100309', 'c_rheumaticFever', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1047, '2018-CS-100309', 'c_diabetes', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1048, '2018-CS-100309', 'c_measles', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1049, '2018-CS-100309', 'c_thyroidDisorder', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1050, '2018-CS-100309', 'c_hepatitis', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1051, '2018-CS-100309', 'c_chickenPox', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1052, '2018-CS-100309', 'c_eyeDisorder', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1053, '2018-CS-100309', 'c_poliomyElitis', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1054, '2018-CS-100309', 'c_heartDisease', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1055, '2018-CS-100309', 'c_anemia', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1056, '2018-CS-100309', 'c_chestPain', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1057, '2018-CS-100309', 'c_indigestion', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1058, '2018-CS-100309', 'c_swollenFeet', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1059, '2018-CS-100309', 'c_headaches', 'true', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1060, '2018-CS-100309', 'c_soreThroat', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1061, '2018-CS-100309', 'c_dizziness', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1062, '2018-CS-100309', 'c_nausea', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1063, '2018-CS-100309', 'c_difficultBreathing', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1064, '2018-CS-100309', 'c_weightLoss', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1065, '2018-CS-100309', 'c_insomia', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1066, '2018-CS-100309', 'c_jointPains', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid'),
-(1067, '2018-CS-100309', 'c_frequentUrination', 'false', '2019-12-18 17:54:10', '2019-12-18 17:54:10', 'Davie Balmadrid', 'Davie Balmadrid');
+(1036, '2018-CS-100309', 'c_primaryComplex', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1037, '2018-CS-100309', 'c_kidneyDisease', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1038, '2018-CS-100309', 'c_pneumonia', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1039, '2018-CS-100309', 'c_earProblems', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1040, '2018-CS-100309', 'c_mentalDisorder', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1041, '2018-CS-100309', 'c_asthma', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1042, '2018-CS-100309', 'c_skinProblem', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1043, '2018-CS-100309', 'c_dengue', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1044, '2018-CS-100309', 'c_mumps', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1045, '2018-CS-100309', 'c_typhoidFever', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1046, '2018-CS-100309', 'c_rheumaticFever', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1047, '2018-CS-100309', 'c_diabetes', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1048, '2018-CS-100309', 'c_measles', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1049, '2018-CS-100309', 'c_thyroidDisorder', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1050, '2018-CS-100309', 'c_hepatitis', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1051, '2018-CS-100309', 'c_chickenPox', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1052, '2018-CS-100309', 'c_eyeDisorder', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1053, '2018-CS-100309', 'c_poliomyElitis', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1054, '2018-CS-100309', 'c_heartDisease', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1055, '2018-CS-100309', 'c_anemia', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1056, '2018-CS-100309', 'c_chestPain', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1057, '2018-CS-100309', 'c_indigestion', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1058, '2018-CS-100309', 'c_swollenFeet', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1059, '2018-CS-100309', 'c_headaches', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1060, '2018-CS-100309', 'c_soreThroat', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1061, '2018-CS-100309', 'c_dizziness', 'true', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1062, '2018-CS-100309', 'c_nausea', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1063, '2018-CS-100309', 'c_difficultBreathing', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1064, '2018-CS-100309', 'c_weightLoss', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1065, '2018-CS-100309', 'c_insomia', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1066, '2018-CS-100309', 'c_jointPains', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1067, '2018-CS-100309', 'c_frequentUrination', 'false', '2019-12-18 20:53:50', '2019-12-18 17:54:10', 'Roland Alavera', 'Davie Balmadrid'),
+(1068, '2018-CS-100310', 'c_primaryComplex', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1069, '2018-CS-100310', 'c_kidneyDisease', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1070, '2018-CS-100310', 'c_pneumonia', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1071, '2018-CS-100310', 'c_earProblems', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1072, '2018-CS-100310', 'c_mentalDisorder', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1073, '2018-CS-100310', 'c_asthma', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1074, '2018-CS-100310', 'c_skinProblem', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1075, '2018-CS-100310', 'c_dengue', 'true', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1076, '2018-CS-100310', 'c_mumps', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1077, '2018-CS-100310', 'c_typhoidFever', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1078, '2018-CS-100310', 'c_rheumaticFever', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1079, '2018-CS-100310', 'c_diabetes', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1080, '2018-CS-100310', 'c_measles', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1081, '2018-CS-100310', 'c_thyroidDisorder', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1082, '2018-CS-100310', 'c_hepatitis', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1083, '2018-CS-100310', 'c_chickenPox', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1084, '2018-CS-100310', 'c_eyeDisorder', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1085, '2018-CS-100310', 'c_poliomyElitis', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1086, '2018-CS-100310', 'c_heartDisease', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1087, '2018-CS-100310', 'c_anemia', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1088, '2018-CS-100310', 'c_chestPain', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1089, '2018-CS-100310', 'c_indigestion', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1090, '2018-CS-100310', 'c_swollenFeet', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1091, '2018-CS-100310', 'c_headaches', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1092, '2018-CS-100310', 'c_soreThroat', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1093, '2018-CS-100310', 'c_dizziness', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1094, '2018-CS-100310', 'c_nausea', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1095, '2018-CS-100310', 'c_difficultBreathing', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1096, '2018-CS-100310', 'c_weightLoss', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1097, '2018-CS-100310', 'c_insomia', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1098, '2018-CS-100310', 'c_jointPains', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1099, '2018-CS-100310', 'c_frequentUrination', 'false', '2019-12-18 19:17:09', '2019-12-18 19:17:09', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1100, '2018-CS-100310', 'c_primaryComplex', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1101, '2018-CS-100310', 'c_kidneyDisease', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1102, '2018-CS-100310', 'c_pneumonia', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1103, '2018-CS-100310', 'c_earProblems', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1104, '2018-CS-100310', 'c_mentalDisorder', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1105, '2018-CS-100310', 'c_asthma', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1106, '2018-CS-100310', 'c_skinProblem', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1107, '2018-CS-100310', 'c_dengue', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1108, '2018-CS-100310', 'c_mumps', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1109, '2018-CS-100310', 'c_typhoidFever', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1110, '2018-CS-100310', 'c_rheumaticFever', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1111, '2018-CS-100310', 'c_diabetes', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1112, '2018-CS-100310', 'c_measles', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1113, '2018-CS-100310', 'c_thyroidDisorder', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1114, '2018-CS-100310', 'c_hepatitis', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1115, '2018-CS-100310', 'c_chickenPox', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1116, '2018-CS-100310', 'c_eyeDisorder', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1117, '2018-CS-100310', 'c_poliomyElitis', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1118, '2018-CS-100310', 'c_heartDisease', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1119, '2018-CS-100310', 'c_anemia', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1120, '2018-CS-100310', 'c_chestPain', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1121, '2018-CS-100310', 'c_indigestion', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1122, '2018-CS-100310', 'c_swollenFeet', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1123, '2018-CS-100310', 'c_headaches', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1124, '2018-CS-100310', 'c_soreThroat', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1125, '2018-CS-100310', 'c_dizziness', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1126, '2018-CS-100310', 'c_nausea', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1127, '2018-CS-100310', 'c_difficultBreathing', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1128, '2018-CS-100310', 'c_weightLoss', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1129, '2018-CS-100310', 'c_insomia', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1130, '2018-CS-100310', 'c_jointPains', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1131, '2018-CS-100310', 'c_frequentUrination', 'false', '2019-12-18 19:19:53', '2019-12-18 19:19:53', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1132, '2018-CS-100310', 'c_primaryComplex', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1133, '2018-CS-100310', 'c_kidneyDisease', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1134, '2018-CS-100310', 'c_pneumonia', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1135, '2018-CS-100310', 'c_earProblems', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1136, '2018-CS-100310', 'c_mentalDisorder', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1137, '2018-CS-100310', 'c_asthma', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1138, '2018-CS-100310', 'c_skinProblem', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1139, '2018-CS-100310', 'c_dengue', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1140, '2018-CS-100310', 'c_mumps', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1141, '2018-CS-100310', 'c_typhoidFever', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1142, '2018-CS-100310', 'c_rheumaticFever', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1143, '2018-CS-100310', 'c_diabetes', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1144, '2018-CS-100310', 'c_measles', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1145, '2018-CS-100310', 'c_thyroidDisorder', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1146, '2018-CS-100310', 'c_hepatitis', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1147, '2018-CS-100310', 'c_chickenPox', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1148, '2018-CS-100310', 'c_eyeDisorder', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1149, '2018-CS-100310', 'c_poliomyElitis', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1150, '2018-CS-100310', 'c_heartDisease', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1151, '2018-CS-100310', 'c_anemia', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1152, '2018-CS-100310', 'c_chestPain', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1153, '2018-CS-100310', 'c_indigestion', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1154, '2018-CS-100310', 'c_swollenFeet', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1155, '2018-CS-100310', 'c_headaches', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1156, '2018-CS-100310', 'c_soreThroat', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1157, '2018-CS-100310', 'c_dizziness', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1158, '2018-CS-100310', 'c_nausea', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1159, '2018-CS-100310', 'c_difficultBreathing', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1160, '2018-CS-100310', 'c_weightLoss', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1161, '2018-CS-100310', 'c_insomia', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1162, '2018-CS-100310', 'c_jointPains', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1163, '2018-CS-100310', 'c_frequentUrination', 'false', '2019-12-18 19:24:18', '2019-12-18 19:24:18', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1164, '2018-CS-100310', 'c_primaryComplex', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1165, '2018-CS-100310', 'c_kidneyDisease', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1166, '2018-CS-100310', 'c_pneumonia', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1167, '2018-CS-100310', 'c_earProblems', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1168, '2018-CS-100310', 'c_mentalDisorder', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1169, '2018-CS-100310', 'c_asthma', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1170, '2018-CS-100310', 'c_skinProblem', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1171, '2018-CS-100310', 'c_dengue', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1172, '2018-CS-100310', 'c_mumps', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1173, '2018-CS-100310', 'c_typhoidFever', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1174, '2018-CS-100310', 'c_rheumaticFever', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1175, '2018-CS-100310', 'c_diabetes', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1176, '2018-CS-100310', 'c_measles', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1177, '2018-CS-100310', 'c_thyroidDisorder', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1178, '2018-CS-100310', 'c_hepatitis', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1179, '2018-CS-100310', 'c_chickenPox', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1180, '2018-CS-100310', 'c_eyeDisorder', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1181, '2018-CS-100310', 'c_poliomyElitis', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1182, '2018-CS-100310', 'c_heartDisease', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1183, '2018-CS-100310', 'c_anemia', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1184, '2018-CS-100310', 'c_chestPain', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1185, '2018-CS-100310', 'c_indigestion', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1186, '2018-CS-100310', 'c_swollenFeet', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1187, '2018-CS-100310', 'c_headaches', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1188, '2018-CS-100310', 'c_soreThroat', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1189, '2018-CS-100310', 'c_dizziness', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1190, '2018-CS-100310', 'c_nausea', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1191, '2018-CS-100310', 'c_difficultBreathing', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1192, '2018-CS-100310', 'c_weightLoss', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1193, '2018-CS-100310', 'c_insomia', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1194, '2018-CS-100310', 'c_jointPains', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1195, '2018-CS-100310', 'c_frequentUrination', 'false', '2019-12-18 19:27:16', '2019-12-18 19:27:16', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1196, '2018-CS-100310', 'c_primaryComplex', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1197, '2018-CS-100310', 'c_kidneyDisease', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1198, '2018-CS-100310', 'c_pneumonia', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1199, '2018-CS-100310', 'c_earProblems', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1200, '2018-CS-100310', 'c_mentalDisorder', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1201, '2018-CS-100310', 'c_asthma', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1202, '2018-CS-100310', 'c_skinProblem', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1203, '2018-CS-100310', 'c_dengue', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1204, '2018-CS-100310', 'c_mumps', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1205, '2018-CS-100310', 'c_typhoidFever', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1206, '2018-CS-100310', 'c_rheumaticFever', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1207, '2018-CS-100310', 'c_diabetes', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1208, '2018-CS-100310', 'c_measles', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1209, '2018-CS-100310', 'c_thyroidDisorder', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1210, '2018-CS-100310', 'c_hepatitis', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1211, '2018-CS-100310', 'c_chickenPox', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1212, '2018-CS-100310', 'c_eyeDisorder', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1213, '2018-CS-100310', 'c_poliomyElitis', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1214, '2018-CS-100310', 'c_heartDisease', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1215, '2018-CS-100310', 'c_anemia', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1216, '2018-CS-100310', 'c_chestPain', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1217, '2018-CS-100310', 'c_indigestion', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1218, '2018-CS-100310', 'c_swollenFeet', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1219, '2018-CS-100310', 'c_headaches', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1220, '2018-CS-100310', 'c_soreThroat', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1221, '2018-CS-100310', 'c_dizziness', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1222, '2018-CS-100310', 'c_nausea', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1223, '2018-CS-100310', 'c_difficultBreathing', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1224, '2018-CS-100310', 'c_weightLoss', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1225, '2018-CS-100310', 'c_insomia', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1226, '2018-CS-100310', 'c_jointPains', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1227, '2018-CS-100310', 'c_frequentUrination', 'false', '2019-12-18 19:28:33', '2019-12-18 19:28:33', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1228, '2018-CS-100312', 'c_primaryComplex', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1229, '2018-CS-100312', 'c_kidneyDisease', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1230, '2018-CS-100312', 'c_pneumonia', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1231, '2018-CS-100312', 'c_earProblems', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1232, '2018-CS-100312', 'c_mentalDisorder', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1233, '2018-CS-100312', 'c_asthma', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1234, '2018-CS-100312', 'c_skinProblem', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1235, '2018-CS-100312', 'c_dengue', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1236, '2018-CS-100312', 'c_mumps', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1237, '2018-CS-100312', 'c_typhoidFever', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1238, '2018-CS-100312', 'c_rheumaticFever', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1239, '2018-CS-100312', 'c_diabetes', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1240, '2018-CS-100312', 'c_measles', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1241, '2018-CS-100312', 'c_thyroidDisorder', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1242, '2018-CS-100312', 'c_hepatitis', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1243, '2018-CS-100312', 'c_chickenPox', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1244, '2018-CS-100312', 'c_eyeDisorder', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1245, '2018-CS-100312', 'c_poliomyElitis', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1246, '2018-CS-100312', 'c_heartDisease', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1247, '2018-CS-100312', 'c_anemia', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1248, '2018-CS-100312', 'c_chestPain', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1249, '2018-CS-100312', 'c_indigestion', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1250, '2018-CS-100312', 'c_swollenFeet', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1251, '2018-CS-100312', 'c_headaches', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1252, '2018-CS-100312', 'c_soreThroat', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1253, '2018-CS-100312', 'c_dizziness', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1254, '2018-CS-100312', 'c_nausea', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1255, '2018-CS-100312', 'c_difficultBreathing', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1256, '2018-CS-100312', 'c_weightLoss', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1257, '2018-CS-100312', 'c_insomia', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1258, '2018-CS-100312', 'c_jointPains', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1259, '2018-CS-100312', 'c_frequentUrination', 'false', '2019-12-18 19:32:21', '2019-12-18 19:32:21', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44691,7 +45061,13 @@ INSERT INTO `tbl_qallergies` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedD
 (8, '2018-CS-100341', 'No', '', '2019-12-18 16:26:45', '0000-00-00 00:00:00', 0, 0),
 (9, '2018-CS-1003413422', 'No', '', '2019-12-18 17:16:28', '0000-00-00 00:00:00', 0, 0),
 (10, '1234', 'No', '', '2019-12-18 17:24:35', '0000-00-00 00:00:00', 0, 0),
-(11, '2018-CS-100309', 'No', '', '2019-12-18 17:54:10', '0000-00-00 00:00:00', 0, 0);
+(11, '2018-CS-100309', 'No', '', '2019-12-18 17:54:10', '0000-00-00 00:00:00', 0, 0),
+(12, '2018-CS-100310', 'No', '', '2019-12-18 19:17:09', '0000-00-00 00:00:00', 0, 0),
+(13, '2018-CS-100310', 'No', '', '2019-12-18 19:19:53', '0000-00-00 00:00:00', 0, 0),
+(14, '2018-CS-100310', 'No', '', '2019-12-18 19:24:18', '0000-00-00 00:00:00', 0, 0),
+(15, '2018-CS-100310', 'No', '', '2019-12-18 19:27:16', '0000-00-00 00:00:00', 0, 0),
+(16, '2018-CS-100310', 'No', '', '2019-12-18 19:28:33', '0000-00-00 00:00:00', 0, 0),
+(17, '2018-CS-100312', 'No', '', '2019-12-18 19:32:21', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44718,7 +45094,13 @@ INSERT INTO `tbl_qtakingmedicine` (`ID`, `PatientID`, `Answer`, `Details`, `Modi
 (7, '2018-CS-100341', 'No', '', '2019-12-18 19:10:59', '0000-00-00 00:00:00', 0, 0),
 (8, '2018-CS-1003413422', 'No', '', '2019-12-18 17:16:28', '0000-00-00 00:00:00', 0, 0),
 (9, '1234', 'No', '', '2019-12-18 18:15:22', '0000-00-00 00:00:00', 0, 0),
-(10, '2018-CS-100309', 'No', '', '2019-12-18 17:54:10', '0000-00-00 00:00:00', 0, 0);
+(10, '2018-CS-100309', 'No', '', '2019-12-18 17:54:10', '0000-00-00 00:00:00', 0, 0),
+(11, '2018-CS-100310', 'No', '', '2019-12-18 19:17:09', '0000-00-00 00:00:00', 0, 0),
+(12, '2018-CS-100310', 'No', '', '2019-12-18 19:19:53', '0000-00-00 00:00:00', 0, 0),
+(13, '2018-CS-100310', 'No', '', '2019-12-18 19:24:18', '0000-00-00 00:00:00', 0, 0),
+(14, '2018-CS-100310', 'No', '', '2019-12-18 19:27:16', '0000-00-00 00:00:00', 0, 0),
+(15, '2018-CS-100310', 'No', '', '2019-12-18 19:28:33', '0000-00-00 00:00:00', 0, 0),
+(16, '2018-CS-100312', 'No', '', '2019-12-18 19:32:21', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44964,49 +45346,49 @@ ALTER TABLE `tbl_college`
 -- AUTO_INCREMENT for table `tbl_familyhistoryanswer`
 --
 ALTER TABLE `tbl_familyhistoryanswer`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1099;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1189;
 
 --
 -- AUTO_INCREMENT for table `tbl_hospitalizationhistory`
 --
 ALTER TABLE `tbl_hospitalizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_immunizationhistory`
 --
 ALTER TABLE `tbl_immunizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=318;
 
 --
 -- AUTO_INCREMENT for table `tbl_medication`
 --
 ALTER TABLE `tbl_medication`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_medicine`
 --
 ALTER TABLE `tbl_medicine`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientinfo`
 --
 ALTER TABLE `tbl_patientinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2192;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2198;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientsparentinfo`
 --
 ALTER TABLE `tbl_patientsparentinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=364;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
 
 --
 -- AUTO_INCREMENT for table `tbl_personalhistory`
 --
 ALTER TABLE `tbl_personalhistory`
-  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1068;
+  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1260;
 
 --
 -- AUTO_INCREMENT for table `tbl_presentsymptoms`
@@ -45018,13 +45400,13 @@ ALTER TABLE `tbl_presentsymptoms`
 -- AUTO_INCREMENT for table `tbl_qallergies`
 --
 ALTER TABLE `tbl_qallergies`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_qtakingmedicine`
 --
 ALTER TABLE `tbl_qtakingmedicine`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
