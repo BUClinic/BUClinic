@@ -1189,6 +1189,7 @@ if(!isset($_SESSION['buhs_user'])){
                                 </div>
                   
             </div>
+            <button type="button" class="btn btn-dark" name="cancel" onclick="window.location.replace('../../index.php')">Back</button>
             </form>
           </div>
           <!-- content-wrapper ends -->

@@ -1,7 +1,0 @@
-https://prod.liveshare.vsengsaas.visualstudio.com/join?2C756B965847C2898A16A57A61B0B45443C7
-hello 
-"SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex from tbl_patieninfo WHERE 1"
-INSERT INTO `tbl_diagnosis`(`ID`, `PatientID`, `Diagnosis`, `Treatment`, `Referral`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])
-
-INSERT INTO 'tbl_diagnosis'('PatientID', 'Diagnosis', 'Treatment', 'Referral', 'ModifiedBy','CreatedBy' ) VALUES ('2018-CS-200290','Diagnosis','treatment','Complaints',1,1)
-INSERT INTO `tbl_diagnosis`( `PatientID`, `Diagnosis`, `Treatment`, `Referral`, `ModifiedBy`, `CreatedBy`) VALUES ('2018-CS-200290','Diagnosis','treatment','Complaints',1,1)

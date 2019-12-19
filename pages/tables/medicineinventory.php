@@ -91,7 +91,7 @@ if(!isset($_SESSION['buhs_user'])){
 <li class="nav-item"> <a class="nav-link" href="../forms/medicationform.php">MedicationForm</a></li>
 <?php
                     if($_SESSION['position']==='Admin'){
-                      echo "<li class='nav-item'> <a class='nav-link' href='../pages/employeeform.php'>Employee Form</a></li>";
+                      echo "<li class='nav-item'> <a class='nav-link' href='../forms/employeeform.php'>Employee Form</a></li>";
                     }
                   ?>
 </ul>

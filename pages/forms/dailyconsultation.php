@@ -253,7 +253,7 @@ if(!isset($_SESSION['buhs_user'])){
                               </div>  -->
                               <div class="col-md-12 col-sm-12 float-right">
                                 <button type="submit" class="btn btn-primary" id="submit" onclick="setMeds()">Submit</button>
-                                <button class="btn btn-dark" id="cancel">Cancel</button>
+                                <button type="button" class="btn btn-dark" name="cancel" onclick="window.location.replace('../../index.php')">Cancel</button>
                               </div> 
                       </div>
                     </div>

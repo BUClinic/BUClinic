@@ -5,13 +5,13 @@ if(isset($_POST['submit'])){
 
 $conn = OpenCon();
 
-$fname = $_POST['E_FName'];
-$mname = $_POST['E_MName'];
-$lname = $_POST['E_LName'];
+$fname = ucwords($_POST['E_FName']);
+$mname = ucwords($_POST['E_MName']);
+$lname = ucwords($_POST['E_LName']);
 $username = $_POST['E_Uname'];
 $password = $_POST['E_Password'];
 $email = $_POST['E_Email'];
-$position = $_POST['E_Position'];
+$position = ucwords($_POST['E_Position']);
 
 // echo "welcome $fname $lname";
 $password = md5($password);
@@ -21,7 +21,7 @@ VALUES ('$lname', '$fname', '$mname', '$username', '$password', '$position', '$e
 if ($conn->query($sql) === TRUE) {
     //echo "New record created successfully";
 } else {
-    //echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "<script>alert('Error in creating new user, Username might already taken.')";
 }
 
 CloseCon($conn);
@@ -174,7 +174,7 @@ if(!isset($_SESSION['buhs_user'])){
                 </ol>
               </nav>
             </div>
-             <form action="" method="POST">
+             <form action="#" method="POST">
             <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card">
@@ -189,18 +189,18 @@ if(!isset($_SESSION['buhs_user'])){
                           </div>
                           <div class="col-md-5 col-sm-12 mb-2">
                               <input type="text" class="form-control mb-2" name="E_Uname" placeholder="Username" required>
-                              <input type="password" class="form-control mb-2" name="E_Password" placeholder="Password" required>
-                              <input type="password" class="form-control mb-2" name="E_RPassword" placeholder="Re-Type Password" required>
+                              <input type="password" class="form-control mb-2" id="EPass" name="E_Password" placeholder="Password" required onkeyup="verifyPassword()">
+                              <input type="password" class="form-control mb-2" id="REPass" name="E_RPassword" placeholder="Re-Type Password" required onkeyup="verifyPassword()">
                           </div> 
                           <div class="col-md-6 col-sm-12 mb-2">
-                              <input type="text" class="form-control" name="E_Email" placeholder="Email" required>
+                              <input type="email" class="form-control" name="E_Email" placeholder="Email" required>
                           </div> 
                           <div class="col-md-6 col-sm-12 mb-2">
                               <input type="text" class="form-control" name="E_Position" placeholder="Position" required>
                           </div>
                           <div class="col-md-6 col-sm-12 float-right">
-                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                            <button class="btn btn-dark" name="cancel">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="btnSubmit" name="submit" disabled>Submit</button>
+                            <button type="button" class="btn btn-dark" name="cancel" onclick="window.location.replace('../../index.php')">Cancel</button>
                           </div>
                         </div>
                   </div>
@@ -258,6 +258,14 @@ if(!isset($_SESSION['buhs_user'])){
 
           }
 
+        }
+      }
+      function verifyPassword(){
+        // console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        if(document.getElementById("EPass").value==document.getElementById("REPass").value){
+          document.getElementById("btnSubmit").disabled=false;
+        }else{
+          document.getElementById("btnSubmit").disabled=true;
         }
       }
 
