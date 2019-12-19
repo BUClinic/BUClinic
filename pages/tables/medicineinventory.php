@@ -230,7 +230,7 @@ if(!isset($_SESSION['buhs_user'])){
                                         <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   value=<?php echo $rows[$ctr]["Category"];?>>
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" value=<?php echo $rows[$ctr]["Stock"];?>>
+                                            <input type="number" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" value=<?php echo $rows[$ctr]["Stock"];?>>
                                         </div>
                                          <div class="col-md-12 col-sm-12 mb-2">
                                             <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" value=<?php echo $rows[$ctr]["UnitMeasure"];?>>
@@ -347,7 +347,7 @@ if(!isset($_SESSION['buhs_user'])){
       function verifyOldPass(element){
         console.log(document.getElementById('npass').value);
         const Http = new XMLHttpRequest();
-        Http.open("GET", "../../saverecords/updateUser.php?q="+element.value);
+        Http.open("GET", "saverecords/updateUser.php?q="+element.value);
         Http.send();
         Http.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
@@ -365,10 +365,9 @@ if(!isset($_SESSION['buhs_user'])){
         }
       }
 
-      function verifyPass(element){
-        let nPass = document.getElementById("npass").value;
-        console.log(nPass==element.value);
-        if(nPass===element.value){
+      function verifyPass(){
+        console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        if(document.getElementById("npass").value==document.getElementById("rpass").value){
           document.getElementById("updatePass").disabled=false;
         }else{
           document.getElementById("updatePass").disabled=true;
@@ -431,10 +430,10 @@ if(!isset($_SESSION['buhs_user'])){
                                             <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onkeyup="verifyOldPass(this)">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled>
+                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled onkeyup="verifyPass()">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass(this)">
+                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass()">
                                         </div>
                                     </div>
                                                

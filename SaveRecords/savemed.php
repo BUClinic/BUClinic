@@ -23,5 +23,5 @@ if(isset($_POST['EditMed'])){
 	echo $sqlmed;
 	$conn->query($sqlmed);
 }
-
+header("location: ../pages/tables/medicineinventory.php");
 ?>

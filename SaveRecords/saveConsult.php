@@ -22,12 +22,10 @@ $sql = 'INSERT INTO tbl_diagnosis (ID,PatientID, Diagnosis,Complaints,Treatment,
 VALUES (\''.$rowCount.'\',\''.$_POST['S_Id'].'\', \''.$_POST['Diagnosis'].'\', \''.$_POST['Complaints'].'\', \''.$_POST['treatment'].'\',\''.$_POST['Referrals'].'\',\''.$CreatedBy.'\')';
 $conn->query($sql);
 
-echo"  <script>alert('Added to records');</script>";
 $meds= $_POST['treatment'];
 if($meds!=null){
-    echo"  <script>alert('Go to medication from');</script>";
     echo"  <script>window.open('../pages/forms/medicationform.php','_self');</script>";
 }
-echo"  <script>window.open('../index.php','_self');</script>";
+echo"  <script>window.open('../pages/forms/dailyconsultation.php','_self');</script>";
 
 ?>

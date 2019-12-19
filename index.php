@@ -291,7 +291,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="modal-content col-md-6" style="position: absolute; left: 50%; top: 50%; margin-left: -300px;margin-top: -100px;">
                             <form method="POST" action="../../SaveRecords/savemed.php">
                               <div class="modal-header">
-                              <h4 class="card-title"><?php echo $rows[$ctr]['Fname']; ?>'s Information <i class="icon-user float-left"></i></h4>
+                              <h4 class="card-title"> <strong> <?php echo $rows[$ctr]['Fname']; ?>'s Information </strong><i class="icon-user float-left"></i></h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -301,7 +301,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                 <div class="form-group row">
                                   <br>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control"  value=<?php echo "'Course:   ".$rows[$ctr]['Course']."'";?> readonly>
+                                        <input type="text" class="form-control"  value= <?php echo "<strong>' Course: '</strong>'  ".$rows[$ctr]['Course']."'";?> readonly>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
                                         <input type="text" class="form-control"  value=<?php echo "'Contacts:   ".$rows[$ctr]['ContactNum']."'";?> readonly>
@@ -492,10 +492,9 @@ function editname(){
         }
       }
 
-      function verifyPass(element){
-        let nPass = document.getElementById("npass").value;
-        console.log(nPass==element.value);
-        if(nPass===element.value){
+      function verifyPass(){
+        console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        if(document.getElementById("npass").value==document.getElementById("rpass").value){
           document.getElementById("updatePass").disabled=false;
         }else{
           document.getElementById("updatePass").disabled=true;
@@ -558,10 +557,10 @@ function editname(){
                                             <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onkeyup="verifyOldPass(this)">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled>
+                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled onkeyup="verifyPass()">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass(this)">
+                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass()">
                                         </div>
                                     </div>
                                                

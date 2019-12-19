@@ -39,7 +39,7 @@ $Immunization = array('BCG','CPox','AHepa','BHepa','Mumps','Measles','Typhoid','
 
 $sql="";
 if(isset($_GET['edit'])){
-	echo "<script>alert('Record updated successfully')</script>";
+	// echo "<script>alert('Record updated successfully')</script>";
 	$sql = 'UPDATE tbl_patientinfo SET Lname=\''.$_POST['S_Lname'].'\',Fname=\''.$_POST['S_Fname'].'\',Mname=\''.$_POST['S_Mname'].'\',Age=\''.$_POST['S_Age'].'\',religion=\''.$_POST['S_Religion'].'\',Address=\''.$Address.'\',Region=\''.$_POST['S_Region'].'\',Province=\''.$_POST['S_Province'].'\',MuniCity=\''.$_POST['S_City'].'\',Brgy=\''.$_POST['S_Baranggay'].'\',Street=\''.$_POST['S_Street'].'\',Birthdate=\''.$Birthdate.'\',Course=\''.$_POST['S_Course'].'\',YearLevel=\''.$_POST['S_YearLevel'].'\',CollegeUnit=\''.$_POST['S_Department'].'\',ContactNum=\''.$_POST['S_Cnumber'].'\',CivilStatus=\''.$_POST['S_Status'].'\',Sex=\''.$_POST['S_Gender'].'\',ModifiedBy=\''.$Modifiedby.'\' where PatientID=\''.$PatientID.'\'';
 	$sqlFather = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['F_FName'].'\',`Mname`=\''.$_POST['F_MName'].'\',`Lname`=\''.$_POST['F_LName'].'\',`Occupation`=\''.$_POST['F_Occupation'].'\',`OfficeAddress`=\''.$_POST['F_Address'].'\',`ContactNumber`=\''.$_POST['F_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Father\' and PatientID=\''.$PatientID.'\'';
 	$sqlMother = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['M_FName'].'\',`Mname`=\''.$_POST['M_MName'].'\',`Lname`=\''.$_POST['M_LName'].'\',`Occupation`=\''.$_POST['M_Occupation'].'\',`OfficeAddress`=\''.$_POST['M_Address'].'\',`ContactNumber`=\''.$_POST['M_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Mother\' and PatientID=\''.$PatientID.'\'';
@@ -103,7 +103,7 @@ if(isset($_GET['edit'])){
 	
 
 }else{
-	echo "<script>alert('New record created successfully')</script>";
+	// echo "<script>alert('New record created successfully')</script>";
 	$sql = 'INSERT INTO tbl_patientinfo (PatientID, Lname, Fname, Mname, Address,Region,Province,MuniCity,Brgy,Street, Age,Religion, Birthdate, Course, YearLevel, CollegeUnit, ContactNum, CivilStatus,Sex,Status,ModifiedDate,CreatedDate,Modifiedby,CreatedBy) VALUES (\''.$PatientID.'\', \''.$Lname.'\', \''.$Fname.'\', \''.$Mname.'\', \''.$Address.'\', \''.$region.'\', \''.$province.'\', \''.$municity.'\', \''.$brgy.'\', \''.$street.'\', \''.$Age.'\', \''.$Religion.'\', \''.$Birthdate.'\', \''.$Course.'\', \''.$YearLevel.'\',  \''.$CollegeUnit.'\', \''.$ContactNum.'\', \''.$CivilStatus.'\', \''.$Sex.'\',1,null,null,\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 	$sqlFather = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["F_FName"].'\',\''.$_POST["F_MName"].'\',\''.$_POST["F_LName"].'\',\''.$_POST["F_Occupation"].'\',\''.$_POST["F_Address"].'\',\''.$_POST["F_CNumber"].'\', \'Father\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 	$sqlMother = 'INSERT INTO tbl_patientsparentinfo (PatientID, Fname, Mname, Lname, Occupation, OfficeAddress, ContactNumber, Relation, ModifiedBy, CreatedBy) VALUES (\''.$PatientID.'\',\''.$_POST["M_FName"].'\',\''.$_POST["M_MName"].'\',\''.$_POST["M_LName"].'\',\''.$_POST["M_Occupation"].'\',\''.$_POST["M_Address"].'\',\''.$_POST["M_CNumber"].'\', \'Mother\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
@@ -185,10 +185,10 @@ if ($conn->query($sql) === TRUE &&
 
 } else {
 	echo "Error: " . $sql . "<br>" . $conn->error;
-	echo '<script> alert(\'SQL Query Error\')</script>';
+	// echo '<script> alert(\'SQL Query Error\')</script>';
 }
 
-
+header("location: ../index.php");
 	
 
 CloseCon($conn);
