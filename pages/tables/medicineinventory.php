@@ -120,11 +120,10 @@ if(!isset($_SESSION['buhs_user'])){
               </a>
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../logout.php"> Sign Out </a></li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeName" href=""> Change Name </a></li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeEmail" href=""> Change Email </a></li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changePassword" href=""> Change Password </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="logout.php"> Sign Out </a></li>
                 </ul>
               </div>
             </li>
@@ -343,7 +342,177 @@ if(!isset($_SESSION['buhs_user'])){
     <script src="../../js/select2.js"></script>
     <script src="../../js/my.js"></script>
     <!-- End custom js for this page -->
+
+    <script>
+      function verifyOldPass(element){
+        alert("Verify Old Pass" + element.value);
+        const Http = new XMLHttpRequest();
+        Http.open("GET", "../../saverecords/sql.php?query= select from);
+        Http.send();
+        
+      }
+
+      function verifyPass(element){
+        $nPass = document.getElementById("npass").value;
+        if(nPass=='element.value'){
+          document.getElementById("updatePass").enabled=true;
+        }else{
+          document.getelementById("updatePass").enabled=false;
+        }
+      }
+    </script>
+    
   </body>
+     <!-- Modal for change name -->
+<div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                  <form method="POST" action="../../SaveRecords/updateUser.php">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="first" name="Fname" value = <?php echo $_SESSION['Fname'];?>
+                                            required >
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="middle" name="Mname" value = <?php echo $_SESSION['Mname'];?>
+                                            required >
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="last" name="Lname" value = <?php echo $_SESSION['Lname'];?>
+                                            required >
+                                        </div> 
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button type="submit"  class="btn btn-primary w-100" name="updateName" >Save</button>
+                                    </div>
+                                    </form>
+                                  </div>
+  </div>
+</div>
+
+  <!-- Modal for change pass -->
+  <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                  <form method="POST" action="../../SaveRecords/updateUser.php">
+                                        <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onfocusout="verifyOldPass(this)">
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required >
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" required onkeyup="verifyPass(this)">
+                                        </div>
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button type="submit"  class="btn btn-primary w-100" name="updatePass" id="updatePass"disabled>Save</button>
+                                    </div>
+                                    </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal for change email -->
+                    <div class="modal fade" id="changeEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <form method="POST" action="../../SaveRecords/updateUser.php">
+                                        <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Change Email</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  required >
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
+                                        </div>
+                                        
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button type="submit"  class="btn btn-primary w-100" name="updateEmail" >Save</button>
+                                    </div>
+                                    </form>
+    </div>
+  </div>
+</div>
+
+
+  
+         <div class="modal fade"  id="Medicine" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <form method="POST" action="../../SaveRecords/savemed.php">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                
+                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
+                                            required >
+
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   vrequired>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" required>
+                                        </div>
+                                         <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" required>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                          <div class="row">
+                                             <label class="form-control col-md-5" >Expiration Date: </label>          
+                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" required>
+                                          </div>
+                                         </div>
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger w-100"  >Close</button>
+                                         <button type="submit"  class="btn btn-primary w-100" name="AddMed">Save</button>
+                                    </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
 
 </html>
 

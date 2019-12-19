@@ -108,6 +108,14 @@ function saveConsult(){
 
 }
 
+function verifyOldPass(element){
+	alert("verifying old pass");
+}
+
+function verifyPass(){
+	alert("Re type pass");
+}
+
 $(document).ready(function() {
 	$(window).keydown(function(event){
 	  if(event.keyCode == 13) {

@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $myusername = $_POST['username'];
     $mypassword = md5($_POST['password']);
     
-    $sql = "SELECT Fname, Lname, Position, Email FROM tbl_user WHERE Username = '$myusername' and Password = '$mypassword'";
+    $sql = "SELECT Lname, Fname, Mname, Position, Email FROM tbl_user WHERE Username = '$myusername' and Password = '$mypassword'";
     
     
     $result = mysqli_query($conn,$sql);
@@ -23,6 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['buhs_user'] = $myusername;
         $r = mysqli_fetch_assoc($result);
         $_SESSION["Fname"] = $r["Fname"];
+        $_SESSION["Mname"] = $r['Mname'];
         $_SESSION["Lname"] = $r["Lname"];
         $_SESSION["Email"] = $r["Email"];
         echo $r["Position"];
