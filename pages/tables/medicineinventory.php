@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+  $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+  header("location: ../../login.php");
+}
     include '../../db_connection.php';
 
     $conn = OpenCon();
@@ -68,16 +71,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>
               </a>
             </li>
-            <li class="nav-item nav-category">
-              <span class="nav-link">Records</span>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
                 <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">Forms</span></li>
+             
 <li class="nav-item">
 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 <span class="menu-title">Forms</span>
@@ -97,7 +98,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 </div>
 </li>
 
-<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+ 
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Tables</span>
@@ -106,13 +107,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
 				  <li class="nav-item"> <a class="nav-link" href="medicineinventory.php">Medicine Inventory</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="studentrecord.php">Student Record</a></li>
+          <li class="nav-item"> <a class="nav-link" href="medicationtable.php">Medication Table Record</a></li>
                 </ul>
               </div>
             </li>
 
-    
-            <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
+     
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-title">My Profile</span>
@@ -139,52 +139,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
          <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
+            
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <input class='btn btn-primary w-100' type="button" data-toggle="modal" data-target="#Medicine" name="AddMed" style="width: 100%" value="Add Medicine">
-                  <div class="modal fade" id="Medicine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <form method="POST" action="../../SaveRecords/savemed.php">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                         </div>
-                       <div class="modal-body">
-                      <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
-                        <div class="form-group row">
-                           
-                            <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                            <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock">
-                            </div>
-                             <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                              <div class="row">
-                                 <label class="form-control col-md-5" >Expiration Date: </label>          
-                                <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'">
-                              </div>
-                             </div>
-                        </div>
-                                   
-                       </div>
-                        <div class="modal-footer">
-                             <button type="submit"  class="btn btn-primary w-100" name="AddMed">Add</button>
-                        </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                
+                  
                 </ol>
               </nav>
             </div>
@@ -192,13 +151,27 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Medicine Inventory</h4>
+                    <div class="row">
+                    <div class = "col-md-8">
+                    <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
+
+                    </div>
+                      <div class="col-md-2">
+                      <form class="search-form d-none d-md-block" action="#">
+                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Medicine Records here" title="Search Medicine Records here">
+                        </form>
+                      </div>
+                      <div class="col-md-2">
+                        <input class='btn btn-primary w-100' type="button" data-toggle="modal" data-target="#Medicine" name="AddMed" style="width: 100%" value="Add Medicine">
+                 
+                      </div>
+                  </div>
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th class="font-weight-bold">Category</th>
                           <th class="font-weight-bold">Medicine Name</th>
-                          <th class="font-weight-bold">Stock</th>
+                          <th class="font-weight-bold">Stocks</th>
                           <th class="font-weight-bold">Unit Measure</th>
                           <th class="font-weight-bold">Expiration Date</th>
                           <th class="font-weight-bold">Options</th>
@@ -224,7 +197,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                 <td>".$rows[$ctr]["Stock"]."</td>
                                 <td>".$rows[$ctr]["UnitMeasure"]."</td>
                                 <td>".$rows[$ctr]["ExpDate"]."</td>
-                                <td><div class='btn-group'>
+                                <td><div class='btn-group col-md-8' >
                                   
                                   <button value='".$rows[$ctr]['ID']. "' type='button' data-toggle='modal' data-target='#editMedicine".$ctr."' class='btn btn-sm btn-primary w-100'> Edit <i class='icon-pencil float-left'></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button id='".$rows[$ctr]['ID']."' value='".$rows[$ctr]['ID']. "' type='button' data-toggle='modal' data-target='#deleteMedicine".$ctr."' class='btn btn-sm btn-danger w-100'> Delete <i class='icon-trash float-left'></i></button>
@@ -297,6 +270,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                       <input type="submit" name ="delmed" class="btn btn-success" data-dismiss="modal" value= "Yes" onclick="deleteRow(<?php echo $rows[$ctr]['ID']; ?>)">
                                     </div>
+                          </div>
                                   </div>
                                 </div>
                               </div>

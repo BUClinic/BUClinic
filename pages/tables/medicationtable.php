@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['buhs_user'])) header("location: login.php");
+if(!isset($_SESSION['buhs_user'])){
+    $_SESSION['redirect_to'] = $_SESSION['REQUEST_URI'];
+    header("location: login.php");
+}
     include '../../db_connection.php';
 
     $conn = OpenCon();
@@ -36,7 +39,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a  href="index.php">
+          <a  href="../../index.php">
             <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../../images/ddh.png" alt="logo" /></a>
@@ -68,16 +71,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>
               </a>
             </li>
-            <li class="nav-item nav-category">
-              <span class="nav-link">Records</span>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
                 <span class="menu-title">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">Forms</span></li>
+           
 <li class="nav-item">
 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 <span class="menu-title">Forms</span>
@@ -97,7 +98,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 </div>
 </li>
 
-<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+ 
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Tables</span>
@@ -106,13 +107,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
 				  <li class="nav-item"> <a class="nav-link" href="medicineinventory.php">Medicine Inventory</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="studentrecord.php">Student Record</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="medicationtable.php">Medication Table Record</a></li>
                 </ul>
               </div>
             </li>
 
     
-            <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
+        
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-title">My Profile</span>
@@ -139,60 +140,27 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
          <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h2> Medication Records <i class="icon-social-dropbox float-left"></i></h2>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  
-                  <div class="modal fade" id="Medicine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <form method="POST" action="../../SaveRecords/savemed.php">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                         </div>
-                       <div class="modal-body">
-                      <h4 class="card-title">Medication Records <i class="icon-user float-left"></i></h4>
-                        <div class="form-group row">
-                           
-                            <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                            <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock">
-                            </div>
-                             <div class="col-md-12 col-sm-12 mb-2">
-                                <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure">
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-2">
-                              <div class="row">
-                                 <label class="form-control col-md-5" >Expiration Date: </label>          
-                                <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'">
-                              </div>
-                             </div>
-                        </div>
-                                   
-                       </div>
-                        <div class="modal-footer">
-                             <button type="submit"  class="btn btn-primary w-100" name="AddMed">Add</button>
-                        </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </ol>
-              </nav>
+          
+             
             </div>
             <div class="row">
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Medication Records</h4>
+                  <div class="row">
+                    <div class = "col-md-10">
+                    <h2> Medication Table Records <i class="icon-social-dropbox float-left"></i></h2>
+
+                    </div>
+                      <div class="col-md-2">
+                      <form class="search-form d-none d-md-block" action="#">
+                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Medicine Records here" title="Search Medicine Records here">
+                        </form>
+                      </div>
+                     
+                  </div>
+                  
+                  
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -205,7 +173,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 
                         </tr>
                       </thead>
-                    <tbody id="myTable1">
+                    <tbody id="myTable">
                     
                       <?php 
                         $sql = "SELECT p.PatientID, p.Lname, p.Fname, p.Mname, m.MedicineID, m.MedicineName, m.Quantity, m.ModifiedDate, n.UnitMeasure from tbl_medication m INNER JOIN tbl_patientinfo p ON p.PatientID=m.PatientID inner join tbl_medicine n on n.ID=m.MedicineID";
@@ -255,7 +223,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         
-        $("#myTable1 tr").filter(function() {
+        $("#myTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
@@ -271,6 +239,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       alert("Successfully deleted item");
 
     }
+
   </script>
 
 

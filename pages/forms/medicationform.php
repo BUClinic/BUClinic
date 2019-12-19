@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['buhs_user'])){
     $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-    header("location: ../..login.php");
+    header("location: ../../login.php");
 }
 include '../../db_connection.php';
 
@@ -75,16 +75,14 @@ $conn = OpenCon();
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">
-                        <span class="nav-link">Records</span>
-                    </li>
+                 
                     <li class="nav-item">
                         <a class="nav-link" href="../../index.php">
                             <span class="menu-title">Records</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item nav-category"><span class="nav-link">Forms</span></li>
+            
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <span class="menu-title">Forms</span>
@@ -105,7 +103,7 @@ $conn = OpenCon();
                     </li>
 
                                         
-            <li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+             
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Tables</span>
@@ -114,12 +112,12 @@ $conn = OpenCon();
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="../tables/medicineinventory.php">Medicine Inventory</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../tables/studentrecord.php">Student Record</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../tables/medicationtable.php">Medication Table Record</a></li>
                 </ul>
               </div>
 
 
-                    <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <span class="menu-title">My Profile</span>

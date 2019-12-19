@@ -83,16 +83,14 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 </div>
               </a>
             </li>
-            <li class="nav-item nav-category">
-              <span class="nav-link">Records</span>
-            </li>
+            
             <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <span class="menu-title">Records</span>
+              <a class="nav-link " href="index.php">
+                <span class="menu-title ">Records</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">FORMS</span></li>
+            
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Forms</span>
@@ -112,7 +110,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </div>
             </li>
 			
-			<li class="nav-item nav-category"><span class="nav-link">Tables</span></li>
+			
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Tables</span>
@@ -121,13 +119,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
 				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medicine Inventory</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/tables/studentrecord.php">Student Record</a></li>
+               
                   <li class="nav-item"> <a class="nav-link" href="pages/tables/medicationtable.php">Medication Table Record</a></li>
                 </ul>
               </div>
             </li>
 
-            <li class="nav-item nav-category"><span class="nav-link">My Profile</span></li>
+            
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-title">My Profile</span>
@@ -135,10 +133,9 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               </a>
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeName" href=""> Change Name </a></li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeEmail" href=""> Change Email </a></li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changePassword" href=""> Change Password </a></li>
                   <li class="nav-item"> <a class="nav-link" href="logout.php"> Sign Out </a></li>
                 </ul>
               </div>
@@ -455,6 +452,72 @@ function delPatient(ID){
     <script src="./js/dashboard.js"></script>
     <!-- End custom js for this page -->
   </body>
+
+  <!--modals-->
+  <!-- Modal for change name -->
+<div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal for change pass -->
+  <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal for change email -->
+  <div class="modal fade" id="changeEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </html>
 
 <?php 
