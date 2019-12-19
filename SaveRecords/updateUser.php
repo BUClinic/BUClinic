@@ -11,13 +11,16 @@ if(isset($_POST['updateName'])){
     $_SESSION['Mname'] = $Mname;
     $_SESSION['Lname'] = $Lname;
     $conn->query("update tbl_user set Fname='$Fname', Mname='$Mname', Lname='$Lname' where Username='$User'");
+    header("location: ../index.php");
 }else if(isset($_POST['updateEmail'])){
     $newEmail = $_POST['newEmail'];
     $_SESSION['Email'] = $newEmail;
     $conn->query("update tbl_user set Email='$newEmail' where Username='$User'");
+    header("location: ../index.php");
 }else if(isset($_POST['updatePass'])){
     $newPass=md5($_POST['newPass']);
     $conn->query("update tbl_user set Password='$newPass' where Username='$User'");
+    header("location: ../index.php");
 }else if(isset($_GET['q'])){
     $pass = md5($_GET['q']);
     $r = $conn->query("select Username from tbl_user where Username='$User' and Password='$pass'");
@@ -29,5 +32,6 @@ if(isset($_POST['updateName'])){
 }
 
 CloseCon($conn);
+//
 
 ?>

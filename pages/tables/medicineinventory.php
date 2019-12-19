@@ -342,16 +342,15 @@ if(!isset($_SESSION['buhs_user'])){
     <script src="../../js/select2.js"></script>
     <script src="../../js/my.js"></script>
     <!-- End custom js for this page -->
-
     <script>
       function verifyOldPass(element){
-        console.log(document.getElementById('npass').value);
+        // console.log(document.getElementById('npass').value);
         const Http = new XMLHttpRequest();
-        Http.open("GET", "saverecords/updateUser.php?q="+element.value);
+        Http.open("GET", "../../saverecords/updateUser.php?q="+element.value);
         Http.send();
         Http.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
-            console.log(Http.responseText);
+            // console.log(Http.responseText);
             if(Http.responseText=='true'){
               document.getElementById('npass').disabled = false;
               document.getElementById('rpass').disabled = false;
@@ -366,7 +365,7 @@ if(!isset($_SESSION['buhs_user'])){
       }
 
       function verifyPass(){
-        console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        // console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
         if(document.getElementById("npass").value==document.getElementById("rpass").value){
           document.getElementById("updatePass").disabled=false;
         }else{
@@ -461,10 +460,10 @@ if(!isset($_SESSION['buhs_user'])){
                                    <div class="modal-body">
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  required >
+                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  readonly >
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
+                                            <input type="email" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
                                         </div>
                                         
                                     </div>
@@ -501,7 +500,7 @@ if(!isset($_SESSION['buhs_user'])){
 
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   vrequired>
+                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   required>
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
                                             <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" required>

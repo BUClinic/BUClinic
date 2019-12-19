@@ -301,42 +301,42 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                                 <div class="form-group row">
                                   <br>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control"  value= <?php echo "<strong>' Course: '</strong>'  ".$rows[$ctr]['Course']."'";?> readonly>
+                                        <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Course:   ".$rows[$ctr]['Course']."'";?> readonly>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control"  value=<?php echo "'Contacts:   ".$rows[$ctr]['ContactNum']."'";?> readonly>
+                                        <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Contacts:   ".$rows[$ctr]['ContactNum']."'";?> readonly>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                           <label>Diagnosis</label>
+                                           <label  style="font-weight:bold;">Diagnosis</label>
                                            <textarea   class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Diagnosis"];?></textarea>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                           <label>Treatment</label>
+                                           <label  style="font-weight:bold;">Treatment</label>
                                            <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Treatment"];?></textarea>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                           <label>Referral</label>
+                                           <label  style="font-weight:bold;">Referral</label>
                                            <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Referral"];?></textarea>
                                     </div>
                                     <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  value=<?php echo "'Blood Pressure: ".$rows[$ctr]['BP']."'";?> readonly>
+                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Blood Pressure: ".$rows[$ctr]['BP']."'";?> readonly>
                                     </div>
                                     <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  value=<?php echo "'Temperature: ".$rows[$ctr]['Temp']."'";?> readonly>
+                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Temperature: ".$rows[$ctr]['Temp']."'";?> readonly>
                                     </div>
                                     <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  value=<?php echo "'Height: ".$rows[$ctr]['Height']."'";?> readonly>
+                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Height: ".$rows[$ctr]['Height']."'";?> readonly>
                                     </div>
                                     <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  value=<?php echo "'Weight: ".$rows[$ctr]['Weight']."'";?> readonly>
+                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Weight: ".$rows[$ctr]['Weight']."'";?> readonly>
                                     </div>
 
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                           <label>History and Physical Examination</label>
+                                           <label  style="font-weight:bold;">History and Physical Examination</label>
                                            <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["History"];?></textarea>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                           <label>Physicians Direction's</label>
+                                           <label  style="font-weight:bold;">Physicians Direction's</label>
                                            <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["PhysiciansDirection"];?></textarea>
                                     </div>
                                 </div>
@@ -375,7 +375,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
-			console.log(Http.responseText);
+			// console.log(Http.responseText);
 			$result = JSON.parse(Http.responseText.substring(1,Http.responseText.length-1));
       document.getEelementById("S_Fname").value = $result.Fname;
 		}
@@ -401,7 +401,7 @@ $(document).ready(function(){
 	Http.send();
 	Http.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200){
-			console.log(Http.responseText);
+			// console.log(Http.responseText);
 			$result = JSON.parse(Http.responseText.substring(1,Http.responseText.length-1));
       document.getEelementById("S_Fname").value = $result.Fname;
 		}
@@ -472,13 +472,13 @@ function editname(){
     <!-- End custom js for this page -->
     <script>
       function verifyOldPass(element){
-        console.log(document.getElementById('npass').value);
+        // console.log(document.getElementById('npass').value);
         const Http = new XMLHttpRequest();
         Http.open("GET", "saverecords/updateUser.php?q="+element.value);
         Http.send();
         Http.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
-            console.log(Http.responseText);
+            // console.log(Http.responseText);
             if(Http.responseText=='true'){
               document.getElementById('npass').disabled = false;
               document.getElementById('rpass').disabled = false;
@@ -493,7 +493,7 @@ function editname(){
       }
 
       function verifyPass(){
-        console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        // console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
         if(document.getElementById("npass").value==document.getElementById("rpass").value){
           document.getElementById("updatePass").disabled=false;
         }else{
@@ -504,41 +504,41 @@ function editname(){
     
   </body>
      <!-- Modal for change name -->
-<div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                  <form method="POST" action="SaveRecords/updateUser.php">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                     </div>
-                                   <div class="modal-body">
-                                    <div class="form-group row">
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="first" name="Fname" value = <?php echo $_SESSION['Fname'];?>
+          <div class="modal-content">
+            <form method="POST" action="SaveRecords/updateUser.php">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="first" name="Fname" value = <?php echo $_SESSION['Fname'];?>
                                             required >
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="middle" name="Mname" value = <?php echo $_SESSION['Mname'];?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="middle" name="Mname" value = <?php echo $_SESSION['Mname'];?>
                                             required >
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="last" name="Lname" value = <?php echo $_SESSION['Lname'];?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 mb-2">
+                        <input type="text" class="form-control" id="last" name="Lname" value = <?php echo $_SESSION['Lname'];?>
                                             required >
-                                        </div> 
-                                    </div>
+                    </div> 
+                  </div>
                                                
-                                   </div>
-                                    <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
-                                      <button type="submit"  class="btn btn-primary w-100" name="updateName" >Save</button>
-                                    </div>
-                                    </form>
-                                  </div>
-  </div>
-</div>
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-danger w-100"  >Close</button>
+                  <button type="submit"  class="btn btn-primary w-100" name="updateName" >Save</button>
+              </div>
+            </form>
+           </div>
+          </div>
+        </div>
 
   <!-- Modal for change pass -->
   <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -588,10 +588,10 @@ function editname(){
                                    <div class="modal-body">
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  required >
+                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  readonly >
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
+                                            <input type="email" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
                                         </div>
                                         
                                     </div>
@@ -605,54 +605,6 @@ function editname(){
     </div>
   </div>
 </div>
-
-
-  
-         <div class="modal fade"  id="Medicine" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <form method="POST" action="SaveRecords/savemed.php">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                     </div>
-                                   <div class="modal-body">
-                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
-                                    <div class="form-group row">
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                
-                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
-                                            required >
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   vrequired>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" required>
-                                        </div>
-                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" required>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                          <div class="row">
-                                             <label class="form-control col-md-5" >Expiration Date: </label>          
-                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" required>
-                                          </div>
-                                         </div>
-                                    </div>
-                                               
-                                   </div>
-                                    <div class="modal-footer">
-                                      <button class="btn btn-danger w-100" data-dismiss="modal" >Close</button>
-                                         <button type="submit"  class="btn btn-primary w-100" name="AddMed">Save</button>
-                                    </div>
-                                    </form>
-                                  </div>
-                                </div>
-                              </div>
 
 
 </html>

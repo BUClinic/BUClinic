@@ -1465,13 +1465,13 @@ if(!isset($_SESSION['buhs_user'])){
     <!-- End custom js for this page -->
     <script>
       function verifyOldPass(element){
-        console.log(document.getElementById('npass').value);
+        // console.log(document.getElementById('npass').value);
         const Http = new XMLHttpRequest();
         Http.open("GET", "saverecords/updateUser.php?q="+element.value);
         Http.send();
         Http.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
-            console.log(Http.responseText);
+            // console.log(Http.responseText);
             if(Http.responseText=='true'){
               document.getElementById('npass').disabled = false;
               document.getElementById('rpass').disabled = false;
@@ -1486,7 +1486,7 @@ if(!isset($_SESSION['buhs_user'])){
       }
 
       function verifyPass(){
-        console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
+        // console.log(document.getElementById("npass").value==document.getElementById("rpass").value);
         if(document.getElementById("npass").value==document.getElementById("rpass").value){
           document.getElementById("updatePass").disabled=false;
         }else{
@@ -1567,53 +1567,40 @@ if(!isset($_SESSION['buhs_user'])){
   </div>
 </div>
 
-
-  
-         <div class="modal fade"  id="Medicine" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <form method="POST" action="../../SaveRecords/savemed.php">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
+  <!-- Modal for change email -->
+                    <div class="modal fade" id="changeEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <form method="POST" action="../../SaveRecords/updateUser.php">
+                                        <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Change Email</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                      </div>
                                    <div class="modal-body">
-                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                
-                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
-                                            required >
-
+                                            <input type="email" class="form-control" id="email" name="oldEmail" value = <?php echo $_SESSION['Email'];?>  readonly >
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   vrequired>
+                                            <input type="email" class="form-control" id="nemail" name="newEmail"  placeholder="New Email" required >
                                         </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" required>
-                                        </div>
-                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" required>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                          <div class="row">
-                                             <label class="form-control col-md-5" >Expiration Date: </label>          
-                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" required>
-                                          </div>
-                                         </div>
+                                        
                                     </div>
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100" data-dismiss="modal" >Close</button>
-                                         <button type="submit"  class="btn btn-primary w-100" name="AddMed">Save</button>
+                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
+                                      <button type="submit"  class="btn btn-primary w-100" name="updateEmail" >Save</button>
                                     </div>
                                     </form>
-                                  </div>
-                                </div>
-                              </div>
+    </div>
+  </div>
+</div>
+
+      
+     
 </html>
 
 
