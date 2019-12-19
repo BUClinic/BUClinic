@@ -93,9 +93,13 @@ $conn = OpenCon();
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medication Form</a></li>
+                                <?php
+                    if($_SESSION['position']==='Admin'){
+                      echo "<li class='nav-item'> <a class='nav-link' href='employeeform.php'>Employee Form</a></li>";
+                    }
+                  ?>
                             </ul>
                         </div>
                     </li>
@@ -145,8 +149,7 @@ $conn = OpenCon();
                         <h2> MEDICATION FORM <i class="icon-note float-left"></i> </h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="studenthealthform.php">Student Form</a></li>
-                                <li class="breadcrumb-item"><a href="employeeform.php">Employee Form</a></li>  
+                                <li class="breadcrumb-item"><a href="studenthealthform.php">Student Form</a></li> 
                                 <li class="breadcrumb-item"><a href="dailyconsultation.php">Daily Consultation Form</a></li>  
                                 <li class="breadcrumb-item"><a href="medicationform.php">Medication Form</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Form elements</li>
@@ -484,18 +487,18 @@ $conn = OpenCon();
                            $sql= "UPDATE tbl_medication SET Quantity=(select Quantity from tbl_medication where MedicineID = '".$md[$i]."' and CreatedDate = '".$createddate[0]." ".$createddate[1]."')+'".$qty[$i]."'  where MedicineID ='".$md[$i]."' and PatientID ='".$_POST['S_Id']."' ";
                            echo $sql;
                        }
-                     
-                       
                        else
                            $sql= "INSERT INTO tbl_medication (MedicineID,PatientID,MedicineName,Quantity,CreatedBy,ModifiedBy) VALUES('".$md[$i]."','".$_POST['S_Id']."','".$med[$i]."','".$qty[$i]."','".$_SESSION['Fname'] ." ".$_SESSION['Lname']."','".$_SESSION['Fname'] ." ".$_SESSION['Lname']."')";
                        
                        $conn->query($sql);
+
                     }  
-                   //adding to tbl_medication
-                  
+                    echo "<script>alert('Success')</script>";
+                    echo "<script>window.open('medicationform.php','_self')</script>";
             
                 }
-             
+
+            
         ?>        
         <!-- container-scroller -->
         <!-- plugins:js -->

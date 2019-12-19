@@ -101,10 +101,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/studenthealthform.php">Student Form</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/forms/employeeform.php">Employee Form</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/forms/dailyconsultation.php">DailyConsultation Form</a></li>
                    <li class="nav-item"> <a class="nav-link" href="pages/forms/medicationform.php">Medication Form</a></li>
-
+                  <?php
+                    if($_SESSION['position']==='Admin'){
+                      echo "<li class='nav-item'> <a class='nav-link' href='pages/forms/employeeform.php'>Employee Form</a></li>";
+                    }
+                  ?>
                 </ul>
               </div>
             </li>
@@ -119,6 +122,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                 <ul class="nav flex-column sub-menu">
 				  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicineinventory.php">Medicine Inventory</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/tables/studentrecord.php">Student Record</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/tables/medicationtable.php">Medication Table Record</a></li>
                 </ul>
               </div>
             </li>
@@ -199,14 +203,12 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
            
                 <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
                 <div class='dropdown-menu'>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
-               <button type='button' class='btn btn-danger w-100' data-toggle='modal' data-target='#deletemodal'>Delete<i class='icon-trash float-left'></i></button>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. "' type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
+               <button id='patientID' value='".$rows[$ctr]['PatientID']. "' type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
+               <button type='button' class='btn btn-danger w-100' data-toggle='modal'  onclick='delPatient(\"".$rows[$ctr]['PatientID']. "\")' >Delete<i class='icon-trash float-left'></i></button>
                 </div>
                 </div>"."<td><td>"
-                ."<td></tr>";  
-              
-               
+                ."<td></tr>";             
               }
               $ctr++;
         
@@ -214,9 +216,11 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
          
                
               }
+              
        
               
         ?>
+        
         
                       </tbody>
                     </table>
@@ -413,13 +417,20 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function() {
-    $('#tblConsultation').DataTable();
-} );
+function delPatient(ID){
+  console.log('deleting');
+  if(confirm("Are you sure to delete "+ ID +"?")){
+    const Http = new XMLHttpRequest();
+    Http.open("GET", "saverecords/sql.php?query=update tbl_patientinfo set Status='0' where PatientID='" + ID + "'");
+    Http.send();
+    Http.onreadystatechange = function(){
+      if(this.readyState==4 && this.status==200){
+        window.location.href="index.php";
+      }
+    }
 
-$(document).ready(function() {
-    $('#tblPatientInfo').DataTable();
-} );
+  }
+}
 </script>
           
         <!-- main-panel ends -->

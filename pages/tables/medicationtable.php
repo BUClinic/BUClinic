@@ -154,7 +154,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           </button>
                          </div>
                        <div class="modal-body">
-                      <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
+                      <h4 class="card-title">Medication Records <i class="icon-user float-left"></i></h4>
                         <div class="form-group row">
                            
                             <div class="col-md-12 col-sm-12 mb-2">
@@ -192,119 +192,41 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
               <div class="col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Medicine Inventory</h4>
+                    <h4 class="card-title">Medication Records</h4>
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th class="font-weight-bold">Category</th>
+                          <th class="font-weight-bold">Medicine ID</th>
+                          <th class="font-weight-bold">Patient ID </th>
+                          <th class="font-weight-bold">Patient Name </th>
                           <th class="font-weight-bold">Medicine Name</th>
-                          <th class="font-weight-bold">Stock</th>
-                          <th class="font-weight-bold">Unit Measure</th>
-                          <th class="font-weight-bold">Expiration Date</th>
-                          <th class="font-weight-bold">Options</th>
+                          <th class="font-weight-bold">Quantity</th>
+                          <th class="font-weight-bold">Dispurse Date</th>
 
                         </tr>
                       </thead>
                     <tbody id="myTable1">
                     
                       <?php 
-                        $sql = "SELECT * from tbl_medicine";
+                        $sql = "SELECT p.PatientID, p.Lname, p.Fname, p.Mname, m.MedicineID, m.MedicineName, m.Quantity, m.ModifiedDate, n.UnitMeasure from tbl_medication m INNER JOIN tbl_patientinfo p ON p.PatientID=m.PatientID inner join tbl_medicine n on n.ID=m.MedicineID";
                         $result = mysqli_query($conn,$sql);
                         $rows = array();
                         $ctr = 0;
                         while($r = mysqli_fetch_assoc($result)){
                           $rows[] = $r;
-                          if($rows[$ctr]['Status'] === '1'){
-
-                          
+                          $name = $rows[$ctr]["Lname"].", ".$rows[$ctr]["Fname"]. ", " .substr($rows[$ctr]["Mname"], 0,1).".";
+                          $date = explode(" ",$rows[$ctr]["ModifiedDate"]);
                             echo "<tr>
-                                
-                                <td>".$rows[$ctr]["Category"]."</td>
-                                <td>".$rows[$ctr]["MedicineName"]."</td>
-                                <td>".$rows[$ctr]["Stock"]."</td>
-                                <td>".$rows[$ctr]["UnitMeasure"]."</td>
-                                <td>".$rows[$ctr]["ExpDate"]."</td>
-                                <td><div class='btn-group'>
-                                  
-                                  <button value='".$rows[$ctr]['ID']. "' type='button' data-toggle='modal' data-target='#editMedicine".$ctr."' class='btn btn-sm btn-primary w-100'> Edit <i class='icon-pencil float-left'></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <button id='".$rows[$ctr]['ID']."' value='".$rows[$ctr]['ID']. "' type='button' data-toggle='modal' data-target='#deleteMedicine".$ctr."' class='btn btn-sm btn-danger w-100'> Delete <i class='icon-trash float-left'></i></button>
-                                </div></td>
+
+                                <td>".$rows[$ctr]["MedicineID"]."</td>
+                                <td>".$rows[$ctr]["PatientID"]."</td>
+                                <td>".$name."</td>
+                                <td>".$rows[$ctr]["MedicineName"]." ".$rows[$ctr]["UnitMeasure"]."</td>
+                                <td>".$rows[$ctr]["Quantity"]."</td>
+                                <td>".$date[0]."</td>
                                 </tr>";
-                          
-                                ?>
-                                <!--modal of deit medicine-->
-
-                                <div class="modal fade"  id=<?php echo "\"editMedicine".$ctr."\"";?> role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <form method="POST" action="../../SaveRecords/savemed.php">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                     </div>
-                                   <div class="modal-body">
-                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
-                                    <div class="form-group row">
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                          <input type="hidden" class="form-control" id="M_IDe" name="M_IDe"
-                                              value=<?php echo $rows[$ctr]["ID"];?> >
-                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
-                                              value=<?php echo $rows[$ctr]["MedicineName"];?> >
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   value=<?php echo $rows[$ctr]["Category"];?>>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" value=<?php echo $rows[$ctr]["Stock"];?>>
-                                        </div>
-                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" value=<?php echo $rows[$ctr]["UnitMeasure"];?>>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 mb-2">
-                                          <div class="row">
-                                             <label class="form-control col-md-5" >Expiration Date: </label>          
-                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" value=<?php echo $rows[$ctr]["ExpDate"];?>>
-                                          </div>
-                                         </div>
-                                    </div>
-                                               
-                                   </div>
-                                    <div class="modal-footer">
-                                         <button type="submit"  class="btn btn-primary w-100" name="EditMed">Save</button>
-                                    </div>
-                                    </form>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Modal for delete -->
-                              <div class="modal fade" id=<?php echo "\"deleteMedicine".$ctr."\"";?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Delete this item..</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      Are you sure you want to delete <?php echo $rows[$ctr]["MedicineName"];?> ?
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                      <input type="submit" name ="delmed" class="btn btn-success" data-dismiss="modal" value= "Yes" onclick="deleteRow(<?php echo $rows[$ctr]['ID']; ?>)">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                          <?php  
-                          }
-                          $ctr++;
-                        }          
+                            $ctr++;
+                          }          
                     ?>
                       </tbody>
                     </table>
@@ -339,7 +261,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       });
     });
     function deleteRow(btnid){
-      var sqlmed = "UPDATE tbl_medicine SET Status ='0' where ID='"+btnid+"'" ;
+      var sqlmed = "DELETE FROM tbl_medicine where ID='"+btnid+"'" ;
       const Http = new XMLHttpRequest();
       Http.open("GET", "../../saverecords/sql.php?query=" +sqlmed);
       Http.send();

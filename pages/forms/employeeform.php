@@ -29,7 +29,7 @@ CloseCon($conn);
 }
 session_start();
 if(!isset($_SESSION['buhs_user'])){
-  
+  $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
   header("location: login.php");
 }
     $conn = OpenCon();
@@ -116,9 +116,13 @@ if(!isset($_SESSION['buhs_user'])){
 <div class="collapse" id="ui-basic">
 <ul class="nav flex-column sub-menu">
 <li class="nav-item"> <a class="nav-link" href="studenthealthform.php">Student Form</a></li>
-<li class="nav-item"> <a class="nav-link" href="employeeform.php">Employee Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="dailyconsultation.php">Daily Consultant Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="medicationform.php">Medication Form</a></li>
+<?php
+                    if($_SESSION['position']==='Admin'){
+                      echo "<li class='nav-item'> <a class='nav-link' href='employeeform.php'>Employee Form</a></li>";
+                    }
+                  ?>
 </ul>
 </div>
 </li>
@@ -167,7 +171,6 @@ if(!isset($_SESSION['buhs_user'])){
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="studenthealthform.php">Student Form</a></li>
-                  <li class="breadcrumb-item"><a href="employeeform.php">Employee Form</a></li>  
                   <li class="breadcrumb-item"><a href="dailyconsultation.php">Daily Consultation Form</a></li> 
                   <li class="breadcrumb-item"><a href="medicationform.php">Medication Form</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Form elements</li>

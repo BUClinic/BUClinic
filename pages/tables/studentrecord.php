@@ -36,7 +36,7 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a  href="index.php">
+          <a  href="../../index.php">
             <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../../images/ddh.png" alt="logo" /></a>
@@ -86,9 +86,13 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
 <div class="collapse" id="ui-basic">
 <ul class="nav flex-column sub-menu">
 <li class="nav-item"> <a class="nav-link" href="../forms/studenthealthform.php">Student Form</a></li>
-<li class="nav-item"> <a class="nav-link" href="../forms/employeeform.php">Employee Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="../forms/dailyconsultation.php">Daily Consultant Form</a></li>
 <li class="nav-item"> <a class="nav-link" href="../forms/medicationform.php">Medication Form</a></li>
+<?php
+                    if($_SESSION['position']==='Admin'){
+                      echo "<li class='nav-item'> <a class='nav-link' href='../pages/employeeform.php'>Employee Form</a></li>";
+                    }
+                  ?>
 </ul>
 </div>
 </li>
