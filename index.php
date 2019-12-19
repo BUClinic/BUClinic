@@ -291,16 +291,20 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
                           <div class="modal-content col-md-6" style="position: absolute; left: 50%; top: 50%; margin-left: -300px;margin-top: -100px;">
                             <form method="POST" action="../../SaveRecords/savemed.php">
                               <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Consultation Information</h5>
+                              <h4 class="card-title"><?php echo $rows[$ctr]['Fname']; ?>'s Information <i class="icon-user float-left"></i></h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                 </div>
                               <div class="modal-body">
-                                  <h4 class="card-title"><?php echo $rows[$ctr]['Fname']; ?>'s Information <i class="icon-user float-left"></i></h4>
+                                
                                 <div class="form-group row">
+                                  <br>
                                     <div class="col-md-12 col-sm-12 mb-2">
-                                    <input type="text" class="form-control"  value=<?php echo "'Course: ".$rows[$ctr]['Course']."'";?> readonly>
+                                        <input type="text" class="form-control"  value=<?php echo "'Course:   ".$rows[$ctr]['Course']."'";?> readonly>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 mb-2">
+                                        <input type="text" class="form-control"  value=<?php echo "'Contacts:   ".$rows[$ctr]['ContactNum']."'";?> readonly>
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-2">
                                            <label>Diagnosis</label>
@@ -466,15 +470,45 @@ function editname(){
     <!-- Custom js for this page -->
     <script src="./js/dashboard.js"></script>
     <!-- End custom js for this page -->
-  </body>
+    <script>
+      function verifyOldPass(element){
+        console.log(document.getElementById('npass').value);
+        const Http = new XMLHttpRequest();
+        Http.open("GET", "saverecords/updateUser.php?q="+element.value);
+        Http.send();
+        Http.onreadystatechange = function(){
+          if(this.readyState == 4 && this.status == 200){
+            console.log(Http.responseText);
+            if(Http.responseText=='true'){
+              document.getElementById('npass').disabled = false;
+              document.getElementById('rpass').disabled = false;
+            }else{
+              document.getElementById('npass').disabled = true;
+              document.getElementById('rpass').disabled = true;
+            }
 
-  <!--modals-->
-  
+          }
+
+        }
+      }
+
+      function verifyPass(element){
+        let nPass = document.getElementById("npass").value;
+        console.log(nPass==element.value);
+        if(nPass===element.value){
+          document.getElementById("updatePass").disabled=false;
+        }else{
+          document.getElementById("updatePass").disabled=true;
+        }
+      }
+    </script>
+    
+  </body>
      <!-- Modal for change name -->
 <div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
                                   <div class="modal-content">
-                                  <form method="POST" action="../../SaveRecords/updateUser.php">
+                                  <form method="POST" action="SaveRecords/updateUser.php">
                                     <div class="modal-header">
                                       <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -511,7 +545,7 @@ function editname(){
   <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
-                                  <form method="POST" action="../../SaveRecords/updateUser.php">
+                                  <form method="POST" action="SaveRecords/updateUser.php">
                                         <div class="modal-header">
                                       <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -521,20 +555,20 @@ function editname(){
                                    <div class="modal-body">
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onfocusout="verifyOldPass(this)">
+                                            <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onkeyup="verifyOldPass(this)">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required >
+                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled>
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" required onkeyup="verifyPass(this)">
+                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass(this)">
                                         </div>
                                     </div>
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
-                                      <button type="submit"  class="btn btn-primary w-100" name="updatePass"id="updatePass" disabled>Save</button>
+                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
+                                      <button type="submit"  class="btn btn-primary w-100" name="updatePass" id="updatePass"disabled>Save</button>
                                     </div>
                                     </form>
     </div>
@@ -545,7 +579,7 @@ function editname(){
                     <div class="modal fade" id="changeEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
-                      <form method="POST" action="../../SaveRecords/updateUser.php">
+                      <form method="POST" action="SaveRecords/updateUser.php">
                                         <div class="modal-header">
                                       <h5 class="modal-title" id="exampleModalLabel">Change Email</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -565,13 +599,61 @@ function editname(){
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updateEmail" >Save</button>
                                     </div>
                                     </form>
     </div>
   </div>
 </div>
+
+
+  
+         <div class="modal fade"  id="Medicine" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <form method="POST" action="SaveRecords/savemed.php">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Medicine Information</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                     </div>
+                                   <div class="modal-body">
+                                  <h4 class="card-title">Medicine Information <i class="icon-user float-left"></i></h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                
+                                            <input type="text" class="form-control" id="M_Name" name="M_Name" placeholder="Medicine Name" 
+                                            required >
+
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                        <input type="text" class="form-control" id="M_Category" name="M_Category" placeholder="Medicine Category"   vrequired>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_Stock" name="M_Stock" placeholder="Stock" required>
+                                        </div>
+                                         <div class="col-md-12 col-sm-12 mb-2">
+                                            <input type="text" class="form-control" id="M_UnitMeasure" name="M_UnitMeasure" placeholder="Unit Measure" required>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 mb-2">
+                                          <div class="row">
+                                             <label class="form-control col-md-5" >Expiration Date: </label>          
+                                            <input type="date" class="form-control col-md-7 mb-2" name="M_ExpDate" placeholder="Expiry Date" onfocus="this.type='date'" required>
+                                          </div>
+                                         </div>
+                                    </div>
+                                               
+                                   </div>
+                                    <div class="modal-footer">
+                                      <button class="btn btn-danger w-100" data-dismiss="modal" >Close</button>
+                                         <button type="submit"  class="btn btn-primary w-100" name="AddMed">Save</button>
+                                    </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
 
 
 </html>

@@ -39,7 +39,7 @@ if(!isset($_SESSION['buhs_user'])){
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a  href="index.php">
+          <a  href="../../index.php">
             <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../../images/ddh.png" alt="logo" /></a>
@@ -123,7 +123,7 @@ if(!isset($_SESSION['buhs_user'])){
                 <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeName" href=""> Change Name </a></li>
                   <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changeEmail" href=""> Change Email </a></li>
                   <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#changePassword" href=""> Change Password </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="logout.php"> Sign Out </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../../logout.php"> Sign Out </a></li>
                 </ul>
               </div>
             </li>
@@ -152,7 +152,7 @@ if(!isset($_SESSION['buhs_user'])){
                   <div class="card-body">
                     <div class="row">
                     <div class = "col-md-8">
-                    <h2> Inventory <i class="icon-social-dropbox float-left"></i></h2>
+                    <h2> Medicine Inventory <i class="icon-social-dropbox float-left"></i></h2>
 
                     </div>
                       <div class="col-md-2">
@@ -345,19 +345,33 @@ if(!isset($_SESSION['buhs_user'])){
 
     <script>
       function verifyOldPass(element){
-        alert("Verify Old Pass" + element.value);
+        console.log(document.getElementById('npass').value);
         const Http = new XMLHttpRequest();
-        Http.open("GET", "../../saverecords/sql.php?query= select from);
+        Http.open("GET", "../../saverecords/updateUser.php?q="+element.value);
         Http.send();
-        
+        Http.onreadystatechange = function(){
+          if(this.readyState == 4 && this.status == 200){
+            console.log(Http.responseText);
+            if(Http.responseText=='true'){
+              document.getElementById('npass').disabled = false;
+              document.getElementById('rpass').disabled = false;
+            }else{
+              document.getElementById('npass').disabled = true;
+              document.getElementById('rpass').disabled = true;
+            }
+
+          }
+
+        }
       }
 
       function verifyPass(element){
-        $nPass = document.getElementById("npass").value;
-        if(nPass=='element.value'){
-          document.getElementById("updatePass").enabled=true;
+        let nPass = document.getElementById("npass").value;
+        console.log(nPass==element.value);
+        if(nPass===element.value){
+          document.getElementById("updatePass").disabled=false;
         }else{
-          document.getelementById("updatePass").enabled=false;
+          document.getElementById("updatePass").disabled=true;
         }
       }
     </script>
@@ -414,19 +428,19 @@ if(!isset($_SESSION['buhs_user'])){
                                    <div class="modal-body">
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onfocusout="verifyOldPass(this)">
+                                            <input type="password" class="form-control" id="currenntPass" name="currentPass" placeholder="Current Password" required onkeyup="verifyOldPass(this)">
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required >
+                                            <input type="password" class="form-control" id="npass" name="newPass"  placeholder="New Password" required disabled>
                                         </div>
                                         <div class="col-md-12 col-sm-12 mb-2">
-                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" required onkeyup="verifyPass(this)">
+                                            <input type="password" class="form-control" id="rpass" name="retypePass"  placeholder="Re-type Password" disabled required onkeyup="verifyPass(this)">
                                         </div>
                                     </div>
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updatePass" id="updatePass"disabled>Save</button>
                                     </div>
                                     </form>
@@ -458,7 +472,7 @@ if(!isset($_SESSION['buhs_user'])){
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updateEmail" >Save</button>
                                     </div>
                                     </form>
@@ -506,7 +520,7 @@ if(!isset($_SESSION['buhs_user'])){
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button class="btn btn-danger w-100" data-dismiss="modal" >Close</button>
                                          <button type="submit"  class="btn btn-primary w-100" name="AddMed">Save</button>
                                     </div>
                                     </form>
