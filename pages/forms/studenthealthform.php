@@ -44,10 +44,10 @@ $conn = OpenCon();
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a  href="../../index.php">
+                <a  href="../../dashboard.php">
                     <img src="../../images/ddh.png" alt="logo" width="100%" />
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../dashboard.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -1070,7 +1070,7 @@ $conn = OpenCon();
                                 <div class="float-right card-body">
                                 <input type="submit" class="btn btn-primary" name="submit">
                                     <!--<button type="submit" class="btn btn-primary" name="submit">Submit</button>-->
-                                    <button class="btn btn-dark" id="cancel">Cancel</button>
+                                  <a href="../../index.php">  <button type="button"class="btn btn-dark">Cancel</button> </a>
                                 </div>
                             </div>
                         </form>
@@ -1332,7 +1332,7 @@ $conn = OpenCon();
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  >Close</button>
+                                      <button type="button"class="btn btn-danger w-100" data-dismiss="modal" >Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updateName" >Save</button>
                                     </div>
                                     </form>
@@ -1366,7 +1366,7 @@ $conn = OpenCon();
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updatePass" id="updatePass"disabled>Save</button>
                                     </div>
                                     </form>
@@ -1398,7 +1398,7 @@ $conn = OpenCon();
                                                
                                    </div>
                                     <div class="modal-footer">
-                                      <button class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
+                                      <button type="button"class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
                                       <button type="submit"  class="btn btn-primary w-100" name="updateEmail" >Save</button>
                                     </div>
                                     </form>

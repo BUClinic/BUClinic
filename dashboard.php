@@ -23,17 +23,27 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
 
-  
+
+     <!--importing chart.js library-->
+     <script src="package/dist/Chart.bundle.js"></script>
+    <script src="package/dist/Chart.bundle.min.js"></script>
+    <script src="package/dist/Chart.js"></script>
+    <script src="package/dist/Chart.min.js"></script>
+
+     <!-- plugins:charts css -->
+   <link rel="stylesheet" href="package/dist/Chart.css"> 
+   <link rel="stylesheet" href="package/dist/Chart.min.css"> 
+   
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="./vendors/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="./vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="vendors/daterangepicker/daterangepicker.css">
+ 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./images/logo.png" />
+    <link rel="shortcut icon" href="images/logo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -150,243 +160,186 @@ if(!isset($_SESSION['buhs_user'])) header("location: login.php");
           </ul>
         </nav>
        
-        <div class="main-panel" >
+        <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              
-            
-            </div>
-            
-            <div class="row">
-              <div class="col-md-12 col-sm-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="col-md-12 col-sm-12 row">
-                      <div class="col-md-10 col-sm-12">
-                        <h2> Patients Record <i class="icon-social-dropbox float-left"></i></h2>
-                      </div>
-                      <div class="col-md-2 col-sm-12">
-                        <form class="search-form d-none d-md-block" action="#">
-                            <input type="search" id="myInput"  class="form-control flex-grow-1" placeholder="Search Patient Record" title="Search Patient Record here">
-                        </form>
-                      </div>
-                      <div class="input-group col-md-2">
-                        <div class="input-group-prepend">
-                        </div>
-          
-                      </div>
-                    </div><br>
-                    <table id="tblPatientInfo" class="table table-hover table-stripped">
-                      <thead>
-                        <tr>
-                          <th class="font-weight-bold">Student Id</th>
-                          <th class="font-weight-bold">Name</th>
-                          <th class="font-weight-bold">Course</th>
-                          <th class="font-weight-bold">Contacts</th>
-                        </tr>
-                      </thead>
-                      <tbody id="myTable">
-                    
-                      <?php 
-            $sql = "SELECT ID, PatientID, Lname, Fname, Mname, Age, Course, YearLevel, CollegeUnit, ContactNum, Sex, Status from tbl_patientinfo";
-            $result = mysqli_query($conn,$sql);
-            $rows = array();
-            $ctr = 0;
-            while($r = mysqli_fetch_assoc($result)){
-              $rows[] = $r;
-              echo "<script>console.log('".$rows[$ctr]['Status']."')</script>";
-              if($rows[$ctr]['Status']=='1') {
-                echo "<tr><td>".$rows[$ctr]['PatientID']."</td>";
-
-                if($rows[$ctr]['Sex']=="Male")
-                  $icon = "images/faces-clipart/pic-1.png";
-                else
-                  $icon = "images/faces-clipart/pic-3.png";
-                echo "<td><img src='".$icon."' alt='image'>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
-                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td>
-                <td>".$rows[$ctr]["Course"]."</td>
-                <td>".$rows[$ctr]["ContactNum"]."</td>
-                <td>
-                <div class='btn-group'>
-           
-                <button type='button' class='btn btn-dark btn-sm' data-toggle='dropdown'><i class='icon-menu'></i></button>
-                <div class='dropdown-menu'>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. "' type='button' onClick='viewstudentinfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-primary w-100'>View<i class='icon-eye float-left'></i></button><br>
-               <button id='patientID' value='".$rows[$ctr]['PatientID']. "' type='button' onClick='editStudentInfo(\"".$rows[$ctr]['PatientID']."\")' class='btn btn-warning w-100'>Edit<i class='icon-pencil float-left'></i></button><br>
-               <button type='button' class='btn btn-danger w-100' data-toggle='modal'  onclick='delPatient(\"".$rows[$ctr]['PatientID']. "\")' >Delete<i class='icon-trash float-left'></i></button>
-                </div>
-                </div>"."<td><td>"
-                ."<td></tr>";             
-              }
-              $ctr++;
-        
-             // echo json_encode($rows);
          
-               
-              }
-              
-       
-              
-        ?>
-        
-        
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="content-wrapper">
-            <div class="page-header">
-     
-              
-              <ul class="navbar-nav navbar-nav-right ml-auto">    
-              </ul>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                  <div class ="row">
-                  <div class="col-md-6 col-sm-12 " style="float:left">
-                  <h2> Daily Consultation Record <i class="icon-note float-left"></i></h2>
-                  </div>
-                  <div class="col-md-6 col-sm-12"  style="float:right">
-                    <form class="search-form d-none d-md-block" action="#">
-                      <input type="search" id="myInput1"  class="form-control" placeholder="Search Any Record" title="Search from Consultation Records" style="width:35%;float:right">
-                  </form>
-                  </div>
-                   
-                  </div>
-
-                    <table id="tblConsultation" class="table table-hover">
-                   
-                      <thead>
-                        <tr>
-                          <th class="font-weight-bold">Student Id</th>
-                          <th class="font-weight-bold">Name</th>
-                          <th class="font-weight-bold">Course</th>
-                          <th class="font-weight-bold">Contacts</th>
-                          <th class="font-weight-bold">Diagnosis</th>
-                          <th class="font-weight-bold">Treatment</th>
-                          <th class="font-weight-bold">Referral</th>
-                          <th class="font-weight-bold">Height</th>
-                          <th class="font-weight-bold">Weight</th>
-                        </tr>
-                      </thead>
-                      <tbody id="myTable1">
-                    
-                      <?php 
-            $sql = "select * from tbl_examinations INNER JOIN tbl_diagnosis ON tbl_diagnosis.CreatedDate=tbl_examinations.CreatedDate INNER JOIN tbl_patientinfo ON tbl_examinations.PatientID=tbl_patientinfo.PatientID";
-           
-           $result = mysqli_query($conn,$sql);
-            $rows = array();
-            $ctr = 0;
-            while($r = mysqli_fetch_assoc($result)){
-              $rows[] = $r;
-            
-             // echo json_encode($rows);
-
-        
-                echo "<tr><td>".$rows[$ctr]['PatientID']."</td>";
-
-                if($rows[$ctr]['Sex']=="Male")
-                  $icon = "images/faces-clipart/pic-1.png";
-                else
-                  $icon = "images/faces-clipart/pic-3.png";
-                echo "<td><img src='".$icon."' alt='image'>".ucwords($rows[$ctr]["Lname"]).",".ucwords($rows[$ctr]["Fname"]).
-                " ".ucwords(substr($rows[$ctr]["Mname"],0,1)).".</td>
-                <td>".$rows[$ctr]["Course"]."</td><td>".$rows[$ctr]["ContactNum"]."</td><td>".ucwords(substr($rows[$ctr]["Diagnosis"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Treatment"],0,10))."..."."</td><td>".ucwords(substr($rows[$ctr]["Referral"],0,10))."..."."</td><td>".$rows[$ctr]["Height"]."</td><td>".$rows[$ctr]["Weight"]."</td><td>"."</td><td>". 
-           
-                "<button id='patientID' value='".$rows[$ctr]['PatientID']. " type='button' class='btn btn-primary w-100' data-toggle='modal' data-target='#viewConsult".$ctr."'>View<i class='icon-eye float-left' ></i></button>"."<td><td>"
-                ."<td></tr>";
-                ?>
-                <!--modal of view consult-->
-                      <div class="modal fade "  id=<?php echo "\"viewConsult".$ctr."\"";?> role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                          <div class="modal-content col-md-6" style="position: absolute; left: 50%; top: 50%; margin-left: -300px;margin-top: -100px;">
-                            <form method="POST" action="../../SaveRecords/savemed.php">
-                              <div class="modal-header">
-                              <h4 class="card-title"> <strong> <?php echo $rows[$ctr]['Fname']; ?>'s Information </strong><i class="icon-user float-left"></i></h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                </div>
-                              <div class="modal-body">
-                                
-                                <div class="form-group row">
-                                  <br>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Course:   ".$rows[$ctr]['Course']."'";?> readonly>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                        <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Contacts:   ".$rows[$ctr]['ContactNum']."'";?> readonly>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                           <label  style="font-weight:bold;">Diagnosis</label>
-                                           <textarea   class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Diagnosis"];?></textarea>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                           <label  style="font-weight:bold;">Treatment</label>
-                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Treatment"];?></textarea>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                           <label  style="font-weight:bold;">Referral</label>
-                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["Referral"];?></textarea>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Blood Pressure: ".$rows[$ctr]['BP']."'";?> readonly>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Temperature: ".$rows[$ctr]['Temp']."'";?> readonly>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Height: ".$rows[$ctr]['Height']."'";?> readonly>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-2">
-                                            <input type="text" class="form-control"  style="font-weight:bold;" value=<?php echo "'Weight: ".$rows[$ctr]['Weight']."'";?> readonly>
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                           <label  style="font-weight:bold;">History and Physical Examination</label>
-                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["History"];?></textarea>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 mb-2">
-                                           <label  style="font-weight:bold;">Physicians Direction's</label>
-                                           <textarea  class="md-textarea form-control" rows="5" readonly><?php echo $rows[$ctr]["PhysiciansDirection"];?></textarea>
-                                    </div>
-                                </div>
-                                               
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button"  class="btn btn-danger w-100"  data-dismiss="modal">Close</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                <?php  
-              
-             
-              $ctr++;
-              }
-       
-              
-        ?>
+          <canvas id="IllnessFamChart" width="100" height="30"></canvas>
+          <canvas id="IllnessPersonalChart" width="100" height="30"></canvas>
+          <canvas id="presentSymp" width="100" height="30"></canvas>
+         
    
-                      </tbody>
-                    </table>
 
-                  </div>
-                </div>
-              </div>
+
+          <script>
+ 
+           var listIllness = ['Cancer','Hypertension','Stroke','Tuberculosis','Rheumatism','EDisorder','Diabetes','Asthma','Convulsion','SProblems','HDisease','KProblem','MDisorder','BTendencies','GDisease'];
+           var numberOfstudents= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+           const Http = new XMLHttpRequest();
+            Http.open("GET", "saverecords/sql.php?query=select * from tbl_familyhistoryanswer");
+            Http.send();
+            Http.onreadystatechange = function(){
+              if(this.readyState==4 && this.status==200){
+                // console.log(Http.responseText);
+                result = JSON.parse(Http.responseText);
+                console.log(result.length);
+                for(i=0;i<result.length;i++){
+                  for(x=0;x<listIllness.length;x++){
+                    if(result[i].Status=="Yes" && result[i].Illness == listIllness[x]){
+                      console.log( numberOfstudents[x] +" plus "+1);
+                      numberOfstudents[x]++;
+                    }
+                  }
+                  
+                }
+                var id ="IllnessFamChart";
+                var ylabels = ["Cancer","Hypertension","Stroke","Tuberculosis","Rheumatism","Eye Disorder","Diabetis","Asthma","Convulsion","Skin Problems","Heart Disease","Kidney Problems","Mental Disorder","Bleeding Tendencies","Gastrointestinal Disease"];
+                var title = "Number of Students who have the following Family Illness";
+                var colors = ['rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 1)'];
+                graphIt(numberOfstudents,id,ylabels,title,colors);
+              }
+            }  
+         
+           var listSymptoms = ['c_primaryComplex','c_kidneyDisease','c_pneumonia','c_earProblems','c_mentalDisorder','c_asthma','c_skinProblem','c_dengue','c_mumps','c_typhoidFever','c_rheumaticFever','c_diabetes','c_measles','c_thyroidDisorder','c_hepatitis','c_chickenPox','c_eyeDisorder','c_poliomyElitis','c_heartDisease','c_anemia','c_chestPain','c_indigestion','c_swollenFeet','c_headaches','c_soreThroat','c_dizziness','c_nausea','c_difficultBreathing','c_weightLoss','c_insomia','c_jointPains','c_frequentUrination'];
+           var numberOfstudentsSymp= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+           const Https = new XMLHttpRequest();
+            Https.open("GET", "saverecords/sql.php?query=select * from tbl_personalhistory");
+            Https.send();
+            Https.onreadystatechange = function(){
+              if(this.readyState==4 && this.status==200){
+                // console.log(Http.responseText);
+                result = JSON.parse(Https.responseText);
+                console.log(result.length);
+                for(i=0;i<result.length;i++){
+                  for(x=0;x<listSymptoms.length;x++){
+                    if(result[i].Status=="true" && result[i].Illness == listSymptoms[x]){
+                      console.log( numberOfstudentsSymp[x] +" plus "+1);
+                      numberOfstudentsSymp[x]++;
+                    }
+                  }
+                  
+                }
+                  var id ="IllnessPersonalChart";
+                  var ylabels = ["      Primary Complex",
+                                        "Kidney Disease",
+                                        "Pneumonia",
+                                        "Ear Problems",
+                                        "Mental Disorder",
+                                        "Asthma",
+                                        "Skin Problem",
+                                        "Dengue",
+                                        "Mumps",
+                                        "Typhoid Fever",
+                                        "Rheumatic Fever",
+                                        "Diabetes",
+                                        "Measles",
+                                        "Thyroid Disorder",
+                                        "Hepatitis",
+                                        "Chicken Pox",
+                                        "Eye Disorder",
+                                        "Poliomy Elitis",
+                                        "Heart Disease",
+                                        "Anemia/Leukemia",
+                                        "Chest Pain",
+                                        "Indigestion",
+                                        "Swollen Feet",
+                                        "Headaches",
+                                        "Sore Throat (Frequent)",
+                                        "Dizziness",
+                                        "Nausea/Vomiting",
+                                        "Difficult Breathing",
+                                        "Weight Loss",
+                                        "Insomia",
+                                        "Joint Pains",
+                                        "Frequent Urination"];
+                  var title = "Number of Students who have the following Past Illness";
+                  var colors = ['rgba(153, 102, 255, 0.2)','rgba(153, 102, 255, 1)'];
+                  graphIt(numberOfstudentsSymp,id,ylabels,title,colors);
+              }
+            }
+
+            var listsymptoms = ['c_chestPain','c_indigestion','c_swollenFeet','c_headaches','c_soreThroat','c_dizziness','c_nausea','c_difficultBreathing','c_weightLoss','c_insomia','c_jointPains','c_frequentUrination'];
+           var numberOfstudentssymptoms= [0,0,0,0,0,0,0,0,0,0,0,0,0];
+           const Httpss = new XMLHttpRequest();
+            Httpss.open("GET", "saverecords/sql.php?query=select * from tbl_presentsymptoms");
+            Httpss.send();
+            Httpss.onreadystatechange = function(){
+              if(this.readyState==4 && this.status==200){
+                // console.log(Http.responseText);
+                result = JSON.parse(Httpss.responseText);
+                console.log(result.length);
+                for(i=0;i<result.length;i++){
+                  for(x=0;x<listsymptoms.length;x++){
+                    if(result[i].Status=="true" && result[i].Symptoms == listsymptoms[x]){
+                      console.log( numberOfstudentssymptoms[x] +" plus "+1);
+                      numberOfstudentssymptoms[x]++;
+                    }
+                  }
+                  
+                }
+                var id ="presentSymp";
+                var ylabels = ["Chest Pain",
+                              "Indigestion",
+                              "Swollen Feet",
+                              "Headaches",
+                              "Sore Throat (Frequent)",
+                              "Dizziness",
+                              "Nausea/Vomiting",
+                              "Difficult Breathing",
+                              "Weight Loss",
+                              "Insomia",
+                              "Joint Pains",
+                              "Frequent Urination",];
+                var title = "Number of Students who the following present Illness";
+                var colors = ['rgba(54, 162, 235, 0.2)','rgba(54, 162, 235, 1)'];
+                graphIt(numberOfstudentssymptoms,id,ylabels,title,colors);
+              }
+            } 
+                                    
+        
+
+        
+          </script>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
             </div>
-            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+            
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       
+      
 <script>
+
+function graphIt(numberOfstudents,id,ylabels,title,colors){
+              var ctx = document.getElementById(id).getContext('2d');
+                    var myChart = new Chart(ctx, { 
+                      type: 'bar', 
+                      data: { labels: ylabels, 
+                              datasets: [{label: title, 
+                              data: numberOfstudents, 
+                              backgroundColor:  colors[0], 
+                              borderColor:    colors[1], 
+                              borderWidth: 2 }] 
+                          }, 
+                      options: { 
+                        scales: { 
+                          yAxes: [{ 
+                            ticks: { 
+                              beginAtZero: true 
+                              } 
+                            }]   
+                          } 
+                          } 
+                        });
+                    }
+    
  function editStudentInfo(element){
   window.location.href = "pages/forms/editstudent.php?ID="+element;
   const Http = new XMLHttpRequest();
@@ -473,23 +426,26 @@ function editname(){
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-
-
     <!-- plugins:js -->
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
+
+    
+    
+    
     <!-- Plugin js for this page -->
-    <script src="./vendors/chart.js/Chart.min.js"></script>
-    <script src="./vendors/moment/moment.min.js"></script>
-    <script src="./vendors/daterangepicker/daterangepicker.js"></script>
-    <script src="./vendors/chartist/chartist.min.js"></script>
+ 
+    <script src="vendors/moment/moment.min.js"></script>
+    <script src="vendors/daterangepicker/daterangepicker.js"></script>
+ 
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="js/off-canvas.js"></script>
     <script src="js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="./js/dashboard.js"></script>
+  
+ 
     <!-- End custom js for this page -->
     <script>
       function verifyOldPass(element){

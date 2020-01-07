@@ -3,7 +3,7 @@ include('db_connection.php');
 session_start();
 
 if(isset($_SESSION['buhs_user'])){
-    header("location: index.php");
+    header("location: dashboard.php");
 }
 
 $error = " ";
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             unset($_SESSION['redirect_to']);
             header('location:' . $url);
         }else{
-           header("location: index.php");
+           header("location: dashboard.php");
         }
         
         $fieldinfo = mysqli_fetch_field($result);
@@ -58,9 +58,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
+<style>
+.abs{
+   
+}
 
+</style>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -76,11 +82,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="css/style.css" <!-- End layout styles -->
+    <link rel="stylesheet" href="css/style.css" ><!-- End layout styles -->
     <link rel="shortcut icon" href="images/logo.png" />
 </head>
 
-<body>
+<body class="abs" style="background-color: black;">
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth">

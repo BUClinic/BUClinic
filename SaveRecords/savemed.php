@@ -6,7 +6,7 @@ include '../db_connection.php';
 
 $conn = OpenCon();
 if(isset($_POST['AddMed'])){
-	$result = mysqli_query($conn,"select * from tbl_medicine where Category='".$_POST['M_Category']."' and MedicineName =  '".$_POST['M_Name']."' and Status ='1' and UnitMeasure  = '".$_POST['M_UnitMeasure']."'"); 
+	$result = mysqli_query($conn,"select * from tbl_medicine where Category='".$_POST['M_Category']."' and MedicineName =  '".$_POST['M_Name']."' and Status ='1' and UnitMeasure  = '".$_POST['M_UnitMeasure']."' and ExpDate ='".$_POST['M_ExpDate']."' "); 
 	var_dump($result);
 	$r=mysqli_fetch_assoc($result);
 	if(mysqli_num_rows($result))

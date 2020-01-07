@@ -34,7 +34,8 @@ $CreatedBy = ucwords($_SESSION['Fname']). " ". ucwords($_SESSION['Lname']);//get
 $Illness = array('Cancer','Hypertension','Stroke','Tuberculosis','Rheumatism','EDisorder','Diabetes','Asthma','Convulsion','SProblems','HDisease','KProblem','MDisorder','BTendencies','GDisease');
 $Status = array('optionCancer','optionHypertension','optionStroke','optionTuberculosis','optionRheumatism','optionEDisorder','optionDiabetes','optionAsthma','optionConvulsion','optionSProblems','optionHDisease','optionKProblem','optionMDisorder','optionBTendencies','optionGDisease');
 $Relation = array('R_Cancer','R_Hypertension','R_Stroke','R_Tuberculosis','R_Rheumatism','R_EDisorder','R_Diabetes','R_Asthma','R_Convulsion','R_SProblems','R_HDisease','R_KProblems','R_MDisorder','R_BTendencies','R_GDisease');
-$PersonalHistory = array('c_primaryComplex','c_kidneyDisease','c_pneumonia','c_earProblems','c_mentalDisorder','c_asthma','c_skinProblem','c_dengue','c_mumps','c_typhoidFever','c_rheumaticFever','c_diabetes','c_measles','c_thyroidDisorder','c_hepatitis','c_chickenPox','c_eyeDisorder','c_poliomyElitis','c_heartDisease','c_anemia','c_chestPain','c_indigestion','c_swollenFeet','c_headaches','c_soreThroat','c_dizziness','c_nausea','c_difficultBreathing','c_weightLoss','c_insomia','c_jointPains','c_frequentUrination');
+$PersonalHistory = array('c_primaryComplex','c_kidneyDisease','c_pneumonia','c_earProblems','c_mentalDisorder','c_asthma','c_skinProblem','c_dengue','c_mumps','c_typhoidFever','c_rheumaticFever','c_diabetes','c_measles','c_thyroidDisorder','c_hepatitis','c_chickenPox','c_eyeDisorder','c_poliomyElitis','c_heartDisease','c_anemia');
+$PresentIllness = array('c_chestPain','c_indigestion','c_swollenFeet','c_headaches','c_soreThroat','c_dizziness','c_nausea','c_difficultBreathing','c_weightLoss','c_insomia','c_jointPains','c_frequentUrination');
 $Immunization = array('BCG','CPox','AHepa','BHepa','Mumps','Measles','Typhoid','GMeasle','Polio','DPT');
 
 $sql="";
@@ -46,21 +47,30 @@ if(isset($_GET['edit'])){
 	$sqlGuardian = 'UPDATE tbl_patientsparentinfo SET Fname=\''.$_POST['G_FName'].'\',`Mname`=\''.$_POST['G_MName'].'\',`Lname`=\''.$_POST['G_LName'].'\',`Occupation`=\''.$_POST['G_Occupation'].'\',`OfficeAddress`=\''.$_POST['G_Address'].'\',`ContactNumber`=\''.$_POST['G_CNumber'].'\',`ModifiedBy`=\''.$Modifiedby.'\' WHERE Relation=\'Guardian\' and PatientID=\''.$PatientID.'\'';
 	echo $sql;
 	for($i=0;$i<sizeof($Illness);$i++){
-		if(isset($_POST['option'.$Illness[$i].'Yes'])){
-			$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'Yes\', Relation=\''.$_POST['R_'.$Illness[$i]].'\' where PatientID=\''.$PatientID.'\' and Illness=\'option'.$Illness[$i].'\'';
+		if($_POST[$Status[$i]] ==="Yes"){
+			$sqlIllness = "UPDATE tbl_familyhistoryanswer SET Status='Yes', Relation='".$_POST['R_'.$Illness[$i]]."' where PatientID='".$PatientID."' and Illness='".$Illness[$i]."' ";
 		}else{
-			$sqlIllness = 'UPDATE tbl_familyhistoryanswer SET Status=\'Yes\', Relation=\'\' where PatientID=\''.$PatientID.'\' and Illness=\'option'.$Illness[$i].'\'';
+			$sqlIllness = "UPDATE tbl_familyhistoryanswer SET Status='No', Relation='' where PatientID='".$PatientID."' and Illness='".$Illness[$i]."'";
 		}
-		if(!$conn->query($sqlIllness) === TRUE) echo "<script>console.log('Error for inserting family history')</script>"; //if condition for debug purposes
+		$conn->query($sqlIllness);
 	}
 
 	for($i=0;$i<sizeof($PersonalHistory);$i++){
 		if(isset($_POST[$PersonalHistory[$i]])){
-			$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='true', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+			$sqlPersonalHistory = "UPDATE tbl_presentsymptoms SET Status='true', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
 		}else{
-			$sqlPersonalHistory = "UPDATE tbl_personalhistory SET Status='false', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
+			$sqlPersonalHistory = "UPDATE tbl_presentsymptoms SET Status='false', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Illness='".$PersonalHistory[$i]."'";
 		}
 		$conn->query($sqlPersonalHistory);
+	}
+
+	for($i=0;$i<sizeof($PresentIllness);$i++){
+		if(isset($_POST[$PresentIllness[$i]])){
+			$sqlPresentIllness = "UPDATE tbl_personalhistory SET Status='true', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Symptoms='".$PersonalHistory[$i]."'";
+		}else{
+			$sqlPresentIllness = "UPDATE tbl_personalhistory SET Status='false', ModifiedBy='".$Modifiedby."' where PatientID='".$PatientID."' and Symptoms='".$PersonalHistory[$i]."'";
+		}
+		$conn->query($sqlPresentIllness);
 	}
 
 	//updating to immunization table
@@ -124,6 +134,16 @@ if(isset($_GET['edit'])){
 				VALUES (\''.$PatientID.'\', \''.$PersonalHistory[$i].'\',\'false\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
 		}
 		$conn->query($sqlPersonalHistory);
+	}
+	for($i=0;$i<sizeof($PresentIllness);$i++){
+		if(isset($_POST[$PresentIllness[$i]])){
+			$sqlPresentIllness = 'INSERT INTO tbl_presentsymptoms (PatientID, Symptoms, Status,Modifiedby,CreatedBy)
+				VALUES (\''.$PatientID.'\', \''.$PresentIllness[$i].'\',\'true\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+		}else{
+			$sqlPresentIllness = 'INSERT INTO tbl_presentsymptoms (PatientID, Symptoms, Status,Modifiedby,CreatedBy)
+				VALUES (\''.$PatientID.'\', \''.$PresentIllness[$i].'\',\'false\',\''.$Modifiedby.'\',\''.$CreatedBy.'\')';
+		}
+		$conn->query($sqlPresentIllness);
 	}
 	//inserting to immunization table
 	for($i=0;$i<sizeof($Immunization);$i++){

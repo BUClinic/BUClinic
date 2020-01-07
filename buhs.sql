@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2019 at 06:56 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Jan 07, 2020 at 06:46 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,35 +36,6 @@ CREATE TABLE `list_familyhistory` (
   `ModifiedBy` int(10) NOT NULL,
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `list_familyhistory`
---
-
-INSERT INTO `list_familyhistory` (`ID`, `Illness`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
-(1, '', '2019-12-15 13:54:12', '2019-12-15 13:54:12', 0, 0),
-(2, '', '2019-12-15 13:54:49', '2019-12-15 13:54:49', 0, 0),
-(3, 'Array', '2019-12-15 13:58:34', '2019-12-15 13:58:34', 0, 0),
-(4, '', '2019-12-15 14:27:11', '2019-12-15 14:27:11', 0, 0),
-(5, 'Array', '2019-12-15 14:27:58', '2019-12-15 14:27:58', 0, 0),
-(6, '', '2019-12-15 14:31:24', '2019-12-15 14:31:24', 0, 0),
-(7, 'Primary Complex', '2019-12-15 14:47:23', '2019-12-15 14:47:23', 0, 0),
-(8, '', '2019-12-15 14:47:23', '2019-12-15 14:47:23', 0, 0),
-(9, '', '2019-12-15 14:47:23', '2019-12-15 14:47:23', 0, 0),
-(10, '', '2019-12-15 14:47:23', '2019-12-15 14:47:23', 0, 0),
-(11, '', '2019-12-15 14:47:23', '2019-12-15 14:47:23', 0, 0),
-(12, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(13, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(14, 'Dengue', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(15, 'Mumps', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(16, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(17, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(18, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(19, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(20, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(21, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(22, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0),
-(23, '', '2019-12-15 14:47:24', '2019-12-15 14:47:24', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44168,6 +44139,27 @@ CREATE TABLE `tbl_familyhistoryanswer` (
   `CreatedBy` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_familyhistoryanswer`
+--
+
+INSERT INTO `tbl_familyhistoryanswer` (`ID`, `PatientID`, `Illness`, `Status`, `Relation`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(1309, '2018-CS-100290', 'Cancer', 'No', '', '2020-01-01 04:19:26', '2020-01-01 04:19:26', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1310, '2018-CS-100290', 'Hypertension', 'Yes', 'mother', '2020-01-01 04:19:26', '2020-01-01 04:19:26', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1311, '2018-CS-100290', 'Stroke', 'No', '', '2020-01-01 04:19:26', '2020-01-01 04:19:26', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1312, '2018-CS-100290', 'Tuberculosis', 'No', '', '2020-01-01 04:19:26', '2020-01-01 04:19:26', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1313, '2018-CS-100290', 'Rheumatism', 'No', '', '2020-01-01 04:19:26', '2020-01-01 04:19:26', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1314, '2018-CS-100290', 'EDisorder', 'Yes', 'father', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1315, '2018-CS-100290', 'Diabetes', 'Yes', 'lolo', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1316, '2018-CS-100290', 'Asthma', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1317, '2018-CS-100290', 'Convulsion', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1318, '2018-CS-100290', 'SProblems', 'Yes', 'mother', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1319, '2018-CS-100290', 'HDisease', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1320, '2018-CS-100290', 'KProblem', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1321, '2018-CS-100290', 'MDisorder', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1322, '2018-CS-100290', 'BTendencies', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1323, '2018-CS-100290', 'GDisease', 'No', '', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid');
+
 -- --------------------------------------------------------
 
 --
@@ -44185,6 +44177,13 @@ CREATE TABLE `tbl_hospitalizationhistory` (
   `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_hospitalizationhistory`
+--
+
+INSERT INTO `tbl_hospitalizationhistory` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(30, '2018-CS-100290', 'No', '', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid');
+
 -- --------------------------------------------------------
 
 --
@@ -44201,6 +44200,22 @@ CREATE TABLE `tbl_immunizationhistory` (
   `ModifiedBy` varchar(45) NOT NULL,
   `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_immunizationhistory`
+--
+
+INSERT INTO `tbl_immunizationhistory` (`ID`, `PatientID`, `Answer`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(398, '2018-CS-100290', 'I_BCG', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(399, '2018-CS-100290', 'I_CPox', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(400, '2018-CS-100290', 'I_AHepa', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(401, '2018-CS-100290', 'I_BHepa', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(402, '2018-CS-100290', 'I_Mumps', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(403, '2018-CS-100290', 'I_Measles', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(404, '2018-CS-100290', 'I_Typhoid', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(405, '2018-CS-100290', 'I_GMeasle', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(406, '2018-CS-100290', 'I_Polio', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(407, '2018-CS-100290', 'I_DPT', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44274,6 +44289,13 @@ CREATE TABLE `tbl_patientinfo` (
   `CreatedBy` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_patientinfo`
+--
+
+INSERT INTO `tbl_patientinfo` (`ID`, `PatientID`, `Lname`, `Fname`, `Mname`, `Age`, `religion`, `Address`, `Region`, `Province`, `MuniCity`, `Brgy`, `Street`, `Birthdate`, `Course`, `YearLevel`, `CollegeUnit`, `ContactNum`, `CivilStatus`, `Sex`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(2206, '2018-CS-100290', 'Abasola', 'Marcial', 'Celeste', 23, 'catholic', 'REGION II (CAGAYAN VALLEY),CAGAYAN, ALCALA, Afusing Bato, 123', 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'ALCALA', 'Afusing Bato', '123', '1111-11-11', 'BS Computer Science', '2nd Year', 'College of Science', '09983540426', 'Single', 'Male', 1, '2020-01-01 04:19:29', '2020-01-01 04:19:29', 'Davie Balmadrid', 'Davie Balmadrid');
+
 -- --------------------------------------------------------
 
 --
@@ -44296,6 +44318,15 @@ CREATE TABLE `tbl_patientsparentinfo` (
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_patientsparentinfo`
+--
+
+INSERT INTO `tbl_patientsparentinfo` (`ID`, `PatientID`, `Fname`, `Mname`, `Lname`, `Occupation`, `OfficeAddress`, `ContactNumber`, `Relation`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(400, '2018-CS-100290', '', '', '', '', '', '', 'Father', '2020-01-01 04:19:29', '2020-01-01 04:19:29', 0, 0),
+(401, '2018-CS-100290', '', '', '', '', '', '', 'Mother', '2020-01-01 04:19:29', '2020-01-01 04:19:29', 0, 0),
+(402, '2018-CS-100290', '', '', '', '', '', '', 'Guardian', '2020-01-01 04:19:29', '2020-01-01 04:19:29', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -44313,6 +44344,32 @@ CREATE TABLE `tbl_personalhistory` (
   `CreatedBy` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_personalhistory`
+--
+
+INSERT INTO `tbl_personalhistory` (`ID`, `PatientID`, `Illness`, `Status`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(1504, '2018-CS-100290', 'c_primaryComplex', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1505, '2018-CS-100290', 'c_kidneyDisease', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1506, '2018-CS-100290', 'c_pneumonia', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1507, '2018-CS-100290', 'c_earProblems', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1508, '2018-CS-100290', 'c_mentalDisorder', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1509, '2018-CS-100290', 'c_asthma', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1510, '2018-CS-100290', 'c_skinProblem', 'true', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1511, '2018-CS-100290', 'c_dengue', 'true', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1512, '2018-CS-100290', 'c_mumps', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1513, '2018-CS-100290', 'c_typhoidFever', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1514, '2018-CS-100290', 'c_rheumaticFever', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1515, '2018-CS-100290', 'c_diabetes', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1516, '2018-CS-100290', 'c_measles', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1517, '2018-CS-100290', 'c_thyroidDisorder', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1518, '2018-CS-100290', 'c_hepatitis', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1519, '2018-CS-100290', 'c_chickenPox', 'true', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1520, '2018-CS-100290', 'c_eyeDisorder', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1521, '2018-CS-100290', 'c_poliomyElitis', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1522, '2018-CS-100290', 'c_heartDisease', 'false', '2020-01-01 04:19:27', '2020-01-01 04:19:27', 'Davie Balmadrid', 'Davie Balmadrid'),
+(1523, '2018-CS-100290', 'c_anemia', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid');
+
 -- --------------------------------------------------------
 
 --
@@ -44322,8 +44379,31 @@ CREATE TABLE `tbl_personalhistory` (
 CREATE TABLE `tbl_presentsymptoms` (
   `ID` int(30) NOT NULL,
   `PatientID` varchar(20) NOT NULL,
-  `SymptomsID` int(10) NOT NULL
+  `Symptoms` varchar(45) NOT NULL,
+  `Status` varchar(10) NOT NULL,
+  `CreatedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ModifiedDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CreatedBy` varchar(55) NOT NULL,
+  `ModifiedBy` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_presentsymptoms`
+--
+
+INSERT INTO `tbl_presentsymptoms` (`ID`, `PatientID`, `Symptoms`, `Status`, `CreatedDate`, `ModifiedDate`, `CreatedBy`, `ModifiedBy`) VALUES
+(1, '2018-CS-100290', 'c_chestPain', 'true', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(2, '2018-CS-100290', 'c_indigestion', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(3, '2018-CS-100290', 'c_swollenFeet', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(4, '2018-CS-100290', 'c_headaches', 'true', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(5, '2018-CS-100290', 'c_soreThroat', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(6, '2018-CS-100290', 'c_dizziness', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(7, '2018-CS-100290', 'c_nausea', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(8, '2018-CS-100290', 'c_difficultBreathing', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(9, '2018-CS-100290', 'c_weightLoss', 'true', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(10, '2018-CS-100290', 'c_insomia', 'true', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(11, '2018-CS-100290', 'c_jointPains', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid'),
+(12, '2018-CS-100290', 'c_frequentUrination', 'false', '2020-01-01 04:19:28', '2020-01-01 04:19:28', 'Davie Balmadrid', 'Davie Balmadrid');
 
 -- --------------------------------------------------------
 
@@ -44342,6 +44422,13 @@ CREATE TABLE `tbl_qallergies` (
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_qallergies`
+--
+
+INSERT INTO `tbl_qallergies` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(26, '2018-CS-100290', 'No', '', '2020-01-01 04:19:28', '0000-00-00 00:00:00', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -44358,6 +44445,13 @@ CREATE TABLE `tbl_qtakingmedicine` (
   `ModifiedBy` int(10) NOT NULL,
   `CreatedBy` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_qtakingmedicine`
+--
+
+INSERT INTO `tbl_qtakingmedicine` (`ID`, `PatientID`, `Answer`, `Details`, `ModifiedDate`, `CreatedDate`, `ModifiedBy`, `CreatedBy`) VALUES
+(25, '2018-CS-100290', 'No', '', '2020-01-01 04:19:28', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -44601,19 +44695,19 @@ ALTER TABLE `tbl_college`
 -- AUTO_INCREMENT for table `tbl_familyhistoryanswer`
 --
 ALTER TABLE `tbl_familyhistoryanswer`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1234;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1324;
 
 --
 -- AUTO_INCREMENT for table `tbl_hospitalizationhistory`
 --
 ALTER TABLE `tbl_hospitalizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_immunizationhistory`
 --
 ALTER TABLE `tbl_immunizationhistory`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
 
 --
 -- AUTO_INCREMENT for table `tbl_medication`
@@ -44631,37 +44725,37 @@ ALTER TABLE `tbl_medicine`
 -- AUTO_INCREMENT for table `tbl_patientinfo`
 --
 ALTER TABLE `tbl_patientinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2201;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2207;
 
 --
 -- AUTO_INCREMENT for table `tbl_patientsparentinfo`
 --
 ALTER TABLE `tbl_patientsparentinfo`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=403;
 
 --
 -- AUTO_INCREMENT for table `tbl_personalhistory`
 --
 ALTER TABLE `tbl_personalhistory`
-  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1356;
+  MODIFY `ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1524;
 
 --
 -- AUTO_INCREMENT for table `tbl_presentsymptoms`
 --
 ALTER TABLE `tbl_presentsymptoms`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_qallergies`
 --
 ALTER TABLE `tbl_qallergies`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_qtakingmedicine`
 --
 ALTER TABLE `tbl_qtakingmedicine`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

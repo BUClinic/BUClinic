@@ -16,7 +16,10 @@ if(!isset($_SESSION['buhs_user'])){
     $mother = mysqli_fetch_assoc($result);
     $result = mysqli_query($conn, "select * from tbl_patientsparentinfo where Relation='Guardian' and PatientID='".$_GET['ID']."'");
     $guardian = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "select * from tbl_presentsymptoms where and PatientID='".$_GET['ID']."'");
+    $symptoms = mysqli_fetch_assoc($result);
     $result = mysqli_query($conn,"select * from tbl_familyhistoryanswer where PatientID = '".$_GET['ID']."'");
+    
   
 //echo $_SESSION['buhs_user'];
     //$result = mysqli_query($conn,"select * from tbl_user WHERE Username = '".$_POST['username']."'");
@@ -52,10 +55,10 @@ if(!isset($_SESSION['buhs_user'])){
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex align-items-center">
-          <a  href="../../index.php">
+          <a  href="../../dashboard.php">
             <img src="../../images/ddh.png" alt="logo" width="100%"/>
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/ddh.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../dashboard.php"><img src="../../images/ddh.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -251,7 +254,9 @@ if(!isset($_SESSION['buhs_user'])){
                                 $x=0;
                                 while($list = mysqli_fetch_assoc($res)){
                                     $col[$x] = $list['colleges'];
-                                    echo "<option >".$col[$x]."</option>";
+                                    if($r['CollegeUnit']==$col[$x])
+                                         $selected="selected";
+                                      echo "<option ".$selected.">".$col[$x]."</option>";
                                     $x++;
                                 }
                                 ?>
@@ -300,21 +305,21 @@ if(!isset($_SESSION['buhs_user'])){
                                                         <option >5th Year</option>";
                                                         
                                                       }
-                                                      if($r['YearLevel']=="2nd Year"){
+                                                      else if($r['YearLevel']=="2nd Year"){
                                                         echo "<option >1st Year</option>
                                                         <option selected>2nd Year</option>
                                                         <option >3rd Yeer</option>
                                                         <option  >4th Year</option>
                                                         <option >5th Year</option>";
                                                       }
-                                                      if($r['YearLevel']=="3rd Year"){
+                                                     else if($r['YearLevel']=="3rd Year"){
                                                         echo "<option  >1st Year</option>
                                                         <option >2nd Year</option>
                                                         <option selected>3rd Yeer</option>
                                                         <option  >4th Year</option>
                                                         <option >5th Year</option>";
                                                       }
-                                                      if($r['YearLevel']=="4th Year"){
+                                                      else if($r['YearLevel']=="4th Year"){
                                                         echo "<option  >1st Year</option>
                                                         <option >2nd Year</option>
                                                         <option >3rd Yeer</option>
@@ -322,13 +327,21 @@ if(!isset($_SESSION['buhs_user'])){
                                                         <option >5th Year</option>";
                                                         
                                                       }
-                                                      if($r['YearLevel']=="5th Year"){
+                                                      else if($r['YearLevel']=="5th Year"){
                                                         echo "<option  >1st Year</option>
                                                         <option >2nd Year</option>
                                                         <option >3rd Yeer</option>
                                                         <option  >4th Year</option>
                                                         <option selected>5th Year</option>";
                                                         
+                                                      }
+                                                      else{
+                                                        echo "<option selected disabled value=''>Year Level</option>
+                                                        <option  >1st Year</option>
+                                                        <option >2nd Year</option>
+                                                        <option >3rd Yeer</option>
+                                                        <option  >4th Year</option>
+                                                        <option >5th Year</option>";
                                                       }
                                                     ?>
                                                     
@@ -1617,6 +1630,12 @@ while($r = mysqli_fetch_assoc($result)){
     echo '<script>document.getElementById(\'option'.$Illness[$i].'No\').checked = true</script>';
   }
 $i++;
+}
+
+// loading presenet symptoms 
+$result = $conn->query("select * from tbl_presentsymptoms where PatientID='".$_GET['ID']."'");
+while($r = mysqli_fetch_assoc($result)){
+    echo "<script>document.getElementById('".$r['Symptoms']."').checked = ".$r['Status']."</script>";
 }
 // loading personal history
 $result = $conn->query("select * from tbl_personalhistory where PatientID='".$_GET['ID']."'");
